@@ -1,0 +1,82 @@
+//funciones
+@function altura($num){
+  @return  calc(($num/3)*50vh);
+}
+
+@function alturaMobile($num){
+  @return  calc(($num/3)*110vh);
+}
+
+#showcaseContainer {
+	margin-top: 10vh;
+	height: alturaMobile(7);
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+
+	h1 {
+		text-align: center;
+	}
+	#imagesShow {
+		height: 95%;
+    	width: 100%;
+    	
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: space-around;
+	}
+	.showcaseSection {
+		height: 30vh;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		.showcaseChest {
+			background: $imagen;
+			height: 100%;
+			width: 80%;
+			border-radius: 20%;
+		}
+		.showcaseOverlay {
+			height: 30vh;
+			width: 80%;
+			background: black;
+			border-radius: 20%;
+			display: none;
+			position: absolute;
+			color: white;
+			text-align: center;
+			flex-direction: column;
+			justify-content: space-around;
+		}
+	}
+}
+
+//media query
+@media (min-width: 992px) { 
+	#showcaseContainer {
+		height: altura(7) !important;
+		display: flex;
+		#imagesShow {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			align-items:center;
+		}
+		.showcaseSection {
+			height: 30vh !important;
+			width: 30% !important;
+			
+			.showcaseChest {
+				height: 30vh !important;
+				width: 70% !important;
+			}
+			.showcaseOverlay {
+				height: 30vh !important;
+				width: 22% !important;
+			}
+		}
+	}
+}
+

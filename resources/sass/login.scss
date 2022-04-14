@@ -1,0 +1,200 @@
+$gris:#696969;
+
+#containerLogin {
+	height: 120vh;
+	width: 100%;
+
+	margin-top: 10vh;
+	display: flex;
+	justify-content: center;
+	#login {
+		height: 100%;
+		width: 90%;
+		
+		display: flex;
+		flex-direction: column;
+
+		#signIn {
+			height: 40%;
+			width: 100%;
+			
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
+			p {
+				font-weight: bold;
+			}
+			#formIn {
+				height: 70%;
+				width: 80%;
+				
+				form {
+					height: 100%;
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-around;
+					div:not(#btnIn) {
+						height: 50%;
+						display: flex;
+						flex-direction: column;
+						justify-content: space-around;
+					}
+					input {
+						border: none;
+						outline:none;
+						border-bottom: 3px solid;
+						
+					}
+					#btnIn {
+						display: flex;
+						height: 17%;
+						justify-content: center;
+						button {
+							width: 40%;
+							border:none;
+							background:$azul;
+							color: white;
+							@include pill;
+						}
+					}
+				}
+			}
+		}
+		#signUp {
+			
+			height: 60%;
+			width: 100%;
+			
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			p{
+				font-weight: bold;
+			}
+			#formUp {
+				
+				height: 70%;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items:center;
+				justify-content: center;
+
+				form {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-around;
+					height: 100%;
+					width: 80%;
+					div {
+						height: 20%;
+						display: flex;
+						flex-direction: column;
+						justify-content: space-around;
+						input {
+							border: none;
+							outline:none;
+							border-bottom: 3px solid;	
+						}
+					}
+					#btnUp {
+						display: flex;
+						height: 10%;
+						justify-content: center;
+						align-items:center;
+						button {
+							width: 40%;
+							height: 100%;
+							border:none;
+							background:$azul;
+							color: white;
+							@include pill;
+						}
+					}	
+				}
+			}
+		}
+		#overlay {
+			height: 70%;
+			width: 90%;
+			background-image: linear-gradient(to right top, #ff9a8b, #ff9288, #ff8987, #ff8086, #ff7786, #ff778a, #ff778d, #ff7791, #ff8098, #ff889f, #ff91a5, #ff99ac);
+			position: absolute;
+			top: 60%;
+			z-index: 2;
+			display: flex;
+			justify-content: center;
+			align-items:center;
+			transition-property: top, height;
+  			transition-duration: 2s, 2s;
+  			button {
+  				padding: 10px;
+    			background: transparent;
+    			border: 3px solid rgba(255,255,255,0.5);
+    			color: white;
+    			@include pill;
+  			}
+		}
+	}
+}
+
+
+//media query
+@media (min-width: 992px) { 
+	#containerLogin {
+		height: 80vh;
+	}
+	label {
+		font-weight: bold;
+		font-size: 18px;
+	}
+	input {
+		font-size: 17px;
+	}
+	#login {
+		height: 80vh !important;
+		width: 90%;
+		display: flex;
+		flex-direction: row !important;
+		align-items:center;
+		#signIn {
+			height: 100% !important;
+			width: 50% !important;
+			#formIn {
+				form {
+					div:not(#btnIn) {
+						height: 20% !important;
+					}
+					#btnIn {
+						height: 10% !important;
+						button {
+							width: 20% !important;
+						}
+					}
+				}
+			}
+			
+		}
+		#signUp {
+			height: 100% !important;
+			width: 50% !important;
+			#formUp form #btnUp {
+				height: 10% !important;
+				button {
+					width: 20% !important;
+				}
+			}
+		}
+		#overlay {
+			height: 100% !important;
+			width: 50% !important;
+			left: 50%;
+			top: 0% !important;
+			transition-property: left !important;
+  			transition-duration: 2s !important;
+  			
+		}
+	}
+}

@@ -1,0 +1,50 @@
+#tutorial {
+  margin-top: 10vh;
+  height: 100vh;
+  width: 100%;
+}
+#tutorial h1 {
+  text-align: center;
+}
+#tutorial #containerTutorial {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-items: center;
+}
+#tutorial #containerTutorial .advice {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 15vh;
+}
+#tutorial #containerTutorial .advice .titleAdvice {
+  border: 3px solid;
+  height: 5vh;
+  width: 80%;
+}
+#tutorial #containerTutorial .advice .textAdvice {
+  height: 25vh;
+  width: 80%;
+  display: none;
+  overflow: scroll;
+}
+
+@media (min-width: 992px) {
+  #tutorial {
+    height: 90vh;
+  }
+
+  #containerTutorial {
+    height: 85vh !important;
+  }
+  #containerTutorial .advice {
+    width: 40vw !important;
+  }
+}
+
+/*# sourceMappingURL=tutorial.css.map */

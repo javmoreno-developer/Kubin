@@ -1,0 +1,1502 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: white;
+  user-select: none;
+}
+
+.desplazado {
+  box-shadow: 0px -2px 12px 3px #000000;
+}
+
+.no-desplazado {
+  box-shadow: none;
+}
+
+#cabecera {
+  position: fixed;
+  top: 0%;
+  z-index: 3;
+  background: white;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+#cabecera h1 a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  background: linear-gradient(90deg, #010101 0%, #1fc0cf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#cabecera #menu {
+  width: 80%;
+  display: flex;
+  justify-content: end;
+}
+#cabecera #menu p {
+  display: none;
+}
+#cabecera #menu p a {
+  text-decoration: none;
+}
+#cabecera #menu p #in {
+  text-decoration: none;
+  color: white;
+  background: #1FC0CF;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+#cabecera #menu i {
+  font-size: 30px;
+}
+
+#menuMobile {
+  background: white;
+  top: 0;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  display: none;
+  z-index: 4;
+}
+#menuMobile p {
+  font-size: 25px;
+}
+#menuMobile p #in {
+  text-decoration: none;
+  color: white;
+  background: #1FC0CF;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+#menuMobile #closeMenu {
+  width: 100%;
+  display: flex;
+  height: 5%;
+  justify-content: end;
+}
+#menuMobile #closeMenu i {
+  font-size: 30px;
+}
+#menuMobile #menuMobileText {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media (min-width: 992px) {
+  #cabecera {
+    justify-content: space-around;
+    position: fixed;
+    top: 0%;
+  }
+  #cabecera #menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #cabecera #menu p {
+    display: unset;
+  }
+  #cabecera #menu p a {
+    font-weight: 700;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    color: black;
+  }
+  #cabecera #menu i {
+    display: none;
+  }
+}
+#firstSection {
+  margin-top: 12vh;
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#firstSection #containerFirst {
+  width: 80%;
+  height: 100%;
+}
+#firstSection #containerFirst #logo {
+  height: 50%;
+  width: 100%;
+}
+#firstSection #containerFirst #textFirst {
+  height: 50%;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+#firstSection #containerFirst #textFirst div {
+  color: #1FC0CF;
+  width: 100%;
+  transition: all 1s;
+}
+#firstSection #buttonDown {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#firstSection #buttonDown #outliner {
+  height: 50%;
+  width: 20%;
+  border: 3px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15%;
+  transition: all 1s;
+}
+#firstSection #buttonDown #outliner i {
+  font-size: 30px;
+}
+#firstSection #buttonDown #outliner:hover {
+  background: black;
+}
+#firstSection #buttonDown #outliner:hover i {
+  color: white;
+}
+
+#secondSection {
+  margin-top: 5%;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#secondSection #text {
+  height: 60%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#secondSection #image {
+  height: 40%;
+  width: 80%;
+  background: #C4C4C4;
+}
+
+#thirdSection {
+  height: 300vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#thirdSection #text {
+  height: 50vh;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#thirdSection #pictures {
+  height: 240vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#thirdSection #pictures .picture {
+  background: #C4C4C4;
+  width: 100%;
+  height: 29vh;
+}
+#thirdSection #thirdBtn {
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+}
+#thirdSection #thirdBtn button {
+  border: none;
+  background: #1FC0CF;
+  color: white;
+  font-size: 20px;
+  padding: 15px;
+}
+
+#fourthSection {
+  height: 150vh;
+  width: 100%;
+  margin-top: 5%;
+}
+#fourthSection #text {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#fourthSection #text h1 {
+  text-align: center;
+}
+#fourthSection #toolsLanding {
+  height: 93vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+#fourthSection #toolsLanding .toolLan {
+  height: 28vh;
+  width: 80%;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+#fourthSection #toolsLanding .toolLan .photoTool {
+  height: 60%;
+  background: #C4C4C4;
+  width: 60%;
+}
+#fourthSection #toolsLanding .toolLan p {
+  color: white;
+  text-align: center;
+}
+#fourthSection #btnContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+}
+#fourthSection #btnContainer button {
+  background: #3D4852;
+  color: white;
+  padding: 20px;
+}
+
+#fifthSection {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#fifthSection h1 {
+  text-align: center;
+}
+#fifthSection #fifthBtn {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#fifthSection #fifthBtn button {
+  background: #1FC0CF;
+  color: white;
+  border: none;
+  padding: 10px;
+}
+#fifthSection #imageFifthContainer {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#fifthSection #imageFifthContainer #imageFifth {
+  height: 100%;
+  width: 80%;
+  background: #C4C4C4;
+}
+
+@media (min-width: 992px) {
+  #firstSection {
+    margin-top: 12vh;
+    height: 86vh;
+  }
+  #firstSection #containerFirst {
+    display: flex;
+    height: 75%;
+    justify-content: space-between;
+  }
+  #firstSection #containerFirst #logo {
+    height: 100%;
+    width: 45%;
+  }
+  #firstSection #containerFirst #textFirst {
+    height: 80%;
+    width: 40%;
+  }
+  #firstSection #containerFirst #textFirst h1 {
+    font-size: 38px;
+  }
+  #firstSection #containerFirst #textFirst p {
+    font-size: 20px;
+  }
+  #firstSection #buttonDown {
+    margin-top: 3%;
+  }
+  #firstSection #buttonDown #outliner {
+    width: 4%;
+  }
+}
+@media (min-width: 992px) {
+  #secondSection {
+    margin-top: 0%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-around;
+  }
+  #secondSection #image {
+    height: 90vh;
+    width: 35%;
+  }
+  #secondSection #text {
+    height: 90vh;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  #secondSection #text h1 {
+    font-size: 35px;
+  }
+  #secondSection #text p {
+    font-size: 20px;
+  }
+}
+@media (min-width: 992px) {
+  #thirdSection {
+    height: 110vh;
+    width: 100%;
+  }
+  #thirdSection #text {
+    height: 22vh;
+    margin-bottom: 1%;
+  }
+  #thirdSection #text h1 {
+    font-size: 35px;
+  }
+  #thirdSection #text p {
+    font-size: 18px;
+  }
+  #thirdSection #pictureContainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  #thirdSection #pictures {
+    width: 85%;
+    height: 80vh;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  #thirdSection .picture {
+    height: 90% !important;
+    width: 97% !important;
+  }
+  #thirdSection #p1 {
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+  #thirdSection #p2 {
+    grid-row: 2/2;
+    grid-column: 1/2;
+    background: black !important;
+  }
+  #thirdSection #p3 {
+    grid-row: 1/3;
+    grid-column: 2/4;
+    height: 95% !important;
+  }
+}
+@media (min-width: 992px) {
+  #fourthSection {
+    height: 90vh;
+  }
+  #fourthSection #text {
+    height: 20vh;
+  }
+  #fourthSection #text p {
+    text-align: center;
+    font-size: 20px;
+  }
+  #fourthSection #toolsLanding {
+    height: 50vh;
+    display: flex;
+    flex-direction: row;
+  }
+  #fourthSection #toolsLanding .toolLan {
+    width: 30%;
+    height: 100%;
+  }
+}
+@media (min-width: 992px) {
+  #fifthSection {
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #fifthSection #fifthText {
+    height: 60%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+  }
+  #fifthSection #fifthText p {
+    text-align: left;
+    font-size: 20px;
+  }
+  #fifthSection #fifthText h1 {
+    font-size: 35px;
+  }
+  #fifthSection #imageFifthContainer {
+    width: 40%;
+    height: 70%;
+  }
+  #fifthSection #imageFifthContainer #imageFifth {
+    width: 90%;
+  }
+}
+.text-logo {
+  stroke-dashoffset: 100%;
+  stroke-dasharray: 100%;
+  -moz-animation: draw 3s forwards ease-in;
+  -webkit-animation: draw 8s forwards ease-in;
+  animation: draw 8s forwards ease-in;
+  -webkit-background-clip: text;
+  stroke: black;
+  fill: none;
+  opacity: 1;
+}
+
+@keyframes draw {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+.secondly {
+  transition: all 0.5s;
+  opacity: 0;
+  animation: appear 3s forwards ease-in;
+  animation-delay: 3.5s;
+}
+
+.thirdly {
+  transition: all 0.5s;
+  opacity: 0;
+  animation: appear 3s forwards ease-in, rotate 3s forwards ease-in, again 3s forwards ease-in;
+  stroke-dashoffset: 100%;
+  stroke-dasharray: 100%;
+  stroke: black;
+  fill: none;
+  stroke-width: 2;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rotate {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+#footerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#footerContainer #footerStart {
+  width: 90%;
+  color: red;
+}
+
+#footer {
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#footer #logoSection {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+#footer #logoSection #logoImage {
+  width: 80%;
+  height: 30vh;
+  background: #C4C4C4;
+}
+#footer #logoSection #icons {
+  width: 80%;
+  height: 5vh;
+  display: flex;
+  justify-content: space-around;
+}
+#footer #logoSection #icons i {
+  font-size: 20px;
+}
+#footer #textSection {
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  #footer {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    height: 30vh;
+  }
+  #footer #logoSection {
+    height: 30vh;
+    width: 50%;
+  }
+  #footer #logoSection #logoImage {
+    width: 70%;
+  }
+  #footer #logoSection #icons {
+    margin-top: 2vh;
+    width: 70%;
+  }
+  #footer #textSection {
+    display: flex;
+    flex-direction: row;
+  }
+  #footer #textSection .textPr {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    justify-content: space-around;
+  }
+}
+#tutorial {
+  margin-top: 10vh;
+  height: 100vh;
+  width: 100%;
+}
+#tutorial h1 {
+  text-align: center;
+}
+#tutorial #containerTutorial {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-items: center;
+}
+#tutorial #containerTutorial .advice {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 15vh;
+}
+#tutorial #containerTutorial .advice .titleAdvice {
+  border: 3px solid;
+  height: 5vh;
+  width: 80%;
+}
+#tutorial #containerTutorial .advice .textAdvice {
+  height: 25vh;
+  width: 80%;
+  display: none;
+  overflow: scroll;
+}
+
+@media (min-width: 992px) {
+  #tutorial {
+    height: 90vh;
+  }
+
+  #containerTutorial {
+    height: 85vh !important;
+  }
+  #containerTutorial .advice {
+    width: 40vw !important;
+  }
+}
+#showcaseContainer {
+  margin-top: 10vh;
+  height: 256.6666666667vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#showcaseContainer h1 {
+  text-align: center;
+}
+#showcaseContainer #imagesShow {
+  height: 95%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#showcaseContainer .showcaseSection {
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#showcaseContainer .showcaseSection .showcaseChest {
+  background: #C4C4C4;
+  height: 100%;
+  width: 80%;
+  border-radius: 20%;
+}
+#showcaseContainer .showcaseSection .showcaseOverlay {
+  height: 30vh;
+  width: 80%;
+  background: black;
+  border-radius: 20%;
+  display: none;
+  position: absolute;
+  color: white;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+@media (min-width: 992px) {
+  #showcaseContainer {
+    height: 116.6666666667vh !important;
+    display: flex;
+  }
+  #showcaseContainer #imagesShow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #showcaseContainer .showcaseSection {
+    height: 30vh !important;
+    width: 30% !important;
+  }
+  #showcaseContainer .showcaseSection .showcaseChest {
+    height: 30vh !important;
+    width: 70% !important;
+  }
+  #showcaseContainer .showcaseSection .showcaseOverlay {
+    height: 30vh !important;
+    width: 22% !important;
+  }
+}
+#containerLogin {
+  height: 120vh;
+  width: 100%;
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+}
+#containerLogin #login {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+#containerLogin #login #signIn {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+#containerLogin #login #signIn p {
+  font-weight: bold;
+}
+#containerLogin #login #signIn #formIn {
+  height: 70%;
+  width: 80%;
+}
+#containerLogin #login #signIn #formIn form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#containerLogin #login #signIn #formIn form div:not(#btnIn) {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#containerLogin #login #signIn #formIn form input {
+  border: none;
+  outline: none;
+  border-bottom: 3px solid;
+}
+#containerLogin #login #signIn #formIn form #btnIn {
+  display: flex;
+  height: 17%;
+  justify-content: center;
+}
+#containerLogin #login #signIn #formIn form #btnIn button {
+  width: 40%;
+  border: none;
+  background: #1FC0CF;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+#containerLogin #login #signUp {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#containerLogin #login #signUp p {
+  font-weight: bold;
+}
+#containerLogin #login #signUp #formUp {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#containerLogin #login #signUp #formUp form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 80%;
+}
+#containerLogin #login #signUp #formUp form div {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#containerLogin #login #signUp #formUp form div input {
+  border: none;
+  outline: none;
+  border-bottom: 3px solid;
+}
+#containerLogin #login #signUp #formUp form #btnUp {
+  display: flex;
+  height: 10%;
+  justify-content: center;
+  align-items: center;
+}
+#containerLogin #login #signUp #formUp form #btnUp button {
+  width: 40%;
+  height: 100%;
+  border: none;
+  background: #1FC0CF;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+#containerLogin #login #overlay {
+  height: 70%;
+  width: 90%;
+  background-image: linear-gradient(to right top, #ff9a8b, #ff9288, #ff8987, #ff8086, #ff7786, #ff778a, #ff778d, #ff7791, #ff8098, #ff889f, #ff91a5, #ff99ac);
+  position: absolute;
+  top: 60%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-property: top, height;
+  transition-duration: 2s, 2s;
+}
+#containerLogin #login #overlay button {
+  padding: 10px;
+  background: transparent;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+@media (min-width: 992px) {
+  #containerLogin {
+    height: 80vh;
+  }
+
+  label {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  input {
+    font-size: 17px;
+  }
+
+  #login {
+    height: 80vh !important;
+    width: 90%;
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+  }
+  #login #signIn {
+    height: 100% !important;
+    width: 50% !important;
+  }
+  #login #signIn #formIn form div:not(#btnIn) {
+    height: 20% !important;
+  }
+  #login #signIn #formIn form #btnIn {
+    height: 10% !important;
+  }
+  #login #signIn #formIn form #btnIn button {
+    width: 20% !important;
+  }
+  #login #signUp {
+    height: 100% !important;
+    width: 50% !important;
+  }
+  #login #signUp #formUp form #btnUp {
+    height: 10% !important;
+  }
+  #login #signUp #formUp form #btnUp button {
+    width: 20% !important;
+  }
+  #login #overlay {
+    height: 100% !important;
+    width: 50% !important;
+    left: 50%;
+    top: 0% !important;
+    transition-property: left !important;
+    transition-duration: 2s !important;
+  }
+}
+#boardContainer {
+  height: 110vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+#boardContainer #board {
+  height: 50%;
+  width: 80%;
+  border: 3px solid;
+}
+#boardContainer #tools {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#boardContainer #tools #changeBg img {
+  display: none;
+}
+#boardContainer #tools #changeBg input {
+  display: none;
+}
+#boardContainer #tools .tool {
+  height: 30%;
+  width: 20%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#boardContainer #tools #color img {
+  display: none;
+}
+#boardContainer #tools #fillContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#boardContainer #tools #fillContainer img {
+  display: none;
+}
+#boardContainer #coor {
+  height: 5vh;
+  width: 40vw;
+  position: absolute;
+  z-index: 3;
+  left: 30%;
+  top: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#lienzo {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+#lienzo line {
+  stroke-width: 4;
+}
+
+#textoInput {
+  height: 3vh;
+  width: 20vh;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  display: none;
+}
+
+#textoInput textarea {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+}
+
+#namingContainer {
+  height: 60vh;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid;
+  display: none;
+  background: white;
+  z-index: 90;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#namingContainer h1 {
+  font-size: 20px;
+}
+#namingContainer div button {
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  background-color: #1FC0CF;
+  color: white;
+  border: 3px solid white;
+}
+#namingContainer div #cancellNaming {
+  background-color: #FFA69E;
+}
+
+#doneFill {
+  height: 5vh;
+  width: 20vw;
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  z-index: 92;
+  display: none;
+}
+#doneFill button {
+  height: 100%;
+  width: 100%;
+}
+
+#exportar i {
+  font-size: 30px;
+}
+
+#exportar {
+  display: flex;
+  justify-content: center;
+}
+
+.toolSelected {
+  background: gray;
+  color: white;
+  height: 30%;
+  width: 20%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#colorPicker {
+  display: none;
+}
+
+#fill {
+  display: none;
+}
+
+#grosor i {
+  font-size: 25px;
+}
+
+#grosorContainer {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  display: flex;
+  height: 7%;
+  flex-wrap: wrap;
+  display: none;
+  /* 2.2 TRACK */
+}
+#grosorContainer input[type=range],
+#grosorContainer input[type=range]::-webkit-slider-runnable-track,
+#grosorContainer input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+#grosorContainer input[type=range]::-webkit-slider-thumb {
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #333;
+  border-radius: 50%;
+  margin-top: -9px;
+}
+#grosorContainer input[type=range]::-moz-range-thumb {
+  background-color: #555;
+  width: 15px;
+  height: 15px;
+  border: 3px solid #333;
+  border-radius: 50%;
+}
+#grosorContainer input[type=range]::-ms-thumb {
+  background-color: #555;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #333;
+  border-radius: 50%;
+}
+#grosorContainer input[type=range]::-webkit-slider-runnable-track {
+  background-color: black;
+  height: 3px;
+}
+#grosorContainer input[type=range]:focus::-webkit-slider-runnable-track {
+  outline: none;
+}
+#grosorContainer input[type=range]::-moz-range-track {
+  background-color: #555;
+  height: 3px;
+}
+#grosorContainer input[type=range]::-ms-track {
+  background-color: #555;
+  height: 3px;
+}
+#grosorContainer input[type=range]::-ms-fill-lower {
+  background-color: HotPink;
+}
+#grosorContainer input[type=range]::-ms-fill-upper {
+  background-color: black;
+}
+
+div[data-name=mojs-shape] {
+  z-index: -80;
+}
+
+#namingLoader {
+  height: 20vh;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+#namingLoader #loader {
+  height: 40%;
+  width: 30%;
+  border: 3px solid blue;
+  border: 10px solid #f3f3f3;
+  /* Light grey */
+  border-top: 10px solid #3498db;
+  /* Blue */
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+#tools2 {
+  height: 15%;
+  width: 100%;
+  border: 3px solid red;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+}
+#tools2 .tool {
+  height: 50%;
+  width: 20%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gradientContainer {
+  position: fixed;
+  top: 10%;
+  z-index: 90;
+  left: 10%;
+  height: 80%;
+  background-color: white;
+  border: 3px solid;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  display: none;
+}
+#gradientContainer #cancellGradient {
+  height: 10vh;
+  width: 80%;
+  display: flex;
+  z-index: 92;
+  justify-content: end;
+  position: absolute;
+  align-items: center;
+}
+#gradientContainer #contentGradient {
+  height: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media (min-width: 900px) {
+  #boardContainer {
+    height: 100vh !important;
+    flex-direction: row-reverse !important;
+    justify-content: start;
+    gap: 30%;
+    margin-top: 0%;
+  }
+  #boardContainer #board {
+    height: 60%;
+    width: 30% !important;
+  }
+  #boardContainer #tools {
+    width: 5%;
+    height: 80%;
+    display: flex;
+  }
+  #boardContainer #tools .tool {
+    height: 10%;
+    width: 100%;
+  }
+  #boardContainer #coor {
+    width: 10vw;
+    left: 45% !important;
+    top: 80% !important;
+  }
+
+  #namingContainer {
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    top: 30%;
+  }
+  #namingContainer textarea {
+    width: 30%;
+    height: 50%;
+  }
+
+  .toolSelected {
+    background: gray;
+    color: white;
+    height: 10%;
+    width: 80%;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #grosorContainer {
+    display: none;
+    position: absolute;
+    top: 15%;
+    left: 40%;
+    align-items: flex-start;
+  }
+  #grosorContainer input {
+    margin-top: 10px;
+  }
+
+  #namingLoader {
+    height: 20vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+  }
+  #namingLoader #loader {
+    height: 40% !important;
+    width: 20% !important;
+    border: 3px solid blue;
+    border: 10px solid #f3f3f3;
+    /* Light grey */
+    border-top: 10px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+  }
+
+  #tools2 {
+    width: 5%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+  #tools2 .tool {
+    height: 10%;
+    width: 100%;
+  }
+
+  #gradientContainer {
+    width: 60%;
+    left: 20%;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#userModal {
+  height: 50vh;
+  width: 100%;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 3px solid;
+}
+#userModal #userImage {
+  height: 50%;
+  width: 80%;
+  background: #C4C4C4;
+  background-size: cover;
+}
+
+#exhibition {
+  margin-top: 2vh;
+  height: 100vh;
+  width: 100%;
+}
+#exhibition table {
+  height: 100%;
+  width: 100%;
+}
+#exhibition table #header {
+  width: 100%;
+  display: flex;
+  display: none;
+  justify-content: space-around;
+}
+#exhibition table tr {
+  display: flex;
+  flex-direction: column;
+  height: 25%;
+}
+#exhibition table tr td {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+#exhibition table tr td button {
+  height: 5vh;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  border: 2px solid white;
+  background: #1FC0CF;
+  color: white;
+  font-weight: bold;
+}
+
+#btnCrearLie {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#btnCrearLie a {
+  text-decoration: none;
+  background: black;
+  color: white;
+  padding: 10px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+#downloadModal {
+  height: 60%;
+  width: 80%;
+  position: fixed;
+  background: white;
+  top: 30%;
+  left: 10%;
+  justify-content: center;
+  display: none;
+}
+#downloadModal #closeDownload {
+  width: 80%;
+  height: 7vh;
+  display: flex;
+  align-items: end;
+  justify-content: flex-end;
+  z-index: 12;
+  position: absolute;
+}
+#downloadModal #closeDownload i {
+  font-size: 20px;
+}
+#downloadModal #contentDown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 30%;
+}
+#downloadModal #contentDown textarea {
+  display: none;
+}
+#downloadModal #contentDown a {
+  height: 5vh;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  border: 2px solid white;
+  background: #1FC0CF;
+  color: white;
+  font-weight: bold;
+}
+
+@media (min-width: 900px) {
+  #userModal {
+    height: 30vh;
+  }
+  #userModal #userImage {
+    height: 60%;
+    width: 20%;
+  }
+
+  #exhibition {
+    height: 51vh;
+    width: 100%;
+  }
+  #exhibition table {
+    height: 100%;
+    width: 100%;
+  }
+  #exhibition table #header {
+    height: 5vh;
+    display: flex;
+    flex-direction: row !important;
+  }
+  #exhibition table #header th {
+    width: 20%;
+    justify-content: center;
+    display: flex;
+  }
+  #exhibition table tr {
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    justify-content: center;
+  }
+
+  #btnCrearLie {
+    height: 7vh;
+  }
+
+  #downloadModal {
+    width: 40%;
+    top: 30%;
+    left: 30%;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

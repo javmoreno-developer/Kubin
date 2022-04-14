@@ -1,0 +1,45 @@
+
+//tipografias
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+//variables
+$imagen: #C4C4C4;
+$tipografia: 'Montserrat', sans-serif;
+$azul:#1FC0CF;
+$rojo: #FFA69E;
+$body: white;
+$tutorialBtn: #3D4852;
+$gris:#696969;
+
+//reboot
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: $tipografia;
+}
+
+body {
+	background:$body;
+	user-select: none;
+}
+//mixin
+@mixin pill {
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 16px;
+}
+//imports
+@import "cabecera.scss";
+@import "landing.scss";
+@import "footer.scss";
+@import "tutorial.scss";
+@import "showcase.scss";
+@import "login.scss";
+@import "tablero.scss";
+@import "dashboard.scss";
+

@@ -1,0 +1,81 @@
+#footerContainer {
+	width: 100%;
+	
+	display: flex;
+	justify-content: center;
+
+	#footerStart {
+		width: 90%;
+		color: red;
+	}
+}
+#footer {
+	height: 70vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	#logoSection {
+		width: 100%;
+		height: 40vh;
+		
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		#logoImage {
+			width: 80%;
+			height: 30vh;
+			background: $imagen;
+		}
+		#icons {
+			width: 80%;
+			height: 5vh;
+			
+			display: flex;
+			justify-content: space-around;
+			i {
+				font-size: 20px;
+			}
+		}
+	}
+	#textSection {
+		height: 30vh;
+		width: 100%;
+		
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items:center;
+	}
+}
+
+@media(min-width: 900px) {
+	#footer {
+		margin-top: 3vh;
+		display: flex;
+		flex-direction: row;
+		height: 30vh;
+		#logoSection {
+			height: 30vh;
+			width: 50%;
+			#logoImage {
+				width: 70%;
+			}
+			#icons {
+				margin-top: 2vh;
+				width: 70%;
+			}
+		}
+		#textSection {
+			display: flex;
+			flex-direction: row;
+			.textPr {
+				display: flex;
+				flex-direction: column;
+				height: 70%;
+				justify-content: space-around;
+			}
+		}
+	}
+}

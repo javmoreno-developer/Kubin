@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class lienzos extends Model
+{
+    use HasFactory;
+    protected $table="lienzos";
+    protected $primaryKey="idLie";
+    public $timestamps=false;
+
+    
+}

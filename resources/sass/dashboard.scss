@@ -1,0 +1,164 @@
+#userModal {
+	height: 50vh;
+	width: 100%;
+	margin-top: 10vh;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	border-bottom: 3px solid;
+	#userImage {
+		height: 50%;
+		width: 80%;
+		background: $imagen;
+		background-size: cover;
+	}
+}
+
+#exhibition {
+	margin-top: 2vh;
+	height: 100vh;
+	width: 100%;
+	
+	
+	table {
+		
+		height: 100%;
+		width: 100%;
+		#header {
+			width: 100%;
+    		
+    		display: flex;
+    		display: none;
+    		justify-content: space-around;
+
+		}
+		tr {
+			display: flex;
+			flex-direction: column;
+			height: 25%;
+			td {
+				display: flex;
+				justify-content: center;
+				
+				width: 100%;
+				button {
+					height: 5vh;
+					@include pill;
+					border:2px solid white;
+					background: $azul;
+					color: white;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}
+
+#btnCrearLie {
+		height: 10vh;
+		
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		
+		a {
+			text-decoration: none;
+			background: black;
+			color: white;
+			padding: 10px;
+			@include pill;
+		}
+}
+
+#downloadModal {
+	height: 60%;
+	width: 80%;
+	position: fixed;
+	background:white;
+	top: 30%;
+	left: 10%;
+	justify-content: center;
+	display: none;
+	#closeDownload {
+		width: 80%;
+		height: 7vh;
+    	display: flex;
+    	align-items:end;
+    	justify-content: flex-end;
+    	z-index: 12;
+    	position: absolute;
+    	i {
+    		font-size: 20px;
+    	}
+	}
+	#contentDown {
+		display: flex;
+		flex-direction: column;
+		align-items:center;
+		justify-content: space-around;
+		height: 100%;
+		width: 30%;
+		
+		textarea {
+			display: none;
+		}
+		a {
+			height: 5vh;
+			@include pill;
+			border:2px solid white;
+			background: $azul;
+			color: white;
+			font-weight: bold;
+		}	
+	}
+	
+}
+
+@media(min-width: 900px) {
+	#userModal {
+		height: 30vh;
+		#userImage {
+			height: 60%;
+			width: 20%;
+		}
+	}
+	#exhibition {
+		height: 51vh;
+		width: 100%;
+		table {
+			
+			height: 100%;
+			width: 100%;
+
+			#header {
+				height: 5vh;
+				display: flex;
+				flex-direction: row !important;
+
+				th {
+					width: 20%;
+    				justify-content: center;
+				    display: flex;
+				}
+			}
+			tr {
+				display: flex;
+				flex-direction: row;
+				height: 10vh;
+				justify-content: center;
+
+			}
+		}
+	}
+	#btnCrearLie {
+		height: 7vh;
+	}
+
+	#downloadModal {
+		width: 40%;
+		top: 30%;
+		left: 30%;
+	}
+}
