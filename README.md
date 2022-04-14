@@ -21,4 +21,5 @@ https://www.figma.com/file/POVXEtSiLjYTva3qFoZzq1/KUBIN?node-id=0%3A1
 npm i
 npm run dev
 composer install
+borrar readme por defecto de laravel.
 
