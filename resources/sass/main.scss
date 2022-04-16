@@ -33,6 +33,14 @@ body {
 	cursor: pointer;
 	border-radius: 16px;
 }
+@mixin icon {
+	font-size: 32px;
+	color: #9c47fc;
+	display: block;
+	background: -webkit-linear-gradient(#9c47fc, #356ad2);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
 //imports
 @import "cabecera.scss";
 @import "landing.scss";

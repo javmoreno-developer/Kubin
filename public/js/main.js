@@ -1,8 +1,26 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	// The require scope
+/******/ 	var __webpack_require__ = {};
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 var __webpack_exports__ = {};
 /*!******************************!*\
   !*** ./resources/js/main.js ***!
   \******************************/
+__webpack_require__.r(__webpack_exports__);
 //aparicion opciones en menu mobile
 $(".bi-list").click(function () {
   $("#menuMobile").css("display", "flex");
@@ -107,7 +125,7 @@ function intervalChange() {
 }
 
 function changeLetter() {
-  //console.log("cambiando");
+  console.log("cambiando");
   $("#changeWord").css("opacity", 0);
   setTimeout(function () {
     $("#changeWord").text(arrayCh[contadorCh]);
@@ -118,90 +136,81 @@ function changeLetter() {
   if (contadorCh >= arrayCh.length) {
     contadorCh = 0;
   }
-}
+} //descarga
 
-//descarga
-$(".download").each(function(index) {
-    $(this).on("click", function(){
-        $("#downloadModal").css("display","flex");
-        let id=$(this).attr("id");
-        id=id.split("-");
-        id=id[1];
-        $("#selectDown").change(()=> {
-          console.log("id:"+id);
-          enviar2(id);
-          $("#textDown").css("display","flex");
-        })
+
+$(".download").each(function (index) {
+  $(this).on("click", function () {
+    $("#downloadModal").css("display", "flex");
+    var id = $(this).attr("id");
+    id = id.split("-");
+    id = id[1];
+    $("#selectDown").change(function () {
+      console.log("id:" + id);
+      enviar2(id);
+      $("#textDown").css("display", "flex");
     });
+  });
 });
-
-$("#closeDownload").click(()=> {
-   $("#downloadModal").css("display","none");
+$("#closeDownload").click(function () {
+  $("#downloadModal").css("display", "none");
 });
 
 function enviar2(param) {
   var datos = {
-    "variable1" : param, // Dato #1 a enviar
+    "variable1": param // Dato #1 a enviar
     //"variable2" : variable2 // Dato #2 a enviar
     // etc...
+
   };
   var url = "./obtenerDatos"; // URL a la cual enviar los datos
 
-enviarDatos(datos, url); // Ejecutar cuando se quiera enviar los datos
+  enviarDatos(datos, url); // Ejecutar cuando se quiera enviar los datos
 
-function enviarDatos(datos, url){
+  function enviarDatos(datos, url) {
     $.ajax({
-            data: {
-               "_token": $("meta[name='csrf-token']").attr("content"),
-               datos,
-            }, 
-            url: url,
-            type: 'post',
-            success:  function (response) {
-                console.log(response); // Imprimir respuesta del archivo
-                //window.location.replace(response);
-                $("#textDown").text(response[0]);
-            },
-            error: function (error) {
-                console.log(error.responseText); // Imprimir respuesta de error
-            }
+      data: {
+        "_token": $("meta[name='csrf-token']").attr("content"),
+        datos: datos
+      },
+      url: url,
+      type: 'post',
+      success: function success(response) {
+        console.log(response); // Imprimir respuesta del archivo
+        //window.location.replace(response);
+
+        $("#textDown").text(response[0]);
+      },
+      error: function error(_error) {
+        console.log(_error.responseText); // Imprimir respuesta de error
+      }
     });
-}
+  }
 }
 
-$("#download").click(()=> {
-  saveSvg($("#textDown").val(),"hola");
+$("#download").click(function () {
+  saveSvg($("#textDown").val(), "hola");
 });
 
 function saveSvg(svgEl, name) {
-    //svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-    //var svgData = svgEl.outerHTML;
-    var svgData = "";
-    svgData=`<svg height="${VhToPx(100)}" version="1.1" width="${VwToPx(100)}" xmlns="http://www.w3.org/2000/svg">`;
-    svgData += svgEl;
-    svgData +="</svg>";
-    console.log(svgData);
-    
-    var preface = '<?xml version="1.0" standalone="no"?>\r\n';
-    var svgBlob = new Blob([preface, svgData], {type:"image/svg+xml;charset=utf-8"});
-    var svgUrl = URL.createObjectURL(svgBlob);
-    var downloadLink = document.createElement("a");
-    downloadLink.href = svgUrl;
-    downloadLink.download = name;
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-}
-
-//funciones de conversion
-function VwToPx(param) {
-  return (param*window.innerWidth)/100;
-}
-
-function VhToPx(param) {
-  return (param*window.innerHeight)/100;
-}
-
-//fin descarga
+  //svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  //var svgData = svgEl.outerHTML;
+  var svgData = "";
+  svgData = "<svg height=\"".concat(VhToPx(100), "\" version=\"1.1\" width=\"").concat(VwToPx(100), "\" xmlns=\"http://www.w3.org/2000/svg\">");
+  svgData += svgEl;
+  svgData += "</svg>";
+  console.log(svgData);
+  var preface = '<?xml version="1.0" standalone="no"?>\r\n';
+  var svgBlob = new Blob([preface, svgData], {
+    type: "image/svg+xml;charset=utf-8"
+  });
+  var svgUrl = URL.createObjectURL(svgBlob);
+  var downloadLink = document.createElement("a");
+  downloadLink.href = svgUrl;
+  downloadLink.download = name;
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+} //fin descarga
 /******/ })()
 ;

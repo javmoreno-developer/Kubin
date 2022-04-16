@@ -1,13 +1,47 @@
 var pulsacion=[false,false,false,false,false,false,false];
 
+var mousedownEvent="";
+var mousemoveEvent="";
+var mouseupEvent="";
+var coordenaX="";
+var coordenaY="";
+
+window.onload=()=> {
+	if(screen.width<900) {
+		//init();
+		mousedownEvent="touchstart";
+		mouseupEvent="touchend";
+		mousemoveEvent="touchmove";
+		coordenaX="clientX";
+		coordenaY="clientY";
+	} else {
+		mousedownEvent="mousedown";
+		mouseupEvent="mouseup";
+		mousemoveEvent="mousemove";
+		coordenaX="originalEvent.targetTouches[0].clientX";
+		coordenaY="originalEvent.targetTouches[0].clientY";
+			
+	}
+	initNormal();
+}
 
 //tablero
 //coordenadas raton
-$(document).mousemove((e)=> {
-	$("#coorX").text("X: "+e.clientX);
-	$("#coorY").text("Y: "+e.clientY);
+function initNormal() {
+
+$(document).on(`${mousemoveEvent}`,function(e){
+	if(screen.width<900) {
+		$("#coorX").text("X: "+e.originalEvent.targetTouches[0].clientX.toFixed(1));
+		$("#coorY").text("Y: "+e.originalEvent.targetTouches[0].clientY.toFixed(1));
+	} else {
+		$("#coorX").text("X: "+e.clientX);
+		$("#coorY").text("Y: "+e.clientY);
+	}
 });
 
+/*$( "#hola" ).bind( `${down}`, function( ) {
+ console.log("entro");
+});*/
 
 //general
 //let h=VhToPx(100)-2;
@@ -43,20 +77,45 @@ function changeTool(param) {
 	
 }
 
+
 //sqr
+
+/*$(document).on(`${mousemoveEvent}`,function(e){
+	if(screen.width<900) {
+		$("#coorX").text("X: "+e.originalEvent.targetTouches[0].clientX.toFixed(1));
+		$("#coorY").text("Y: "+e.originalEvent.targetTouches[0].clientY.toFixed(1));
+	} else {
+		$("#coorX").text("X: "+e.clientX);
+		$("#coorY").text("Y: "+e.clientY);
+	}
+});*/
+
 $("#sqr").click(()=> {
 	changeTool(0);
 
 	if(pulsacion[0]==true) {
-		$("#board").mousedown((e)=> {
-			arrayX.push(e.clientX);
-			arrayX.push(e.clientY);
-			console.log(arrayX);
-	});
+		$("#board").on(`${mousedownEvent}`,function(e) {
+			if(screen.width<900)  {
+				arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)));
+				arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1)));
+				console.log(arrayX);
+			} else {
+				arrayX.push(e.clientX);
+				arrayX.push(e.clientY);
+				console.log(arrayX);
+			}
+		});
 
-		$("#board").mouseup((e)=> {
-			arrayY.push(e.clientY);
-			arrayY.push(e.clientX);
+		$("#board").on(`${mouseupEvent}`,function(e) {
+			if(screen.width<900)  {
+				arrayY.push(parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1)));
+				arrayY.push(parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)));
+				console.log(e.originalEvent.changedTouches[0].clientX.toFixed(1));
+
+			} else {
+				arrayY.push(e.clientY);
+				arrayY.push(e.clientX);
+			}
 			console.log(arrayY);
 			console.log(arrayX);
 			if(pulsacion[0]==true) {
@@ -77,6 +136,7 @@ function pintarSqr() {
         stroke: colorTrazo,
         strokeWidth: grosorTrazo
 	}).click(function(){
+		
 		if(gradientColor!="empty") {
 			this.attr('fill', gradientColor);
 			console.log(gradientColor);
@@ -95,11 +155,19 @@ $("#recta").click(()=> {
 	if(pulsacion[1]==true) {
 		$("#board").click((e)=> {
 			if(contadorLineas<2) {
-				rectaX.push(e.clientX);
-				rectaY.push(e.clientY);
+				if(screen.width<900) {
+					rectaX.push(e.pageX);
+					rectaY.push(e.pageY);
+
+				} else {
+					rectaX.push(e.clientX);
+					rectaY.push(e.clientY);
+				}
 				contadorLineas++;
 				if(contadorLineas==2) {
 					if(pulsacion[1]==true) {
+						console.log(rectaX);
+						console.log(rectaY);
 						dibujaLinea();
 					}
 					rectaY=[];
@@ -137,15 +205,28 @@ $("#circle").click(()=> {
 	changeTool(2);
 
 	if(pulsacion[2]==true) {
-		$("#board").mousedown((e)=> {
-			circleArray.push(e.clientY);
-			circleArray.push(e.clientX);
-			console.log(circleArray);
+		$("#board").on(`${mousedownEvent}`,function(e) {
+			if(screen.width<900)  {
+				circleArray.push(parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1)));
+				circleArray.push(parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)));
+				console.log(arrayX);
+			} else {
+				circleArray.push(e.clientY);
+				circleArray.push(e.clientX);
+				console.log(circleArray);
+			}
 		});
 
-		$("#board").mouseup((e)=> {
-			circleArray.push(e.clientY);
-			circleArray.push(e.clientX);
+		$("#board").on(`${mouseupEvent}`,function(e) {
+			if(screen.width<900)  {
+				circleArray.push(parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1)));
+				circleArray.push(parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)));
+				console.log(e.originalEvent.changedTouches[0].clientX.toFixed(1));
+
+			} else {
+				circleArray.push(e.clientY);
+				circleArray.push(e.clientX);
+			}
 			console.log(circleArray);
 			if(pulsacion[2]==true) {
 				pintarCircle();
@@ -174,9 +255,16 @@ $("#curve").click(()=> {
 	if(pulsacion[3]==true) {
 		$("#board").click((e)=> {
 			if(contadorCurve<3) {
-				let aux=[e.clientX,e.clientY];
-				console.log(aux);
-				curveArray.push(aux);
+				if(screen.width<900) {
+					let aux=[e.pageX,e.pageY];
+					console.log(aux);
+					curveArray.push(aux);
+				} else {
+					let aux=[e.clientX,e.clientY];
+					console.log(aux);
+					curveArray.push(aux);
+				}
+				
 				contadorCurve++;
 			} else {
 				console.log(curveArray);
@@ -194,7 +282,7 @@ function pintarCurva() {
     let a=`M  ${curveArray[0][0]} ${curveArray[0][1]} Q ${curveArray[1][0]} ${curveArray[1][1]} ${curveArray[2][0]} ${curveArray[2][1]}`;
     console.log(a);
     var myPath = s.path(a).attr({
-        fill: fill,
+        fill: "none",
         stroke: colorTrazo,
         strokeWidth: grosorTrazo
     });
@@ -208,23 +296,40 @@ var inicio=false;
 $("#freet").click(()=> {
 	changeTool(4);
 	if(pulsacion[4]==true) {
-		$("#board").mousedown((e)=> {
-			let aux=[e.clientX,e.clientY];
-			arrayFree.push(aux);
-			inicio=true;
-		});
-
-		$("#board").mousemove((e)=> {
-			if(inicio==true) {
+		$("#board").on(`${mousedownEvent}`,function(e) {
+			if(screen.width<900)  {
+				let aux=[parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)),parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1))];
+				arrayFree.push(aux);
+				inicio=true;
+				
+			} else {
 				let aux=[e.clientX,e.clientY];
 				arrayFree.push(aux);
+				inicio=true;
 			}
 		});
 
-		$("#board").mouseup((e)=> {
+		$("#board").on(`${mousemoveEvent}`,function(e) {
+			if(inicio==true) {
+				if(screen.width<900)  {
+					let aux=[parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)),parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1))];
+					arrayFree.push(aux);
+				} else {
+					let aux=[e.clientX,e.clientY];
+					arrayFree.push(aux);
+				}
+			}
+		});
+
+		$("#board").on(`${mouseupEvent}`,function(e) {
 			console.log("inicio: "+inicio);
-			let aux=[e.clientX,e.clientY];
-			arrayFree.push(aux);
+			if(screen.width<900)  {
+				let aux=[parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)),parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1))];
+				arrayFree.push(aux);
+			} else {
+				let aux=[e.clientX,e.clientY];
+				arrayFree.push(aux);
+			}
 			if(pulsacion[4]==true) {
 				pintarFreet();
 			}
@@ -309,10 +414,13 @@ $("#texto").click((e)=> {
 		$("#board").click((e)=> {
 			if(comText==false) {
 				$("#textoInput").css("display","flex");
-
-				$("#textoInput").css("top",e.clientY +"px");
-				$("#textoInput").css("left",e.clientX +"px");
-			
+				if(screen.width<900) {
+					$("#textoInput").css("top",e.pageY +"px");
+					$("#textoInput").css("left",e.pageX +"px");
+				} else {
+					$("#textoInput").css("top",e.clientY +"px");
+					$("#textoInput").css("left",e.clientX +"px");
+				}
 			}
 		});
 
@@ -336,7 +444,8 @@ $("#texto").click((e)=> {
 //asignar nombre
 $("#exportar").click((e)=> {
 	$("#namingContainer").css("display","flex");
-	$("body").css("background","grey");
+	$("body").css("background","black");
+
 });
 
 //cancelar asignar nombre
@@ -484,15 +593,25 @@ $("#ellipse").click(()=> {
 	changeTool(6);
 
 	if(pulsacion[6]==true) {
-		$("#board").mousedown((e)=> {
-			arrayX.push(e.clientX);
-			arrayX.push(e.clientY);
-			//console.log(arrayX);
+		$("#board").on(`${mousedownEvent}`,function(e) {
+			if(screen.width<900) {
+				arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)));
+				arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1)));
+			} else {
+				arrayX.push(e.clientX);
+				arrayX.push(e.clientY);
+				//console.log(arrayX);
+			}
 	});
 
-		$("#board").mouseup((e)=> {
-			arrayY.push(e.clientY);
-			arrayY.push(e.clientX);
+		$("#board").on(`${mouseupEvent}`,function(e) {
+			if(screen.width<900) {
+				arrayY.push(parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1)));
+				arrayY.push(parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)));
+			} else {
+				arrayY.push(e.clientY);
+				arrayY.push(e.clientX);
+			}
 			console.log(arrayY);
 			console.log(arrayX);
 			if(pulsacion[6]==true) {
@@ -526,13 +645,15 @@ var contadorGradient=0;
 
 $("#gradient").click(()=> {
 	$("#gradientContainer").css("display","flex");
+	$("body").css("background","black");
 	$("#cancellGradient").click(()=> {
 		$("#gradientContainer").css("display","none");
+		$("body").css("background","white");
 	});
 	$("#crearGradient").click(()=> {
 		let c1=$("#c1").val();
 		let c2=$("#c2").val();
-		
+		scan();
 		let type=$("#gradientType").val();
 		let verti=$("#verticalidad").val();
 		crearGradiente(c1,c2,type,verti);
@@ -566,7 +687,7 @@ function crearGradiente(c1,c2,type,verti) {
 		var myLinearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
         myLinearGradient.setAttribute("id", `MyGradient${contadorGradient}`);
         myLinearGradient.setAttribute("x1", "0%");
-        myLinearGradient.setAttribute("x2", "0%");
+        myLinearGradient.setAttribute("x2", "100%");
         myLinearGradient.setAttribute("y1", "0%");
         myLinearGradient.setAttribute("y2", "0%");
 
@@ -592,6 +713,16 @@ $("#use").click(()=> {
 	$("#lienzo").css("z-index","99");
 	$("#doneFill").css("z-index","100");
 	$("#doneFill").css("display","flex");
+
+
+	$("#lienzo").click((e)=> {
+		let figuraSel=Snap.getElementByPoint(e.clientX,e.clientY);
+		console.log(figuraSel);
+		figuraSel.attr({
+			fill: gradientColor,
+		    strokeWidth: 5
+		});
+	});
 });
 
 $("#doneFill").click(()=> {
@@ -600,3 +731,17 @@ $("#doneFill").click(()=> {
 });
 
 
+function scan() {
+	contadorGradient=0;
+	for(let i=2;i<$("svg")[0].childNodes.length;i++) {
+		console.log($("svg")[0].childNodes[i]);
+		console.log($("svg")[0].childNodes[i].id);
+		if($("svg")[0].childNodes[i].id.includes("MyGradient")) {
+			contadorGradient++;
+		}
+		
+		
+	}
+}
+
+}

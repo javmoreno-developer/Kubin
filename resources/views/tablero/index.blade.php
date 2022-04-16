@@ -24,13 +24,13 @@
 		
 
 		<div class="tool" id="ellipse" title="Dibujar elipse"><i class="bi bi-circle-square"></i></div>
-		<div id="exportar" title="Exportar"><i class="bi bi-check-lg"></i></i></div>
+		<div id="exportar" title="Exportar" class="tool"><i class="bi bi-check-lg"></i></i></div>
 		<div id="borrarTotal" class="tool" title="Borrar lienzo entero"><i class="bi bi-trash3"></i></div>
 		<div id="borrarSelectivo" class="tool" title="Borrar ultima figura"><i class="bi bi-skip-backward"></i></div>
 
 		<div id="gradient" class="tool"><i class="bi bi-rainbow"></i></div>
 
-		<div id="use" class="tool"><i class="bi bi-x-lg"></i></div>
+		<div id="use" class="tool"><i class="bi bi-cursor-fill"></i></div>
 	</div>
 		<div id="board"></div>
 		<div id="tools">
@@ -43,7 +43,7 @@
 				<i class="bi bi-palette" id="colorEmu"></i>
 				<input type="color" id="colorPicker">
 			</div>
-			<div id="grosor" title="Cambiar grosor de trazo">
+			<div id="grosor" title="Cambiar grosor de trazo" class="tool">
 				<i class="bi bi-border-width" id="openGrosor"></i>
 
 			</div>
@@ -134,6 +134,8 @@
 			<i class="bi bi-x-lg"></i>
 		</div>
 	</div>
+
+	
 </body>
 
 	<!--tablero.js-->

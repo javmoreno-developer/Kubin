@@ -1,9 +1,9 @@
 /* Error: Undefined mixin.
- *     ,
- * 114 |             @include pill;    
- *     |             ^^^^^^^^^^^^^
- *     '
- *   resources\sass\tablero.scss 114:4  root stylesheet */
+ *    ,
+ * 42 |                 @include icon;
+ *    |                 ^^^^^^^^^^^^^
+ *    '
+ *   resources\sass\tablero.scss 42:5  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Undefined mixin.\a     \2577 \a 114 \2502              @include pill;    \d\a     \2502              ^^^^^^^^^^^^^\a     \2575 \a   resources\\sass\\tablero.scss 114:4  root stylesheet";
+  content: "Error: Undefined mixin.\a    \2577 \a 42 \2502                  @include icon;\d\a    \2502                  ^^^^^^^^^^^^^\a    \2575 \a   resources\\sass\\tablero.scss 42:5  root stylesheet";
 }

@@ -6,29 +6,36 @@
   <title>Document</title>
 </head>
 <body>
-
-  <style>
-    
-  </style>
-
-
-  <svg width="100" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
-      
-      <defs>
-      </defs>
-        <linearGradient id="MyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#F60" />
-          <stop offset="100%" stop-color="#FF6" />
-        </linearGradient>
-      
-      <rect width="100" height="50" fill="url(#MyGradient)"/>
-    </svg>
+<style>
+  #hola {
+    height: 50vh;
+    width: 40%;
+    border: 3px solid;
+  }
+</style>
+ <div id="hola"></div>
 </body>
 <!--Jquery-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script>
+  var down="";
+  var up="";
 
+if(screen.width>900) {
+   down="mousedown";
+   up="mouseup";
+} else {
+   down="touchstart";
+   up="touchend";
+}
 
+$( "#hola" ).bind( `${down}`, function( ) {
+ console.log("entro");
+});
+
+$( "#hola" ).bind( `${up}`, function( ) {
+ console.log("salio");
+});
 </script>
 </html>

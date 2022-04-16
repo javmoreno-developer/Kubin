@@ -1,3 +1,4 @@
+$azul:#1FC0CF;
 #boardContainer {
 	height: 110vh;
 	width: 100%;
@@ -37,6 +38,9 @@
 			display: flex;
 			justify-content: center;
 			align-items:center;
+				i {
+				@include icon;
+			}
 		}
 		#color {
 			img {
@@ -148,8 +152,8 @@
 
 .toolSelected {
 	
-	background: gray;
-	color: white;
+	border: 3px solid black;
+	
 	height: 30%;
 	width: 20%;
 	font-size: 30px;
@@ -265,14 +269,14 @@ div[data-name="mojs-shape"] {
 #tools2 {
 		height: 15%;
 		width: 100%;
-		border:3px solid red;
+		
 		flex-wrap: wrap;
 		
     
     display: flex;
 		flex-direction: row;
 		
-
+		
 		.tool {
 			height: 50%;
 			width: 20%;
@@ -281,6 +285,9 @@ div[data-name="mojs-shape"] {
 			justify-content: center;
 			align-items:center;
 
+			i {
+				@include icon;
+			}
 		}
 	}
 
@@ -314,9 +321,56 @@ div[data-name="mojs-shape"] {
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-around;
+		select {
+			height: 5vh;
+	    width: 10vw;
+	    background: white;
+		}
+		div img {
+			display: none;
+		}
+		button {
+			@include pill;
+			background: $azul;
+			border:none;
+			color: white;
+		}
 	}
 }
 
+#chooseGradient {
+	position:fixed;
+	top: 10%;
+	z-index: 190;
+	left: 10%;
+	height: 80%;
+	background-color: white;
+	border:3px solid;
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	display: none;
+	#cancellChoose {
+		//border:3px solid red;
+		height: 10vh;
+		width: 80%;
+		display: flex;
+		z-index: 92;
+		justify-content: end;
+		position:absolute;
+		align-items: center;
+	}
+	#contentChoose {
+		height: 100%;
+		width: 80%;
+		
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		
+	}
+}
 @media(min-width: 900px) {
 	#boardContainer {
 		height: 100vh !important;
@@ -362,8 +416,7 @@ div[data-name="mojs-shape"] {
 
 	.toolSelected {
 	
-	background: gray;
-	color: white;
+	
 	height: 10%;
 	width: 80%;
 	font-size: 30px;

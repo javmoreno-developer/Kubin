@@ -114,3 +114,79 @@ function changeLetter() {
   	contadorCh=0;
   }
 }
+
+//descarga
+$(".download").each(function(index) {
+    $(this).on("click", function(){
+        $("#downloadModal").css("display","flex");
+        let id=$(this).attr("id");
+        id=id.split("-");
+        id=id[1];
+        $("#selectDown").change(()=> {
+          console.log("id:"+id);
+          enviar2(id);
+          $("#textDown").css("display","flex");
+        })
+    });
+});
+
+$("#closeDownload").click(()=> {
+   $("#downloadModal").css("display","none");
+});
+
+function enviar2(param) {
+  var datos = {
+    "variable1" : param, // Dato #1 a enviar
+    //"variable2" : variable2 // Dato #2 a enviar
+    // etc...
+  };
+  var url = "./obtenerDatos"; // URL a la cual enviar los datos
+
+enviarDatos(datos, url); // Ejecutar cuando se quiera enviar los datos
+
+function enviarDatos(datos, url){
+    $.ajax({
+            data: {
+               "_token": $("meta[name='csrf-token']").attr("content"),
+               datos,
+            }, 
+            url: url,
+            type: 'post',
+            success:  function (response) {
+                console.log(response); // Imprimir respuesta del archivo
+                //window.location.replace(response);
+                $("#textDown").text(response[0]);
+            },
+            error: function (error) {
+                console.log(error.responseText); // Imprimir respuesta de error
+            }
+    });
+}
+}
+
+$("#download").click(()=> {
+  saveSvg($("#textDown").val(),"hola");
+});
+
+function saveSvg(svgEl, name) {
+    //svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    //var svgData = svgEl.outerHTML;
+    var svgData = "";
+    svgData=`<svg height="${VhToPx(100)}" version="1.1" width="${VwToPx(100)}" xmlns="http://www.w3.org/2000/svg">`;
+    svgData += svgEl;
+    svgData +="</svg>";
+    console.log(svgData);
+    
+    var preface = '<?xml version="1.0" standalone="no"?>\r\n';
+    var svgBlob = new Blob([preface, svgData], {type:"image/svg+xml;charset=utf-8"});
+    var svgUrl = URL.createObjectURL(svgBlob);
+    var downloadLink = document.createElement("a");
+    downloadLink.href = svgUrl;
+    downloadLink.download = name;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+}
+
+
+//fin descarga
