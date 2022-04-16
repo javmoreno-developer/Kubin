@@ -464,13 +464,14 @@ $("#naming").click((e)=> {
 	nombre=$("#nameLienzo").val();
 
 	
-	for(let i=2;i<$("svg")[0].childNodes.length;i++) {
-		console.log($("svg")[0].childNodes[i]);
-		console.log(typeof($("svg")[0].childNodes[i]));
-		contenido.push($("svg")[0].childNodes[i].outerHTML);
+	for(let i=2;i<$("svg")[2].childNodes.length;i++) {
+		console.log($("svg")[2].childNodes[i]);
+		console.log(typeof($("svg")[2].childNodes[i]));
+		contenido.push($("svg")[2].childNodes[i].outerHTML);
 	}
 	//window.location.href=window.location.href + "?contenido=" + contenido;
 	enviar();
+	console.log($("svg")[2]);
 	console.log(contenido);
 });
 	

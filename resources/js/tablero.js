@@ -505,6 +505,7 @@ function enviarDatos(datos, url){
                //console.log(response); // Imprimir respuesta del archivo
               // window.location.replace(response);
               window.location.href="./dashboard";
+              console.log(response);
             },
             error: function (error) {
                 console.log(error.responseText); // Imprimir respuesta de error
