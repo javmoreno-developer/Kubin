@@ -15,6 +15,8 @@ Se distinguirán tres perfiles:
 ## Modelado
 ![image](https://user-images.githubusercontent.com/55782974/163439288-bd232534-fc06-4a33-af4f-bbf12c3e4700.png)
 
+## Despliegue
+A la hora de desplegar la app,usaré el servicio de heroku utilizando clearDB para tener la bd en otro servicio
 ## Diseño
 https://www.figma.com/file/POVXEtSiLjYTva3qFoZzq1/KUBIN?node-id=0%3A1
 ## Tras descargar
