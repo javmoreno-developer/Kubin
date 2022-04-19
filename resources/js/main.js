@@ -8,6 +8,59 @@ $(".bi-x-lg").click(function() {
 	$("#menuMobile").css("display","none")
 });
 
+//desplazamiento boton landing (1 section)
+$("#outliner").click(()=> {
+    let top=$("#secondSection").position().top;
+    desplazar_a(secondSection);
+});
+
+function desplazar_a(elemento){
+    $('html,body').animate({scrollTop: $(elemento).offset().top}, 1000);
+}
+
+
+//scrollreveal
+var slideUp = {
+    distance: '150%',
+    origin: 'bottom',
+    duration: 1500,
+    delay:375,
+    opacity: null,
+    reset: true
+};
+var slideRight = {
+    distance: '150%',
+    origin: 'left',
+    duration: 1500,
+    delay:375,
+    opacity: null,
+    reset: true,
+};
+var opacity = {
+    duration: 1500,
+    delay:375,
+    opacity: 0,
+    reset: true,
+};
+
+    //landing
+        ScrollReveal().reveal('.title',slideUp);
+        ScrollReveal().reveal('#image',slideRight);
+        ScrollReveal().reveal('.texto',opacity);
+        //pictures
+        ScrollReveal().reveal('#p1',{duration: 1500,delay:475,opacity: 0,reset: true,});
+        ScrollReveal().reveal('#p4',{duration: 1500,delay:675,opacity: 0,reset: true,});
+        ScrollReveal().reveal('#p5',{duration: 1500,delay:875,opacity: 0,reset: true,});
+        ScrollReveal().reveal('#p7',{duration: 1500,delay:1075,opacity: 0,reset: true,});
+        ScrollReveal().reveal('#p6',{duration: 1500,delay:1275,opacity: 0,reset: true,});
+        ScrollReveal().reveal('#p2',{duration: 1500,delay:1575,opacity: 0,reset: true,});
+        ScrollReveal().reveal('#p3',{duration: 1500,delay:1775,opacity: 0,reset: true,});
+        //fin picture
+        ScrollReveal().reveal('#toolLan1',{duration: 1500,delay:475,opacity: 0,reset: true,});
+        ScrollReveal().reveal('#toolLan2',{duration: 1500,delay:675,opacity: 0,reset: true,});
+        ScrollReveal().reveal('#toolLan3',{duration: 1500,delay:875,opacity: 0,reset: true,});
+        ScrollReveal().reveal('.titleLeft',slideRight);
+    //fin landing
 //aparicion consejos en pantalla tutorial
 var c=0;//contador consejos
 $(".titleAdvice").click(function(e) {
@@ -102,7 +155,7 @@ function intervalChange() {
 	inter=setInterval(changeLetter,2000);
 }
 function changeLetter() {
-  console.log("cambiando");
+  //console.log("cambiando");
   $("#changeWord").css("opacity",0);
   setTimeout(()=> {
   	$("#changeWord").text(arrayCh[contadorCh]);
@@ -171,8 +224,20 @@ $("#download").click(()=> {
 function saveSvg(svgEl, name) {
     //svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     //var svgData = svgEl.outerHTML;
+    let h=0;
+    let w=0;
+
+
+    if(screen.width>900) {
+     h=VhToPx(60);
+     w=VwToPx(30);
+    } else {
+      h=VhToPx(55);
+      w=VwToPx(80);
+    }
+
     var svgData = "";
-    svgData=`<svg height="${VhToPx(100)}" version="1.1" width="${VwToPx(100)}" xmlns="http://www.w3.org/2000/svg">`;
+    svgData=`<svg height="${h}" version="1.1" width="${w}" xmlns="http://www.w3.org/2000/svg">`;
     svgData += svgEl;
     svgData +="</svg>";
     console.log(svgData);

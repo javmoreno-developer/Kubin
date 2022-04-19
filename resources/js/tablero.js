@@ -45,12 +45,30 @@ $(document).on(`${mousemoveEvent}`,function(e){
 
 //general
 //let h=VhToPx(100)-2;
-let h=VhToPx(100)-2;
-let w=VwToPx(100);
+let h=0;
+let w=0;
+var altoSvg=20;
+var anchoSvg=35;
+
+
+if(screen.width>900) {
+	 h=VhToPx(60);
+	 w=VwToPx(30);
+} else {
+	 h=VhToPx(55);
+	 w=VwToPx(80);
+	 altoSvg=25;
+	 anchoSvg=10;
+}
+
 if($("#lienzo").length==0) {
 	var s=Snap(w,h);
 	s.attr({ id: 'lienzo' });
+
 }
+
+$("#lienzo").css("top",altoSvg + "%");
+$("#lienzo").css("left",anchoSvg + "%");
 
 var arrayX=[];
 var arrayY=[];
@@ -59,6 +77,9 @@ var grosorTrazo=1;
 var fill="black";
 var colorFondo="black";
 var gradientColor="empty";
+
+
+
 //funciones de conversion
 function VwToPx(param) {
 	return (param*window.innerWidth)/100;
@@ -71,8 +92,9 @@ function VhToPx(param) {
 //pulsacion
 function changeTool(param) {
 	pulsacion=[false,false,false,false,false,false,false];
-	console.log(pulsacion);
-	console.log(param);
+	//console.log(pulsacion);
+	//console.log(param);
+	$("#board").off();
 	pulsacion[param]=true;
 	
 }
@@ -80,29 +102,47 @@ function changeTool(param) {
 
 //sqr
 
-/*$(document).on(`${mousemoveEvent}`,function(e){
-	if(screen.width<900) {
-		$("#coorX").text("X: "+e.originalEvent.targetTouches[0].clientX.toFixed(1));
-		$("#coorY").text("Y: "+e.originalEvent.targetTouches[0].clientY.toFixed(1));
-	} else {
-		$("#coorX").text("X: "+e.clientX);
-		$("#coorY").text("Y: "+e.clientY);
-	}
-});*/
+
+function traducirSqr(param1,param2) {
+	let array=param1.concat(param2);
+	console.log("total:"+array);
+	console.log("uno:"+param1);
+	console.log("dos:"+param2);
+	array.forEach((e,index)=> {
+		if(index==0 || index==3) {
+			array[index]=e-VwToPx(anchoSvg);
+		} else {
+			array[index]=e-VhToPx(altoSvg);
+		}
+	});
+	console.log("total final:"+array);
+	arrayX=[];
+	arrayY=[];
+	return array;
+}
+
+
 
 $("#sqr").click(()=> {
 	changeTool(0);
+	
+	//console.log(arrayX);
 
 	if(pulsacion[0]==true) {
 		$("#board").on(`${mousedownEvent}`,function(e) {
 			if(screen.width<900)  {
-				arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)));
-				arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1)));
-				console.log(arrayX);
+				if(arrayX.length<2) {
+					arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)));
+					arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1)));
+				}
+				//console.log(arrayX);
 			} else {
-				arrayX.push(e.clientX);
-				arrayX.push(e.clientY);
-				console.log(arrayX);
+				if(arrayX.length<2) {
+					arrayX.push(e.clientX);
+					arrayX.push(e.clientY);
+					console.log("x en local:"+arrayX);
+				}
+				
 			}
 		});
 
@@ -110,19 +150,19 @@ $("#sqr").click(()=> {
 			if(screen.width<900)  {
 				arrayY.push(parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1)));
 				arrayY.push(parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)));
-				console.log(e.originalEvent.changedTouches[0].clientX.toFixed(1));
+				//console.log(e.originalEvent.changedTouches[0].clientX.toFixed(1));
 
 			} else {
 				arrayY.push(e.clientY);
 				arrayY.push(e.clientX);
 			}
-			console.log(arrayY);
-			console.log(arrayX);
+			//console.log(arrayY);
+			//console.log(arrayX);
 			if(pulsacion[0]==true) {
 				pintarSqr();
 			}
-			arrayX=[];
 			arrayY=[];
+			arrayX=[];
 		});
 	} else {
 		console.log("sqr no");
@@ -131,7 +171,11 @@ $("#sqr").click(()=> {
 });
 
 function pintarSqr() {
-	var rect=s.rect(arrayX[0],arrayX[1],(arrayY[1]-arrayX[0]),(arrayY[0]-arrayX[1])).attr({
+	//console.log(arrayX);
+	let res=traducirSqr(arrayX,arrayY);
+	//var rect=s.rect(arrayX[0],arrayX[1],(arrayY[1]-arrayX[0]),(arrayY[0]-arrayX[1])).attr({
+	//console.log(res);
+	var rect=s.rect(res[0],res[1],(res[3]-res[0]),(res[2]-res[1])).attr({
 		fill: fill,
         stroke: colorTrazo,
         strokeWidth: grosorTrazo
@@ -139,27 +183,50 @@ function pintarSqr() {
 		
 		if(gradientColor!="empty") {
 			this.attr('fill', gradientColor);
-			console.log(gradientColor);
+			//console.log(gradientColor);
 		}
 
 	});
+	res=[];
 }
 //fin sqr
 //recta
 var rectaX=[];
 var rectaY=[];
 var contadorLineas=0;
+
+function traducirRecta(param1,param2) {
+	 let array=param1.concat(param2);
+
+	array.forEach((e,index)=> {
+		if(index<=1) {
+			array[index]=e-VwToPx(anchoSvg);
+		} else {
+			array[index]=e-VhToPx(altoSvg);
+		}
+	});
+	//console.log(array);
+	return array;
+}
+
 $("#recta").click(()=> {
 	changeTool(1);
-	console.log("recta es:"+pulsacion[1]);
+	//console.log("recta es:"+pulsacion[1]);
 	if(pulsacion[1]==true) {
 		$("#board").click((e)=> {
+			if(rectaX.length>0 && contadorLineas==0) {
+				rectaX=[];
+				rectaY=[];
+			}
 			if(contadorLineas<2) {
+
 				if(screen.width<900) {
+					
 					rectaX.push(e.pageX);
 					rectaY.push(e.pageY);
 
 				} else {
+					
 					rectaX.push(e.clientX);
 					rectaY.push(e.clientY);
 				}
@@ -181,14 +248,15 @@ $("#recta").click(()=> {
 			}
 		});
 	} else {
-		console.log("recta no");
-		console.log(pulsacion.recta);
+		//console.log("recta no");
+		//console.log(pulsacion.recta);
 	}
 });
 
 function dibujaLinea() {
-	console.log("h");
-	var t1 = s.line(rectaX[0], rectaY[0], rectaX[1], rectaY[1]).attr({
+	//console.log("h");
+	let res=traducirRecta(rectaX,rectaY);
+	var t1 = s.line(res[0], res[2], res[1], res[3]).attr({
 		fill: fill,
         stroke: colorTrazo,
         strokeWidth: grosorTrazo
@@ -198,6 +266,19 @@ function dibujaLinea() {
 }
 //fin recta
 //circle
+function traducirCirculo(param1) {
+	
+	param1.forEach((e,index)=> {
+		if(index%2==1) {
+			param1[index]=e-VwToPx(anchoSvg);
+		} else {
+			param1[index]=e-VhToPx(altoSvg);
+		}
+	});
+	//console.log(param1);
+	return param1;
+}
+
 var circleCont=0;
 var circleArray=[];
 
@@ -209,11 +290,11 @@ $("#circle").click(()=> {
 			if(screen.width<900)  {
 				circleArray.push(parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1)));
 				circleArray.push(parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)));
-				console.log(arrayX);
+				//console.log(arrayX);
 			} else {
 				circleArray.push(e.clientY);
 				circleArray.push(e.clientX);
-				console.log(circleArray);
+				//console.log(circleArray);
 			}
 		});
 
@@ -221,13 +302,13 @@ $("#circle").click(()=> {
 			if(screen.width<900)  {
 				circleArray.push(parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1)));
 				circleArray.push(parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)));
-				console.log(e.originalEvent.changedTouches[0].clientX.toFixed(1));
+				//console.log(e.originalEvent.changedTouches[0].clientX.toFixed(1));
 
 			} else {
 				circleArray.push(e.clientY);
 				circleArray.push(e.clientX);
 			}
-			console.log(circleArray);
+			//console.log(circleArray);
 			if(pulsacion[2]==true) {
 				pintarCircle();
 			}
@@ -237,8 +318,10 @@ $("#circle").click(()=> {
 });
 
 function pintarCircle() {
-	console.log("creando");
-	var c = s.circle(((circleArray[1]+circleArray[3])/2), ((circleArray[0]+circleArray[2])/2), ((circleArray[2]-circleArray[0])/2)).attr({
+	//console.log("creando");
+	let res=traducirCirculo(circleArray);
+
+	var c = s.circle(((res[1]+res[3])/2), ((res[0]+res[2])/2), ((res[2]-res[0])/2)).attr({
 		fill: fill,
         stroke: colorTrazo,
         strokeWidth: grosorTrazo
@@ -249,6 +332,15 @@ function pintarCircle() {
 //curve
 var curveArray=[];
 var contadorCurve=0;
+function traducirCurva(param1) {
+	
+	param1.forEach((e,index)=> {
+		let aux=[e[0]-VwToPx(anchoSvg),e[1]-VhToPx(altoSvg)];
+		param1[index]=aux;
+	});
+	//console.log(param1);
+	return param1;
+}
 
 $("#curve").click(()=> {
 	changeTool(3);
@@ -257,17 +349,17 @@ $("#curve").click(()=> {
 			if(contadorCurve<3) {
 				if(screen.width<900) {
 					let aux=[e.pageX,e.pageY];
-					console.log(aux);
+					//console.log(aux);
 					curveArray.push(aux);
 				} else {
 					let aux=[e.clientX,e.clientY];
-					console.log(aux);
+					//console.log(aux);
 					curveArray.push(aux);
 				}
 				
 				contadorCurve++;
 			} else {
-				console.log(curveArray);
+				//console.log(curveArray);
 				if(pulsacion[3]==true) {
 					pintarCurva();
 				}
@@ -279,8 +371,11 @@ $("#curve").click(()=> {
 });
 function pintarCurva() {
     //let a=`M  ${curveArray[0][0]} ${curveArray[0][1]} C ${curveArray[0][0]} ${curveArray[0][1]} ${curveArray[1][0]} ${curveArray[1][1]} ${curveArray[2][0]} ${curveArray[2][1]}`;
-    let a=`M  ${curveArray[0][0]} ${curveArray[0][1]} Q ${curveArray[1][0]} ${curveArray[1][1]} ${curveArray[2][0]} ${curveArray[2][1]}`;
-    console.log(a);
+   // let a=`M  ${curveArray[0][0]} ${curveArray[0][1]} Q ${curveArray[1][0]} ${curveArray[1][1]} ${curveArray[2][0]} ${curveArray[2][1]}`;
+   //console.log(curveArray);
+   let res=traducirCurva(curveArray);
+    let a=`M  ${res[0][0]} ${res[0][1]} Q ${res[1][0]} ${res[1][1]} ${res[2][0]} ${res[2][1]}`;
+    //console.log(res);
     var myPath = s.path(a).attr({
         fill: "none",
         stroke: colorTrazo,
@@ -293,6 +388,14 @@ function pintarCurva() {
 var arrayFree=[];
 var inicio=false;
 
+function traducirFree(param1) {
+	param1.forEach((e,index)=> {
+		let aux=[e[0]-VwToPx(anchoSvg),e[1]-VhToPx(altoSvg)];
+		param1[index]=aux;
+	});
+	//console.log(param1);
+	return param1;
+}
 $("#freet").click(()=> {
 	changeTool(4);
 	if(pulsacion[4]==true) {
@@ -322,7 +425,7 @@ $("#freet").click(()=> {
 		});
 
 		$("#board").on(`${mouseupEvent}`,function(e) {
-			console.log("inicio: "+inicio);
+			//console.log("inicio: "+inicio);
 			if(screen.width<900)  {
 				let aux=[parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)),parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1))];
 				arrayFree.push(aux);
@@ -341,13 +444,16 @@ $("#freet").click(()=> {
 
 function pintarFreet() {
 	console.log(arrayFree);
+	let res=traducirFree(arrayFree);
+	console.log(arrayFree);
+	arrayFree=res;
 	//let a="M "+curveArray[0][0]+" 90 C 200  90 0 0 90  300";
 	let a=`M ${arrayFree[0][0]} ${arrayFree[0][1]}`;
-	console.log(a);
+	//console.log(a);
 	for(let i=0;i<arrayFree.length;i++) {
 		a+=` L ${arrayFree[i][0]} ${arrayFree[i][1]}`;
 	}
-	console.log(a);
+	//console.log(a);
 	var myPath = s.path(a).attr({
         fill: "none",
         stroke: colorTrazo,
@@ -406,6 +512,8 @@ $("#fill").change(()=> {
 
 //texto
 var comText=false;
+var yText=0;
+var xText=0;
 
 $("#texto").click((e)=> {
 	comText=false;
@@ -417,21 +525,22 @@ $("#texto").click((e)=> {
 				if(screen.width<900) {
 					$("#textoInput").css("top",e.pageY +"px");
 					$("#textoInput").css("left",e.pageX +"px");
+					yText=e.pageY;
+					xText=e.pageX;
 				} else {
 					$("#textoInput").css("top",e.clientY +"px");
 					$("#textoInput").css("left",e.clientX +"px");
+					yText=e.clientY;
+					xText=e.clientX;
 				}
 			}
 		});
 
 		$("#area").change((e)=> {
 			
-			let yV = $("#textoInput").css("top");
-			let xV = $("#textoInput").css("left");
-			console.log(yV);
-			console.log(xV);
+			
 			if(pulsacion[5]==true) {	
-				var t1 = s.text(xV, yV, $("#area").val());
+				var t1 = s.text((xText-VwToPx(anchoSvg)), (yText-VhToPx(altoSvg)), $("#area").val());
 				//textoInput.style.display="none";
 				$("#textoInput").css("display","none");
 				comText=true;	
@@ -464,13 +573,14 @@ $("#naming").click((e)=> {
 	nombre=$("#nameLienzo").val();
 
 	
-	for(let i=2;i<$("svg")[0].childNodes.length;i++) {
-		console.log($("svg")[0].childNodes[i]);
-		console.log(typeof($("svg")[0].childNodes[i]));
-		contenido.push($("svg")[0].childNodes[i].outerHTML);
+	for(let i=2;i<$("svg")[4].childNodes.length;i++) {
+		console.log($("svg")[4].childNodes[i]);
+		console.log(typeof($("svg")[4].childNodes[i]));
+		contenido.push($("svg")[4].childNodes[i].outerHTML);
 	}
 	//window.location.href=window.location.href + "?contenido=" + contenido;
 	enviar();
+	console.log($("svg")[4]);
 	console.log(contenido);
 });
 	
@@ -505,7 +615,6 @@ function enviarDatos(datos, url){
                //console.log(response); // Imprimir respuesta del archivo
               // window.location.replace(response);
               window.location.href="./dashboard";
-              console.log(response);
             },
             error: function (error) {
                 console.log(error.responseText); // Imprimir respuesta de error
@@ -552,17 +661,18 @@ $("#triggerBg").click(()=>{
 
 $("#chbg").change(()=> {
 	colorFondo=$("#chbg").val();
-	console.log(colorFondo);
+	//console.log(colorFondo);
 	if(screen.width>=900) {
 		//obtenemos el punto desde donde pintar el cuadrado (ordenador)
 		let x=VwToPx(50)-VwToPx(15);
 		let y=VhToPx(50)-VhToPx(30);
-		console.log(x);
-		console.log(y);
+		//console.log(x);
+		//console.log(y);
 		//obtenemos el height y width del cuadrado
 		let height=VhToPx(60);
 		let width=VwToPx(30);
-		var rect=s.rect(x,y,width,height).attr({
+
+		var rect=s.rect((x-VwToPx(anchoSvg)),(y-VhToPx(altoSvg)),width,height).attr({
 			fill:colorFondo,
 		}).click(function () {
 	    	this.attr('fill', fill);
@@ -571,12 +681,12 @@ $("#chbg").change(()=> {
 		//obtenemos el punto desde donde pintar el cuadrado (movil)
 		let x=VwToPx(50)-VwToPx(40);
 		let y=VhToPx(50)-VhToPx(25);
-		console.log(x);
-		console.log(y);
+		//console.log(x);
+		//console.log(y);
 		//obtenemos el height y width del cuadrado
 		let height=VhToPx(55);
 		let width=VwToPx(80);
-		var rect=s.rect(x,y,width,height).attr({
+		var rect=s.rect((x-VwToPx(anchoSvg)),(y-VhToPx(altoSvg)),width,height).attr({
 			fill:colorFondo,
 		}).click(function () {
 	    	this.attr('fill', fill);
@@ -588,7 +698,25 @@ $("#chbg").change(()=> {
 });
 
 //ellipse
-var ellipse=[];
+var ellipseX=[];
+var ellipseY=[];
+
+function traducirEllipse(param1,param2) {
+	let array=param1.concat(param2);
+	//console.log(array);
+	array.forEach((e,index)=> {
+		if(index==0 || index==3) {
+			array[index]=e-VwToPx(anchoSvg);
+		} else {
+			array[index]=e-VhToPx(altoSvg);
+		}
+	});
+	//console.log(array);
+	ellipseX=[];
+	ellipsey=[];
+	return array;
+}
+
 
 $("#ellipse").click(()=> {
 	changeTool(6);
@@ -596,30 +724,30 @@ $("#ellipse").click(()=> {
 	if(pulsacion[6]==true) {
 		$("#board").on(`${mousedownEvent}`,function(e) {
 			if(screen.width<900) {
-				arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)));
-				arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1)));
+				ellipseX.push(parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)));
+				ellipseX.push(parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1)));
 			} else {
-				arrayX.push(e.clientX);
-				arrayX.push(e.clientY);
+				ellipseX.push(e.clientX);
+				ellipseX.push(e.clientY);
 				//console.log(arrayX);
 			}
 	});
 
 		$("#board").on(`${mouseupEvent}`,function(e) {
 			if(screen.width<900) {
-				arrayY.push(parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1)));
-				arrayY.push(parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)));
+				ellipseY.push(parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1)));
+				ellipseY.push(parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)));
 			} else {
-				arrayY.push(e.clientY);
-				arrayY.push(e.clientX);
+				ellipseY.push(e.clientY);
+				ellipseY.push(e.clientX);
 			}
-			console.log(arrayY);
-			console.log(arrayX);
+			console.log(ellipseY);
+			console.log(ellipseX);
 			if(pulsacion[6]==true) {
 				dibujarEllipse();
 			}
-			arrayX=[];
-			arrayY=[];
+			ellipseX=[];
+			ellipseY=[];
 		});
 	} else {
 		console.log("sqr no");
@@ -627,10 +755,12 @@ $("#ellipse").click(()=> {
 });
 
 function dibujarEllipse(param) {
-	let x=(arrayY[1]+arrayX[0])/2;
-	let y=(arrayY[0]+arrayX[1])/2;
-	let rX=arrayY[1]-x;
-	let rY=arrayY[0]-y;
+	let res=traducirEllipse(ellipseX,ellipseY);
+	console.log(res);
+	let x=(res[3]+res[0])/2;
+	let y=(res[2]+res[1])/2;
+	let rX=res[3]-x;
+	let rY=res[2]-y;
 	console.log(x);
 	console.log(y);
 	var rect=s.ellipse(x,y,rX,rY).click(function () {
@@ -638,6 +768,7 @@ function dibujarEllipse(param) {
 	    this.attr('fill', fill);
 
 	});
+	res=[];
 }
 
 
@@ -746,3 +877,4 @@ function scan() {
 }
 
 }
+

@@ -43,6 +43,23 @@
 				justify-content: center;
 				
 				width: 100%;
+				p {
+					font-weight: 800;
+				}
+				a {
+					height: 5vh;
+					@include pill;
+					border:2px solid white;
+					background: $azul;
+					color: white;
+					font-weight: bold;
+				}
+				#editBtn {
+					background:#14213D;
+				}
+				#delBtn {
+					background:#DA4167;
+				}
 				button {
 					height: 5vh;
 					@include pill;

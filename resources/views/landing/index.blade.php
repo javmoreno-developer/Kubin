@@ -31,10 +31,10 @@
 	<!--2 seccion ¿Que es kubin?-->
 	<section id="secondSection">
 		<div id="text">
-			<h1>¿QUÉ ES KUBIN?</h1>
-			<p>Kubin es una herramienta de creación de dibujos altamente escalables.Con ella podrás realizar cuadros mas o menos complejos,usando para ello una serie de herramientas tipicamente usadas para el dibujo vectorial</p>
+			<h1 class="title">¿QUÉ ES KUBIN?</h1>
+			<p class="texto">Kubin es una herramienta de creación de dibujos altamente escalables.Con ella podrás realizar cuadros mas o menos complejos,usando para ello una serie de herramientas tipicamente usadas para el dibujo vectorial</p>
 			
-			<p>Pero además de poder crear las imágenes,con kubin podras descargarlas o compartirlas,incluso podrás crear grupos.</p>
+			<p class="texto">Pero además de poder crear las imágenes,con kubin podras descargarlas o compartirlas,incluso podrás crear grupos.</p>
 		</div>
 		<div id="image"></div>
 	</section>
@@ -42,9 +42,9 @@
 	<!--3 seccion Creadores-->
 	<section id="thirdSection">
 		<div id="text">
-			<h1>CREADORES Y SUS CREACIONES</h1>
-			<p>Welcome to the largest community of designers and developers using </p>
-			<p>Kubin. An extensive, curated library of free assets awaits you.</p>
+			<h1 class="title">CREADORES Y SUS CREACIONES</h1>
+			<p class="texto">Welcome to the largest community of designers and developers using </p>
+			<p class="texto">Kubin. An extensive, curated library of free assets awaits you.</p>
 		</div>
 
 		<div id="pictureContainer">
@@ -69,21 +69,21 @@
 	<section id="fourthSection">
 		<div id="text">
 			<div id="titleFourth">
-				<h1>Cree, edite y envíe con unos </h1>
-			    <h1>pocos clics</h1>
+				<h1 class="title">Cree, edite y envíe con unos </h1>
+			    <h1 class="title">pocos clics</h1>
 			</div>
-			<p>Hemos desarrollado herramientas e integraciones simples que casi no requieren una curva de aprendizaje y hacen que el envío de un Lottie sea rápido y sin problemas.</p>
+			<p class="texto">Hemos desarrollado herramientas e integraciones simples que casi no requieren una curva de aprendizaje y hacen que el envío de un Lottie sea rápido y sin problemas.</p>
 		</div>
 		<div id="toolsLanding">
-			<div class="toolLan">
+			<div class="toolLan" id="toolLan1">
 				<div class="photoTool"></div>
 				<p>cree y Edite los cuadros en línea sin una línea de código</p>
 			</div>
-			<div class="toolLan">
+			<div class="toolLan" id="toolLan2">
 				<div class="photoTool"></div>
 				<p>comparta y descarge su contenido.</p>
 			</div>
-			<div class="toolLan">
+			<div class="toolLan" id="toolLan3">
 				<div class="photoTool"></div>
 				<p>Integre las imagenes de kubin en su sitio web</p>
 			</div>
@@ -96,8 +96,8 @@
 	<!--5 seccion lleva tu juego-->
 	<section id="fifthSection">
 		<div id="fifthText">
-			<p>Vectores hechos simples</p>
-			<h1>Lleva tu juego de Imagenes al siguiente  nivel.</h1>
+			<p class="title">Vectores hechos simples</p>
+			<h1 class="titleLeft">Lleva tu juego de Imagenes al siguiente  nivel.</h1>
 			<div id="fifthBtn">
 				<button>Empice ahora</button>
 			</div>
@@ -123,14 +123,18 @@
 		</div>
 		<div id="textSection">
 			<div class="textPr">
-				<h1>lorem</h1>
-				<p>Lorem ipsum</p>
-				<p>Lorem ipsum</p>
+				<h1>Idioma</h1>
+				<select id="idiomaSelect">
+					<option value="es">Español</option>
+					<option value="en">Ingles</option>
+					<option value="fr">Francés</option>
+				</select>
+				
 			</div>
 			<div class="textPr">
-				<h1>lorem</h1>
-				<p>Lorem ipsum</p>
-				<p>Lorem ipsum</p>
+				<h1>Stay tunned</h1>
+				<p>javmoreno766@gmail.com</p>
+				
 			</div>
 		</div>
 	</section>

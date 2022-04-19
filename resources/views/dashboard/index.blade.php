@@ -30,8 +30,8 @@
 					<td><h4>{{$cuadros[$i]["nomLie"]}}</h4></td>
 					<td><p> {{$cuadros[$i]["pivot"]["created_at"]}}</p></td>
 				    <td><p> {{$cuadros[$i]["pivot"]["updated_at"]}}</p></td>
-				    <td><a href="{{route("tablero",["id"=>$cuadros[$i]["idLie"]])}}">Editar</a></td>
-				    <td><a href="{{route("borrarLienzo",["id"=>$cuadros[$i]["idLie"]])}}">Borrar</a>
+				    <td><a id="editBtn" href="{{route("tablero",["id"=>$cuadros[$i]["idLie"]])}}">Editar</a></td>
+				    <td><a id="delBtn" href="{{route("borrarLienzo",["id"=>$cuadros[$i]["idLie"]])}}">Borrar</a>
 				    <td><button class="download" id="download-{{$cuadros[$i]["idLie"]}}">Descargar</button></td>
 				</tr>
 			@endfor

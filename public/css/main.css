@@ -363,7 +363,7 @@ body {
     justify-content: space-around;
   }
   #secondSection #image {
-    height: 90vh;
+    height: 80vh;
     width: 35%;
   }
   #secondSection #text {
@@ -424,6 +424,12 @@ body {
     grid-column: 2/4;
     height: 95% !important;
   }
+}
+#idiomaSelect {
+  background: none;
+  border: none;
+}
+@media (min-width: 992px) {
   #fourthSection {
     height: 90vh;
   }
@@ -614,6 +620,9 @@ body {
     justify-content: space-around;
   }
 }
+body {
+  height: 90vh !important;
+}
 #tutorial {
   margin-top: 10vh;
   height: 100vh;
@@ -646,7 +655,7 @@ body {
   height: 25vh;
   width: 80%;
   display: none;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 @media (min-width: 992px) {
   #tutorial {
@@ -657,7 +666,7 @@ body {
     height: 85vh !important;
   }
   #containerTutorial .advice {
-    width: 40vw !important;
+    width: 30vw !important;
   }
 }
 #showcaseContainer {
@@ -1417,6 +1426,29 @@ div[data-name=mojs-shape] {
   display: flex;
   justify-content: center;
   width: 100%;
+}
+#exhibition table tr td p {
+  font-weight: 800;
+}
+#exhibition table tr td a {
+  height: 5vh;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  border: 2px solid white;
+  background: #1FC0CF;
+  color: white;
+  font-weight: bold;
+}
+#exhibition table tr td #editBtn {
+  background: #14213D;
+}
+#exhibition table tr td #delBtn {
+  background: #DA4167;
 }
 #exhibition table tr td button {
   height: 5vh;

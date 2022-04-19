@@ -273,7 +273,7 @@
 		align-items:center;
 		justify-content: space-around;
 		#image {
-			height: 90vh;
+			height: 80vh;
 			width: 35%;
 		}
 		#text {
@@ -349,6 +349,10 @@
 	}
 }
 
+#idiomaSelect {
+	background: none;
+	border:none
+}
 //media fourth
 @media (min-width: 992px) { 
 	#fourthSection {

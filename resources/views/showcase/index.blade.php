@@ -1,5 +1,5 @@
 @extends("plantillas/final")
-@section("Body")
+<x-cabecera title="true" tutorial="true" showcase="true" github="true" log="false"/>
 	<div id="showcaseContainer">
 		<h1>Showcase</h1>
 		<div id="imagesShow">
@@ -13,5 +13,5 @@
 		</div>
 		
 	</div>
-@endsection
+
 @extends("plantillas/cabecera")

@@ -9,9 +9,19 @@ var s;
 
 
 function pintar(arg) {
-	let h=VhToPx(100)-2;
-	//let w=VwToPx(100)-90;
-	let w=VwToPx(100);
+
+	let h=0;
+	let w=0;
+
+
+	if(screen.width>900) {
+	 h=VhToPx(60);
+	 w=VwToPx(30);
+	} else {
+	  h=VhToPx(55);
+	  w=VwToPx(80);
+	}
+
 	s=Snap(w,h);
 	s.attr({ id: 'lienzo' });
 

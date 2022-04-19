@@ -1,26 +1,8 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
 var __webpack_exports__ = {};
 /*!******************************!*\
   !*** ./resources/js/main.js ***!
   \******************************/
-__webpack_require__.r(__webpack_exports__);
 //aparicion opciones en menu mobile
 $(".bi-list").click(function () {
   $("#menuMobile").css("display", "flex");
@@ -28,7 +10,110 @@ $(".bi-list").click(function () {
 
 $(".bi-x-lg").click(function () {
   $("#menuMobile").css("display", "none");
-}); //aparicion consejos en pantalla tutorial
+}); //desplazamiento boton landing (1 section)
+
+$("#outliner").click(function () {
+  var top = $("#secondSection").position().top;
+  desplazar_a(secondSection);
+});
+
+function desplazar_a(elemento) {
+  $('html,body').animate({
+    scrollTop: $(elemento).offset().top
+  }, 1000);
+} //scrollreveal
+
+
+var slideUp = {
+  distance: '150%',
+  origin: 'bottom',
+  duration: 1500,
+  delay: 375,
+  opacity: null,
+  reset: true
+};
+var slideRight = {
+  distance: '150%',
+  origin: 'left',
+  duration: 1500,
+  delay: 375,
+  opacity: null,
+  reset: true
+};
+var opacity = {
+  duration: 1500,
+  delay: 375,
+  opacity: 0,
+  reset: true
+}; //landing
+
+ScrollReveal().reveal('.title', slideUp);
+ScrollReveal().reveal('#image', slideRight);
+ScrollReveal().reveal('.texto', opacity); //pictures
+
+ScrollReveal().reveal('#p1', {
+  duration: 1500,
+  delay: 475,
+  opacity: 0,
+  reset: true
+});
+ScrollReveal().reveal('#p4', {
+  duration: 1500,
+  delay: 675,
+  opacity: 0,
+  reset: true
+});
+ScrollReveal().reveal('#p5', {
+  duration: 1500,
+  delay: 875,
+  opacity: 0,
+  reset: true
+});
+ScrollReveal().reveal('#p7', {
+  duration: 1500,
+  delay: 1075,
+  opacity: 0,
+  reset: true
+});
+ScrollReveal().reveal('#p6', {
+  duration: 1500,
+  delay: 1275,
+  opacity: 0,
+  reset: true
+});
+ScrollReveal().reveal('#p2', {
+  duration: 1500,
+  delay: 1575,
+  opacity: 0,
+  reset: true
+});
+ScrollReveal().reveal('#p3', {
+  duration: 1500,
+  delay: 1775,
+  opacity: 0,
+  reset: true
+}); //fin picture
+
+ScrollReveal().reveal('#toolLan1', {
+  duration: 1500,
+  delay: 475,
+  opacity: 0,
+  reset: true
+});
+ScrollReveal().reveal('#toolLan2', {
+  duration: 1500,
+  delay: 675,
+  opacity: 0,
+  reset: true
+});
+ScrollReveal().reveal('#toolLan3', {
+  duration: 1500,
+  delay: 875,
+  opacity: 0,
+  reset: true
+});
+ScrollReveal().reveal('.titleLeft', slideRight); //fin landing
+//aparicion consejos en pantalla tutorial
 
 var c = 0; //contador consejos
 
@@ -125,7 +210,7 @@ function intervalChange() {
 }
 
 function changeLetter() {
-  console.log("cambiando");
+  //console.log("cambiando");
   $("#changeWord").css("opacity", 0);
   setTimeout(function () {
     $("#changeWord").text(arrayCh[contadorCh]);
@@ -195,8 +280,19 @@ $("#download").click(function () {
 function saveSvg(svgEl, name) {
   //svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
   //var svgData = svgEl.outerHTML;
+  var h = 0;
+  var w = 0;
+
+  if (screen.width > 900) {
+    h = VhToPx(60);
+    w = VwToPx(30);
+  } else {
+    h = VhToPx(55);
+    w = VwToPx(80);
+  }
+
   var svgData = "";
-  svgData = "<svg height=\"".concat(VhToPx(100), "\" version=\"1.1\" width=\"").concat(VwToPx(100), "\" xmlns=\"http://www.w3.org/2000/svg\">");
+  svgData = "<svg height=\"".concat(h, "\" version=\"1.1\" width=\"").concat(w, "\" xmlns=\"http://www.w3.org/2000/svg\">");
   svgData += svgEl;
   svgData += "</svg>";
   console.log(svgData);

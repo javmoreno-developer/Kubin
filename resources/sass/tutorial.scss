@@ -1,3 +1,6 @@
+body {
+	height: 90vh !important;
+}
 #tutorial {
 	margin-top: 10vh;
 	height: 100vh;
@@ -32,7 +35,7 @@
 				height: 25vh;
 				width: 80%;
 				display: none;
-				overflow: scroll;
+				overflow-y: scroll;
 			}
 		}
 	}
@@ -46,7 +49,7 @@
 	#containerTutorial {
 		height: 85vh !important;
 		.advice {
-			width: 40vw !important;
+			width: 30vw !important;
 		}
 	}
 	

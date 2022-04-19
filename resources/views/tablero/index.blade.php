@@ -22,7 +22,7 @@
 		<!--tools2-->
 	<div id="tools2">
 		
-
+		<div class="tool" id="seleccionar" title="Seleccionar elementos"><i class="bi bi-cursor"></i></div>
 		<div class="tool" id="ellipse" title="Dibujar elipse"><i class="bi bi-circle-square"></i></div>
 		<div id="exportar" title="Exportar" class="tool"><i class="bi bi-check-lg"></i></i></div>
 		<div id="borrarTotal" class="tool" title="Borrar lienzo entero"><i class="bi bi-trash3"></i></div>

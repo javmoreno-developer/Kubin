@@ -1,3 +1,7 @@
+body {
+  height: 90vh !important;
+}
+
 #tutorial {
   margin-top: 10vh;
   height: 100vh;
@@ -31,7 +35,7 @@
   height: 25vh;
   width: 80%;
   display: none;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 @media (min-width: 992px) {
@@ -43,7 +47,7 @@
     height: 85vh !important;
   }
   #containerTutorial .advice {
-    width: 40vw !important;
+    width: 30vw !important;
   }
 }
 
