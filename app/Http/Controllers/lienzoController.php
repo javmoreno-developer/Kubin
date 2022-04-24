@@ -58,18 +58,20 @@ class lienzoController extends Controller
 
     }
 
-    public function dashboard() {
+    public function dashboard($skip=0) {
         //nombre usuario
         $nombre=Auth::user()->nomUsu;
         //cuadros usuario
         $cuadros=[];
         $me=usuarios::find(Auth::user()->idUsu);
         $me->lienzos()->get();
-        $cuadros=$me->lienzos()->withPivot("created_at","updated_at")->get();
-        $numeroFilas=sizeof($cuadros);
+        $cuadros=$me->lienzos()->withPivot("created_at","updated_at")->paginate(4);
+        
+        
+       
         $imagen=Auth::user()->imagenUsu;
 
-        return view("dashboard/index",["nomUsu"=>$nombre,"cuadros"=>$cuadros,"numeroFilas"=>$numeroFilas,"imagen"=>$imagen]);
+        return view("dashboard/index",["nomUsu"=>$nombre,"cuadros"=>$cuadros,"imagen"=>$imagen]);
     }
 
     public function editar(Request $req) {

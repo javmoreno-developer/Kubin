@@ -38,7 +38,8 @@ var slideRight = {
   duration: 1500,
   delay: 375,
   opacity: null,
-  reset: true
+  reset: true,
+  afterReveal: trickWhat
 };
 var opacity = {
   duration: 1500,
@@ -55,43 +56,50 @@ ScrollReveal().reveal('#p1', {
   duration: 1500,
   delay: 475,
   opacity: 0,
-  reset: true
+  reset: true,
+  afterReveal: trickClock
 });
 ScrollReveal().reveal('#p4', {
   duration: 1500,
   delay: 675,
   opacity: 0,
-  reset: true
+  reset: true,
+  afterReveal: trickWallet
 });
 ScrollReveal().reveal('#p5', {
   duration: 1500,
   delay: 875,
   opacity: 0,
-  reset: true
+  reset: true,
+  afterReveal: trickCal
 });
 ScrollReveal().reveal('#p7', {
   duration: 1500,
   delay: 1075,
   opacity: 0,
-  reset: true
+  reset: true,
+  afterReveal: trickBull
 });
 ScrollReveal().reveal('#p6', {
   duration: 1500,
   delay: 1275,
   opacity: 0,
-  reset: true
+  reset: true,
+  afterReveal: trickCub
 });
 ScrollReveal().reveal('#p2', {
   duration: 1500,
   delay: 1575,
   opacity: 0,
-  reset: true
+  reset: true,
+  afterReveal: trickAlert
 });
 ScrollReveal().reveal('#p3', {
   duration: 1500,
   delay: 1775,
   opacity: 0,
-  reset: true
+  reset: true,
+  afterReveal: trickBal
 }); //fin picture
 
 ScrollReveal().reveal('#toolLan1', {
@@ -112,8 +120,99 @@ ScrollReveal().reveal('#toolLan3', {
   opacity: 0,
   reset: true
 });
-ScrollReveal().reveal('.titleLeft', slideRight); //fin landing
+ScrollReveal().reveal('.titleLeft', slideRight); //svg landing
+//arrow
+
+function trickArrow() {
+  $("#arrow").addClass("text-logo");
+}
+
+ScrollReveal().reveal("#imageFifth", {
+  duration: 0,
+  delay: 875,
+  opacity: 0,
+  reset: true,
+  afterReveal: trickArrow
+}); //plus
+
+ScrollReveal().reveal("#photo1", {
+  duration: 0,
+  delay: 875,
+  opacity: 0,
+  reset: true,
+  afterReveal: trickPlus
+});
+
+function trickPlus() {
+  $("#plus").addClass("plus");
+} //share
+
+
+ScrollReveal().reveal("#photo2", {
+  duration: 0,
+  delay: 875,
+  opacity: 0,
+  reset: true,
+  afterReveal: trickShare
+});
+
+function trickShare() {
+  $("#shareSvg").addClass("text-logo");
+} //background svg
+
+
+ScrollReveal().reveal("#photo3", {
+  duration: 0,
+  delay: 875,
+  opacity: 0,
+  reset: true,
+  afterReveal: trickImage
+});
+
+function trickImage() {
+  $("#imageSvg").addClass("flip");
+} //svg showcase en landing
+
+
+function trickWallet() {
+  $("#walletSvg").addClass("plus-wallet");
+}
+
+function trickBull() {
+  $("#bull").addClass("text-logo2");
+}
+
+function trickCal() {
+  $(".unactive").addClass("cal-logo");
+}
+
+function trickCub() {
+  $("#cubSvg").addClass("cub-logo");
+}
+
+function trickBal() {
+  $("#bal").addClass("text-logo");
+}
+
+function trickAlert() {
+  $("#alert").addClass("color-logo");
+}
+
+function trickClock() {
+  $("#clock").addClass("text-logo2");
+}
+
+function trickWhat() {
+  $(".fade").each(function (index) {
+    (function (that, i) {
+      var t = setTimeout(function () {
+        $(that).addClass("colorSvg");
+      }, 500 * i);
+    })(this, index);
+  });
+} //fin landing
 //aparicion consejos en pantalla tutorial
+
 
 var c = 0; //contador consejos
 
@@ -125,8 +224,12 @@ $(".titleAdvice").click(function (e) {
 
   if (c % 2 == 1) {
     $("#" + this.id + "TextAd").css("display", "flex");
+    $("#icon" + this.id).removeClass("bi bi-caret-down-fill");
+    $("#icon" + this.id).addClass("bi bi-caret-up-fill");
   } else {
     $("#" + this.id + "TextAd").css("display", "none");
+    $("#icon" + this.id).removeClass("bi bi-caret-up-fill");
+    $("#icon" + this.id).addClass("bi bi-caret-down-fill");
   }
 }); //overlay showcase
 

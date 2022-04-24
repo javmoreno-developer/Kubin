@@ -1,6 +1,6 @@
 $azul:#1FC0CF;
 #boardContainer {
-	height: 110vh;
+	height: 120vh;
 	width: 100%;
 
 	
@@ -10,9 +10,13 @@ $azul:#1FC0CF;
 	justify-content: space-around;
 
 	#board {
-		height: 50%;
+		height: 40%;
 		width: 80%;
 		border:3px solid;
+		#punteros {
+			height: 100%;
+			width: 100%;
+		}
 	}
 
 	#tools {
@@ -67,7 +71,7 @@ $azul:#1FC0CF;
 		position: absolute;
 		z-index: 3;
 		left: 30%;
-		top: 80%;
+		top: 87%;
 		display: flex;
 		justify-content: space-around;
 	}
@@ -270,6 +274,7 @@ div[data-name="mojs-shape"] {
 }
 
 #tools2 {
+		margin-top: 10vh;
 		height: 15%;
 		width: 100%;
 		
@@ -374,6 +379,30 @@ div[data-name="mojs-shape"] {
 		
 	}
 }
+
+#atrasTablero {
+	height: 7vh;
+	width: 80%;
+	//border:3px solid red;
+	position:absolute;
+	top: 0%;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	
+	a {
+		text-decoration: none;
+		color: black;
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		i {
+			font-size: 30px;
+		}
+	}
+	
+}
 @media(min-width: 900px) {
 	#boardContainer {
 		height: 100vh !important;
@@ -472,6 +501,12 @@ div[data-name="mojs-shape"] {
 #gradientContainer {
 	width: 60%;
 	left: 20%;
+}
+#atrasTablero {
+	width: 	10%;
+	#imgAtras {
+		width: 60%;
+	}
 }
 //fin media
 }

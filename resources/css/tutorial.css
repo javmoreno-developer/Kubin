@@ -30,6 +30,21 @@ body {
   border: 3px solid;
   height: 5vh;
   width: 80%;
+  display: flex;
+}
+#tutorial #containerTutorial .advice .titleAdvice #txt {
+  width: 70%;
+  display: flex;
+  justify-content: end;
+}
+#tutorial #containerTutorial .advice .titleAdvice #txt h1 {
+  font-size: 20px;
+}
+#tutorial #containerTutorial .advice .titleAdvice #icon {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #tutorial #containerTutorial .advice .textAdvice {
   height: 25vh;

@@ -26,7 +26,11 @@
 		#logoImage {
 			width: 80%;
 			height: 30vh;
-			background: $imagen;
+			
+			svg {
+				height: 100%;
+				width: 100%;
+			}
 		}
 		#icons {
 			width: 80%;

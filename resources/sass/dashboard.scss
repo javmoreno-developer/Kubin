@@ -18,7 +18,7 @@
 
 #exhibition {
 	margin-top: 2vh;
-	height: 100vh;
+	height: 130vh;
 	width: 100%;
 	
 	
@@ -133,6 +133,52 @@
 	
 }
 
+#paginacion {
+	height: 10vh;
+	width: 100%;
+	
+	display: flex;
+	justify-content: center;
+	margin-bottom: 5vh;
+	#container {
+		height: 100%;
+		width: 40%;
+		
+		display: flex;
+		align-items: center;
+		nav {
+			height: 100%;
+			width: 100%;
+			ul {
+				height: 100%;
+				width: 100%;
+				display: flex;
+				justify-content: space-around;
+				align-items:center;
+				li {
+					text-decoration: none;
+					color: black;
+					list-style: none;
+					font-weight: bold;
+					a {
+						text-decoration: none;
+						color: black;
+					}
+				}
+				.active {
+					background:$azul;
+					padding: 7px;
+					padding-left:12px;
+					padding-right:12px;
+					color: white;
+					border-radius:10px;
+				}
+			}
+		}
+	}
+}
+
+
 @media(min-width: 900px) {
 	#userModal {
 		height: 30vh;
@@ -177,5 +223,10 @@
 		width: 40%;
 		top: 30%;
 		left: 30%;
+	}
+
+	#paginacion {
+		height: 5vh;
+		width: 100%;
 	}
 }

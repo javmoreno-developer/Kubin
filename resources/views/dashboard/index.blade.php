@@ -25,19 +25,25 @@
 				    <th></th>
 				</tr>
 			</thead>
-			@for($i=0;$i<$numeroFilas;$i++)
+			@foreach($cuadros as $cuadro)
 				<tr>
-					<td><h4>{{$cuadros[$i]["nomLie"]}}</h4></td>
-					<td><p> {{$cuadros[$i]["pivot"]["created_at"]}}</p></td>
-				    <td><p> {{$cuadros[$i]["pivot"]["updated_at"]}}</p></td>
-				    <td><a id="editBtn" href="{{route("tablero",["id"=>$cuadros[$i]["idLie"]])}}">Editar</a></td>
-				    <td><a id="delBtn" href="{{route("borrarLienzo",["id"=>$cuadros[$i]["idLie"]])}}">Borrar</a>
-				    <td><button class="download" id="download-{{$cuadros[$i]["idLie"]}}">Descargar</button></td>
+					<td><h4>{{$cuadro["nomLie"]}}</h4></td>
+					<td><p> {{$cuadro["pivot"]["created_at"]}}</p></td>
+				    <td><p> {{$cuadro["pivot"]["updated_at"]}}</p></td>
+				    <td><a id="editBtn" href="{{route("tablero",["id"=>$cuadro["idLie"]])}}">Editar</a></td>
+				    <td><a id="delBtn" href="{{route("borrarLienzo",["id"=>$cuadro["idLie"]])}}">Borrar</a>
+				    <td><button class="download" id="download-{{$cuadro["idLie"]}}">Descargar</button></td>
 				</tr>
-			@endfor
+			@endforeach
 		</table>
 	</section>
 	
+	<div id="paginacion">
+		<div id="container">
+			{!! $cuadros->links() !!}
+		</div>
+	</div>
+
 	<div id="btnCrearLie">
 		<a href="{{route("crearLienzo")}}">Crear lienzo</a>
 	</div>

@@ -30,13 +30,15 @@ var burst2 = new mojs.Shape({
 
 $( ".tool" ).each(function(index) {
     $(this).on("click", function(){
-      //console.log("hey putooooooooo");
-    	$("#body").on("click",(e)=> {
+      console.log($("#punteros"));
+    	//$("#board").on("click",(e)=> {
+      $("#punteros").click((e)=> {
+      
         burst
           .tune({ x: e.pageX, y: e.pageY,opacity: 1 })
           .play();
       });
-      $("#body").on("mousedown",(e)=> {
+      $("#punteros").on("mousedown",(e)=> {
         burst2
           .tune({ x: e.pageX, y: e.pageY,opacity: 1 })
           .play();
@@ -103,3 +105,4 @@ $("#seleccionar").click((e)=> {
   });
 
 });
+

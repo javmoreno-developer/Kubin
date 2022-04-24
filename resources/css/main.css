@@ -206,7 +206,10 @@ body {
 #secondSection #image {
   height: 40%;
   width: 80%;
-  background: #C4C4C4;
+}
+#secondSection #image svg {
+  height: 100%;
+  width: 100%;
 }
 
 #thirdSection {
@@ -235,6 +238,10 @@ body {
   background: #C4C4C4;
   width: 100%;
   height: 29vh;
+}
+#thirdSection #pictures .picture svg {
+  height: 100%;
+  width: 100%;
 }
 #thirdSection #thirdBtn {
   margin-top: 3%;
@@ -282,8 +289,12 @@ body {
 }
 #fourthSection #toolsLanding .toolLan .photoTool {
   height: 60%;
-  background: #C4C4C4;
+  background: white;
   width: 60%;
+}
+#fourthSection #toolsLanding .toolLan .photoTool svg {
+  height: 100%;
+  width: 100%;
 }
 #fourthSection #toolsLanding .toolLan p {
   color: white;
@@ -332,7 +343,10 @@ body {
 #fifthSection #imageFifthContainer #imageFifth {
   height: 100%;
   width: 80%;
-  background: #C4C4C4;
+}
+#fifthSection #imageFifthContainer #imageFifth svg {
+  height: 100%;
+  width: 100%;
 }
 
 @media (min-width: 992px) {
@@ -431,7 +445,6 @@ body {
   #thirdSection #p2 {
     grid-row: 2/2;
     grid-column: 1/2;
-    background: black !important;
   }
   #thirdSection #p3 {
     grid-row: 1/3;
@@ -510,9 +523,106 @@ body {
   opacity: 1;
 }
 
+.plus {
+  -moz-animation: skew 3s forwards ease-in;
+  -webkit-animation: skew 3s forwards ease-in;
+  animation: skew 3s forwards ease-in;
+  stroke: black;
+  fill: none;
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.flip {
+  -moz-animation: flip 3s forwards ease-in;
+  -webkit-animation: flip 3s forwards ease-in;
+  animation: flip 3s forwards ease-in;
+  stroke: black;
+  fill: none;
+  opacity: 1;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.plus-wallet {
+  -moz-animation: skew 6s forwards ease-in;
+  -webkit-animation: skew 6s forwards ease-in;
+  animation: skew 6s forwards ease-in;
+  stroke: black;
+  fill: none;
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.text-logo2 {
+  stroke-dashoffset: 100%;
+  stroke-dasharray: 100%;
+  -moz-animation: drawboost 6s forwards ease-in;
+  -webkit-animation: drawboost 6s forwards ease-in;
+  animation: drawboost 6s forwards ease-in;
+  -webkit-background-clip: text;
+  stroke: black;
+  fill: none;
+  opacity: 1;
+}
+
+.cal-logo {
+  transition: all 0.5s;
+  -moz-animation: color 6s alternate ease-in;
+  -webkit-animation: color 6s alternate ease-in;
+  animation: color 6s alternate ease-in;
+}
+
+.cub-logo {
+  opacity: 0;
+  transition: all 0.5s;
+  -moz-animation: op 6s forwards ease-in;
+  -webkit-animation: op 6s forwards ease-in;
+  animation: op 6s forwards ease-in;
+}
+
+.color-logo {
+  transition: all 0.5s;
+  -moz-animation: color 6s reverse ease-in;
+  -webkit-animation: color 6s reverse ease-in;
+  animation: color 6s reverse ease-in;
+}
+
+.colorSvg {
+  transition: all 0.5s;
+  fill: white;
+}
+
+@keyframes op {
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes color {
+  100% {
+    fill: red;
+    stroke: red;
+  }
+}
+@keyframes drawboost {
+  100% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 0;
+  }
+}
 @keyframes draw {
   100% {
     stroke-dashoffset: 0;
+  }
+}
+@keyframes skew {
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes flip {
+  100% {
+    transform: rotateY(180deg);
   }
 }
 .secondly {
@@ -573,7 +683,10 @@ body {
 #footer #logoSection #logoImage {
   width: 80%;
   height: 30vh;
-  background: #C4C4C4;
+}
+#footer #logoSection #logoImage svg {
+  height: 100%;
+  width: 100%;
 }
 #footer #logoSection #icons {
   width: 80%;
@@ -654,6 +767,21 @@ body {
   border: 3px solid;
   height: 5vh;
   width: 80%;
+  display: flex;
+}
+#tutorial #containerTutorial .advice .titleAdvice #txt {
+  width: 70%;
+  display: flex;
+  justify-content: end;
+}
+#tutorial #containerTutorial .advice .titleAdvice #txt h1 {
+  font-size: 20px;
+}
+#tutorial #containerTutorial .advice .titleAdvice #icon {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #tutorial #containerTutorial .advice .textAdvice {
   height: 25vh;
@@ -943,7 +1071,7 @@ body {
   }
 }
 #boardContainer {
-  height: 110vh;
+  height: 120vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -951,9 +1079,13 @@ body {
   justify-content: space-around;
 }
 #boardContainer #board {
-  height: 50%;
+  height: 40%;
   width: 80%;
   border: 3px solid;
+}
+#boardContainer #board #punteros {
+  height: 100%;
+  width: 100%;
 }
 #boardContainer #tools {
   height: 20%;
@@ -1002,7 +1134,7 @@ body {
   position: absolute;
   z-index: 3;
   left: 30%;
-  top: 80%;
+  top: 87%;
   display: flex;
   justify-content: space-around;
 }
@@ -1194,6 +1326,7 @@ div[data-name=mojs-shape] {
 }
 
 #tools2 {
+  margin-top: 10vh;
   height: 15%;
   width: 100%;
   flex-wrap: wrap;
@@ -1299,6 +1432,27 @@ div[data-name=mojs-shape] {
   justify-content: space-around;
 }
 
+#atrasTablero {
+  height: 7vh;
+  width: 80%;
+  position: absolute;
+  top: 0%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#atrasTablero a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#atrasTablero a i {
+  font-size: 30px;
+}
+
 @media (min-width: 900px) {
   #boardContainer {
     height: 100vh !important;
@@ -1392,6 +1546,13 @@ div[data-name=mojs-shape] {
     width: 60%;
     left: 20%;
   }
+
+  #atrasTablero {
+    width: 10%;
+  }
+  #atrasTablero #imgAtras {
+    width: 60%;
+  }
 }
 @keyframes spin {
   0% {
@@ -1420,7 +1581,7 @@ div[data-name=mojs-shape] {
 
 #exhibition {
   margin-top: 2vh;
-  height: 100vh;
+  height: 130vh;
   width: 100%;
 }
 #exhibition table {
@@ -1549,6 +1710,49 @@ div[data-name=mojs-shape] {
   font-weight: bold;
 }
 
+#paginacion {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5vh;
+}
+#paginacion #container {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+#paginacion #container nav {
+  height: 100%;
+  width: 100%;
+}
+#paginacion #container nav ul {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#paginacion #container nav ul li {
+  text-decoration: none;
+  color: black;
+  list-style: none;
+  font-weight: bold;
+}
+#paginacion #container nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+#paginacion #container nav ul .active {
+  background: #1FC0CF;
+  padding: 7px;
+  padding-left: 12px;
+  padding-right: 12px;
+  color: white;
+  border-radius: 10px;
+}
+
 @media (min-width: 900px) {
   #userModal {
     height: 30vh;
@@ -1591,6 +1795,11 @@ div[data-name=mojs-shape] {
     width: 40%;
     top: 30%;
     left: 30%;
+  }
+
+  #paginacion {
+    height: 5vh;
+    width: 100%;
   }
 }
 

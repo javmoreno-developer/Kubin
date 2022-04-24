@@ -44,6 +44,8 @@ Route::get("/borrarLienzo/{id}",[lienzoController::class,"borrarLienzo"])->name(
 
 Route::post("obtenerDatos",[lienzoController::class,"obtenerDatos"])->name("obtenerDatos");
 
+Route::get("pagina/{numero}",[lienzoController::class,"dashboard"])->name("pagina");
+
 Route::get("borrar",function() {
     return view("borrar/index");
 })->name("borrar");

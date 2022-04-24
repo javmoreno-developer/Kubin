@@ -19,6 +19,13 @@
 </head>
 <body>
 	<section id="boardContainer">
+		<!--atras-->
+		<div id="atrasTablero">
+			<a href="{{route("dashboard")}}">
+				<i class="bi bi-box-arrow-in-left"></i>
+				<p>Atras</p>
+			</a>
+		</div>
 		<!--tools2-->
 	<div id="tools2">
 		
@@ -32,7 +39,10 @@
 
 		<div id="use" class="tool"><i class="bi bi-cursor-fill"></i></div>
 	</div>
-		<div id="board"></div>
+
+		<div id="board">
+			<div id="punteros"></div>
+		</div>
 		<div id="tools">
 			<div id="sqr" class="tool" title="Dibujar cuadrado"><i class="bi bi-square"></i></div>
 			<div id="recta" class="tool" title="Dibujar recta"><i class="bi bi-slash-lg"></i></div>
@@ -58,6 +68,8 @@
 				<i class="bi bi-back" id="triggerBg"></i>
 				<input type="color" id="chbg">
 			</div>
+
+			
 		</div>
 		<div id="coor" title="Coordenadas del puntero">
 			<h4 id="coorX">X:</h4>

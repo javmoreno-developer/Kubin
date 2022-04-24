@@ -29,6 +29,24 @@ body {
 				border: 3px solid;
 				height: 5vh;
 				width: 80%;
+				display: flex;
+				
+				#txt {
+					width: 70%;
+					
+					display: flex;
+					justify-content: end;
+					h1 {
+						font-size: 20px;
+					}
+				}
+				#icon {
+					width: 10%;
+					
+					display: flex;
+					align-items:center;
+					justify-content: center;
+				}
 			}
 			.textAdvice {
 				

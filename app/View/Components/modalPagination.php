@@ -4,26 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class showcase extends Component
+class modalPagination extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $titulo;
-    public $descripcion;
-    public $autor;
     public $number;
-    public $svg="h";
-
-    public function __construct($titulo,$descripcion,$autor,$number,$svg)
+    public function __construct($number)
     {
-        $this->titulo=$titulo;
-        $this->descripcion=$descripcion;
-        $this->autor=$autor;
         $this->number=$number;
-        $this->svg=$svg;
     }
 
     /**
@@ -33,6 +24,6 @@ class showcase extends Component
      */
     public function render()
     {
-        return view('components.showcase');
+        return view('components.modal-pagination');
     }
 }

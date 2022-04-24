@@ -1,17 +1,81 @@
-/* Error: Undefined variable.
- *    ,
- * 29 |             background: $imagen;
- *    |                         ^^^^^^^
- *    '
- *   resources\sass\footer.scss 29:16  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Undefined variable.\a    \2577 \a 29 \2502              background: $imagen;\d\a    \2502                          ^^^^^^^\a    \2575 \a   resources\\sass\\footer.scss 29:16  root stylesheet";
+#footerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
+#footerContainer #footerStart {
+  width: 90%;
+  color: red;
+}
+
+#footer {
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#footer #logoSection {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+#footer #logoSection #logoImage {
+  width: 80%;
+  height: 30vh;
+}
+#footer #logoSection #logoImage svg {
+  height: 100%;
+  width: 100%;
+}
+#footer #logoSection #icons {
+  width: 80%;
+  height: 5vh;
+  display: flex;
+  justify-content: space-around;
+}
+#footer #logoSection #icons i {
+  font-size: 20px;
+}
+#footer #textSection {
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  #footer {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    height: 30vh;
+  }
+  #footer #logoSection {
+    height: 30vh;
+    width: 50%;
+  }
+  #footer #logoSection #logoImage {
+    width: 70%;
+  }
+  #footer #logoSection #icons {
+    margin-top: 2vh;
+    width: 70%;
+  }
+  #footer #textSection {
+    display: flex;
+    flex-direction: row;
+  }
+  #footer #textSection .textPr {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    justify-content: space-around;
+  }
+}
+
+/*# sourceMappingURL=footer.css.map */

@@ -3,13 +3,13 @@
 	<div id="showcaseContainer">
 		<h1>Showcase</h1>
 		<div id="imagesShow">
-			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showfirst"/>
-			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showsecond"/>
-			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showthird"/>
-			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showfourth"/>
-			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showfifth"/>
-			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showsix"/>
-			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showseven"/>
+			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showfirst" svg="h"/>
+			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showsecond" svg="h"/>
+			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showthird" svg="h"/>
+			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showfourth" svg="h"/>
+			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showfifth" svg="h"/>
+			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showsix" svg="h"/>
+			<x-showcase titulo="therefore" descripcion="buenas" autor="billie eilish" number="showseven" svg="h"/>
 		</div>
 		
 	</div>
