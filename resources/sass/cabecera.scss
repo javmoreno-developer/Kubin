@@ -8,7 +8,7 @@
 	position:fixed;
 	top: 0%;
 	z-index: 3;
-	background:rgba(255, 255, 255, 1);	
+	background:$body;	
 
 	height: 10vh;
 	width: 100%;
@@ -24,6 +24,8 @@
 			background: linear-gradient(90deg, rgba(1,1,1,1) 0%, rgba(31,192,207,1) 100%);
   			-webkit-background-clip: text;
   			-webkit-text-fill-color: transparent;
+  			font-family: 'Square Peg', cursive;
+  			font-size: 40px;
 		}
 	}
 	#menu {
@@ -87,7 +89,24 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-around;
-
+		h1 {
+			a {
+				text-decoration: none;
+				color: black;
+				font-weight: bold;
+				background: linear-gradient(90deg, rgba(1,1,1,1) 0%, rgba(31,192,207,1) 100%);
+	  			-webkit-background-clip: text;
+	  			-webkit-text-fill-color: transparent;
+	  			font-family: 'Square Peg', cursive;
+	  			font-size: 40px;
+			}
+		}
+		p {
+			a{
+				text-decoration: none;
+				color: black;
+			}
+		}
 	}
 }
 

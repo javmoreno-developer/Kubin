@@ -1,69 +1,17 @@
-body {
-  height: 90vh !important;
-}
+/* Error: Undefined mixin.
+ *     ,
+ * 119 |         @include pill;
+ *     |         ^^^^^^^^^^^^^
+ *     '
+ *   resources\sass\tutorial.scss 119:3  root stylesheet */
 
-#tutorial {
-  margin-top: 10vh;
-  height: 100vh;
-  width: 100%;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Undefined mixin.\a     \2577 \a 119 \2502          @include pill;\d\a     \2502          ^^^^^^^^^^^^^\a     \2575 \a   resources\\sass\\tutorial.scss 119:3  root stylesheet";
 }
-#tutorial h1 {
-  text-align: center;
-}
-#tutorial #containerTutorial {
-  height: 90vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  align-items: center;
-}
-#tutorial #containerTutorial .advice {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 15vh;
-}
-#tutorial #containerTutorial .advice .titleAdvice {
-  border: 3px solid;
-  height: 5vh;
-  width: 80%;
-  display: flex;
-}
-#tutorial #containerTutorial .advice .titleAdvice #txt {
-  width: 70%;
-  display: flex;
-  justify-content: end;
-}
-#tutorial #containerTutorial .advice .titleAdvice #txt h1 {
-  font-size: 20px;
-}
-#tutorial #containerTutorial .advice .titleAdvice #icon {
-  width: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#tutorial #containerTutorial .advice .textAdvice {
-  height: 25vh;
-  width: 80%;
-  display: none;
-  overflow-y: scroll;
-}
-
-@media (min-width: 992px) {
-  #tutorial {
-    height: 90vh;
-  }
-
-  #containerTutorial {
-    height: 85vh !important;
-  }
-  #containerTutorial .advice {
-    width: 30vw !important;
-  }
-}
-
-/*# sourceMappingURL=tutorial.css.map */

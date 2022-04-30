@@ -8,10 +8,10 @@
         <div id="menu">
             <!--Menu cabecera ordenador-->
             @if($tutorial=="true")
-                <p><a href="/tutorial">Tutoriales</a></p>
+                <p><a href="{{route("tutorial")}}">Tutoriales</a></p>
             @endif
             @if($showcase=="true")
-                <p><a href="/showcase">Showcase</a></p>
+                <p><a href="{{route("showcase")}}">Showcase</a></p>
             @endif
             @if($github=="true")
                 <p><a href="https://github.com/javmoreno-developer?tab=repositories">Github</a></p>
@@ -41,7 +41,7 @@
             @if($github=="true")
                 <p><a href="https://github.com/javmoreno-developer?tab=repositories">Github</a></p>
             @endif
-            @if($log==true)
+            @if($log=="true")
                 <p><a href="/login" id="in">Sign in</a></p>
             @endif    
         </div>

@@ -7,6 +7,10 @@
   @return  calc(($num/3)*110vh);
 }
 
+body {
+	background:$body;
+}
+
 #showcaseContainer {
 	margin-top: 10vh;
 	height: alturaMobile(7);
@@ -18,6 +22,10 @@
 	h1 {
 		text-align: center;
 	}
+	svg {
+		height: 100%;
+		width: 100%;
+}
 	#imagesShow {
 		height: 95%;
     	width: 100%;
@@ -32,10 +40,11 @@
 		display: flex;
 		justify-content: center;
 		.showcaseChest {
-			background: $imagen;
+			background: $landingGrey;
 			height: 100%;
 			width: 80%;
 			border-radius: 20%;
+			opacity: 1;
 		}
 		.showcaseOverlay {
 			height: 30vh;

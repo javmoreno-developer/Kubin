@@ -12,5 +12,7 @@ class lienzos extends Model
     protected $primaryKey="idLie";
     public $timestamps=false;
 
-    
+      public function usuario() {
+        return $this->belongsToMany('App\Models\usuarios',"usuarios_has_lienzos","idLie","idUsu");
+    }
 }

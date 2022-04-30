@@ -2,12 +2,7 @@
     <!-- An unexamined life is not worth living. - Socrates -->
     <div class="advice" id="{{$number}}Advice">
         <div class="titleAdvice" id="{{$number}}">
-                <div id="txt">
-                    <h1>{{$titulo}}</h1>
-                </div>
-                <div id="icon">
-                    <i id="icon{{$number}}" class="bi bi-caret-down-fill"></i>
-                </div>
+            <h1>{{$titulo}}</h1>    
         </div>
         <div class="textAdvice" id="{{$number}}TextAd">
             <p>{{$mensaje}}</p>

@@ -27,7 +27,7 @@
 			</thead>
 			@foreach($cuadros as $cuadro)
 				<tr>
-					<td><h4>{{$cuadro["nomLie"]}}</h4></td>
+					<td><strong><h4>{{$cuadro["nomLie"]}}</h4></strong></td>
 					<td><p> {{$cuadro["pivot"]["created_at"]}}</p></td>
 				    <td><p> {{$cuadro["pivot"]["updated_at"]}}</p></td>
 				    <td><a id="editBtn" href="{{route("tablero",["id"=>$cuadro["idLie"]])}}">Editar</a></td>

@@ -32,12 +32,14 @@
 	<section id="secondSection">
 		<div id="text">
 			<h1 class="title">¿QUÉ ES KUBIN?</h1>
-			<p class="texto">Kubin es una herramienta de creación de dibujos altamente escalables.Con ella podrás realizar cuadros mas o menos complejos,usando para ello una serie de herramientas tipicamente usadas para el dibujo vectorial</p>
+			<div class="pretext"> 
+				<p class="texto">Kubin es una herramienta de creación de dibujos altamente escalables.Con ella podrás realizar cuadros mas o menos complejos,usando para ello una serie de herramientas tipicamente usadas para el dibujo vectorial</p>
 			
-			<p class="texto">Pero además de poder crear las imágenes,con kubin podras descargarlas o compartirlas,incluso podrás crear grupos.</p>
+			    <p class="texto">Pero además de poder crear las imágenes,con kubin podras descargarlas o compartirlas,incluso podrás crear grupos.</p>
+			</div>
 		</div>
 		<div id="image">
-			<svg viewBox="0 0 407.15614 500.57559"><rect x="0" y="0" width="460.8" height="412.4" fill="#00000" style=""></rect><circle class="fade" id="circ1" cx="154.39999999999998" cy="124.69999999999999" r="72.5" fill="#0000" stroke="#00000f" style="stroke-width: 1;"></circle><circle class="fade" id="circ2" cx="154.39999999999998" cy="270.69999999999999" r="72.5" fill="#0000" stroke="#00000f" style="stroke-width: 1;"></circle><circle id="circ3" class="fade" cx="300" cy="270.69999999999999" r="72.5" fill="#00000" stroke="#00000f" style="stroke-width: 1;"></circle><circle id="circ4" class="fade" cx="300" cy="124.69999999999999" r="72.5" fill="#00000" stroke="#00000f" style="stroke-width: 1;"></circle></svg>
+			<svg viewBox="0 0 407.15614 500.57559"><rect x="0" y="0" width="460.8" height="412.4" fill="#FAFAFA" style=""></rect><circle class="fade" id="circ1" cx="154.39999999999998" cy="124.69999999999999" r="72.5" fill="#FAFAFA" stroke="#00000f" style="stroke-width: 0;"></circle><circle class="fade" id="circ2" cx="154.39999999999998" cy="270.69999999999999" r="72.5" fill="#FAFAFA" stroke="#00000f" style="stroke-width: 0;"></circle><circle id="circ3" class="fade" cx="300" cy="270.69999999999999" r="72.5" fill="#FAFAFA" stroke="#00000f" style="stroke-width: 0;"></circle><circle id="circ4" class="fade" cx="300" cy="124.69999999999999" r="72.5" fill="#FAFAFA" stroke="#00000f" style="stroke-width: 0;"></circle></svg>
 		</div>
 	</section>
 
@@ -83,14 +85,14 @@
 				</div>
 				<div id="p7" class="picture">
 					<svg viewBox="0 0 400 400" id="bull">
-						<circle cx="196.89999999999998" cy="230.2" r="95" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></circle><circle cx="193.89999999999998" cy="227.7" r="59.5" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></circle><circle cx="192.39999999999998" cy="226.2" r="32" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></circle><circle cx="190.39999999999998" cy="225.2" r="14" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></circle>
+						<circle cx="196.89999999999998" cy="230.2" r="95" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></circle><circle cx="193.89999999999998" cy="227.7" r="59.5" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></circle><circle cx="192.39999999999998" cy="226.2" r="32" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></circle><circle cx="192.39999999999998" cy="225.2" r="14" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></circle>
 					</svg>
 				</div>
 			</div>
 		</div>
 
 		<div id="thirdBtn">
-			<button>Ver mas <i class="bi bi-arrow-right"></i> </button>	
+			<a href="{{route("showcase")}}">Ver mas <i class="bi bi-arrow-right"></i> </a>	
 		</div>
 		
 	</section>
@@ -102,7 +104,9 @@
 				<h1 class="title">Cree, edite y envíe con unos </h1>
 			    <h1 class="title">pocos clics</h1>
 			</div>
-			<p class="texto">Hemos desarrollado herramientas e integraciones simples que casi no requieren una curva de aprendizaje y hacen que el envío de un Lottie sea rápido y sin problemas.</p>
+			<div id="pretext2">
+				<p class="texto">Hemos desarrollado herramientas e integraciones simples que casi no requieren una curva de aprendizaje y hacen que el envío de un Lottie sea rápido y sin problemas.</p>
+			</div>
 		</div>
 		<div id="toolsLanding">
 			<div class="toolLan" id="toolLan1">
@@ -111,15 +115,15 @@
 						<line x1="197.39999999999998" x2="198.39999999999998" y1="176.2" y2="297.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><line x1="138.39999999999998" x2="259.3999" y1="237.2" y2="237.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line>
 					</svg>
 				</div>
-				<p>cree y Edite los cuadros en línea sin una línea de código</p>
+				<p>Cree y edite los cuadros en línea sin una línea de código</p>
 			</div>
 			<div class="toolLan" id="toolLan2">
 				<div class="photoTool" id="photo2">
 					<svg viewBox="0 0 477.15614 320.57559" id="shareSvg">
-						<circle cx="294.4" cy="91.69999999999999" r="20.5" style="stroke-width: 1;" fill="#000000" stroke="#00000f"></circle><line x1="278.4" x2="218.39999999999998" y1="105.19999999999999" y2="152.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><circle cx="214.39999999999998" cy="160.7" r="14.5" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></circle><line x1="230.39999999999998" x2="282.4" y1="170.2" y2="204.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><circle cx="294.9" cy="212.2" r="14" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></circle>
+						<circle cx="294.4" cy="91.69999999999999" r="20.5" style="stroke-width: 10;" fill="#fffff" stroke="#00000f"></circle><line x1="278.4" x2="218.39999999999998" y1="105.19999999999999" y2="152.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><circle cx="214.39999999999998" cy="160.7" r="14.5" fill="#fffff" stroke="#00000" style="stroke-width: 10;"></circle><line x1="230.39999999999998" x2="282.4" y1="170.2" y2="204.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><circle cx="294.9" cy="212.2" r="14" fill="#fffff" stroke="#00000f" style="stroke-width: 10;"></circle>
 					</svg>
 				</div>
-				<p>comparta y descarge su contenido.</p>
+				<p>Comparta y descargue su contenido.</p>
 			</div>
 			<div class="toolLan" id="toolLan3">
 				<div class="photoTool" id="photo3">
@@ -131,7 +135,7 @@
 			</div>
 		</div>
 		<div id="btnContainer">
-			<button>TUTORIALES <i class="bi bi-arrow-right"></i> </button>
+			<a href="{{route("tutorial")}}">TUTORIALES <i class="bi bi-arrow-right"></i> </a>
 		</div>
 	</section>
 
@@ -141,7 +145,7 @@
 			<p class="title">Vectores hechos simples</p>
 			<h1 class="titleLeft">Lleva tu juego de Imagenes al siguiente  nivel.</h1>
 			<div id="fifthBtn">
-				<button>Empice ahora</button>
+				<a href="login">Empice ahora</a>
 			</div>
 		</div>
 		<div id="imageFifthContainer">

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Square+Peg&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +8,7 @@
 }
 
 body {
-  background: white;
+  background: #FAFAFA;
   user-select: none;
 }
 
@@ -23,7 +24,7 @@ body {
   position: fixed;
   top: 0%;
   z-index: 3;
-  background: white;
+  background: #FAFAFA;
   height: 10vh;
   width: 100%;
   display: flex;
@@ -36,6 +37,8 @@ body {
   background: linear-gradient(90deg, #010101 0%, #1fc0cf 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-family: "Square Peg", cursive;
+  font-size: 40px;
 }
 #cabecera #menu {
   width: 80%;
@@ -105,6 +108,20 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+#menuMobile #menuMobileText h1 a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  background: linear-gradient(90deg, #010101 0%, #1fc0cf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Square Peg", cursive;
+  font-size: 40px;
+}
+#menuMobile #menuMobileText p a {
+  text-decoration: none;
+  color: black;
 }
 
 @media (min-width: 992px) {
@@ -195,6 +212,12 @@ body {
   flex-direction: column;
   align-items: center;
 }
+#secondSection .pretext {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+}
 #secondSection #text {
   height: 60%;
   width: 100%;
@@ -235,7 +258,7 @@ body {
   align-items: center;
 }
 #thirdSection #pictures .picture {
-  background: #C4C4C4;
+  background: white;
   width: 100%;
   height: 29vh;
 }
@@ -248,12 +271,13 @@ body {
   display: flex;
   justify-content: center;
 }
-#thirdSection #thirdBtn button {
+#thirdSection #thirdBtn a {
   border: none;
   background: #1FC0CF;
   color: white;
   font-size: 20px;
   padding: 15px;
+  text-decoration: none;
 }
 
 #fourthSection {
@@ -266,9 +290,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
 #fourthSection #text h1 {
   text-align: center;
+}
+#fourthSection #text #pretext2 {
+  width: 80%;
 }
 #fourthSection #toolsLanding {
   height: 93vh;
@@ -281,7 +309,7 @@ body {
 #fourthSection #toolsLanding .toolLan {
   height: 28vh;
   width: 80%;
-  background: black;
+  background: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -297,7 +325,6 @@ body {
   width: 100%;
 }
 #fourthSection #toolsLanding .toolLan p {
-  color: white;
   text-align: center;
 }
 #fourthSection #btnContainer {
@@ -305,10 +332,11 @@ body {
   justify-content: center;
   margin-top: 5vh;
 }
-#fourthSection #btnContainer button {
+#fourthSection #btnContainer a {
   background: #3D4852;
   color: white;
   padding: 20px;
+  text-decoration: none;
 }
 
 #fifthSection {
@@ -327,10 +355,11 @@ body {
   justify-content: center;
   align-items: center;
 }
-#fifthSection #fifthBtn button {
+#fifthSection #fifthBtn a {
   background: #1FC0CF;
   color: white;
   border: none;
+  text-decoration: none;
   padding: 10px;
 }
 #fifthSection #imageFifthContainer {
@@ -402,7 +431,7 @@ body {
   #secondSection #text h1 {
     font-size: 35px;
   }
-  #secondSection #text p {
+  #secondSection #text .pretext p {
     font-size: 20px;
   }
 }
@@ -431,12 +460,13 @@ body {
     width: 85%;
     height: 80vh;
     display: grid;
+    justify-items: center;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 1fr);
   }
   #thirdSection .picture {
-    height: 90% !important;
-    width: 97% !important;
+    height: 98% !important;
+    width: 98% !important;
   }
   #thirdSection #p1 {
     grid-row: 1/2;
@@ -449,7 +479,7 @@ body {
   #thirdSection #p3 {
     grid-row: 1/3;
     grid-column: 2/4;
-    height: 95% !important;
+    height: 99% !important;
   }
 }
 #idiomaSelect {
@@ -464,7 +494,7 @@ body {
   #fourthSection #text {
     height: 20vh;
   }
-  #fourthSection #text p {
+  #fourthSection #text #pretext2 p {
     text-align: center;
     font-size: 20px;
   }
@@ -519,6 +549,19 @@ body {
   animation: draw 8s forwards ease-in;
   -webkit-background-clip: text;
   stroke: black;
+  fill: none;
+  opacity: 1;
+}
+
+.text-share {
+  stroke-dashoffset: 100%;
+  stroke-dasharray: 100%;
+  -moz-animation: drawUpt 3s forwards ease-in;
+  -webkit-animation: drawUpt 8s forwards ease-in;
+  animation: drawUpt 8s forwards ease-in;
+  -webkit-background-clip: text;
+  stroke: black;
+  transition: all 1s;
   fill: none;
   opacity: 1;
 }
@@ -590,7 +633,8 @@ body {
 
 .colorSvg {
   transition: all 0.5s;
-  fill: white;
+  stroke-width: 1 !important;
+  stroke: black;
 }
 
 @keyframes op {
@@ -613,6 +657,12 @@ body {
 @keyframes draw {
   100% {
     stroke-dashoffset: 0;
+  }
+}
+@keyframes drawUpt {
+  100% {
+    stroke-dashoffset: 0;
+    fill: black;
   }
 }
 @keyframes skew {
@@ -711,7 +761,7 @@ body {
     margin-top: 3vh;
     display: flex;
     flex-direction: row;
-    height: 30vh;
+    height: 35vh;
   }
   #footer #logoSection {
     height: 30vh;
@@ -743,65 +793,264 @@ body {
   margin-top: 10vh;
   height: 100vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 #tutorial h1 {
   text-align: center;
 }
-#tutorial #containerTutorial {
-  height: 90vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  align-items: center;
-}
-#tutorial #containerTutorial .advice {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#tutorial .timeline {
   height: 15vh;
+  width: 50%;
+  border-right: 3px solid;
+  border-width: 0;
 }
-#tutorial #containerTutorial .advice .titleAdvice {
-  border: 3px solid;
+#tutorial svg {
   height: 5vh;
-  width: 80%;
-  display: flex;
+  width: 20vw;
+  position: absolute;
+  left: 37%;
+  top: 22%;
 }
-#tutorial #containerTutorial .advice .titleAdvice #txt {
-  width: 70%;
-  display: flex;
-  justify-content: end;
+#tutorial #second-timeline {
+  height: 11vh;
 }
-#tutorial #containerTutorial .advice .titleAdvice #txt h1 {
-  font-size: 20px;
+#tutorial #second-timeline .timeline {
+  border-left: 3px solid;
+  border-bottom: 3px solid;
+  border-right: none;
+  position: absolute;
+  width: 30%;
+  left: 49%;
+  top: 25%;
+  border-width: 0;
 }
-#tutorial #containerTutorial .advice .titleAdvice #icon {
-  width: 10%;
+#tutorial #second-timeline svg {
+  top: 37%;
+}
+#tutorial #second-timeline #third {
+  left: 64%;
+}
+#tutorial #third-timeline .timeline {
+  border-bottom: 3px solid;
+  border-right: 3px solid;
+  position: absolute;
+  width: 29%;
+  left: 49%;
+  top: 40%;
+  border-width: 0;
+}
+#tutorial #third-timeline svg {
+  top: 52%;
+  left: 65%;
+}
+#tutorial #third-timeline #fifth {
+  left: 38%;
+}
+#tutorial #fourth-timeline .timeline {
+  border-left: 3px solid;
+  border-bottom: 3px solid;
+  border-right: none;
+  position: absolute;
+  width: 29%;
+  left: 50%;
+  top: 55%;
+  border-width: 0;
+}
+#tutorial #fourth-timeline svg {
+  top: 67%;
+  left: 38.5%;
+}
+#tutorial #fourth-timeline #seven {
+  left: 65%;
+}
+#tutorial #fifth-timeline .timeline {
+  border-bottom: 3px solid;
+  position: absolute;
+  width: 29%;
+  left: 49.69%;
+  top: 70%;
+  border-width: 0;
+}
+#tutorial #fifth-timeline svg {
+  top: 82%;
+  left: 65%;
+}
+#tutorial #fifth-timeline #noveno {
+  left: 38.5%;
+}
+#tutorial #sixth-timeline .timeline {
+  border-left: 3px solid;
+  border-right: none;
+  position: absolute;
+  width: 29%;
+  left: 49.6%;
+  top: 85%;
+  height: 7vh;
+  border-width: 0;
+}
+#tutorial a {
+  position: absolute;
+  width: 7vw;
+  left: 46%;
+  top: 93%;
+  height: 4vh;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  background: #1FC0CF;
+  color: white;
+  font-weight: bold;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#tutorial #containerTutorial .advice .textAdvice {
-  height: 25vh;
-  width: 80%;
+
+.advice {
   display: none;
-  overflow-y: scroll;
+  flex-direction: column;
+  height: 60vh;
+  gap: 5%;
+  text-align: center;
+  width: 60vw;
 }
 
+#advices {
+  height: 10vh;
+  width: 10vw;
+  position: absolute;
+  top: 105%;
+  left: 20%;
+}
+
+.anima {
+  animation: border 3s forwards ease-in;
+}
+
+@keyframes border {
+  100% {
+    border-width: 3;
+  }
+}
+.at {
+  opacity: 0;
+}
+
+.animaboost {
+  stroke-dashoffset: 100%;
+  stroke-dasharray: 100%;
+  -moz-animation: drawboost 3s forwards ease-in;
+  -webkit-animation: drawboost 3s forwards ease-in;
+  animation: drawboost 3s forwards ease-in;
+  -webkit-background-clip: text;
+  stroke: black;
+  fill: none;
+  opacity: 0;
+}
+
+@keyframes drawboost {
+  100% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 0;
+    fill: black;
+    opacity: 1;
+  }
+}
+@media (min-width: 490px) {
+  #tutorial svg {
+    left: 38.5%;
+  }
+
+  #tutorial #second-timeline .timeline {
+    width: 27.5%;
+    left: 49.5%;
+  }
+
+  #tutorial #second-timeline #third {
+    left: 65%;
+  }
+
+  #tutorial #third-timeline .timeline {
+    width: 27.5%;
+  }
+
+  #tutorial #fourth-timeline .timeline {
+    width: 27.5%;
+  }
+
+  #tutorial #fifth-timeline .timeline {
+    width: 27.5%;
+  }
+}
 @media (min-width: 992px) {
+  body {
+    background: white;
+  }
+
   #tutorial {
     height: 90vh;
   }
-
-  #containerTutorial {
-    height: 85vh !important;
+  #tutorial svg {
+    left: 46.7%;
+    width: 5vw;
   }
-  #containerTutorial .advice {
-    width: 30vw !important;
+  #tutorial #second-timeline .timeline {
+    width: 10%;
+    left: 49.82%;
+  }
+  #tutorial #second-timeline #third {
+    left: 56.5%;
+  }
+  #tutorial #third-timeline .timeline {
+    width: 10%;
+    left: 49.82%;
+  }
+  #tutorial #third-timeline svg {
+    left: 56.5%;
+  }
+  #tutorial #third-timeline #fifth {
+    left: 46.7%;
+  }
+  #tutorial #fourth-timeline .timeline {
+    width: 10.6%;
+  }
+  #tutorial #fourth-timeline svg {
+    left: 46.8%;
+  }
+  #tutorial #fourth-timeline #seven {
+    left: 57.6%;
+  }
+  #tutorial #fifth-timeline .timeline {
+    width: 11%;
+  }
+  #tutorial #fifth-timeline svg {
+    left: 57.7%;
+  }
+  #tutorial #fifth-timeline #noveno {
+    left: 46.5%;
+  }
+
+  #advices {
+    height: 10vh;
+    width: 20vw;
+    position: absolute;
+    top: 20%;
+    left: 5%;
+  }
+
+  .advice {
+    width: 30vw;
   }
 }
+body {
+  background: #FAFAFA;
+}
+
 #showcaseContainer {
   margin-top: 10vh;
   height: 256.6666666667vh;
@@ -811,6 +1060,10 @@ body {
 }
 #showcaseContainer h1 {
   text-align: center;
+}
+#showcaseContainer svg {
+  height: 100%;
+  width: 100%;
 }
 #showcaseContainer #imagesShow {
   height: 95%;
@@ -826,10 +1079,11 @@ body {
   justify-content: center;
 }
 #showcaseContainer .showcaseSection .showcaseChest {
-  background: #C4C4C4;
+  background: white;
   height: 100%;
   width: 80%;
   border-radius: 20%;
+  opacity: 1;
 }
 #showcaseContainer .showcaseSection .showcaseOverlay {
   height: 30vh;
@@ -892,6 +1146,7 @@ body {
 }
 #containerLogin #login #signIn p {
   font-weight: bold;
+  font-size: 20px;
 }
 #containerLogin #login #signIn #formIn {
   height: 70%;
@@ -943,6 +1198,7 @@ body {
 }
 #containerLogin #login #signUp p {
   font-weight: bold;
+  font-size: 20px;
 }
 #containerLogin #login #signUp #formUp {
   height: 70%;
@@ -1581,7 +1837,7 @@ div[data-name=mojs-shape] {
 
 #exhibition {
   margin-top: 2vh;
-  height: 130vh;
+  height: 150vh;
   width: 100%;
 }
 #exhibition table {
@@ -1598,10 +1854,12 @@ div[data-name=mojs-shape] {
   display: flex;
   flex-direction: column;
   height: 25%;
+  justify-content: space-evenly;
 }
 #exhibition table tr td {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
 }
 #exhibition table tr td p {
@@ -1743,6 +2001,9 @@ div[data-name=mojs-shape] {
 #paginacion #container nav ul li a {
   text-decoration: none;
   color: black;
+}
+#paginacion #container nav ul li a[rel=next] {
+  font-size: 20px;
 }
 #paginacion #container nav ul .active {
   background: #1FC0CF;

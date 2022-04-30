@@ -20,11 +20,11 @@ Route::get('/', function () {
 
 Route::get("/tutorial",function() {
     return view("tutorial/index");
-});
+})->name("tutorial");
 
 Route::get("/showcase",function() {
     return view("showcase/index");
-});
+})->name("showcase");
 
 Route::get("/login",function() {
     return view("login/index");

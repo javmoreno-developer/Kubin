@@ -585,11 +585,18 @@ $("#naming").click((e)=> {
 	//nombre del lienzo
 	nombre=$("#nameLienzo").val();
 
-	
-	for(let i=2;i<$("svg")[4].childNodes.length;i++) {
-		console.log($("svg")[4].childNodes[i]);
-		console.log(typeof($("svg")[4].childNodes[i]));
-		contenido.push($("svg")[4].childNodes[i].outerHTML);
+	if($("#idAct").length==0) {
+		for(let i=2;i<$("svg")[4].childNodes.length;i++) {
+			console.log($("svg")[4].childNodes[i]);
+			console.log(typeof($("svg")[4].childNodes[i]));
+			contenido.push($("svg")[4].childNodes[i].outerHTML);
+		}
+	} else {
+		for(let i=2;i<$("svg")[0].childNodes.length;i++) {
+			console.log($("svg")[0].childNodes[i]);
+			console.log(typeof($("svg")[0].childNodes[i]));
+			contenido.push($("svg")[0].childNodes[i].outerHTML);
+		}
 	}
 	//window.location.href=window.location.href + "?contenido=" + contenido;
 	enviar();

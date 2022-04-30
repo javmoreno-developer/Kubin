@@ -49,13 +49,13 @@ var opacity = {
         ScrollReveal().reveal('#image',slideRight);
         ScrollReveal().reveal('.texto',opacity);
         //pictures
-        ScrollReveal().reveal('#p1',{duration: 1500,delay:475,opacity: 0,reset: true,afterReveal:trickClock});
-        ScrollReveal().reveal('#p4',{duration: 1500,delay:675,opacity: 0,reset: true, afterReveal: trickWallet});
-        ScrollReveal().reveal('#p5',{duration: 1500,delay:875,opacity: 0,reset: true,afterReveal: trickCal});
-        ScrollReveal().reveal('#p7',{duration: 1500,delay:1075,opacity: 0,reset: true,afterReveal: trickBull});
-        ScrollReveal().reveal('#p6',{duration: 1500,delay:1275,opacity: 0,reset: true,afterReveal:trickCub});
-        ScrollReveal().reveal('#p2',{duration: 1500,delay:1575,opacity: 0,reset: true,afterReveal:trickAlert});
-        ScrollReveal().reveal('#p3',{duration: 1500,delay:1775,opacity: 0,reset: true,afterReveal:trickBal});
+        ScrollReveal().reveal('#p1',{duration: 1500,delay:475,opacity: 0,reset: true});//afterReveal:trickClock
+        ScrollReveal().reveal('#p4',{duration: 1500,delay:675,opacity: 0,reset: true });//afterReveal: trickWallet
+        ScrollReveal().reveal('#p5',{duration: 1500,delay:875,opacity: 0,reset: true});//,afterReveal: trickCal
+        ScrollReveal().reveal('#p7',{duration: 1500,delay:1075,opacity: 0,reset: true});//,afterReveal: trickBull
+        ScrollReveal().reveal('#p6',{duration: 1500,delay:1275,opacity: 0,reset: true});//,afterReveal:trickCub
+        ScrollReveal().reveal('#p2',{duration: 1500,delay:1575,opacity: 0,reset: true});//,afterReveal:trickAlert
+        ScrollReveal().reveal('#p3',{duration: 1500,delay:1775,opacity: 0,reset: true});//,afterReveal:trickBal
         //fin picture
         ScrollReveal().reveal('#toolLan1',{duration: 1500,delay:475,opacity: 0,reset: true,});
         ScrollReveal().reveal('#toolLan2',{duration: 1500,delay:675,opacity: 0,reset: true,});
@@ -98,7 +98,7 @@ var opacity = {
         });
 
         function trickShare() {
-          $("#shareSvg").addClass("text-logo");
+          $("#shareSvg").addClass("text-share");
         }
         //background svg
         ScrollReveal().reveal("#photo3",{
@@ -151,29 +151,47 @@ var opacity = {
     //fin landing
 
 //aparicion consejos en pantalla tutorial
-var c=0;//contador consejos
-$(".titleAdvice").click(function(e) {
-	//$(".textAdvice").css("display","flex");
-	console.log(this.id);
-	console.log(this.id+"TextAd");
-	c++;
-	if(c%2==1) {
-		$("#"+this.id+"TextAd").css("display","flex");
-        $("#icon"+this.id).removeClass("bi bi-caret-down-fill");
-        $("#icon"+this.id).addClass("bi bi-caret-up-fill");
-	} else {
-		$("#"+this.id+"TextAd").css("display","none");
-        $("#icon"+this.id).removeClass("bi bi-caret-up-fill");
-        $("#icon"+this.id).addClass("bi bi-caret-down-fill");
-	}
+
+$(".circle").click(function(e) {
+	$(".advice").each((index,a)=> {
+       $(a).css("display","none");
+    });
+	$("#"+this.id+"Advice").css("display","flex");
 });
 
+//aparacion tutorial
+$(".timeline").each(function(index) {        
+        var that = this;
+        var t = setTimeout(function() { 
+            $(that).addClass("anima"); 
+        }, 1500 * index);        
+});
+
+$(".at").each(function(index) {        
+        var that = this;
+        var t = setTimeout(function() { 
+            $(that).addClass("animaboost"); 
+        }, 1500 * index);        
+});
+
+//inicio showcase
 //overlay showcase
-$(".showcaseChest").hover(function(e) {
-	$(".showcaseOverlay").css("display","none");
-	$("#"+this.id+"Overlay").css("display","flex");
-});
 
+//aparicion showcase
+let overShow=false;
+$(".showcaseChest").each((index,a)=> {
+     ScrollReveal().reveal($(a),{duration: 1500,delay:(475+100*index),opacity: 0,reset: true,afterReveal:tra});
+});
+function tra() {
+    $(".showcaseChest").hover(function(e) {
+	   $(".showcaseOverlay").css("display","none");
+	   $("#"+this.id+"Overlay").css("display","flex");
+    });
+}
+
+
+
+//fin showcase
 //efecto cabecera
 $(document).scroll(function(e) {
  if($(document).scrollTop()!=0) {

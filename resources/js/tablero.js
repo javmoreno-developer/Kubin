@@ -1,3 +1,5 @@
+
+
 var pulsacion=[false,false,false,false,false,false,false];
 
 var mousedownEvent="";
@@ -61,10 +63,15 @@ if(screen.width>900) {
 	 anchoSvg=10;
 }
 
+var s="";
 if($("#lienzo").length==0) {
-	var s=Snap(w,h);
+	s=Snap(w,h);
 	s.attr({ id: 'lienzo' });
-
+	
+} else {
+	
+	s=Snap("#lienzo");
+	
 }
 
 $("#lienzo").css("top",altoSvg + "%");
@@ -91,7 +98,7 @@ function VhToPx(param) {
 
 //pulsacion
 function changeTool(param) {
-	pulsacion=[false,false,false,false,false,false,false];
+	pulsacion=[false,false,false,false,false,false,false,false];
 	//console.log(pulsacion);
 	//console.log(param);
 	$("#board").off();
@@ -174,7 +181,6 @@ function pintarSqr() {
 	//console.log(arrayX);
 	let res=traducirSqr(arrayX,arrayY);
 	//var rect=s.rect(arrayX[0],arrayX[1],(arrayY[1]-arrayX[0]),(arrayY[0]-arrayX[1])).attr({
-	//console.log(res);
 	var rect=s.rect(res[0],res[1],(res[3]-res[0]),(res[2]-res[1])).attr({
 		fill: fill,
         stroke: colorTrazo,
@@ -325,6 +331,13 @@ function pintarCircle() {
 		fill: fill,
         stroke: colorTrazo,
         strokeWidth: grosorTrazo
+	}).click(function(){
+		
+		if(gradientColor!="empty") {
+			this.attr('fill', gradientColor);
+			//console.log(gradientColor);
+		}
+
 	});
 }
 //fin circle
@@ -572,11 +585,18 @@ $("#naming").click((e)=> {
 	//nombre del lienzo
 	nombre=$("#nameLienzo").val();
 
-	
-	for(let i=2;i<$("svg")[4].childNodes.length;i++) {
-		console.log($("svg")[4].childNodes[i]);
-		console.log(typeof($("svg")[4].childNodes[i]));
-		contenido.push($("svg")[4].childNodes[i].outerHTML);
+	if($("#idAct").length==0) {
+		for(let i=2;i<$("svg")[4].childNodes.length;i++) {
+			console.log($("svg")[4].childNodes[i]);
+			console.log(typeof($("svg")[4].childNodes[i]));
+			contenido.push($("svg")[4].childNodes[i].outerHTML);
+		}
+	} else {
+		for(let i=2;i<$("svg")[0].childNodes.length;i++) {
+			console.log($("svg")[0].childNodes[i]);
+			console.log(typeof($("svg")[0].childNodes[i]));
+			contenido.push($("svg")[0].childNodes[i].outerHTML);
+		}
 	}
 	//window.location.href=window.location.href + "?contenido=" + contenido;
 	enviar();
@@ -877,4 +897,7 @@ function scan() {
 }
 
 }
+
+//semicircle
+
 

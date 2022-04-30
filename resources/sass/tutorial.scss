@@ -5,70 +5,273 @@ body {
 	margin-top: 10vh;
 	height: 100vh;
 	width: 100%;
+	display: flex;
+	flex-direction: column;
 	h1 {
 		text-align: center;
 	}
-	#containerTutorial {
-		height: 90vh;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		align-items:center;
-		align-items: center;
+	
+	.timeline {
+		height: 15vh;
+		width: 50%;
+		border-right: 3px solid;
+		border-width:0;
+	}
+	svg {
+		height: 5vh;
+		width: 20vw;
 		
-
-		.advice {
-			width: 100vw;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			height: 15vh;
-			
-			.titleAdvice {
-				border: 3px solid;
-				height: 5vh;
-				width: 80%;
-				display: flex;
-				
-				#txt {
-					width: 70%;
-					
-					display: flex;
-					justify-content: end;
-					h1 {
-						font-size: 20px;
-					}
-				}
-				#icon {
-					width: 10%;
-					
-					display: flex;
-					align-items:center;
-					justify-content: center;
-				}
-			}
-			.textAdvice {
-				
-				height: 25vh;
-				width: 80%;
-				display: none;
-				overflow-y: scroll;
-			}
+		position: absolute;
+		left: 37%;
+		top:22%;
+	}
+	#second-timeline {
+		height: 11vh;
+		.timeline {
+			border-left:3px solid;
+			border-bottom:3px solid;
+			border-right:none;
+			position: absolute;
+			width: 30%;
+			left: 49%;
+			top: 25%;
+			border-width:0;
+		}
+		svg {
+			top:37%
+		}
+		#third {
+			left: 64%;
 		}
 	}
+	#third-timeline {
+		.timeline {
+			border-bottom:3px solid;
+			border-right:3px solid;
+			position: absolute;
+			width: 29%;
+			left: 49%;
+			top: 40%;
+			border-width:0;
+		}
+		svg {
+			top:52%;
+			left: 65%;
+		}
+		#fifth {
+			left: 38%;
+		}
+	}
+	#fourth-timeline {
+		.timeline {
+			border-left:3px solid;
+			border-bottom:3px solid;
+			border-right:none;
+			position: absolute;
+			width: 29%;
+			left: 50%;
+			top: 55%;
+			border-width:0;
+		}
+		svg {
+			top: 67%;
+			left: 38.5%;
+		}
+		#seven {
+			left: 65%;
+		}
+	}
+	#fifth-timeline {
+		.timeline {
+			border-bottom: 3px solid;
+			position: absolute;
+			width: 29%;
+			left: 49.69%;
+			top: 70%;	
+			border-width:0;
+		}
+		svg {
+			top: 82%;
+			left: 65%;
+		}
+		#noveno {
+			left: 38.5%;
+		}
+	}
+	#sixth-timeline {
+		.timeline {
+			border-left:3px solid;
+			border-right:none;
+			position: absolute;
+			width: 29%;
+			left: 49.6%;
+			top: 85%;
+			height: 7vh;
+			border-width:0;
+		}
+	}
+	a {
+		position: absolute;
+		width: 7vw;
+		left: 46%;
+		top: 93%;
+		height: 4vh;
+		@include pill;
+		background: $azul;
+		color: white;
+		font-weight: bold;
+		border:none;
+		display: flex;
+		align-items:center;
+		justify-content: center;
+	}
 }
+
+.advice {
+	display: none;
+	flex-direction: column;
+	height: 60vh;
+	gap:5%;
+	text-align: center;
+	width: 60vw;
+}
+
+#advices {
+	
+	height: 10vh;
+	width: 10vw;
+	position:absolute;
+	top: 105%;
+	left: 20%;
+}
+
+
+.anima {
+	
+	animation: border 3s forwards ease-in;
+
+}
+
+@keyframes border {
+	100% {
+		border-width:3;
+	}
+}
+.at {
+	opacity: 0;
+}
+
+.animaboost {
+	 stroke-dashoffset: 100%;
+  stroke-dasharray: 100%;
+  -moz-animation: drawboost 3s forwards  ease-in;
+  -webkit-animation: drawboost 3s forwards  ease-in;
+  animation: drawboost 3s forwards  ease-in;
+  -webkit-background-clip: text;
+   stroke: black;
+  fill: none;
+  opacity: 0;
+}
+
+@keyframes drawboost {
+  100% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 0;
+    fill: black;
+    opacity: 1;
+  }
+}
+
 
 //media query
+
+@media (min-width: 490px) {
+	
+	#tutorial svg {
+		left: 38.5%;
+	}
+	#tutorial #second-timeline .timeline {
+		width: 27.5%;
+		left: 49.5%;
+	}
+	#tutorial #second-timeline #third {
+		left: 65%;
+	}
+	#tutorial #third-timeline .timeline {
+		width: 27.5%;
+	}
+	#tutorial #fourth-timeline .timeline {
+		width: 27.5%;
+	}
+	#tutorial #fifth-timeline .timeline {
+		width: 27.5%;
+	}
+}
+
 @media (min-width: 992px) { 
+	body {
+		background:white;
+	}
 	#tutorial {
 		height: 90vh;
-	}
-	#containerTutorial {
-		height: 85vh !important;
-		.advice {
-			width: 30vw !important;
+		
+		svg {
+			left: 46.7%;
+			width: 5vw;
+		}
+		#second-timeline {
+			.timeline {
+				width: 10%;
+				left: 49.82%;
+			}
+			#third {
+				left: 56.5%;
+			}
+		}
+		#third-timeline {
+			.timeline {
+				width: 10%;
+				left: 49.82%;
+			}
+			svg {
+				left: 56.5%;
+			}
+			#fifth {
+				left: 46.7%;
+			}
+		}
+		#fourth-timeline {
+			.timeline {
+				width: 10.6%;
+			}
+			svg {
+				left: 46.8%;
+			}
+			#seven {
+				left: 57.6%;
+			}
+		}
+		#fifth-timeline {
+			.timeline {
+				width: 11%;
+			}
+			svg {
+				left: 57.7%;
+			}
+			#noveno {
+				left: 46.5%;
+			}
 		}
 	}
-	
+	#advices {
+		height: 10vh;
+		width: 20vw;
+		position:absolute;
+		top: 20%;
+		left: 5%;
+	}
+	.advice {
+		width: 30vw;
+	}
 }
+

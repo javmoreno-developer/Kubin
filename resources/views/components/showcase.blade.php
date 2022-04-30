@@ -3,7 +3,11 @@
 
     <div class="showcaseSection">
         <div class="showcaseChest" id="{{$number}}">
-            {{$svg}}
+            <svg viewBox="0 0 300 400">
+               @php
+               echo html_entity_decode($svg);
+               @endphp
+            </svg>
         </div>
         <div class="showcaseOverlay" id="{{$number}}Overlay">
             <h1>{{$titulo}}</h1>
