@@ -20,8 +20,6 @@ class lienzos_has_categoriasSeeder extends Seeder
             DB::table("lienzos_has_categorias")->insert([
                 "idLie"=>$faker->numberBetween(1,10),
                 "idCat"=>$faker->numberBetween(1,10),
-                "created_at"=>$faker->date($format="Y-m-d",$max="now"),
-                "updated_at"=>$faker->date($format="Y-m-d",$max="now"),
             ]);
         }
     }

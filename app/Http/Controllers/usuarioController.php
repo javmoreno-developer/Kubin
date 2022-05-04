@@ -24,4 +24,11 @@ class usuarioController extends Controller
         Auth::login($u);
         return redirect()->route("dashboard");
     }
+
+    public function cambiarFoto(Request $req) {
+        $r=usuarios::find(Auth::user()->idUsu);
+        $r->imagenUsu=$req->url;
+        $r->save();
+        return redirect()->route("dashboard");   
+    }
 }

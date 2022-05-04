@@ -7,24 +7,19 @@ use Illuminate\Support\Facades\DB;
 use App\Models\lienzos;
 use App\Models\usuarios;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class lienzoController extends Controller
 {
     public function subida(Request $req) {
-        echo "Hola";
-       var_dump($_POST);
+         $dateTime = date('Y-m-d H:i:s');
+        $updatedDateFormat =  Carbon::createFromFormat('Y-m-d H:i:s', $dateTime)->format('m-d-Y H:i:s');
 
            if(Auth::user()!=null) {
             if($_POST["id"]==0) {
                 $name=implode($_POST["datos"]['variable1']);
                 $name=htmlentities($name);
                 $nombre=$_POST["nombre"];
-                //apunto en la tabla lienzo
-                $modelo=new lienzos;
-                $modelo->pathLie="$name";
-                $modelo->nomLie=$nombre;
-                $modelo->save();
-
                 //fecha actual
                 $hoy = getdate();
                 print_r($hoy);
@@ -32,9 +27,20 @@ class lienzoController extends Controller
 
                 echo $hoy;
 
+                //apunto en la tabla lienzo
+                $modelo=new lienzos;
+                $modelo->pathLie="$name";
+                $modelo->nomLie=$nombre;
+                $modelo->created_at=$hoy;
+                $modelo->updated_at=$hoy;
+                $modelo->save();
+                $modelo->touch();
+                
+                echo "fechita:".now()->toDateTimeString();
                 //apunto en la tabla lienzo-usuario
                 $me=usuarios::find(Auth::user()->idUsu);
-                $me->lienzos()->attach($modelo->idLie,["created_at"=>"$hoy","updated_at"=>"$hoy"]);
+                //$me->lienzos()->attach($modelo->idLie,["created_at"=>"$hoy","updated_at"=>"$hoy"]);
+                $me->lienzos()->attach($modelo->idLie);
                
                 return redirect()->route("dashboard");
                 } else {
@@ -47,6 +53,7 @@ class lienzoController extends Controller
                     $modelo->pathLie="$name";
                     $modelo->nomLie=$nombre;
                     $modelo->save();
+                    $modelo->touch();
                     return redirect()->route("dashboard");
                 }
             } else {
@@ -59,19 +66,25 @@ class lienzoController extends Controller
     }
 
     public function dashboard($skip=0) {
+         $dateTime = date('Y-m-d H:i:s');
+        $updatedDateFormat =  Carbon::createFromFormat('Y-m-d H:i:s', $dateTime)->format('m-d-Y H:i:s');
         //nombre usuario
         $nombre=Auth::user()->nomUsu;
         //cuadros usuario
         $cuadros=[];
         $me=usuarios::find(Auth::user()->idUsu);
         $me->lienzos()->get();
-        $cuadros=$me->lienzos()->withPivot("created_at","updated_at")->paginate(4);
+        $cuadros=$me->lienzos()->paginate(4);
         
-        
-       
-        $imagen=Auth::user()->imagenUsu;
+        //fecha
+        $me->updated_at=Carbon::now();
+        $me->save();
+        $fecha=$me->updated_at;
 
-        return view("dashboard/index",["nomUsu"=>$nombre,"cuadros"=>$cuadros,"imagen"=>$imagen]);
+        //imagen
+        $imagen=Auth::user()->imagenUsu;
+        $tt=now()->toDateTimeString();
+        return view("dashboard/index",["nomUsu"=>$nombre,"cuadros"=>$cuadros,"imagen"=>$imagen,"fecha"=>$fecha]);
     }
 
     public function editar(Request $req) {
@@ -90,6 +103,7 @@ class lienzoController extends Controller
 
     public function borrarLienzo($id) {
         $l=lienzos::find($id)->delete();
+        return redirect()->route("dashboard");
     }
 
     public function obtenerDatos() {

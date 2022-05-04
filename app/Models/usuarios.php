@@ -12,7 +12,7 @@ class usuarios extends Model implements AuthenticatableContract
     use HasFactory,Authenticatable;
     protected $table="usuarios";
     protected $primaryKey="idUsu";
-    public $timestamps=false;
+    //public $timestamps=false;
 
     public function lienzos() {
         return $this->belongsToMany('App\Models\lienzos',"usuarios_has_lienzos","idUsu","idLie");

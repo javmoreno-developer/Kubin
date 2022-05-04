@@ -18,7 +18,7 @@
 <script src="{{asset("js/main.js")}}"></script>
 
 
-	<title>Document</title>
+	<title>KUBIN</title>
 </head>
 <body>
 	

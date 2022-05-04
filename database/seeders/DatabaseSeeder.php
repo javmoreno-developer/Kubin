@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             //usuarios_has_gruposSeeder::class,
             //usuarios_has_lienzosSeeder::class,
-            lienzos_has_categoriasSeeder::class,
+           //lienzos_has_categoriasSeeder::class,
         ]);
     }
 }

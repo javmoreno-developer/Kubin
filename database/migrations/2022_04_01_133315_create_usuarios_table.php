@@ -21,7 +21,7 @@ class CreateUsuariosTable extends Migration
             $table->integer("perfUsu")->default(1);
             $table->string("password",100);
             $table->text("imagenUsu",65000);
-            $table->date("creacionUsu");
+            $table->timestamps();
         });
     }
 

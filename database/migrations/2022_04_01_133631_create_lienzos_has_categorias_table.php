@@ -16,7 +16,6 @@ class CreateLienzosHasCategoriasTable extends Migration
         Schema::create('lienzos_has_categorias', function (Blueprint $table) {
             $table->unsignedInteger("idLie");
             $table->unsignedInteger("idCat");
-            $table->timestamps();
         });
         Schema::table("lienzos_has_categorias",function($table) {
             $table->foreign("idLie")->references("idLie")->on("lienzos")->onDelete("cascade");

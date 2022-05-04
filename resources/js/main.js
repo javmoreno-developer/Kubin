@@ -228,7 +228,7 @@ $("#changeLogin").click(()=> {
 
 
 //dashboard carga (asignacion imagenes)
-$(".modalLienzo").each((index)=> {
+/*$(".modalLienzo").each((index)=> {
 	asignarLienzo(index);
 
 });
@@ -241,7 +241,7 @@ function asignarLienzo(param) {
 	$("#picture"+param).css("top",coordenadas.top + "px");
 	$("#picture"+param).css("left",coordenadas.left + "px");
 
-}
+}*/
 //funciones de conversion
 function VwToPx(param) {
 	return (param*window.innerWidth)/100;
@@ -253,6 +253,8 @@ function VhToPx(param) {
 
 //cambio palabras en la landing page (sitio web)
 var arrayCh=["APLICACION","RED SOCIAL","DOCUMENTO","ANUNCIO"];
+var arrayChEn=["APPLICATION","SOCIAL MEDIA","DOCUMENT","ADS"];
+var arrayChFr=["APPLICATION","RÉSEAU SOCIAL","DOCUMENT","PUBLICITÉ"];
 var contadorCh=0;
 let inter="";
 
@@ -269,7 +271,13 @@ function changeLetter() {
   //console.log("cambiando");
   $("#changeWord").css("opacity",0);
   setTimeout(()=> {
-  	$("#changeWord").text(arrayCh[contadorCh]);
+    if(sessionStorage.getItem('idiomaCh')=="es") {  
+  	   $("#changeWord").text(arrayCh[contadorCh]);
+     } else if(sessionStorage.getItem('idiomaCh')=="en") {
+        $("#changeWord").text(arrayChEn[contadorCh]);
+     } else {
+        $("#changeWord").text(arrayChFr[contadorCh]);
+     }
   	$("#changeWord").css("opacity",1);
   },1000)
   
@@ -282,7 +290,7 @@ function changeLetter() {
 //descarga
 $(".download").each(function(index) {
     $(this).on("click", function(){
-        $("#downloadModal").css("display","flex");
+        $("#downloadContainer").css("display","flex");
         let id=$(this).attr("id");
         id=id.split("-");
         id=id[1];
@@ -295,7 +303,7 @@ $(".download").each(function(index) {
 });
 
 $("#closeDownload").click(()=> {
-   $("#downloadModal").css("display","none");
+   $("#downloadContainer").css("display","none");
 });
 
 function enviar2(param) {
@@ -329,9 +337,34 @@ function enviarDatos(datos, url){
 }
 
 $("#download").click(()=> {
-  saveSvg($("#textDown").val(),"hola");
+  console.log($("#selectDown").val());
+  if($("#selectDown").val()=="svg") {
+    saveSvg($("#textDown").val(),"kubin");
+  } else {
+    let svgData = "";
+    svgData=`<svg height="${300}" version="1.1" width="${400}" xmlns="http://www.w3.org/2000/svg">`;
+    svgData += $("#textDown").val();
+    svgData +="</svg>";
+
+    SVGToImage({
+      svg: svgData,
+      mimetype: "image/png",
+      width: 500,
+      quality: 1
+      }).then(function(base64image){
+          let downloadLink2 = document.createElement("a");
+          downloadLink2.href = base64image;
+          downloadLink2.download = "kubin";
+          document.body.appendChild(downloadLink2);
+          downloadLink2.click();
+          document.body.removeChild(downloadLink2);
+      }).catch(function(err){
+          console.log(err);
+      });
+  }
 });
 
+//svg
 function saveSvg(svgEl, name) {
     //svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     //var svgData = svgEl.outerHTML;
@@ -364,5 +397,144 @@ function saveSvg(svgEl, name) {
     document.body.removeChild(downloadLink);
 }
 
+//png
+function SVGToImage(settings){
+    let _settings = {
+        svg: null,
+        // Usually all SVG have transparency, so PNG is the way to go by default
+        mimetype: "image/png",
+        quality: 0.92,
+        width: "auto",
+        height: "auto",
+        outputFormat: "base64"
+    };
+
+    // Override default settings
+    for (let key in settings) { _settings[key] = settings[key]; }
+
+    return new Promise(function(resolve, reject){
+        let svgNode;
+
+        // Create SVG Node if a plain string has been provided
+        if(typeof(_settings.svg) == "string"){
+            // Create a non-visible node to render the SVG string
+            let SVGContainer = document.createElement("div");
+            SVGContainer.style.display = "none";
+            SVGContainer.innerHTML = _settings.svg;
+            svgNode = SVGContainer.firstElementChild;
+        }else{
+            svgNode = _settings.svg;
+        }
+
+        let canvas = document.createElement('canvas');
+        let context = canvas.getContext('2d'); 
+
+        let svgXml = new XMLSerializer().serializeToString(svgNode);
+        let svgBase64 = "data:image/svg+xml;base64," + btoa(svgXml);
+
+        const image = new Image();
+
+        image.onload = function(){
+            let finalWidth, finalHeight;
+
+            // Calculate width if set to auto and the height is specified (to preserve aspect ratio)
+            if(_settings.width === "auto" && _settings.height !== "auto"){
+                finalWidth = (this.width / this.height) * _settings.height;
+            // Use image original width
+            }else if(_settings.width === "auto"){
+                finalWidth = this.naturalWidth;
+            // Use custom width
+            }else{
+                finalWidth = _settings.width;
+            }
+
+            // Calculate height if set to auto and the width is specified (to preserve aspect ratio)
+            if(_settings.height === "auto" && _settings.width !== "auto"){
+                finalHeight = (this.height / this.width) * _settings.width;
+            // Use image original height
+            }else if(_settings.height === "auto"){
+                finalHeight = this.naturalHeight;
+            // Use custom height
+            }else{
+                finalHeight = _settings.height;
+            }
+
+            // Define the canvas intrinsic size
+            canvas.width = finalWidth;
+            canvas.height = finalHeight;
+
+            // Render image in the canvas
+            context.drawImage(this, 0, 0, finalWidth, finalHeight);
+
+            if(_settings.outputFormat == "blob"){
+                // Fullfil and Return the Blob image
+                canvas.toBlob(function(blob){
+                    resolve(blob);
+                }, _settings.mimetype, _settings.quality);
+            }else{
+                // Fullfil and Return the Base64 image
+                resolve(canvas.toDataURL(_settings.mimetype, _settings.quality));
+            }
+        };
+
+        // Load the SVG in Base64 to the image
+        image.src = svgBase64;
+    });
+}
 
 //fin descarga
+
+//aparicion formulario cambiar foto
+$("#cambiarFoto").click(()=> {
+    $("#changeFotoModal").css("display","flex");
+});
+//cerrar formulario cambiar foto
+$("#closeFoto").click(()=> {
+    $("#changeFotoModal").css("display","none");
+});
+
+//idiomaSelect
+$("#idiomaSelect").change(()=> {
+   enviar3($("#idiomaSelect").val());
+   cambioArrayCh($("#idiomaSelect").val());
+});
+
+function enviar3(param) {
+    var datos = {
+        "variable1" : param, // Dato #1 a enviar
+        //"variable2" : variable2 // Dato #2 a enviar
+        // etc...
+      };
+      var url = "./idioma"; // URL a la cual enviar los datos
+
+    enviarDatos2(datos, url); // Ejecutar cuando se quiera enviar los datos
+
+    function enviarDatos2(datos, url){
+        $.ajax({
+                data: {
+                   "_token": $("meta[name='csrf-token']").attr("content"),
+                   datos,
+                }, 
+                url: url,
+                type: 'post',
+                success:  function (response) {
+                    console.log(response); // Imprimir respuesta del archivo
+                    location.reload();
+                    cambioArrayCh(datos["variable1"]);
+                },
+                error: function (error) {
+                    console.log(error.responseText); // Imprimir respuesta de error
+                }
+        });
+    }
+}
+
+function cambioArrayCh(param) {
+    sessionStorage.setItem('idiomaCh', param);
+}
+
+
+//loader
+window.onload=()=> {
+    $(".loader_container").css("display","none");
+}

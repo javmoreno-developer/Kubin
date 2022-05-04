@@ -17,6 +17,7 @@ class CreateCategoriasTable extends Migration
             $table->increments("idCat");
             $table->string("nomCat",100);
             $table->string("descCat",100);
+            $table->timestamps();
         });
     }
 

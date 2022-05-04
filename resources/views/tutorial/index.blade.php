@@ -40,11 +40,11 @@
 	</section>
 
 <div id="advices">
-	<x-advice titulo="Crear recta" mensaje="Una vez estes en el tablero deberas pulsar el boton de crear recta (el 2 de la parte izquierda),tras esto pulsa en el lienzo dos veces,la primera contabilizará el inicio de la recta y la segunda el final." number="first"/>
-	<x-advice titulo="Descargar dibujos" mensaje="Una vez creado tu dibujo,te dirigiras a tu dashboard,en esta podras ver un boton de descarga al pulsarlo te abrira un modal con el que podras elegir el formato de la imagen" number="second"/>
-	<x-advice titulo="Crear circulos" mensaje="Una vez estes en el tablero deberas pulsar el boton de crear circulo (el 3 de la parte izquierda),tras esto para crear el circulo deberas pulsar (y mantener pulsado) el lienzo,cuando veas que tienes la dimension suelta el raton " number="third"/>
-	<x-advice titulo="Crear cuadrados" mensaje="Una vez estes en el tablero deberas pulsar el boton de crear cuadrado (el 1 de la parte izquierda),tras esto para crear el cuadrado deberas pulsar (y mantener pulsado) el lienzo,cuando veas que tienes la dimension suelta el raton" number="fourth"/>
-	<x-advice titulo="Cambiar relleno" mensaje="Una vez estes en el tablero deberas pulsar el boton de cambiar relleno (el 8 de la parte izquierda),tras esto se abrira un color picker,tras elegir color podras dibujar con el color seleccionado" number="fifth"/>
+	<x-advice titulo="{{__('messages.tit1_1_tut')}}" mensaje="{{__('messages.men1_1_tut')}}" number="first"/>
+	<x-advice titulo="{{__('messages.tit1_2_tut')}}" mensaje="{{__('messages.men1_2_tut')}}" number="second"/>
+	<x-advice titulo="{{__('messages.tit1_3_tut')}}" mensaje="{{__('messages.men1_3_tut')}}" number="third"/>
+	<x-advice titulo="{{__('messages.tit1_4_tut')}}" mensaje="{{__('messages.men1_4_tut')}}" number="fourth"/>
+	<x-advice titulo="{{__('messages.tit1_5_tut')}}" mensaje="{{__('messages.men1_5_tut')}}" number="fifth"/>
 
 </div>
 @extends("plantillas/cabecera")

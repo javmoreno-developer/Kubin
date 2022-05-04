@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\lienzoController;
 use App\Http\Controllers\usuarioController;
+use Illuminate\Support\Facades\App;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +18,7 @@ use App\Http\Controllers\usuarioController;
 
 Route::get('/', function () {
     return view('landing/index');
-});
+})->name("/");
 
 Route::get("/tutorial",function() {
     return view("tutorial/index");
@@ -57,6 +59,25 @@ Route::get("out",function() {
      Auth::logout();
      return redirect()->route("login");
 });
+
+Route::post("cambiarFoto",[usuarioController::class,"cambiarFoto"])->name("cambiarFoto");
+
+
+Route::post("idioma/",function () {
+    $e=$_POST["datos"]["variable1"];
+    // Retrieve a piece of data from the session...
+    $value = session('idioma_session');
+ 
+    // Specifying a default value...
+    $value = session('idioma_session', $e);
+ 
+    // Store a piece of data in the session...
+    session(['idioma_session' => $e]);
+
+    session()->put("locale",$e);
+    //return redirect()->route("/");
+})->name("idioma");
+
 
 require __DIR__.'/auth.php';
 

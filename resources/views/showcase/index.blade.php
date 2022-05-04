@@ -3,13 +3,13 @@
 	<div id="showcaseContainer">
 		<h1>Showcase</h1>
 		<div id="imagesShow">
-			<x-showcase descripcion="categoria" number="showfirst" svg=23/>
-			<x-showcase descripcion="categoria" number="showsecond" svg=24/>
-			<x-showcase descripcion="categoria" number="showthird" svg=25/>
-			<x-showcase descripcion="categoria" number="showfourth" svg=33/>
-			<x-showcase descripcion="categoria" number="showfifth" svg=27/>
-			<x-showcase descripcion="categoria" number="showsix" svg=30/>
-			<x-showcase descripcion="categoria" number="showseven" svg=32/>
+			<x-showcase descripcion="categoria" number="showfirst" svg=9/>
+			<x-showcase descripcion="categoria" number="showsecond" svg=10/>
+			<x-showcase descripcion="categoria" number="showthird" svg=11/>
+			<x-showcase descripcion="categoria" number="showfourth" svg=12/>
+			<x-showcase descripcion="categoria" number="showfifth" svg=13/>
+			<x-showcase descripcion="categoria" number="showsix" svg=14/>
+			<x-showcase descripcion="categoria" number="showseven" svg=15/>
 		</div>
 		
 	</div>

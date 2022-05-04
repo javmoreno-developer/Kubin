@@ -20,8 +20,6 @@ class usuarios_has_lienzosSeeder extends Seeder
             DB::table("usuarios_has_lienzos")->insert([
                 "idUsu"=>$faker->numberBetween(1,10),
                 "idLie"=>$faker->numberBetween(1,10),
-                "created_at"=>$faker->date($format="Y-m-d",$max="now"),
-                "updated_at"=>$faker->date($format="Y-m-d",$max="now"),
             ]);
         }
     }

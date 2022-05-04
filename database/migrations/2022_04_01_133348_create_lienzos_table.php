@@ -17,7 +17,7 @@ class CreateLienzosTable extends Migration
             $table->increments("idLie");
             $table->text("pathLie",65000);
             $table->string("nomLie",100);
-            
+            $table->timestamps();
         });
     }
 

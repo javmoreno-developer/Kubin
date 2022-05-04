@@ -1,5 +1,5 @@
 @extends("plantillas/final")
-
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<x-cabecera title="true" tutorial="true" showcase="true" github="true" log="true"/>
 	<!--1 seccion (header)-->
 	<section id="firstSection">
@@ -14,10 +14,12 @@
 
 
 			<div id="textFirst">
-				<h1>IMÁGENES LIGERAS Y ESCALABLES PARA SU <div id="changeWord">SITIO WEB</div></h1>
+				<h1> {{__('messages.titulo_landing')}} <div id="changeWord">{{__("messages.sub_landing")}}</div></h1>
 				
 				
-				<p>kubin provee las herramientas necesarias  para crear,borrar y modificar cuadros svg</p>
+				<p>{{__('messages.men1_1_landing')}}</p>
+
+				
 			</div>
 			
 		</div>
@@ -31,11 +33,11 @@
 	<!--2 seccion ¿Que es kubin?-->
 	<section id="secondSection">
 		<div id="text">
-			<h1 class="title">¿QUÉ ES KUBIN?</h1>
+			<h1 class="title">{{__("messages.title1_2_landing")}}</h1>
 			<div class="pretext"> 
-				<p class="texto">Kubin es una herramienta de creación de dibujos altamente escalables.Con ella podrás realizar cuadros mas o menos complejos,usando para ello una serie de herramientas tipicamente usadas para el dibujo vectorial</p>
+				<p class="texto">{{__("messages.men1_2_landing")}}</p>
 			
-			    <p class="texto">Pero además de poder crear las imágenes,con kubin podras descargarlas o compartirlas,incluso podrás crear grupos.</p>
+			    <p class="texto">{{__("messages.men2_2_landing")}}</p>
 			</div>
 		</div>
 		<div id="image">
@@ -46,9 +48,9 @@
 	<!--3 seccion Creadores-->
 	<section id="thirdSection">
 		<div id="text">
-			<h1 class="title">CREADORES Y SUS CREACIONES</h1>
-			<p class="texto">Welcome to the largest community of designers and developers using </p>
-			<p class="texto">Kubin. An extensive, curated library of free assets awaits you.</p>
+			<h1 class="title">{{__("messages.title1_3_landing")}}</h1>
+			<p class="texto">{{__("messages.men1_3_landing")}}</p>
+			<p class="texto">{{__("messages.men2_3_landing")}}</p>
 		</div>
 
 		<div id="pictureContainer">
@@ -92,7 +94,7 @@
 		</div>
 
 		<div id="thirdBtn">
-			<a href="{{route("showcase")}}">Ver mas <i class="bi bi-arrow-right"></i> </a>	
+			<a href="{{route("showcase")}}">{{__("messages.men3_3_landing")}} <i class="bi bi-arrow-right"></i> </a>	
 		</div>
 		
 	</section>
@@ -101,11 +103,11 @@
 	<section id="fourthSection">
 		<div id="text">
 			<div id="titleFourth">
-				<h1 class="title">Cree, edite y envíe con unos </h1>
-			    <h1 class="title">pocos clics</h1>
+				<h1 class="title">{{__("messages.title1_4_landing")}}</h1>
+			    <h1 class="title">{{__("messages.title2_4_landing")}}</h1>
 			</div>
 			<div id="pretext2">
-				<p class="texto">Hemos desarrollado herramientas e integraciones simples que casi no requieren una curva de aprendizaje y hacen que el envío de un Lottie sea rápido y sin problemas.</p>
+				<p class="texto">{{__("messages.men1_4_landing")}}</p>
 			</div>
 		</div>
 		<div id="toolsLanding">
@@ -115,7 +117,7 @@
 						<line x1="197.39999999999998" x2="198.39999999999998" y1="176.2" y2="297.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><line x1="138.39999999999998" x2="259.3999" y1="237.2" y2="237.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line>
 					</svg>
 				</div>
-				<p>Cree y edite los cuadros en línea sin una línea de código</p>
+				<p>{{__("messages.men2_4_landing")}}</p>
 			</div>
 			<div class="toolLan" id="toolLan2">
 				<div class="photoTool" id="photo2">
@@ -123,7 +125,7 @@
 						<circle cx="294.4" cy="91.69999999999999" r="20.5" style="stroke-width: 10;" fill="#fffff" stroke="#00000f"></circle><line x1="278.4" x2="218.39999999999998" y1="105.19999999999999" y2="152.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><circle cx="214.39999999999998" cy="160.7" r="14.5" fill="#fffff" stroke="#00000" style="stroke-width: 10;"></circle><line x1="230.39999999999998" x2="282.4" y1="170.2" y2="204.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><circle cx="294.9" cy="212.2" r="14" fill="#fffff" stroke="#00000f" style="stroke-width: 10;"></circle>
 					</svg>
 				</div>
-				<p>Comparta y descargue su contenido.</p>
+				<p>{{__("messages.men3_4_landing")}}</p>
 			</div>
 			<div class="toolLan" id="toolLan3">
 				<div class="photoTool" id="photo3">
@@ -131,21 +133,21 @@
 						<rect x="96.39999999999998" y="161.2" width="256" height="178" fill="#ffffff" stroke="#00000f" style="stroke-width: 9;"></rect><circle cx="156.39999999999998" cy="201.2" r="24" fill="#000000" stroke="#00000f" style="stroke-width: 9;"></circle><line x1="99.39999999999998" x2="150.39999999999998" y1="308.2" y2="276.2" fill="#000000" stroke="#00000f" style="stroke-width: 5;"></line><line x1="148.39999999999998" x2="182.39999999999998" y1="275.2" y2="302.2" fill="#000000" stroke="#00000f" style="stroke-width: 5;"></line><line x1="181.39999999999998" x2="266.4" y1="302.2" y2="252.2" fill="#000000" stroke="#00000f" style="stroke-width: 5;"></line><line x1="264.4" x2="348.4" y1="252.2" y2="286.2" fill="#000000" stroke="#00000f" style="stroke-width: 5;"></line>
 					</svg>
 				</div>
-				<p>Integre las imagenes de kubin en su sitio web</p>
+				<p>{{__("messages.men4_4_landing")}}</p>
 			</div>
 		</div>
 		<div id="btnContainer">
-			<a href="{{route("tutorial")}}">TUTORIALES <i class="bi bi-arrow-right"></i> </a>
+			<a href="{{route("tutorial")}}">{{__("messages.men5_4_landing")}} <i class="bi bi-arrow-right"></i> </a>
 		</div>
 	</section>
 
 	<!--5 seccion lleva tu juego-->
 	<section id="fifthSection">
 		<div id="fifthText">
-			<p class="title">Vectores hechos simples</p>
-			<h1 class="titleLeft">Lleva tu juego de Imagenes al siguiente  nivel.</h1>
+			<p class="title">{{__("messages.title1_5_landing")}}</p>
+			<h1 class="titleLeft">{{__("messages.men1_5_landing")}}</h1>
 			<div id="fifthBtn">
-				<a href="login">Empice ahora</a>
+				<a href="login">{{__("messages.men2_5_landing")}}</a>
 			</div>
 		</div>
 		<div id="imageFifthContainer">
@@ -182,21 +184,45 @@
 		</div>
 		<div id="textSection">
 			<div class="textPr">
-				<h1>Idioma</h1>
+				<h1>{{__("messages.men_1_footer_landing")}}</h1>
 				<select id="idiomaSelect">
-					<option value="es">Español</option>
-					<option value="en">Ingles</option>
-					<option value="fr">Francés</option>
+					@if (session('idioma_session')=="en") 
+						<option value="en" selected>{{__("messages.id_en")}}</option>
+					@else
+						<option value="en">{{__("messages.id_en")}}</option>
+					@endif
+					@if (session('idioma_session')=="es") 
+						<option value="es" selected>{{__("messages.id_es")}}</option>
+					@else
+						<option value="es">{{__("messages.id_es")}}</option>
+					@endif
+					@if (session('idioma_session')=="fr") 
+						<option value="fr" selected>{{__("messages.id_fr")}}</option>
+					@else
+						<option value="fr">{{__("messages.id_fr")}}</option>
+					@endif
+					
 				</select>
 				
+				
+
 			</div>
 			<div class="textPr">
-				<h1>Stay tunned</h1>
+				<h1>{{__("messages.men2_footer_landing")}}</h1>
 				<p>javmoreno766@gmail.com</p>
 				
 			</div>
 		</div>
 	</section>
 
+	<!--loader
+	<div class="loader_container">
+	  <div class="span-container">
+	    <span class="one"></span>
+	    <span class="two"></span>
+	    <span class="three"></span>
+	    <span class="four"></span>
+	  </div>
+	</div>-->
 
 @extends("plantillas/cabecera")

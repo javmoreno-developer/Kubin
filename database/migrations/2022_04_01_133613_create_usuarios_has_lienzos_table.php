@@ -16,7 +16,6 @@ class CreateUsuariosHasLienzosTable extends Migration
         Schema::create('usuarios_has_lienzos', function (Blueprint $table) {
               $table->unsignedInteger("idUsu");
               $table->unsignedInteger("idLie");
-            $table->timestamps();
         });
           Schema::table("usuarios_has_lienzos",function($table) {
             $table->foreign("idUsu")->references("idUsu")->on("usuarios")->onDelete("cascade");

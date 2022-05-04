@@ -21,7 +21,6 @@ class usuarios_has_gruposSeeder extends Seeder
                 "idUsu"=>$faker->numberBetween(1,10),
                 "idGrup"=>$faker->numberBetween(1,10),
                 "created_at"=>$faker->date($format="Y-m-d",$max="now"),
-                "updated_at"=>$faker->date($format="Y-m-d",$max="now"),
             ]);
         }
     }

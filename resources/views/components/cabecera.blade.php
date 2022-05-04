@@ -8,16 +8,16 @@
         <div id="menu">
             <!--Menu cabecera ordenador-->
             @if($tutorial=="true")
-                <p><a href="{{route("tutorial")}}">Tutoriales</a></p>
+                <p><a class="cabeceraEnlace" href="{{route("tutorial")}}">{{__("messages.cab_1")}}</a></p>
             @endif
             @if($showcase=="true")
-                <p><a href="{{route("showcase")}}">Showcase</a></p>
+                <p><a class="cabeceraEnlace" href="{{route("showcase")}}">{{__("messages.cab_2")}}</a></p>
             @endif
             @if($github=="true")
-                <p><a href="https://github.com/javmoreno-developer?tab=repositories">Github</a></p>
+                <p><a class="cabeceraEnlace" href="https://github.com/javmoreno-developer?tab=repositories">Github</a></p>
             @endif
             @if($log=="true")
-                <p><a href="/login" id="in">Sign in</a></p>
+                <p><a class="cabeceraEnlace" href="/login" id="in">{{__("messages.cab_3")}}</a></p>
             @endif    
             <i class="bi bi-list"></i>
         </div>
@@ -30,19 +30,19 @@
         </div>
         <div id="menuMobileText">
              @if($title=="true")
-                <h1><a href="/">Kubin</a></h1>
+                <h1><a class="cabeceraEnlace" href="/">Kubin</a></h1>
             @endif
             @if($tutorial=="true")
-                <p><a href="/tutorial">Tutoriales</a></p>
+                <p><a class="cabeceraEnlace" href="/tutorial">{{__("messages.cab_1")}}</a></p>
             @endif
             @if($showcase=="true")
-                <p><a href="/showcase">Showcase</a></p>
+                <p><a class="cabeceraEnlace" href="/showcase">{{__("messages.cab_2")}}</a></p>
             @endif
             @if($github=="true")
-                <p><a href="https://github.com/javmoreno-developer?tab=repositories">Github</a></p>
+                <p><a class="cabeceraEnlace" href="https://github.com/javmoreno-developer?tab=repositories">Github</a></p>
             @endif
             @if($log=="true")
-                <p><a href="/login" id="in">Sign in</a></p>
+                <p><a class="cabeceraEnlace" href="/login" id="in">{{__("messages.cab_3")}}</a></p>
             @endif    
         </div>
     </div>

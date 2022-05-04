@@ -10,12 +10,9 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<!--Snap-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js" integrity="sha512-Gk+uNk8NWN235mIkS6B7/424TsDuPDaoAsUekJCKTWLKP6wlaPv+PBGfO7dbvZeibVPGW+mYidz0vL0XaWwz4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-	
-	
 	<!--subida.js-->
 	<script src="{{asset("js/subida.js")}}"></script>
-	<title>Document</title>
+	<title>KUBIN</title>
 </head>
 <body>
 	<section id="boardContainer">
@@ -23,48 +20,48 @@
 		<div id="atrasTablero">
 			<a href="{{route("dashboard")}}">
 				<i class="bi bi-box-arrow-in-left"></i>
-				<p>Atras</p>
+				<p>{{__("messages.m1_tab")}}</p>
 			</a>
 		</div>
 		<!--tools2-->
 	<div id="tools2">
 		
-		<div class="tool" id="seleccionar" title="Seleccionar elementos"><i class="bi bi-cursor"></i></div>
-		<div class="tool" id="ellipse" title="Dibujar elipse"><i class="bi bi-circle-square"></i></div>
-		<div id="exportar" title="Exportar" class="tool"><i class="bi bi-check-lg"></i></i></div>
-		<div id="borrarTotal" class="tool" title="Borrar lienzo entero"><i class="bi bi-trash3"></i></div>
-		<div id="borrarSelectivo" class="tool" title="Borrar ultima figura"><i class="bi bi-skip-backward"></i></div>
+		<div class="tool" id="seleccionar" title="{{__('messages.m2_tab')}}"><i class="bi bi-cursor"></i></div>
+		<div class="tool" id="ellipse" title="{{__('messages.m3_tab')}}"><i class="bi bi-circle-square"></i></div>
+		<div id="exportar" title="{{__('messages.m4_tab')}}" class="tool"><i class="bi bi-check-lg"></i></i></div>
+		<div id="borrarTotal" class="tool" title="{{__('messages.m5_tab')}}"><i class="bi bi-trash3"></i></div>
+		<div id="borrarSelectivo" class="tool" title="{{__('messages.m6_tab')}}"><i class="bi bi-skip-backward"></i></div>
 
-		<div id="gradient" class="tool"><i class="bi bi-rainbow"></i></div>
+		<div id="gradient" class="tool" title="{{__('messages.m7_tab')}}"><i class="bi bi-rainbow"></i></div>
 
-		<div id="use" class="tool"><i class="bi bi-cursor-fill"></i></div>
+		<div id="use" class="tool" title="{{__('messages.m8_tab')}}"><i class="bi bi-cursor-fill"></i></div>
 	</div>
 
 		<div id="board">
 			<div id="punteros"></div>
 		</div>
 		<div id="tools">
-			<div id="sqr" class="tool" title="Dibujar cuadrado"><i class="bi bi-square"></i></div>
-			<div id="recta" class="tool" title="Dibujar recta"><i class="bi bi-slash-lg"></i></div>
-			<div id="circle" class="tool" title="Dibujar circulo"><i class="bi bi-circle"></i></div>
-			<div id="curve" class="tool" title="Dibujar curva"><i class="bi bi-activity"></i></div>
-			<div id="freet" class="tool" title="Dibujo libre"><i class="bi bi-brush"></i></div>
-			<div id="color" class="tool" title="Cambiar color de trazo">
+			<div id="sqr" class="tool" title="{{__('messages.m9_tab')}}"><i class="bi bi-square"></i></div>
+			<div id="recta" class="tool" title="{{__('messages.m10_tab')}}"><i class="bi bi-slash-lg"></i></div>
+			<div id="circle" class="tool" title="{{__('messages.m11_tab')}}"><i class="bi bi-circle"></i></div>
+			<div id="curve" class="tool" title="{{__('messages.m12_tab')}}"><i class="bi bi-activity"></i></div>
+			<div id="freet" class="tool" title="{{__('messages.m13_tab')}}"><i class="bi bi-brush"></i></div>
+			<div id="color" class="tool" title="{{__('messages.m14_tab')}}">
 				<i class="bi bi-palette" id="colorEmu"></i>
 				<input type="color" id="colorPicker">
 			</div>
-			<div id="grosor" title="Cambiar grosor de trazo" class="tool">
+			<div id="grosor" title="{{__('messages.m15_tab')}}" class="tool">
 				<i class="bi bi-border-width" id="openGrosor"></i>
 
 			</div>
-			<div id="fillContainer" class="tool" title="Cambiar relleno">
+			<div id="fillContainer" class="tool" title="{{__('messages.m16_tab')}}">
 				<i class="bi bi-paint-bucket" id="fillEmu"></i>
 				<input type="color" id="fill">
 			</div>
-			<div id="texto" class="tool"><i class="bi bi-fonts" title="Añadir texto"></i></div>
+			<div id="texto" class="tool"><i class="bi bi-fonts" title="{{__('messages.m17_tab')}}"></i></div>
 
 		
-			<div class="tool" id="changeBg" title="cambiar fondo">
+			<div class="tool" id="changeBg" title="{{__('messages.m18_tab')}}">
 				<i class="bi bi-back" id="triggerBg"></i>
 				<input type="color" id="chbg">
 			</div>

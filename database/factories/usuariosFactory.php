@@ -22,7 +22,8 @@ class usuariosFactory extends Factory
             "perfUsu"=>$this->faker->numberBetween(0,2),
             "password"=>Hash::make(12),
             "imagenUsu"=>$this->faker->sentence(),
-            "creacionUsu"=>$this->faker->date($format="Y-m-d",$max="now"),
+            "created_at"=>$this->faker->date($format="Y-m-d",$max="now"),
+            "updated_at"=>$this->faker->date($format="Y-m-d",$max="now"),
         ];
     }
 }

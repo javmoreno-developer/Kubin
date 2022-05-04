@@ -148,6 +148,31 @@ body {
     display: none;
   }
 }
+/* Fade in */
+.cabeceraEnlace {
+  display: block;
+  position: relative;
+  padding: 0.2em 0;
+}
+
+.cabeceraEnlace::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: hotpink;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.cabeceraEnlace:hover::after,
+.cabeceraEnlace:focus::after {
+  opacity: 1;
+  transform: translate3d(0, 0.2em, 0);
+}
+
 #firstSection {
   margin-top: 12vh;
   height: 90vh;
@@ -704,6 +729,65 @@ body {
 @keyframes rotate {
   to {
     stroke-dashoffset: 0;
+  }
+}
+.loader_container {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0%;
+  z-index: 90;
+  background: #0C0404;
+}
+
+.span-container {
+  width: 100px;
+  height: 100px;
+  transform: translate(-50% -50%);
+  position: absolute;
+  top: 42%;
+  left: 45%;
+}
+.span-container span {
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  animation: speed 2s infinite ease-in-out;
+}
+.span-container .one {
+  background: #c9ba12;
+  animation-delay: 1.5s;
+}
+.span-container .two {
+  background: #a11cc7;
+  animation-delay: 1s;
+}
+.span-container .three {
+  background: #237ead;
+  animation-delay: 0.5s;
+}
+.span-container .four {
+  background: #e0bcbc;
+}
+
+@keyframes speed {
+  0% {
+    transform: translate(0%);
+    border-radius: 50%;
+  }
+  25% {
+    transform: translate(150%) scale(0.5);
+    border-radius: 0%;
+  }
+  50% {
+    transform: translate(150%, 150%);
+    border-radius: 50%;
+  }
+  75% {
+    transform: translate(0, 150%) scale(0.5);
+    border-radius: 0%;
   }
 }
 #footerContainer {
@@ -1834,6 +1918,32 @@ div[data-name=mojs-shape] {
   background: #C4C4C4;
   background-size: cover;
 }
+#userModal #userImage #cambiarModal {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#userModal #userImage #cambiarModal #cambiarFoto {
+  display: none;
+}
+#userModal #userImage #cambiarModal:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+#userModal #userImage #cambiarModal:hover #cambiarFoto {
+  display: flex;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  background: #13C4A3;
+  font-weight: bold;
+  color: white;
+}
 
 #exhibition {
   margin-top: 2vh;
@@ -1920,17 +2030,26 @@ div[data-name=mojs-shape] {
   border-radius: 16px;
 }
 
-#downloadModal {
+#downloadContainer {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 9;
+  top: 0%;
+  display: none;
+}
+#downloadContainer #downloadModal {
   height: 60%;
   width: 80%;
   position: fixed;
   background: white;
   top: 30%;
   left: 10%;
+  display: flex;
   justify-content: center;
-  display: none;
 }
-#downloadModal #closeDownload {
+#downloadContainer #downloadModal #closeDownload {
   width: 80%;
   height: 7vh;
   display: flex;
@@ -1939,10 +2058,10 @@ div[data-name=mojs-shape] {
   z-index: 12;
   position: absolute;
 }
-#downloadModal #closeDownload i {
+#downloadContainer #downloadModal #closeDownload i {
   font-size: 20px;
 }
-#downloadModal #contentDown {
+#downloadContainer #downloadModal #contentDown {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1950,10 +2069,12 @@ div[data-name=mojs-shape] {
   height: 100%;
   width: 30%;
 }
-#downloadModal #contentDown textarea {
+#downloadContainer #downloadModal #contentDown textarea {
   display: none;
+  max-height: 200px;
+  max-width: 300px;
 }
-#downloadModal #contentDown a {
+#downloadContainer #downloadModal #contentDown a {
   height: 5vh;
   padding: 10px 20px;
   text-align: center;
@@ -2014,6 +2135,66 @@ div[data-name=mojs-shape] {
   border-radius: 10px;
 }
 
+#changeFotoModal {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+#changeFotoModal #fotoMain {
+  height: 60%;
+  width: 80%;
+  background: white;
+  display: flex;
+}
+#changeFotoModal #fotoMain #main {
+  height: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#changeFotoModal #fotoMain #main form {
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#changeFotoModal #fotoMain #main form div {
+  display: flex;
+  flex-direction: column;
+}
+#changeFotoModal #fotoMain #main form button {
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  background: #13C4A3;
+  color: white;
+  font-weight: bold;
+}
+#changeFotoModal #fotoMain #closeMain {
+  height: 10%;
+  width: 20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#changeFotoModal #fotoMain #closeMain i {
+  font-size: 25px;
+}
+
 @media (min-width: 900px) {
   #userModal {
     height: 30vh;
@@ -2052,7 +2233,7 @@ div[data-name=mojs-shape] {
     height: 7vh;
   }
 
-  #downloadModal {
+  #downloadContainer #downloadModal {
     width: 40%;
     top: 30%;
     left: 30%;
@@ -2061,6 +2242,19 @@ div[data-name=mojs-shape] {
   #paginacion {
     height: 5vh;
     width: 100%;
+  }
+
+  #changeFotoModal {
+    height: 100%;
+  }
+  #changeFotoModal #fotoMain {
+    width: 50%;
+  }
+  #changeFotoModal #fotoMain #main {
+    width: 95%;
+  }
+  #changeFotoModal #fotoMain #closeMain {
+    width: 5%;
   }
 }
 

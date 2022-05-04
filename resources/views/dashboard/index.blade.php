@@ -1,13 +1,18 @@
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <x-cabecera title="true" tutorial="true" showcase="true" github="true" log="false"/>
-	<title>Document</title>
+	<title>KUBIN</title>
 </head>
 <body>
+
 	<section id="userModal">
-		<div id="userImage" style="background:url({{$imagen}});background-size: cover;"></div>
-		<h3>Bienvenid@ {{$nomUsu}}</h3>
-		<h3>Ultima vez : 26/03/2022</h3>
+		<div id="userImage" style="background:url({{$imagen}});background-size: cover;">
+			<div id="cambiarModal">
+				<button id="cambiarFoto">{{__("messages.men1_das")}}</button>
+			</div>
+		</div>
+		<h3>{{__("messages.men2_das")}} {{$nomUsu}}</h3>
+		<h3>{{__("messages.men3_das")}} {{$fecha}}</h3>
 		
 	</section>
 
@@ -17,22 +22,22 @@
 		<table>
 			<thead>
 				<tr id="header">
-					<th>Nombre</th>
-				    <th>Creacion</th>
-				    <th>Ultima act</th>
+					<th>{{__("messages.men4_das")}}</th>
+				    <th>{{__("messages.men5_das")}}</th>
+				    <th>{{__("messages.men6_das")}}</th>
 				    <th></th>
-				    <th>Operaciones</th>
+				    <th>{{__("messages.men7_das")}}</th>
 				    <th></th>
 				</tr>
 			</thead>
 			@foreach($cuadros as $cuadro)
 				<tr>
 					<td><strong><h4>{{$cuadro["nomLie"]}}</h4></strong></td>
-					<td><p> {{$cuadro["pivot"]["created_at"]}}</p></td>
-				    <td><p> {{$cuadro["pivot"]["updated_at"]}}</p></td>
-				    <td><a id="editBtn" href="{{route("tablero",["id"=>$cuadro["idLie"]])}}">Editar</a></td>
-				    <td><a id="delBtn" href="{{route("borrarLienzo",["id"=>$cuadro["idLie"]])}}">Borrar</a>
-				    <td><button class="download" id="download-{{$cuadro["idLie"]}}">Descargar</button></td>
+					<td><p> {{$cuadro["created_at"]}}</p></td>
+				    <td><p> {{$cuadro["updated_at"]}}</p></td>
+				    <td><a id="editBtn" href="{{route("tablero",["id"=>$cuadro["idLie"]])}}">{{__("messages.men8_das")}}</a></td>
+				    <td><a id="delBtn" href="{{route("borrarLienzo",["id"=>$cuadro["idLie"]])}}">{{__("messages.men9_das")}}</a>
+				    <td><button class="download" id="download-{{$cuadro["idLie"]}}">{{__("messages.men10_das")}}</button></td>
 				</tr>
 			@endforeach
 		</table>
@@ -45,23 +50,46 @@
 	</div>
 
 	<div id="btnCrearLie">
-		<a href="{{route("crearLienzo")}}">Crear lienzo</a>
+		<a href="{{route("crearLienzo")}}">{{__("messages.men11_das")}}</a>
 	</div>
 
-	<div id="downloadModal">
+	<div id="downloadContainer">
+		<div id="downloadModal">
 		<div id="contentDown">
-			<h3>Descargar lienzo: </h3>
+			<h3>{{__("messages.men12_das")}}</h3>
 			<p id="nomDown"></p>
 			<select id="selectDown">
-				<option disabled selected>Elije formato</option>
+				<option disabled selected>{{__("messages.men13_das")}}</option>
 				<option value="svg">SVG</option>
 				<option value="png">PNG</option>
 			</select>
-			<textarea id="textDown"></textarea>
-			<a id="download">Descarga</a>
+			<textarea id="textDown" cols="40" rows="5"></textarea>
+
+			<a id="download">{{__("messages.men10_das")}}</a>
 		</div>
 		<div id="closeDownload">
 			<i class="bi bi-x-lg"></i>
+		</div>
+	</div>	
+	</div>
+	
+
+	<div id="changeFotoModal">
+		<div id="fotoMain">
+			<div id="main">
+				<h1>{{__("messages.men14_das")}}</h1>
+				<form action="{{route("cambiarFoto")}}" method="post">
+					@csrf
+					<div>
+						<label for="textChange">{{__("messages.men15_das")}}</label>
+						<input type="text" name="url" id="textChange">
+					</div>
+					<button>{{__("messages.men16_das")}}</button>
+				</form>
+			</div>
+			<div id="closeMain">
+				<i class="bi bi-x-lg" id="closeFoto"></i>
+			</div>
 		</div>
 	</div>
 	</body>

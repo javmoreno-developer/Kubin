@@ -17,6 +17,7 @@ class CreateUsuariosHasGruposTable extends Migration
             $table->unsignedInteger("idUsu");
             $table->unsignedInteger("idGrup");
             $table->timestamps();
+            $table->dropColumn('updated_at');
         });
         Schema::table("usuarios_has_grupos",function($table) {
             $table->foreign("idUsu")->references("idUsu")->on("usuarios")->onDelete("cascade");
