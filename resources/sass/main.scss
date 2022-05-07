@@ -13,6 +13,32 @@ $body: #FAFAFA;
 $tutorialBtn: #3D4852;
 $gris:#696969;
 $landingGrey: white;
+$pr: red;
+
+//variables css
+:root {
+	--body: #FAFAFA;
+	--texto: black;
+	--landingGrey:white;
+	--login-gradient:linear-gradient(to right top, #ff9a8b, #ff9288, #ff8987, #ff8086, #ff7786, #ff778a, #ff778d, #ff7791, #ff8098, #ff889f, #ff91a5, #ff99ac);
+	--icon-gradient: -webkit-linear-gradient(#9c47fc, #356ad2);
+}
+//themes
+html[data-theme='dark'] {
+  --body:#000;
+  --texto: white;
+  --landingGrey:#6D6875;
+  --login-gradient:linear-gradient(0deg, rgba(135,255,239,1) 0%, rgba(153,213,255,1) 100%);
+  --icon-gradient: linear-gradient(0deg, rgba(252,71,184,1) 0%, rgba(30,233,224,1) 100%);
+}
+
+html[data-theme="light"] {
+	--body: #FAFAFA;
+	--texto: black;
+	--landingGrey:white;
+	--login-gradient:linear-gradient(to right top, #ff9a8b, #ff9288, #ff8987, #ff8086, #ff7786, #ff778a, #ff778d, #ff7791, #ff8098, #ff889f, #ff91a5, #ff99ac);
+	--icon-gradient: -webkit-linear-gradient(#9c47fc, #356ad2);
+}
 
 //reboot
 * {
@@ -23,9 +49,19 @@ $landingGrey: white;
 }
 
 body {
-	background:$body;
+	background:var(--body);
 	user-select: none;
 }
+
+//dark mode transition
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 420ms!important;
+  transition-delay: 0!important;
+}
+
 //mixin
 @mixin pill {
 	padding: 10px 20px;
@@ -40,7 +76,7 @@ body {
 	font-size: 32px;
 	color: #9c47fc;
 	display: block;
-	background: -webkit-linear-gradient(#9c47fc, #356ad2);
+	background: var(--icon-gradient);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }

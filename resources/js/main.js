@@ -271,12 +271,12 @@ function changeLetter() {
   //console.log("cambiando");
   $("#changeWord").css("opacity",0);
   setTimeout(()=> {
-    if(sessionStorage.getItem('idiomaCh')=="es") {  
-  	   $("#changeWord").text(arrayCh[contadorCh]);
-     } else if(sessionStorage.getItem('idiomaCh')=="en") {
-        $("#changeWord").text(arrayChEn[contadorCh]);
-     } else {
+    if(sessionStorage.getItem('idiomaCh')=="en") {  
+  	   $("#changeWord").text(arrayChEn[contadorCh]);
+     } else if(sessionStorage.getItem('idiomaCh')=="fr") {
         $("#changeWord").text(arrayChFr[contadorCh]);
+     } else {
+        $("#changeWord").text(arrayCh[contadorCh]);
      }
   	$("#changeWord").css("opacity",1);
   },1000)
@@ -537,4 +537,79 @@ function cambioArrayCh(param) {
 //loader
 window.onload=()=> {
     $(".loader_container").css("display","none");
+}
+
+//color_scheme
+let scheme_count=0;
+
+if(localStorage.getItem("scheme_count")!=null) {
+    scheme_count=localStorage.getItem("scheme_count");
+}
+
+if(localStorage.getItem("scheme")!=null) {
+    if(scheme_count%2==1) {
+        $("#color_scheme").removeClass("bi bi-brightness-high-fill");
+        $("#color_scheme").removeClass("sun");
+        $("#color_scheme").addClass("moon");
+        $("#color_scheme").addClass("bi bi-moon-stars-fill"); 
+    } else {
+        $("#color_scheme").removeClass("bi bi-moon-stars-fill");
+        $("#color_scheme").removeClass("moon");
+        $("#color_scheme").addClass("sun");
+        $("#color_scheme").addClass("bi bi-brightness-high-fill");
+    }
+}
+
+$("#color_scheme").click(()=> {
+    console.log(scheme_count);
+     scheme_count++;
+    if(scheme_count%2==1) {
+        $("#color_scheme").removeClass("bi bi-brightness-high-fill");
+        $("#color_scheme").removeClass("sun");
+        $("#color_scheme").addClass("moon");
+        setTimeout(()=> {
+            $("#color_scheme").addClass("bi bi-moon-stars-fill");    
+        }, 500);
+        toggleDarkMode();
+    } else {
+        $("#color_scheme").removeClass("bi bi-moon-stars-fill");
+        $("#color_scheme").removeClass("moon");
+        $("#color_scheme").addClass("sun");
+        setTimeout(()=> {
+            $("#color_scheme").addClass("bi bi-brightness-high-fill");
+        }, 500);
+        toggleDarkMode();
+    }
+   
+});
+
+function toggleDarkMode() {
+    if(scheme_count%2==1) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        if(localStorage.getItem("scheme")==null || localStorage.getItem("scheme")=="light") {
+            localStorage.setItem("scheme","dark");
+            localStorage.setItem("scheme_count",scheme_count);
+        }
+        trans();
+    } else {
+         document.documentElement.setAttribute('data-theme', 'light');
+         if(localStorage.getItem("scheme")==null || localStorage.getItem("scheme")=="dark") {
+            localStorage.setItem("scheme","light");
+            localStorage.setItem("scheme_count",scheme_count);
+        }
+         trans();
+    }
+}
+
+let trans = () => {
+    document.documentElement.classList.add('transition');
+    window.setTimeout(() => {
+        document.documentElement.classList.remove('transition');
+    }, 1000)
+}
+
+window.onload=function() {
+    if(localStorage.getItem("scheme")!=null) {
+        document.documentElement.setAttribute('data-theme', localStorage.getItem("scheme"));
+    }
 }

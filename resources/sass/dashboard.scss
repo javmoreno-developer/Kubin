@@ -1,3 +1,13 @@
+h3 {
+	color: var(--texto);
+}
+h4 {
+	color: var(--texto);
+}
+th {
+	color: var(--texto);
+}
+
 #userModal {
 	height: 50vh;
 	width: 100%;
@@ -7,7 +17,7 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	border-bottom: 3px solid;
+	border-bottom: 3px solid var(--texto);
 	#userImage {
 		height: 50%;
 		width: 80%;
@@ -71,7 +81,6 @@
 				a {
 					height: 5vh;
 					@include pill;
-					border:2px solid white;
 					background: $azul;
 					color: white;
 					font-weight: bold;
@@ -85,7 +94,7 @@
 				button {
 					height: 5vh;
 					@include pill;
-					border:2px solid white;
+					border:none;
 					background: $azul;
 					color: white;
 					font-weight: bold;
@@ -104,8 +113,8 @@
 		
 		a {
 			text-decoration: none;
-			background: black;
-			color: white;
+			background: var(--texto);
+			color: var(--body);
 			padding: 10px;
 			@include pill;
 		}
@@ -188,12 +197,12 @@
 				align-items:center;
 				li {
 					text-decoration: none;
-					color: black;
+					color: var(--texto);
 					list-style: none;
 					font-weight: bold;
 					a {
 						text-decoration: none;
-						color: black;
+						color: var(--texto);
 					}
 					a[rel="next"] {
 						font-size: 20px;
@@ -229,7 +238,7 @@
 	#fotoMain {
 		height: 60%;
 		width: 80%;
-		background:white;
+		background:var(--body);
 		display: flex;
 		#main {
 			height: 100%;

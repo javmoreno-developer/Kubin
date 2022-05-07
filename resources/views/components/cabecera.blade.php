@@ -4,6 +4,7 @@
     <div id="cabecera">
         @if($title=="true")
             <h1><a href="/">Kubin</a></h1>
+            
         @endif
         <div id="menu">
             <!--Menu cabecera ordenador-->
@@ -19,8 +20,12 @@
             @if($log=="true")
                 <p><a class="cabeceraEnlace" href="/login" id="in">{{__("messages.cab_3")}}</a></p>
             @endif    
+            
             <i class="bi bi-list"></i>
         </div>
+        <div id="scheme">
+                <i id="color_scheme" class="bi bi-brightness-high-fill"></i>    
+            </div>
     </div>
 
     <!--Menu cabecera mobil-->
@@ -44,6 +49,7 @@
             @if($log=="true")
                 <p><a class="cabeceraEnlace" href="/login" id="in">{{__("messages.cab_3")}}</a></p>
             @endif    
+            
         </div>
     </div>
 

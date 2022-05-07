@@ -42,11 +42,18 @@ $gris:#696969;
 						flex-direction: column;
 						justify-content: space-around;
 					}
+					label {
+						color: var(--texto);
+					}
 					input {
 						border: none;
 						outline:none;
 						border-bottom: 3px solid;
-						
+						background: var(--body);
+						color: var(--texto);
+					}
+					input::placeholder {
+						color: var(--texto);
 					}
 					#btnIn {
 						display: flex;
@@ -96,10 +103,18 @@ $gris:#696969;
 						display: flex;
 						flex-direction: column;
 						justify-content: space-around;
+						label {
+							color: var(--texto);
+						}
 						input {
 							border: none;
 							outline:none;
 							border-bottom: 3px solid;	
+							background: var(--body);
+							color: var(--texto);
+						}
+						input::placeholder {
+							color: var(--texto);
 						}
 					}
 					#btnUp {
@@ -122,7 +137,7 @@ $gris:#696969;
 		#overlay {
 			height: 70%;
 			width: 90%;
-			background-image: linear-gradient(to right top, #ff9a8b, #ff9288, #ff8987, #ff8086, #ff7786, #ff778a, #ff778d, #ff7791, #ff8098, #ff889f, #ff91a5, #ff99ac);
+			background-image: var(--login-gradient);
 			position: absolute;
 			top: 60%;
 			z-index: 2;
@@ -134,8 +149,8 @@ $gris:#696969;
   			button {
   				padding: 10px;
     			background: transparent;
-    			border: 3px solid rgba(255,255,255,0.5);
-    			color: white;
+    			border: 3px solid var(--body);
+    			color: var(--body);
     			@include pill;
   			}
 		}

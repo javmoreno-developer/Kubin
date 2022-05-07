@@ -93,6 +93,10 @@ $("#seleccionar").click((e)=> {
  
     console.log(posicion.top, posicion.right, posicion.bottom, posicion.left);
  
+
+    $(figuraSel).click(()=> {
+      alert("a");
+    })
      //llamada a figuras de seleccion
     //top
     burst3

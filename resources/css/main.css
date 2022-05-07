@@ -1,5 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Square+Peg&display=swap");
+:root {
+  --body: #FAFAFA;
+  --texto: black;
+  --landingGrey:white;
+  --login-gradient:linear-gradient(to right top, #ff9a8b, #ff9288, #ff8987, #ff8086, #ff7786, #ff778a, #ff778d, #ff7791, #ff8098, #ff889f, #ff91a5, #ff99ac);
+  --icon-gradient: -webkit-linear-gradient(#9c47fc, #356ad2);
+}
+
+html[data-theme=dark] {
+  --body:#000;
+  --texto: white;
+  --landingGrey:#6D6875;
+  --login-gradient:linear-gradient(0deg, rgba(135,255,239,1) 0%, rgba(153,213,255,1) 100%);
+  --icon-gradient: linear-gradient(0deg, rgba(252,71,184,1) 0%, rgba(30,233,224,1) 100%);
+}
+
+html[data-theme=light] {
+  --body: #FAFAFA;
+  --texto: black;
+  --landingGrey:white;
+  --login-gradient:linear-gradient(to right top, #ff9a8b, #ff9288, #ff8987, #ff8086, #ff7786, #ff778a, #ff778d, #ff7791, #ff8098, #ff889f, #ff91a5, #ff99ac);
+  --icon-gradient: -webkit-linear-gradient(#9c47fc, #356ad2);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,23 +32,36 @@
 }
 
 body {
-  background: #FAFAFA;
+  background: var(--body);
   user-select: none;
 }
 
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) 420ms !important;
+  transition-delay: 0 !important;
+}
+
 .desplazado {
-  box-shadow: 0px -2px 12px 3px #000000;
+  box-shadow: 0px -2px 12px 3px var(--texto);
 }
 
 .no-desplazado {
   box-shadow: none;
 }
 
+#color_scheme {
+  font-size: 22px;
+  color: var(--texto);
+}
+
 #cabecera {
   position: fixed;
   top: 0%;
   z-index: 3;
-  background: #FAFAFA;
+  background: var(--body);
   height: 10vh;
   width: 100%;
   display: flex;
@@ -32,16 +69,16 @@ body {
 }
 #cabecera h1 a {
   text-decoration: none;
-  color: black;
+  color: var(--texto);
   font-weight: bold;
-  background: linear-gradient(90deg, #010101 0%, #1fc0cf 100%);
+  background: linear-gradient(90deg, var(--texto) 0%, #1fc0cf 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Square Peg", cursive;
   font-size: 40px;
 }
 #cabecera #menu {
-  width: 80%;
+  width: 85%;
   display: flex;
   justify-content: end;
 }
@@ -121,7 +158,7 @@ body {
 }
 #menuMobile #menuMobileText p a {
   text-decoration: none;
-  color: black;
+  color: var(--texto);
 }
 
 @media (min-width: 992px) {
@@ -142,7 +179,7 @@ body {
     font-weight: 700;
     padding-top: 7px;
     padding-bottom: 7px;
-    color: black;
+    color: var(--texto);
   }
   #cabecera #menu i {
     display: none;
@@ -171,6 +208,44 @@ body {
 .cabeceraEnlace:focus::after {
   opacity: 1;
   transform: translate3d(0, 0.2em, 0);
+}
+
+.moon {
+  animation: moonFade 2s ease-in-out forwards;
+}
+
+#scheme {
+  width: 2vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes moonFade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+p {
+  color: var(--texto);
+}
+
+h1 {
+  color: var(--texto);
+}
+
+h2 {
+  color: var(--texto);
+}
+
+i {
+  color: var(--texto);
 }
 
 #firstSection {
@@ -212,7 +287,7 @@ body {
 #firstSection #buttonDown #outliner {
   height: 50%;
   width: 20%;
-  border: 3px solid;
+  border: 3px solid var(--texto);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -223,10 +298,10 @@ body {
   font-size: 30px;
 }
 #firstSection #buttonDown #outliner:hover {
-  background: black;
+  background: var(--texto);
 }
 #firstSection #buttonDown #outliner:hover i {
-  color: white;
+  color: var(--body);
 }
 
 #secondSection {
@@ -283,7 +358,7 @@ body {
   align-items: center;
 }
 #thirdSection #pictures .picture {
-  background: white;
+  background: var(--landingGrey);
   width: 100%;
   height: 29vh;
 }
@@ -334,7 +409,7 @@ body {
 #fourthSection #toolsLanding .toolLan {
   height: 28vh;
   width: 80%;
-  background: white;
+  background: var(--landingGrey);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -510,6 +585,10 @@ body {
 #idiomaSelect {
   background: none;
   border: none;
+  color: var(--texto);
+}
+#idiomaSelect option {
+  color: black;
 }
 
 @media (min-width: 992px) {
@@ -573,7 +652,7 @@ body {
   -webkit-animation: draw 8s forwards ease-in;
   animation: draw 8s forwards ease-in;
   -webkit-background-clip: text;
-  stroke: black;
+  stroke: var(--texto);
   fill: none;
   opacity: 1;
 }
@@ -629,7 +708,7 @@ body {
   -webkit-animation: drawboost 6s forwards ease-in;
   animation: drawboost 6s forwards ease-in;
   -webkit-background-clip: text;
-  stroke: black;
+  stroke: var(--texto);
   fill: none;
   opacity: 1;
 }
@@ -886,7 +965,7 @@ body {
 #tutorial .timeline {
   height: 15vh;
   width: 50%;
-  border-right: 3px solid;
+  border-right: 3px solid var(--texto);
   border-width: 0;
 }
 #tutorial svg {
@@ -900,8 +979,8 @@ body {
   height: 11vh;
 }
 #tutorial #second-timeline .timeline {
-  border-left: 3px solid;
-  border-bottom: 3px solid;
+  border-left: 3px solid var(--texto);
+  border-bottom: 3px solid var(--texto);
   border-right: none;
   position: absolute;
   width: 30%;
@@ -916,8 +995,8 @@ body {
   left: 64%;
 }
 #tutorial #third-timeline .timeline {
-  border-bottom: 3px solid;
-  border-right: 3px solid;
+  border-bottom: 3px solid var(--texto);
+  border-right: 3px solid var(--texto);
   position: absolute;
   width: 29%;
   left: 49%;
@@ -932,8 +1011,8 @@ body {
   left: 38%;
 }
 #tutorial #fourth-timeline .timeline {
-  border-left: 3px solid;
-  border-bottom: 3px solid;
+  border-left: 3px solid var(--texto);
+  border-bottom: 3px solid var(--texto);
   border-right: none;
   position: absolute;
   width: 29%;
@@ -949,7 +1028,7 @@ body {
   left: 65%;
 }
 #tutorial #fifth-timeline .timeline {
-  border-bottom: 3px solid;
+  border-bottom: 3px solid var(--texto);
   position: absolute;
   width: 29%;
   left: 49.69%;
@@ -964,7 +1043,7 @@ body {
   left: 38.5%;
 }
 #tutorial #sixth-timeline .timeline {
-  border-left: 3px solid;
+  border-left: 3px solid var(--texto);
   border-right: none;
   position: absolute;
   width: 29%;
@@ -1032,8 +1111,8 @@ body {
   -webkit-animation: drawboost 3s forwards ease-in;
   animation: drawboost 3s forwards ease-in;
   -webkit-background-clip: text;
-  stroke: black;
-  fill: none;
+  stroke: var(--texto);
+  fill: var(--texto);
   opacity: 0;
 }
 
@@ -1041,7 +1120,7 @@ body {
   100% {
     stroke-dashoffset: 0;
     stroke-dasharray: 0;
-    fill: black;
+    fill: var(--texto);
     opacity: 1;
   }
 }
@@ -1132,7 +1211,7 @@ body {
   }
 }
 body {
-  background: #FAFAFA;
+  background: var(--body);
 }
 
 #showcaseContainer {
@@ -1163,7 +1242,7 @@ body {
   justify-content: center;
 }
 #showcaseContainer .showcaseSection .showcaseChest {
-  background: white;
+  background: var(--landingGrey);
   height: 100%;
   width: 80%;
   border-radius: 20%;
@@ -1180,6 +1259,15 @@ body {
   text-align: center;
   flex-direction: column;
   justify-content: space-around;
+}
+#showcaseContainer .showcaseSection .showcaseOverlay h1 {
+  color: white;
+}
+#showcaseContainer .showcaseSection .showcaseOverlay h2 {
+  color: white;
+}
+#showcaseContainer .showcaseSection .showcaseOverlay p {
+  color: white;
 }
 
 @media (min-width: 992px) {
@@ -1249,10 +1337,18 @@ body {
   flex-direction: column;
   justify-content: space-around;
 }
+#containerLogin #login #signIn #formIn form label {
+  color: var(--texto);
+}
 #containerLogin #login #signIn #formIn form input {
   border: none;
   outline: none;
   border-bottom: 3px solid;
+  background: var(--body);
+  color: var(--texto);
+}
+#containerLogin #login #signIn #formIn form input::placeholder {
+  color: var(--texto);
 }
 #containerLogin #login #signIn #formIn form #btnIn {
   display: flex;
@@ -1305,10 +1401,18 @@ body {
   flex-direction: column;
   justify-content: space-around;
 }
+#containerLogin #login #signUp #formUp form div label {
+  color: var(--texto);
+}
 #containerLogin #login #signUp #formUp form div input {
   border: none;
   outline: none;
   border-bottom: 3px solid;
+  background: var(--body);
+  color: var(--texto);
+}
+#containerLogin #login #signUp #formUp form div input::placeholder {
+  color: var(--texto);
 }
 #containerLogin #login #signUp #formUp form #btnUp {
   display: flex;
@@ -1333,7 +1437,7 @@ body {
 #containerLogin #login #overlay {
   height: 70%;
   width: 90%;
-  background-image: linear-gradient(to right top, #ff9a8b, #ff9288, #ff8987, #ff8086, #ff7786, #ff778a, #ff778d, #ff7791, #ff8098, #ff889f, #ff91a5, #ff99ac);
+  background-image: var(--login-gradient);
   position: absolute;
   top: 60%;
   z-index: 2;
@@ -1346,8 +1450,8 @@ body {
 #containerLogin #login #overlay button {
   padding: 10px;
   background: transparent;
-  border: 3px solid rgba(255, 255, 255, 0.5);
-  color: white;
+  border: 3px solid var(--body);
+  color: var(--body);
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -1421,7 +1525,7 @@ body {
 #boardContainer #board {
   height: 40%;
   width: 80%;
-  border: 3px solid;
+  border: 3px solid var(--texto);
 }
 #boardContainer #board #punteros {
   height: 100%;
@@ -1453,7 +1557,7 @@ body {
   font-size: 32px;
   color: #9c47fc;
   display: block;
-  background: -webkit-linear-gradient(#9c47fc, #356ad2);
+  background: var(--icon-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1501,6 +1605,7 @@ body {
   height: 100%;
   width: 100%;
   background: transparent;
+  color: var(--texto);
 }
 
 #namingContainer {
@@ -1520,6 +1625,7 @@ body {
 }
 #namingContainer h1 {
   font-size: 20px;
+  color: black;
 }
 #namingContainer div button {
   padding: 10px 20px;
@@ -1620,7 +1726,7 @@ body {
   border-radius: 50%;
 }
 #grosorContainer input[type=range]::-webkit-slider-runnable-track {
-  background-color: black;
+  background-color: var(--texto);
   height: 3px;
 }
 #grosorContainer input[type=range]:focus::-webkit-slider-runnable-track {
@@ -1685,7 +1791,7 @@ div[data-name=mojs-shape] {
   font-size: 32px;
   color: #9c47fc;
   display: block;
-  background: -webkit-linear-gradient(#9c47fc, #356ad2);
+  background: var(--icon-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1712,6 +1818,9 @@ div[data-name=mojs-shape] {
   position: absolute;
   align-items: center;
 }
+#gradientContainer #cancellGradient i {
+  color: black;
+}
 #gradientContainer #contentGradient {
   height: 100%;
   width: 80%;
@@ -1719,6 +1828,9 @@ div[data-name=mojs-shape] {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+#gradientContainer #contentGradient h3 {
+  color: black;
 }
 #gradientContainer #contentGradient select {
   height: 5vh;
@@ -1902,6 +2014,18 @@ div[data-name=mojs-shape] {
     transform: rotate(360deg);
   }
 }
+h3 {
+  color: var(--texto);
+}
+
+h4 {
+  color: var(--texto);
+}
+
+th {
+  color: var(--texto);
+}
+
 #userModal {
   height: 50vh;
   width: 100%;
@@ -1910,7 +2034,7 @@ div[data-name=mojs-shape] {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border-bottom: 3px solid;
+  border-bottom: 3px solid var(--texto);
 }
 #userModal #userImage {
   height: 50%;
@@ -1984,7 +2108,6 @@ div[data-name=mojs-shape] {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
-  border: 2px solid white;
   background: #1FC0CF;
   color: white;
   font-weight: bold;
@@ -2004,7 +2127,7 @@ div[data-name=mojs-shape] {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
-  border: 2px solid white;
+  border: none;
   background: #1FC0CF;
   color: white;
   font-weight: bold;
@@ -2018,8 +2141,8 @@ div[data-name=mojs-shape] {
 }
 #btnCrearLie a {
   text-decoration: none;
-  background: black;
-  color: white;
+  background: var(--texto);
+  color: var(--body);
   padding: 10px;
   padding: 10px 20px;
   text-align: center;
@@ -2115,13 +2238,13 @@ div[data-name=mojs-shape] {
 }
 #paginacion #container nav ul li {
   text-decoration: none;
-  color: black;
+  color: var(--texto);
   list-style: none;
   font-weight: bold;
 }
 #paginacion #container nav ul li a {
   text-decoration: none;
-  color: black;
+  color: var(--texto);
 }
 #paginacion #container nav ul li a[rel=next] {
   font-size: 20px;
@@ -2150,7 +2273,7 @@ div[data-name=mojs-shape] {
 #changeFotoModal #fotoMain {
   height: 60%;
   width: 80%;
-  background: white;
+  background: var(--body);
   display: flex;
 }
 #changeFotoModal #fotoMain #main {

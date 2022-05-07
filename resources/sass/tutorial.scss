@@ -14,7 +14,7 @@ body {
 	.timeline {
 		height: 15vh;
 		width: 50%;
-		border-right: 3px solid;
+		border-right: 3px solid var(--texto);
 		border-width:0;
 	}
 	svg {
@@ -28,8 +28,8 @@ body {
 	#second-timeline {
 		height: 11vh;
 		.timeline {
-			border-left:3px solid;
-			border-bottom:3px solid;
+			border-left:3px solid var(--texto);
+			border-bottom:3px solid var(--texto);
 			border-right:none;
 			position: absolute;
 			width: 30%;
@@ -46,8 +46,8 @@ body {
 	}
 	#third-timeline {
 		.timeline {
-			border-bottom:3px solid;
-			border-right:3px solid;
+			border-bottom:3px solid var(--texto);
+			border-right:3px solid var(--texto);
 			position: absolute;
 			width: 29%;
 			left: 49%;
@@ -64,8 +64,8 @@ body {
 	}
 	#fourth-timeline {
 		.timeline {
-			border-left:3px solid;
-			border-bottom:3px solid;
+			border-left:3px solid var(--texto);
+			border-bottom:3px solid var(--texto);
 			border-right:none;
 			position: absolute;
 			width: 29%;
@@ -83,7 +83,7 @@ body {
 	}
 	#fifth-timeline {
 		.timeline {
-			border-bottom: 3px solid;
+			border-bottom: 3px solid var(--texto);
 			position: absolute;
 			width: 29%;
 			left: 49.69%;
@@ -100,7 +100,7 @@ body {
 	}
 	#sixth-timeline {
 		.timeline {
-			border-left:3px solid;
+			border-left:3px solid var(--texto);
 			border-right:none;
 			position: absolute;
 			width: 29%;
@@ -168,8 +168,8 @@ body {
   -webkit-animation: drawboost 3s forwards  ease-in;
   animation: drawboost 3s forwards  ease-in;
   -webkit-background-clip: text;
-   stroke: black;
-  fill: none;
+   stroke: var(--texto);
+  fill: var(--texto);
   opacity: 0;
 }
 
@@ -177,7 +177,7 @@ body {
   100% {
     stroke-dashoffset: 0;
     stroke-dasharray: 0;
-    fill: black;
+    fill: var(--texto);
     opacity: 1;
   }
 }

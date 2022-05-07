@@ -1,5 +1,4 @@
 
-
 var pulsacion=[false,false,false,false,false,false,false];
 
 var mousedownEvent="";
@@ -123,6 +122,7 @@ function traducirSqr(param1,param2) {
 		}
 	});
 	console.log("total final:"+array);
+	
 	arrayX=[];
 	arrayY=[];
 	return array;
@@ -178,21 +178,61 @@ $("#sqr").click(()=> {
 });
 
 function pintarSqr() {
-	//console.log(arrayX);
 	let res=traducirSqr(arrayX,arrayY);
 	//var rect=s.rect(arrayX[0],arrayX[1],(arrayY[1]-arrayX[0]),(arrayY[0]-arrayX[1])).attr({
-	var rect=s.rect(res[0],res[1],(res[3]-res[0]),(res[2]-res[1])).attr({
-		fill: fill,
-        stroke: colorTrazo,
-        strokeWidth: grosorTrazo
-	}).click(function(){
-		
-		if(gradientColor!="empty") {
-			this.attr('fill', gradientColor);
-			//console.log(gradientColor);
-		}
+	if(((res[3]-res[0])>0) && ((res[2]-res[1])>0)) {
+		var rect=s.rect(res[0],res[1],(res[3]-res[0]),(res[2]-res[1])).attr({
+			fill: fill,
+	        stroke: colorTrazo,
+	        strokeWidth: grosorTrazo
+		}).click(function(){
+			
+			if(gradientColor!="empty") {
+				this.attr('fill', gradientColor);
+			}
 
-	});
+		});
+	} else if((res[2]-res[1])<0) {
+		if((res[3]-res[0])<0) {
+			var rect=s.rect(res[3],res[2],(res[0]-res[3]),(res[1]-res[2])).attr({
+				fill: fill,
+		        stroke: colorTrazo,
+		        strokeWidth: grosorTrazo
+			}).click(function(){
+				
+				if(gradientColor!="empty") {
+					this.attr('fill', gradientColor);
+				}
+
+			});
+		} else {
+			var rect=s.rect(res[0],res[2],(res[3]-res[0]),(res[1]-res[2])).attr({
+				fill: fill,
+		        stroke: colorTrazo,
+		        strokeWidth: grosorTrazo
+			}).click(function(){
+				
+				if(gradientColor!="empty") {
+					this.attr('fill', gradientColor);
+				}
+
+			});
+		}
+	} else {
+		console.log(res);
+		var rect=s.rect((res[0]-(res[0]-res[3])),res[1],(res[0]-res[3]),(res[2]-res[1])).attr({
+			fill: fill,
+	        stroke: colorTrazo,
+	        strokeWidth: grosorTrazo
+		}).click(function(){
+			
+			if(gradientColor!="empty") {
+				this.attr('fill', gradientColor);
+				//console.log(gradientColor);
+			}
+
+		});
+	}
 	res=[];
 }
 //fin sqr
@@ -326,19 +366,34 @@ $("#circle").click(()=> {
 function pintarCircle() {
 	//console.log("creando");
 	let res=traducirCirculo(circleArray);
+	console.log(res);
+	if(((res[2]-res[0])/2)>0) {
+		var c = s.circle(((res[1]+res[3])/2), ((res[0]+res[2])/2), ((res[2]-res[0])/2)).attr({
+			fill: fill,
+	        stroke: colorTrazo,
+	        strokeWidth: grosorTrazo
+		}).click(function(){
+			
+			if(gradientColor!="empty") {
+				this.attr('fill', gradientColor);
+				//console.log(gradientColor);
+			}
 
-	var c = s.circle(((res[1]+res[3])/2), ((res[0]+res[2])/2), ((res[2]-res[0])/2)).attr({
-		fill: fill,
-        stroke: colorTrazo,
-        strokeWidth: grosorTrazo
-	}).click(function(){
-		
-		if(gradientColor!="empty") {
-			this.attr('fill', gradientColor);
-			//console.log(gradientColor);
-		}
+		});
+	} else {
+		var c = s.circle(((res[1]+res[3])/2), ((res[0]+res[2])/2), ((res[0]-res[2])/2)).attr({
+			fill: fill,
+	        stroke: colorTrazo,
+	        strokeWidth: grosorTrazo
+		}).click(function(){
+			
+			if(gradientColor!="empty") {
+				this.attr('fill', gradientColor);
+				//console.log(gradientColor);
+			}
 
-	});
+		});
+	}
 }
 //fin circle
 
@@ -777,16 +832,33 @@ $("#ellipse").click(()=> {
 function dibujarEllipse(param) {
 	let res=traducirEllipse(ellipseX,ellipseY);
 	console.log(res);
-	let x=(res[3]+res[0])/2;
-	let y=(res[2]+res[1])/2;
-	let rX=res[3]-x;
-	let rY=res[2]-y;
-	console.log(x);
-	console.log(y);
-	var rect=s.ellipse(x,y,rX,rY).click(function () {
-	    
-	    this.attr('fill', fill);
+	let x,y,rX,rY=0;
 
+	if(((res[3]-res[0])>0) && ((res[2]-res[1])>0)) {
+		x=(res[3]+res[0])/2;
+		y=(res[2]+res[1])/2;
+		rX=res[3]-x;
+		rY=res[2]-y;
+	} else if((res[2]-res[1])<0) {
+		if((res[3]-res[0])<0) {
+			x=(res[0]+res[3])/2;
+			y=(res[2]+res[1])/2;
+			rX=res[0]-x;
+			rY=res[1]-y;
+		} else {
+			x=(res[0]+res[3])/2;
+			y=(res[2]+res[1])/2;
+			rX=res[3]-x;
+			rY=res[1]-y;
+		}
+	} else {
+		x=(res[3]+res[0])/2;
+		y=(res[2]+res[1])/2;
+		rX=x-res[3];
+		rY=res[2]-y;
+	}
+	var rect=s.ellipse(x,y,rX,rY).click(function () {   
+	    this.attr('fill', fill);
 	});
 	res=[];
 }

@@ -1,17 +1,87 @@
-/* Error: Undefined variable.
- *    ,
- * 11 |     background:$body;
- *    |                ^^^^^
- *    '
- *   resources\sass\showcase.scss 11:13  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Undefined variable.\a    \2577 \a 11 \2502      background:$body;\d\a    \2502                 ^^^^^\a    \2575 \a   resources\\sass\\showcase.scss 11:13  root stylesheet";
+body {
+  background: var(--body);
 }
+
+#showcaseContainer {
+  margin-top: 10vh;
+  height: 256.6666666667vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#showcaseContainer h1 {
+  text-align: center;
+}
+#showcaseContainer svg {
+  height: 100%;
+  width: 100%;
+}
+#showcaseContainer #imagesShow {
+  height: 95%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#showcaseContainer .showcaseSection {
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#showcaseContainer .showcaseSection .showcaseChest {
+  background: var(--landingGrey);
+  height: 100%;
+  width: 80%;
+  border-radius: 20%;
+  opacity: 1;
+}
+#showcaseContainer .showcaseSection .showcaseOverlay {
+  height: 30vh;
+  width: 80%;
+  background: black;
+  border-radius: 20%;
+  display: none;
+  position: absolute;
+  color: white;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#showcaseContainer .showcaseSection .showcaseOverlay h1 {
+  color: white;
+}
+#showcaseContainer .showcaseSection .showcaseOverlay h2 {
+  color: white;
+}
+#showcaseContainer .showcaseSection .showcaseOverlay p {
+  color: white;
+}
+
+@media (min-width: 992px) {
+  #showcaseContainer {
+    height: 116.6666666667vh !important;
+    display: flex;
+  }
+  #showcaseContainer #imagesShow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #showcaseContainer .showcaseSection {
+    height: 30vh !important;
+    width: 30% !important;
+  }
+  #showcaseContainer .showcaseSection .showcaseChest {
+    height: 30vh !important;
+    width: 70% !important;
+  }
+  #showcaseContainer .showcaseSection .showcaseOverlay {
+    height: 30vh !important;
+    width: 22% !important;
+  }
+}
+
+/*# sourceMappingURL=showcase.css.map */

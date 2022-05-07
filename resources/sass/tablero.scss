@@ -12,7 +12,7 @@ $azul:#1FC0CF;
 	#board {
 		height: 40%;
 		width: 80%;
-		border:3px solid;
+		border:3px solid var(--texto);
 		#punteros {
 			height: 100%;
 			width: 100%;
@@ -100,7 +100,7 @@ $azul:#1FC0CF;
   height: 100%;
   width: 100%;
   background: transparent;
-
+  color: var(--texto);
 }
 
 #namingContainer {
@@ -119,6 +119,7 @@ $azul:#1FC0CF;
 	justify-content: space-evenly;	
 	h1 {
 		font-size: 20px;
+		color: black;
 	}
 	div {
 		button {
@@ -223,7 +224,7 @@ input[type=range]::-ms-thumb {
 /* 2.2 TRACK */
 
 input[type=range]::-webkit-slider-runnable-track {
-  background-color: black;
+  background-color: var(--texto);
   height: 3px;
 }
 
@@ -320,6 +321,9 @@ div[data-name="mojs-shape"] {
 		justify-content: end;
 		position:absolute;
 		align-items: center;
+		i {
+			color: black;
+		}
 	}
 	#contentGradient {
 		height: 100%;
@@ -329,6 +333,9 @@ div[data-name="mojs-shape"] {
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-around;
+		h3 {
+			color: black;
+		}
 		select {
 			height: 5vh;
 	    width: 10vw;
@@ -442,6 +449,7 @@ div[data-name="mojs-shape"] {
 		textarea {
 			width: 30%;
 			height: 50%;
+			
 		}
 	
 	}

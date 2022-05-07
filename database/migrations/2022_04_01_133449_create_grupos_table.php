@@ -16,13 +16,9 @@ class CreateGruposTable extends Migration
         Schema::create('grupos', function (Blueprint $table) {
             $table->increments("idGrup");
             $table->string("nomGrup",100);
-            $table->unsignedInteger("idCat");
             $table->timestamps();
         });
-
-        Schema::table("grupos",function($table) {
-            $table->foreign("idCat")->references("idCat")->on("categorias")->onDelete("cascade");
-        });
+        
     }
 
     /**
