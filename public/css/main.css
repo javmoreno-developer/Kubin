@@ -2174,6 +2174,7 @@ th {
 #btnCrearLie {
   height: 10vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -2188,6 +2189,20 @@ th {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
+}
+#btnCrearLie #create_group {
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  color: white;
+  border: none;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: #2B3A67;
 }
 #downloadContainer {
   height: 100%;
@@ -2387,6 +2402,7 @@ th {
 
   #btnCrearLie {
     height: 7vh;
+    flex-direction: row;
   }
 
   #downloadContainer #downloadModal {

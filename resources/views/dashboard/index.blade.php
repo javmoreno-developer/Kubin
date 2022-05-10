@@ -53,6 +53,7 @@
 
 	<div id="btnCrearLie">
 		<a href="{{route("crearLienzo")}}">{{__("messages.men11_das")}}</a>
+		<button id="create_group">Crear grupo</button>
 	</div>
 
 	@if(Auth::user()->perfUsu==2)

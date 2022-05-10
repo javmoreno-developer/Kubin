@@ -649,28 +649,35 @@ $("#cancellNaming").click((e)=> {
 //subir
 var contenido=[];
 var nombre="";
+var subirMagico=2;
+
 $("#naming").click((e)=> {
 	$("#namingLoader").css("display","flex");
 	console.log("recopilando: ");
 	//nombre del lienzo
 	nombre=$("#nameLienzo").val();
 
+	
+	console.log("subir magico"+subirMagico);
+
 	if($("#idAct").length==0) {
-		for(let i=2;i<$("svg")[4].childNodes.length;i++) {
-			console.log($("svg")[4].childNodes[i]);
-			console.log(typeof($("svg")[4].childNodes[i]));
-			contenido.push($("svg")[4].childNodes[i].outerHTML);
+		for(let i=subirMagico;i<$("svg")[5].childNodes.length;i++) {
+			console.log($("svg")[5].childNodes[i]);
+			console.log(typeof($("svg")[5].childNodes[i]));
+			contenido.push($("svg")[5].childNodes[i].outerHTML);
 		}
 	} else {
-		for(let i=2;i<$("svg")[0].childNodes.length;i++) {
-			console.log($("svg")[0].childNodes[i]);
-			console.log(typeof($("svg")[0].childNodes[i]));
-			contenido.push($("svg")[0].childNodes[i].outerHTML);
+		for(let i=subirMagico;i<$("svg")[1].childNodes.length;i++) {
+			console.log($("svg")[1].childNodes[i]);
+			console.log(typeof($("svg")[1].childNodes[i]));
+			contenido.push($("svg")[1].childNodes[i].outerHTML);
 		}
 	}
+	
+	
 	//window.location.href=window.location.href + "?contenido=" + contenido;
 	enviar();
-	console.log($("svg")[4]);
+	//console.log($("svg")[4]);
 	console.log(contenido);
 });
 	
@@ -734,6 +741,7 @@ $( ".tool" ).each(function(index) {
 //borrar total
 $("#borrarTotal").click(()=> {
 	$("#lienzo").empty();
+	subirMagico=0;
 });
 
 //$("#lienzo").removeChild($("#lienzo").lastChild);

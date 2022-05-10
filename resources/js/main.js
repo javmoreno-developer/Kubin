@@ -619,3 +619,8 @@ window.onload=function() {
         document.documentElement.setAttribute('data-theme', localStorage.getItem("scheme"));
     }
 }
+
+//aparecer modal crear grupo
+$("#create_group").click(()=> {
+    alert("a");
+});

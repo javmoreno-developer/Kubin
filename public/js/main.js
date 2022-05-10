@@ -677,6 +677,11 @@ window.onload = function () {
   if (localStorage.getItem("scheme") != null) {
     document.documentElement.setAttribute('data-theme', localStorage.getItem("scheme"));
   }
-};
+}; //aparecer modal crear grupo
+
+
+$("#create_group").click(function () {
+  alert("a");
+});
 /******/ })()
 ;

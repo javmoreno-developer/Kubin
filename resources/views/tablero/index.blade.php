@@ -93,8 +93,8 @@
 				<!--tablero.js-->
 				
 				<script>
-					//pintar('<?=html_entity_decode($path)?>');
-					pintar('<?=html_entity_decode($path)?>');
+					let a='<?= html_entity_decode($path) ?>';
+					pintar(a);
 				</script>
 				<input type="hidden" id="idAct" value="{{$id}}">
 			@endif

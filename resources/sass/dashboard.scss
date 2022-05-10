@@ -106,8 +106,8 @@ th {
 
 #btnCrearLie {
 		height: 10vh;
-		
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items:center;
 		
@@ -117,6 +117,14 @@ th {
 			color: var(--body);
 			padding: 10px;
 			@include pill;
+		}
+		#create_group {
+			@include pill;
+			color: white;
+			border:none;
+			padding-top:12px;
+			padding-bottom:12px;
+			background: #2B3A67;
 		}
 }
 #downloadContainer {
@@ -317,6 +325,7 @@ th {
 	}
 	#btnCrearLie {
 		height: 7vh;
+		flex-direction: row;
 	}
 	#downloadContainer {
 		#downloadModal {
