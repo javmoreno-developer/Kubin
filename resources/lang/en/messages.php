@@ -188,4 +188,6 @@ return [
 
     'm18_tab' => 'Change background',
 
+    //404
+    'main_404' => 'page not found',
 ];

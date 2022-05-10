@@ -188,5 +188,6 @@ return [
 
     'm18_tab' => 'Changement de fond',
 
-
+    //404
+    'main_404' => 'Page non trouvée',
 ];

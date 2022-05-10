@@ -19,13 +19,18 @@
             @endif
             @if($log=="true")
                 <p><a class="cabeceraEnlace" href="/login" id="in">{{__("messages.cab_3")}}</a></p>
+            @else
+            @isset(Auth::user()->idUsu)
+                <p><a class="cabeceraEnlace" id="log_out" href="{{route("out")}}">Log out</a></p>
+            @endisset
             @endif    
             
+
             <i class="bi bi-list"></i>
         </div>
         <div id="scheme">
-                <i id="color_scheme" class="bi bi-brightness-high-fill"></i>    
-            </div>
+            <i id="color_scheme" class="bi bi-brightness-high-fill"></i>    
+        </div>
     </div>
 
     <!--Menu cabecera mobil-->
@@ -48,8 +53,15 @@
             @endif
             @if($log=="true")
                 <p><a class="cabeceraEnlace" href="/login" id="in">{{__("messages.cab_3")}}</a></p>
+            @else
+                @isset(Auth::user()->idUsu)
+                    <a id="log_out" href="{{route("out")}}">Log out</a>
+                @endisset
             @endif    
             
+             <div id="scheme2">
+                    <i id="color_scheme2" class="bi bi-brightness-high-fill"></i>    
+            </div>
         </div>
     </div>
 

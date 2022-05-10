@@ -18,8 +18,13 @@
 	<section id="boardContainer">
 		<!--atras-->
 		<div id="atrasTablero">
-			<a href="{{route("dashboard")}}">
-				<i class="bi bi-box-arrow-in-left"></i>
+				<svg viewBox="0 0 200 200">
+					<line x1="82.39999999999998" x2="133.39999999999998" y1="106.2" y2="66.19999999999999" fill="#000000" stroke="#00000f" style="stroke-width: 7;" stroke-linecap="round"></line>
+					<line x1="82.5" x2="133.5" y1="106.2" y2="148.2" fill="#000000" stroke="#00000f" style="stroke-width: 7;" stroke-linecap="round"></line>
+					<line x1="103.5" x2="127.5" y1="105.2" y2="86.19999999999999" fill="#000000" stroke="#00000f" style="stroke-width: 3;"></line>
+					<line x1="103.5" x2="127.5" y1="105.2" y2="126.19999999999999" fill="#000000" stroke="#00000f" style="stroke-width: 3;"></line>
+					<circle cx="141.89999999999998" cy="105.7" r="2.5" fill="#000000" stroke="#00000f" style="stroke-width: 3;"></circle>
+				</svg>
 				<p>{{__("messages.m1_tab")}}</p>
 			</a>
 		</div>
@@ -32,9 +37,11 @@
 		<div id="borrarTotal" class="tool" title="{{__('messages.m5_tab')}}"><i class="bi bi-trash3"></i></div>
 		<div id="borrarSelectivo" class="tool" title="{{__('messages.m6_tab')}}"><i class="bi bi-skip-backward"></i></div>
 
-		<div id="gradient" class="tool" title="{{__('messages.m7_tab')}}"><i class="bi bi-rainbow"></i></div>
+		@if(Auth::user()->perfUsu==2)
+			<div id="gradient" class="tool" title="{{__('messages.m7_tab')}}"><i class="bi bi-rainbow"></i></div>
 
-		<div id="use" class="tool" title="{{__('messages.m8_tab')}}"><i class="bi bi-cursor-fill"></i></div>
+			<div id="use" class="tool" title="{{__('messages.m8_tab')}}"><i class="bi bi-cursor-fill"></i></div>
+		@endif
 	</div>
 
 		<div id="board">
@@ -58,14 +65,15 @@
 				<i class="bi bi-paint-bucket" id="fillEmu"></i>
 				<input type="color" id="fill">
 			</div>
-			<div id="texto" class="tool"><i class="bi bi-fonts" title="{{__('messages.m17_tab')}}"></i></div>
 
-		
-			<div class="tool" id="changeBg" title="{{__('messages.m18_tab')}}">
-				<i class="bi bi-back" id="triggerBg"></i>
-				<input type="color" id="chbg">
-			</div>
-
+			@if(Auth::user()->perfUsu==2)
+				<div id="texto" class="tool"><i class="bi bi-fonts" title="{{__('messages.m17_tab')}}"></i></div>
+				
+				<div class="tool" id="changeBg" title="{{__('messages.m18_tab')}}">
+					<i class="bi bi-back" id="triggerBg"></i>
+					<input type="color" id="chbg">
+				</div>
+			@endif
 			
 		</div>
 		<div id="coor" title="Coordenadas del puntero">

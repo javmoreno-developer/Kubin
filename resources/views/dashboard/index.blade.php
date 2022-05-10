@@ -37,7 +37,9 @@
 				    <td><p> {{$cuadro["updated_at"]}}</p></td>
 				    <td><a id="editBtn" href="{{route("tablero",["id"=>$cuadro["idLie"]])}}">{{__("messages.men8_das")}}</a></td>
 				    <td><a id="delBtn" href="{{route("borrarLienzo",["id"=>$cuadro["idLie"]])}}">{{__("messages.men9_das")}}</a>
-				    <td><button class="download" id="download-{{$cuadro["idLie"]}}">{{__("messages.men10_das")}}</button></td>
+				    @if(Auth::user()->perfUsu==2)
+				    	<td><button class="download" id="download-{{$cuadro["idLie"]}}">{{__("messages.men10_das")}}</button></td>
+				    @endif
 				</tr>
 			@endforeach
 		</table>
@@ -53,26 +55,27 @@
 		<a href="{{route("crearLienzo")}}">{{__("messages.men11_das")}}</a>
 	</div>
 
-	<div id="downloadContainer">
-		<div id="downloadModal">
-		<div id="contentDown">
-			<h3>{{__("messages.men12_das")}}</h3>
-			<p id="nomDown"></p>
-			<select id="selectDown">
-				<option disabled selected>{{__("messages.men13_das")}}</option>
-				<option value="svg">SVG</option>
-				<option value="png">PNG</option>
-			</select>
-			<textarea id="textDown" cols="40" rows="5"></textarea>
+	@if(Auth::user()->perfUsu==2)
+		<div id="downloadContainer">
+			<div id="downloadModal">
+			<div id="contentDown">
+				<h3>{{__("messages.men12_das")}}</h3>
+				<p id="nomDown"></p>
+				<select id="selectDown">
+					<option disabled selected>{{__("messages.men13_das")}}</option>
+					<option value="svg">SVG</option>
+					<option value="png">PNG</option>
+				</select>
+				<textarea id="textDown" cols="40" rows="5"></textarea>
 
-			<a id="download">{{__("messages.men10_das")}}</a>
+				<a id="download">{{__("messages.men10_das")}}</a>
+			</div>
+			<div id="closeDownload">
+				<i class="bi bi-x-lg"></i>
+			</div>
+		</div>	
 		</div>
-		<div id="closeDownload">
-			<i class="bi bi-x-lg"></i>
-		</div>
-	</div>	
-	</div>
-	
+	@endif
 
 	<div id="changeFotoModal">
 		<div id="fotoMain">

@@ -34,19 +34,19 @@ Route::get("/login",function() {
 
 Route::post("registrar",[usuarioController::class,"registrar"])->name("registrar");
 
-Route::get("/tablero/",[lienzoController::class,"editar"])->name("tablero");
+Route::get("/tablero/",[lienzoController::class,"editar"])->middleware(["auth"])->name("tablero");
 
-Route::post("/tablero/",[lienzoController::class,"subida"])->name("tablero2");
+Route::post("/tablero/",[lienzoController::class,"subida"])->middleware(["auth"])->name("tablero2");
 
-Route::get("/dashboard",[lienzoController::class,"dashboard"])->name("dashboard");
+Route::get("/dashboard",[lienzoController::class,"dashboard"])->middleware(["auth"])->name("dashboard");
 
-Route::get("/crearLienzo/",[lienzoController::class,"crearLienzo"])->name("crearLienzo");
+Route::get("/crearLienzo/",[lienzoController::class,"crearLienzo"])->middleware(["auth"])->name("crearLienzo");
 
-Route::get("/borrarLienzo/{id}",[lienzoController::class,"borrarLienzo"])->name("borrarLienzo");
+Route::get("/borrarLienzo/{id}",[lienzoController::class,"borrarLienzo"])->middleware(["auth"])->name("borrarLienzo");
 
-Route::post("obtenerDatos",[lienzoController::class,"obtenerDatos"])->name("obtenerDatos");
+Route::post("obtenerDatos",[lienzoController::class,"obtenerDatos"])->middleware(["auth"])->name("obtenerDatos");
 
-Route::get("pagina/{numero}",[lienzoController::class,"dashboard"])->name("pagina");
+Route::get("pagina/{numero}",[lienzoController::class,"dashboard"])->middleware(["auth"])->name("pagina");
 
 Route::get("borrar",function() {
     return view("borrar/index");
@@ -58,9 +58,9 @@ Route::get("borrar",function() {
 Route::get("out",function() {
      Auth::logout();
      return redirect()->route("login");
-});
+})->middleware(["auth"])->name("out");
 
-Route::post("cambiarFoto",[usuarioController::class,"cambiarFoto"])->name("cambiarFoto");
+Route::post("cambiarFoto",[usuarioController::class,"cambiarFoto"])->middleware(["auth"])->name("cambiarFoto");
 
 
 Route::post("idioma/",function () {
@@ -81,6 +81,6 @@ Route::post("idioma/",function () {
 
 require __DIR__.'/auth.php';
 
-/*Route::fallback(function() {
+Route::fallback(function() {
     return view("404/index");
-});*/
+});

@@ -333,12 +333,12 @@ function changeLetter() {
   //console.log("cambiando");
   $("#changeWord").css("opacity", 0);
   setTimeout(function () {
-    if (sessionStorage.getItem('idiomaCh') == "es") {
-      $("#changeWord").text(arrayCh[contadorCh]);
+    if (sessionStorage.getItem('idiomaCh') == "en") {
+      $("#changeWord").text(arrayChEn[contadorCh]);
     } else if (sessionStorage.getItem('idiomaCh') == "fr") {
       $("#changeWord").text(arrayChFr[contadorCh]);
     } else {
-      $("#changeWord").text(arrayChEn[contadorCh]);
+      $("#changeWord").text(arrayCh[contadorCh]);
     }
 
     $("#changeWord").css("opacity", 1);
@@ -615,27 +615,34 @@ if (localStorage.getItem("scheme") != null) {
 }
 
 $("#color_scheme").click(function () {
+  dark("#color_scheme");
+});
+$("#color_scheme2").click(function () {
+  dark("#color_scheme2");
+});
+
+function dark(param) {
   console.log(scheme_count);
   scheme_count++;
 
   if (scheme_count % 2 == 1) {
-    $("#color_scheme").removeClass("bi bi-brightness-high-fill");
-    $("#color_scheme").removeClass("sun");
-    $("#color_scheme").addClass("moon");
+    $(param).removeClass("bi bi-brightness-high-fill");
+    $(param).removeClass("sun");
+    $(param).addClass("moon");
     setTimeout(function () {
-      $("#color_scheme").addClass("bi bi-moon-stars-fill");
+      $(param).addClass("bi bi-moon-stars-fill");
     }, 500);
     toggleDarkMode();
   } else {
-    $("#color_scheme").removeClass("bi bi-moon-stars-fill");
-    $("#color_scheme").removeClass("moon");
-    $("#color_scheme").addClass("sun");
+    $(param).removeClass("bi bi-moon-stars-fill");
+    $(param).removeClass("moon");
+    $(param).addClass("sun");
     setTimeout(function () {
-      $("#color_scheme").addClass("bi bi-brightness-high-fill");
+      $(param).addClass("bi bi-brightness-high-fill");
     }, 500);
     toggleDarkMode();
   }
-});
+}
 
 function toggleDarkMode() {
   if (scheme_count % 2 == 1) {

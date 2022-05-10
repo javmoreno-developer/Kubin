@@ -8,6 +8,14 @@
 	font-size: 22px;
 	color: var(--texto);
 }
+#log_out {
+	@include pill;
+	background:#B4654A;
+	color: white !important	;
+}
+#color_scheme {
+	display: none;
+}
 #cabecera {
 	position:fixed;
 	top: 0%;
@@ -40,7 +48,8 @@
 		p {
 			display: none;
 			a {
-				text-decoration: none;	
+				text-decoration: none;
+
 			}
 			#in {
 				text-decoration: none;
@@ -56,7 +65,8 @@
 }
 
 #menuMobile {
-	background: white;
+	background: var(--body);
+	color: var(--texto);
 	top: 0;
 	position: fixed;
 	height: 100vh;
@@ -98,7 +108,7 @@
 				text-decoration: none;
 				color: black;
 				font-weight: bold;
-				background: linear-gradient(90deg, rgba(1,1,1,1) 0%, rgba(31,192,207,1) 100%);
+				background: linear-gradient(90deg, var(--texto) 0%, rgba(31,192,207,1) 100%);
 	  			-webkit-background-clip: text;
 	  			-webkit-text-fill-color: transparent;
 	  			font-family: 'Square Peg', cursive;
@@ -116,6 +126,9 @@
 
 
 @media (min-width: 992px) { 
+	#color_scheme {
+		display: flex;
+	}
 	#cabecera {
 		justify-content: space-around;
 		position:fixed;

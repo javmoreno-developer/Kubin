@@ -390,24 +390,17 @@ div[data-name="mojs-shape"] {
 #atrasTablero {
 	height: 7vh;
 	width: 80%;
-	//border:3px solid red;
 	position:absolute;
 	top: 0%;
 	z-index: 1;
 	display: flex;
-	justify-content: center;
 	align-items:center;
+	cursor: pointer;
 	
-	a {
-		text-decoration: none;
-		color: black;
-		display: flex;
-		justify-content: center;
-		align-items:center;
-		i {
-			font-size: 30px;
+	svg {
+			height: 100%;
+			width: 30%;
 		}
-	}
 	
 }
 @media(min-width: 900px) {

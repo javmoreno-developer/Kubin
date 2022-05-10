@@ -1004,3 +1004,8 @@ function scan() {
 
 
 */
+
+//atras tablero
+$("#atrasTablero").click(()=> {
+	history.back();
+});
