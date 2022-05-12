@@ -19,6 +19,8 @@ Se distinguirán tres perfiles:
 A la hora de desplegar la app,usaré el servicio de heroku utilizando clearDB para tener la bd en otro servicio (ademas de usarlo para hacer copias de seguridad de la bd),el dominio para la app sera un .com/.io
 ## Diseño
 https://www.figma.com/file/POVXEtSiLjYTva3qFoZzq1/KUBIN?node-id=0%3A1
+## Video checkpoint
+https://youtu.be/L8coQg8mF40
 ## Tras descargar
 npm i
 npm run dev,
