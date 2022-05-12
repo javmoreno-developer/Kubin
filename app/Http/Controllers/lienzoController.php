@@ -66,10 +66,12 @@ class lienzoController extends Controller
     }
 
     public function dashboard($skip=0) {
-         $dateTime = date('Y-m-d H:i:s');
+        $dateTime = date('Y-m-d H:i:s');
         $updatedDateFormat =  Carbon::createFromFormat('Y-m-d H:i:s', $dateTime)->format('m-d-Y H:i:s');
+
         //nombre usuario
         $nombre=Auth::user()->nomUsu;
+
         //cuadros usuario
         $cuadros=[];
         $me=usuarios::find(Auth::user()->idUsu);
@@ -84,7 +86,12 @@ class lienzoController extends Controller
         //imagen
         $imagen=Auth::user()->imagenUsu;
         $tt=now()->toDateTimeString();
-        return view("dashboard/index",["nomUsu"=>$nombre,"cuadros"=>$cuadros,"imagen"=>$imagen,"fecha"=>$fecha]);
+
+        //grupos
+        $me=usuarios::find(Auth::user()->idUsu);
+        $grupo=$me->grupos()->get();
+
+        return view("dashboard/index",["nomUsu"=>$nombre,"cuadros"=>$cuadros,"imagen"=>$imagen,"fecha"=>$fecha,"grupo"=>$grupo]);
     }
 
     public function editar(Request $req) {

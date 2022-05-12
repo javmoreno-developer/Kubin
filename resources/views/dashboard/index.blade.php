@@ -54,6 +54,9 @@
 	<div id="btnCrearLie">
 		<a href="{{route("crearLienzo")}}">{{__("messages.men11_das")}}</a>
 		<button id="create_group">Crear grupo</button>
+		@if(sizeof($grupo)!=0)
+			<button id="see_group">Grupos asociados</button>
+		@endif
 	</div>
 
 	@if(Auth::user()->perfUsu==2)
@@ -96,7 +99,52 @@
 			</div>
 		</div>
 	</div>
-	</body>
+
+	<!--Formulario crear grupo-->
+	<div id="createGroupModal">
+		<div id="create_group_main">
+			<div id="contentCreateGroup">
+				<h1>{{__("messages.title_group")}}</h1>
+				<form action="{{route("send-email")}}" method="post">
+					@csrf
+					<div>	
+						<label for="group_name">Nombre del grupo</label> <br>
+						<input type="text" id="group_name" name="name">
+					</div>	
+					<div>	
+						<label for="email_create">Miembros</label> <br>
+						<textarea name="email_group" id="email_create" cols="30" rows="10"></textarea>
+					</div>	
+					<button>Enviar</button>
+				</form>
+			</div>
+			<div id="closeCreateGroup">
+				<i class="bi bi-x-lg" id="closeGroup"></i>
+			</div>
+		</div>
+	</div>
+
+	<!--Ver grupos-->
+	<div id="seeGroupModal">
+		<div id="see_group_main">
+			<div id="contentSeeGroup">
+				<h1>Ver grupos</h1>
+				<div id="container">
+					@foreach($grupo as $item)
+						<div class="filaGroup">
+							<p>{{$item->nomGrup}}</p>
+							<a href="{{route("grupo",$item->idGrup)}}">Ver</a>
+						</div>
+					@endforeach
+				</div>
+			</div>
+			<div id="closeSeeGroup">
+				<i class="bi bi-x-lg" id="closeGroup2"></i>
+			</div>
+		</div>
+	</div>
+
+</body>
 <!--Jquery-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 

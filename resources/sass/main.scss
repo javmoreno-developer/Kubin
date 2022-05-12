@@ -22,6 +22,7 @@ $pr: red;
 	--landingGrey:white;
 	--login-gradient:linear-gradient(to right top, #ff9a8b, #ff9288, #ff8987, #ff8086, #ff7786, #ff778a, #ff778d, #ff7791, #ff8098, #ff889f, #ff91a5, #ff99ac);
 	--icon-gradient: -webkit-linear-gradient(#9c47fc, #356ad2);
+	--azul:#1FC0CF;
 }
 //themes
 html[data-theme='dark'] {
@@ -90,4 +91,5 @@ html.transition *:after {
 @import "tablero.scss";
 @import "dashboard.scss";
 @import "404.scss";
+@import "grupo.scss";
 

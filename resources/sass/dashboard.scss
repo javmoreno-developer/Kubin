@@ -126,6 +126,14 @@ th {
 			padding-bottom:12px;
 			background: #2B3A67;
 		}
+		#see_group {
+			@include pill;
+			color: white;
+			border:none;
+			padding-top:12px;
+			padding-bottom:12px;
+			background: #702632;
+		}
 }
 #downloadContainer {
 	height: 100%;
@@ -287,6 +295,131 @@ th {
 	}
 }
 
+#createGroupModal {
+	background: rgba(0, 0, 0, 0.5);
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	position: fixed;
+	z-index: 90;
+	top: 0%;
+	display: none;
+
+	#create_group_main {
+		height: 80%;
+		width: 100%;
+		z-index: 90;
+		background:var(--body);
+		color: var(--texto);
+		display: flex;
+		justify-content: space-around;
+		#contentCreateGroup {
+			height: 100%;
+			width: 95%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			form {
+				display: flex;
+				flex-direction: column;
+				align-items:center;
+				justify-content: space-evenly;
+				height: 90%;
+				width: 70%;
+				div {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					text-align: center;
+				}
+				button {
+					@include pill;
+					background: var(--azul);
+					border: none;
+					color: white;
+				}
+			}
+		}
+		#closeCreateGroup {
+			height: 10%;
+			width: 5%;
+			display: flex;
+			
+			align-items: center;
+			i {
+				font-size: 20px;
+			}
+		}
+	}
+}
+
+#seeGroupModal {
+	background: rgba(0, 0, 0, 0.5);
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	position: fixed;
+	z-index: 90;
+	top: 0%;
+	display: none;
+
+	#see_group_main {
+		height: 80%;
+		width: 100%;
+		z-index: 90;
+		background:var(--body);
+		color: var(--texto);
+		display: flex;
+		justify-content: space-around;
+		#contentSeeGroup {
+			height: 100%;
+			width: 95%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			#container {
+				height: 95%;
+				width: 100%;
+				margin-top: 5%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				
+				.filaGroup {
+					height: 7%;
+					width: 80%;
+					border-bottom:3px solid;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap:75%;
+					a {
+						@include pill;
+						padding: 5px 10px;
+						background: var(--azul);
+						border:none;
+					}
+				}
+			}
+			
+		}
+		#closeSeeGroup {
+			height: 10%;
+			width: 5%;
+			display: flex;
+			
+			align-items: center;
+			i {
+				font-size: 20px;
+			}
+		}
+	}
+}
+
 @media(min-width: 900px) {
 	#userModal {
 		height: 30vh;
@@ -350,6 +483,18 @@ th {
 			#closeMain {
 				width: 5%;
 			}
+		}
+	}
+
+	#createGroupModal {
+		#create_group_main {
+			width: 50%;
+		}
+	}
+
+	#seeGroupModal {
+		#see_group_main {
+			width: 50%;
 		}
 	}
 }

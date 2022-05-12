@@ -190,4 +190,7 @@ return [
 
     //404
     'main_404' => 'Page non trouvée',
+
+    //formulario crear grupo
+    'title_group' => 'créer un groupe',
 ];

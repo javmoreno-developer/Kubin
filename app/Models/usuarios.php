@@ -17,4 +17,8 @@ class usuarios extends Model implements AuthenticatableContract
     public function lienzos() {
         return $this->belongsToMany('App\Models\lienzos',"usuarios_has_lienzos","idUsu","idLie");
     }
+
+    public function grupos() {
+        return $this->belongsToMany('App\Models\grupos',"usuarios_has_grupos","idUsu","idGrup");
+    }
 }

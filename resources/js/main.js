@@ -622,5 +622,30 @@ window.onload=function() {
 
 //aparecer modal crear grupo
 $("#create_group").click(()=> {
-    alert("a");
+   $("#createGroupModal").css("display","flex"); 
+});
+
+//desaparecer modal crear grupo
+$("#closeGroup").click(()=> {
+    $("#createGroupModal").css("display","none"); 
+});
+
+//aparecer modal ver grupo
+$("#see_group").click(()=> {
+   $("#seeGroupModal").css("display","flex"); 
+});
+
+//desaparecer modal ver grupo
+$("#closeGroup2").click(()=> {
+    $("#seeGroupModal").css("display","none"); 
+});
+
+//mostrar lista de miembros en un grupo
+$("#member_open").click(()=> {
+    console.log("ha");
+    $("#modalMembersContainer").css("display","flex");
+});
+//desaparecer lista de miembros en un grupo
+$("#closeGroup3").click(()=> {
+    $("#modalMembersContainer").css("display","none");
 });
