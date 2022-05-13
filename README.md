@@ -13,7 +13,7 @@ Se distinguirán tres perfiles:
 2.Usuario no premium y logueado:podrá lo anterior además de crear lienzos (un número limitado de lienzos.con la mayoria de herramientas disponibles) y además podrá compartilos (numero limitado).
 3.Usuario premium y logueado:podrá crear grupos de usuarios,crear lienzos (sin limites),tendrá todas las herramientas disponibles,podrá descargarse los dibujos y personalizar el dashboard.
 ## Modelado
-![image](https://user-images.githubusercontent.com/55782974/168255869-80b7c9c6-384b-4708-bf27-cc291f66eccd.png)
+![image](https://user-images.githubusercontent.com/55782974/168302667-9d6e1686-bca0-4cb1-8eb8-a59c1af20436.png)
 
 ## Despliegue
 A la hora de desplegar la app,usaré el servicio de heroku utilizando clearDB para tener la bd en otro servicio (ademas de usarlo para hacer copias de seguridad de la bd),el dominio para la app sera un .com/.io
