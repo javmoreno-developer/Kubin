@@ -13,12 +13,14 @@ Se distinguirán tres perfiles:
 2.Usuario no premium y logueado:podrá lo anterior además de crear lienzos (un número limitado de lienzos.con la mayoria de herramientas disponibles) y además podrá compartilos (numero limitado).
 3.Usuario premium y logueado:podrá crear grupos de usuarios,crear lienzos (sin limites),tendrá todas las herramientas disponibles,podrá descargarse los dibujos y personalizar el dashboard.
 ## Modelado
-![image](https://user-images.githubusercontent.com/55782974/166721030-487e64cc-9791-46cb-be56-df58eda56986.png)
+![image](https://user-images.githubusercontent.com/55782974/168302667-9d6e1686-bca0-4cb1-8eb8-a59c1af20436.png)
 
 ## Despliegue
 A la hora de desplegar la app,usaré el servicio de heroku utilizando clearDB para tener la bd en otro servicio (ademas de usarlo para hacer copias de seguridad de la bd),el dominio para la app sera un .com/.io
 ## Diseño
 https://www.figma.com/file/POVXEtSiLjYTva3qFoZzq1/KUBIN?node-id=0%3A1
+## Video checkpoint
+https://youtu.be/L8coQg8mF40
 ## Tras descargar
 npm i
 npm run dev,
