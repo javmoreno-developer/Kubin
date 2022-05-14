@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\lienzos;
 use App\Models\usuarios;
+use App\Models\categorias;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -42,6 +43,11 @@ class lienzoController extends Controller
                 //$me->lienzos()->attach($modelo->idLie,["created_at"=>"$hoy","updated_at"=>"$hoy"]);
                 $me->lienzos()->attach($modelo->idLie);
                
+               //apunto en la tabla lienzos_categorias
+                $lienzo=lienzos::find($modelo->idLie);
+                 foreach($_POST['datos']["variable2"] as $item) {
+                    $lienzo->categorias()->attach(intval($item));
+                }
                 return redirect()->route("dashboard");
                 } else {
                     echo "actualizando";
@@ -54,7 +60,16 @@ class lienzoController extends Controller
                     $modelo->nomLie=$nombre;
                     $modelo->save();
                     $modelo->touch();
+
+                    //actualizando categoria
+                    $lienzo=lienzos::find($modelo->idLie);
+                    $lienzo->categorias()->detach();
+                    foreach($_POST['datos']["variable2"] as $item) {
+                        $lienzo->categorias()->attach(intval($item));
+                    }
                     return redirect()->route("dashboard");
+                    
+                    
                 }
             } else {
                 echo "no logueado";
@@ -62,6 +77,7 @@ class lienzoController extends Controller
             }
         
         
+        //var_dump($_POST["datos"]["variable2"]);
 
     }
 

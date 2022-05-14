@@ -8,21 +8,29 @@
 		<div id="title_group">
 			<h1>{{$nombreGrupo}}</h1>
 		</div>
-		<div id="subtitle_group">
-			<div id="memberContainer">
+		<!--Subtitulo-->
+		<div id="subtitle_container">
+			<div id="title_members">
 				<h3 id="member_open">Miembros</h3>
+			</div>
+			<div id="members_container">
 				@if(sizeof($imagenes)>=4)
 					@for($i=0;$i<4;$i++) 
-						<p>hola</p>
+						<div class="member_icon" style="background: url({{$imagen}});background-size: cover;></div>
 					@endfor
 				@else
 					@foreach($imagenes as $imagen)
-						<p>hola</p>
+						<div class="member_icon" style="background: url({{$imagen}});background-size: cover;"></div>
 					@endforeach
 				@endif
 			</div>
-			
-			<h3>Categorias</h3>
+			<div id="title_category">
+				<h3>Categorias</h3>
+			</div>
+
+			<div id="category_container">
+				
+			</div>
 		</div>
 	</section>
 

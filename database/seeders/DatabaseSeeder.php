@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             //usuarios_has_gruposSeeder::class,
             //usuarios_has_lienzosSeeder::class,
            //lienzos_has_categoriasSeeder::class,
+           usuarios_has_categoriasSeeder::class,
         ]);
     }
 }

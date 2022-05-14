@@ -1,4 +1,5 @@
 
+
 var pulsacion=[false,false,false,false,false,false,false];
 
 var mousedownEvent="";
@@ -24,6 +25,9 @@ window.onload=()=> {
 			
 	}
 	initNormal();
+	 if (localStorage.getItem("scheme") != null) {
+    	document.documentElement.setAttribute('data-theme', localStorage.getItem("scheme"));
+  	}
 }
 
 //tablero
@@ -84,6 +88,11 @@ var fill="black";
 var colorFondo="black";
 var gradientColor="empty";
 
+if(localStorage.getItem("scheme")=="dark") {
+	fill="white";
+	colorFondo="white";
+	colorTrazo="white";
+}
 
 
 //funciones de conversion
@@ -608,7 +617,9 @@ $("#texto").click((e)=> {
 			
 			
 			if(pulsacion[5]==true) {	
-				var t1 = s.text((xText-VwToPx(anchoSvg)), (yText-VhToPx(altoSvg)), $("#area").val());
+				var t1 = s.text((xText-VwToPx(anchoSvg)), (yText-VhToPx(altoSvg)), $("#area").val()).attr({
+					stroke: colorTrazo,
+				});
 				//textoInput.style.display="none";
 				$("#textoInput").css("display","none");
 				comText=true;	
@@ -628,34 +639,45 @@ $("#exportar").click((e)=> {
 //cancelar asignar nombre
 $("#cancellNaming").click((e)=> {
 	$("#namingContainer").css("display","none");
-	$("body").css("background","white");
+	if(localStorage.getItem("scheme")=="light") {
+		$("body").css("background","white");
+	} else {
+		$("body").css("background","black");
+	}
 });
 
 //subir
 var contenido=[];
 var nombre="";
+var subirMagico=2;
+
 $("#naming").click((e)=> {
 	$("#namingLoader").css("display","flex");
 	console.log("recopilando: ");
 	//nombre del lienzo
 	nombre=$("#nameLienzo").val();
 
+	
+	console.log("subir magico"+subirMagico);
+
 	if($("#idAct").length==0) {
-		for(let i=2;i<$("svg")[4].childNodes.length;i++) {
-			console.log($("svg")[4].childNodes[i]);
-			console.log(typeof($("svg")[4].childNodes[i]));
-			contenido.push($("svg")[4].childNodes[i].outerHTML);
+		for(let i=subirMagico;i<$("svg")[5].childNodes.length;i++) {
+			console.log($("svg")[5].childNodes[i]);
+			console.log(typeof($("svg")[5].childNodes[i]));
+			contenido.push($("svg")[5].childNodes[i].outerHTML);
 		}
 	} else {
-		for(let i=2;i<$("svg")[0].childNodes.length;i++) {
-			console.log($("svg")[0].childNodes[i]);
-			console.log(typeof($("svg")[0].childNodes[i]));
-			contenido.push($("svg")[0].childNodes[i].outerHTML);
+		for(let i=subirMagico;i<$("svg")[1].childNodes.length;i++) {
+			console.log($("svg")[1].childNodes[i]);
+			console.log(typeof($("svg")[1].childNodes[i]));
+			contenido.push($("svg")[1].childNodes[i].outerHTML);
 		}
 	}
+	
+	
 	//window.location.href=window.location.href + "?contenido=" + contenido;
 	enviar();
-	console.log($("svg")[4]);
+	//console.log($("svg")[4]);
 	console.log(contenido);
 });
 	
@@ -719,6 +741,7 @@ $( ".tool" ).each(function(index) {
 //borrar total
 $("#borrarTotal").click(()=> {
 	$("#lienzo").empty();
+	subirMagico=0;
 });
 
 //$("#lienzo").removeChild($("#lienzo").lastChild);
@@ -857,8 +880,14 @@ function dibujarEllipse(param) {
 		rX=x-res[3];
 		rY=res[2]-y;
 	}
-	var rect=s.ellipse(x,y,rX,rY).click(function () {   
-	    this.attr('fill', fill);
+	var rect=s.ellipse(x,y,rX,rY).attr({   
+	    fill: fill,
+	    stroke: colorTrazo,
+	    strokeWidth: grosorTrazo
+	}).click(function(){
+		if(gradientColor!="empty") {
+			this.attr('fill', gradientColor);
+		}
 	});
 	res=[];
 }
@@ -872,7 +901,11 @@ $("#gradient").click(()=> {
 	$("body").css("background","black");
 	$("#cancellGradient").click(()=> {
 		$("#gradientContainer").css("display","none");
-		$("body").css("background","white");
+		if(localStorage.getItem("scheme")=="light") {
+			$("body").css("background","white");
+		} else {
+			$("body").css("background","black");
+		}
 	});
 	$("#crearGradient").click(()=> {
 		let c1=$("#c1").val();
@@ -970,6 +1003,17 @@ function scan() {
 
 }
 
-//semicircle
+//darkmode
+/*window.onload = function () {
+  if (localStorage.getItem("scheme") != null) {
+    document.documentElement.setAttribute('data-theme', localStorage.getItem("scheme"));
+  }
+};
 
 
+*/
+
+//atras tablero
+$("#atrasTablero").click(()=> {
+	history.back();
+});

@@ -21,4 +21,8 @@ class usuarios extends Model implements AuthenticatableContract
     public function grupos() {
         return $this->belongsToMany('App\Models\grupos',"usuarios_has_grupos","idUsu","idGrup");
     }
+
+    public function categorias() {
+      return $this->belongsToMany('App\Models\categorias',"usuarios_has_categorias","idUsu","idCat");
+    }
 }

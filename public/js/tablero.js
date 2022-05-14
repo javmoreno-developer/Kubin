@@ -631,6 +631,7 @@ $("#texto").click((e)=> {
 
 //asignar nombre
 $("#exportar").click((e)=> {
+	chargeCat();
 	$("#namingContainer").css("display","flex");
 	$("body").css("background","black");
 
@@ -638,6 +639,7 @@ $("#exportar").click((e)=> {
 
 //cancelar asignar nombre
 $("#cancellNaming").click((e)=> {
+	vaciarSelect();
 	$("#namingContainer").css("display","none");
 	if(localStorage.getItem("scheme")=="light") {
 		$("body").css("background","white");
@@ -652,31 +654,37 @@ var nombre="";
 var subirMagico=2;
 
 $("#naming").click((e)=> {
-	$("#namingLoader").css("display","flex");
-	console.log("recopilando: ");
-	//nombre del lienzo
-	nombre=$("#nameLienzo").val();
+	if(($("#nameLienzo").val()!="") && ($("#catExportSelect").val().length!=0)) {
+		$("#namingLoader").css("display","flex");
+		console.log("recopilando: ");
+		//nombre del lienzo
+		nombre=$("#nameLienzo").val();
 
-	
-	console.log("subir magico"+subirMagico);
+		
+		console.log("subir magico"+subirMagico);
 
-	if($("#idAct").length==0) {
-		for(let i=subirMagico;i<$("svg")[5].childNodes.length;i++) {
-			console.log($("svg")[5].childNodes[i]);
-			console.log(typeof($("svg")[5].childNodes[i]));
-			contenido.push($("svg")[5].childNodes[i].outerHTML);
+		if($("#idAct").length==0) {
+			for(let i=subirMagico;i<$("svg")[5].childNodes.length;i++) {
+				console.log($("svg")[5].childNodes[i]);
+				console.log(typeof($("svg")[5].childNodes[i]));
+				contenido.push($("svg")[5].childNodes[i].outerHTML);
+			}
+		} else {
+			for(let i=subirMagico;i<$("svg")[1].childNodes.length;i++) {
+				console.log($("svg")[1].childNodes[i]);
+				console.log(typeof($("svg")[1].childNodes[i]));
+				contenido.push($("svg")[1].childNodes[i].outerHTML);
+			}
 		}
+		
+		
+		//window.location.href=window.location.href + "?contenido=" + contenido;
+		
+			enviar();
+			console.log("enviando");
 	} else {
-		for(let i=subirMagico;i<$("svg")[1].childNodes.length;i++) {
-			console.log($("svg")[1].childNodes[i]);
-			console.log(typeof($("svg")[1].childNodes[i]));
-			contenido.push($("svg")[1].childNodes[i].outerHTML);
-		}
+		alert("no");
 	}
-	
-	
-	//window.location.href=window.location.href + "?contenido=" + contenido;
-	enviar();
 	//console.log($("svg")[4]);
 	console.log(contenido);
 });
@@ -685,6 +693,7 @@ $("#naming").click((e)=> {
 function enviar() {
 	var datos = {
     "variable1" : contenido, // Dato #1 a enviar
+    "variable2" : $("#catExportSelect").val(),
     //"variable2" : variable2 // Dato #2 a enviar
     // etc...
 };
@@ -709,7 +718,7 @@ function enviarDatos(datos, url){
             url: url,
             type: 'post',
             success:  function (response) {
-               //console.log(response); // Imprimir respuesta del archivo
+               console.log(response); // Imprimir respuesta del archivo
               // window.location.replace(response);
               window.location.href="./dashboard";
             },
@@ -1017,3 +1026,97 @@ function scan() {
 $("#atrasTablero").click(()=> {
 	history.back();
 });
+
+//cargar las categorias al exportar
+function chargeCat() {
+	var datos = {
+    "variable1" : "hola", // Dato #1 a enviar
+    //"variable2" : variable2 // Dato #2 a enviar
+    // etc...
+};
+
+var url2 = "./cargarCat"; // URL a la cual enviar los datos
+
+enviarDatos2(url2); // Ejecutar cuando se quiera enviar los datos
+}
+
+function enviarDatos2(url){
+    $.ajax({
+            data: {
+            	 "_token": $("meta[name='csrf-token']").attr("content"),
+            }, 
+            url: url,
+            type: 'post',
+            success:  function (response) {
+               console.log(response); // Imprimir respuesta del archivo
+               asignarSelect(response);
+            },
+            error: function (error) {
+                console.log(error.responseText); // Imprimir respuesta de error
+                console.log(error);
+                asignarSelect(error.responseText);
+            }
+    });
+}
+
+function asignarSelect(param) {
+	//console.log("despierta");
+	for(let i=0;i<param.length;i++) {
+		  var newDiv = document.createElement("option");
+		  let local=param[i].split(",");
+		  var newContent = document.createTextNode(local[1]);
+		  newDiv.setAttribute("value",local[0]);
+		  newDiv.appendChild(newContent);
+		  $("#catExportSelect").append(newDiv);
+	}
+}
+
+function vaciarSelect() {
+	$("#catExportSelect").empty();
+	var newDiv = document.createElement("option");
+	var newContent = document.createTextNode("Elije categoria");
+	newDiv.appendChild(newContent);
+	newDiv.setAttribute("disabled","");
+	newDiv.setAttribute("selected","");
+	$("#catExportSelect").append(newDiv);
+}
+
+//formulario add categoria
+$("#addCat").click(()=> {
+	$("#addCatContainer").css("display","flex");
+});
+
+//add Cat
+$("#addCatBtn").click(()=> {
+	var datos = {
+    	"name" : $("#nameCategory").val(), // Dato #1 a enviar
+  		"desc" : $("#descCategory").val(),
+	};
+
+	var url3 = "./addCat"; // URL a la cual enviar los datos
+
+	enviarDatos3(datos, url3); // Ejecutar cuando se quiera enviar los datos
+});
+
+
+	
+
+
+function enviarDatos3(datos, url){
+    $.ajax({
+            data: {
+            	 "_token": $("meta[name='csrf-token']").attr("content"),
+            	 datos,
+            }, 
+            url: url,
+            type: 'post',
+            success:  function (response) {
+               console.log(response); // Imprimir respuesta del archivo
+               vaciarSelect();
+               enviarDatos2("./cargarCat");
+            },
+            error: function (error) {
+                console.log(error.responseText); // Imprimir respuesta de error
+            }
+    });
+}

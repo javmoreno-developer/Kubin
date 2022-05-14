@@ -12,7 +12,11 @@ class lienzos extends Model
     protected $primaryKey="idLie";
     
     
-      public function usuario() {
-        return $this->belongsToMany('App\Models\usuarios',"usuarios_has_lienzos","idLie","idUsu");
+    public function usuario() {
+      return $this->belongsToMany('App\Models\usuarios',"usuarios_has_lienzos","idLie","idUsu");
+    }
+
+    public function categorias() {
+      return $this->belongsToMany('App\Models\categorias',"lienzos_has_categorias","idLie","idCat");
     }
 }

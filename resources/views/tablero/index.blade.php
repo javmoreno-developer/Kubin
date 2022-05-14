@@ -111,7 +111,21 @@
 			<p>Subiendo lienzo:</p>
 			<div id="loader"></div>
 		</div>
-		<textarea id="nameLienzo" cols="30" rows="4" maxlength="50">@isset($nombre){{$nombre}}@endisset</textarea>
+		<input type="text" id="nameLienzo" value="@isset($nombre){{$nombre}}@endisset">
+		<div id="catExport">
+			<select name="categorias" id="catExportSelect" multiple>
+				<option selected disabled>Elije categoria</option>
+			</select>
+			<i class="bi bi-plus" id="addCat" title="añadir categoria"></i>
+		</div>
+		
+		<div id="addCatContainer">
+			<label for="#nameCategory">nombre</label>
+			<input type="text" id="nameCategory" name="nameCategory">
+			<label for="#descCategory">descripcion</label>
+			<input type="text" id="descCategory" name="descCategory">
+			<button id="addCatBtn">add</button>
+		</div>
 		<div>
 			<button id="naming">Asignar</button>
 			<button id="cancellNaming">Cancelar</button>

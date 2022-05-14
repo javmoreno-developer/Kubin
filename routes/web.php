@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\lienzoController;
 use App\Http\Controllers\usuarioController;
 use App\Http\Controllers\grupoController;
+use App\Http\Controllers\categoriaController;
 use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\App;
 
@@ -86,6 +87,13 @@ Route::post("/send-email",[MailController::class,"sendEmail"])->middleware("auth
 
 //ver grupos
 Route::get("/grupo/{id}",[grupoController::class,"ver"])->middleware("auth")->name("grupo");
+
+//cargar categorias en el selector
+Route::post("cargarCat",[categoriaController::class,"cargar"])->name("cargarCat");
+
+//add categorias
+Route::post("addCat",[categoriaController::class,"add"])->name("addCat");
+
 
 require __DIR__.'/auth.php';
 
