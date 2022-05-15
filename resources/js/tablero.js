@@ -699,7 +699,8 @@ function enviarDatos(datos, url){
 		id=$("#idAct").val();
 		console.log("hey you");
 	}
-    $.ajax({
+	console.log($("#idgr").val());
+    /*$.ajax({
             data: {
             	 "_token": $("meta[name='csrf-token']").attr("content"),
             	 datos,
@@ -716,7 +717,7 @@ function enviarDatos(datos, url){
             error: function (error) {
                 console.log(error.responseText); // Imprimir respuesta de error
             }
-    });
+    });*/
 }
 }
 //fin subir

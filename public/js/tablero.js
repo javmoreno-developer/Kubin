@@ -699,7 +699,8 @@ function enviar() {
 };
 
 var url = "./tablero"; // URL a la cual enviar los datos
-var id=0;
+var id="null";
+var gr="null";
 
 enviarDatos(datos, url); // Ejecutar cuando se quiera enviar los datos
 
@@ -708,18 +709,28 @@ function enviarDatos(datos, url){
 		id=$("#idAct").val();
 		console.log("hey you");
 	}
+
+	if($("#idgr").val()!=undefined) {
+		console.log($("#idgr").val());
+		gr=$("#idgr").val()
+	} else {
+		console.log("es ind");
+	}
+
+	console.log(gr);
     $.ajax({
             data: {
             	 "_token": $("meta[name='csrf-token']").attr("content"),
             	 datos,
             	 id,
             	 nombre,
+            	 gr,
             }, 
             url: url,
             type: 'post',
             success:  function (response) {
                console.log(response); // Imprimir respuesta del archivo
-              // window.location.replace(response);
+              //window.location.replace(response);
               window.location.href="./dashboard";
             },
             error: function (error) {
@@ -1029,21 +1040,37 @@ $("#atrasTablero").click(()=> {
 
 //cargar las categorias al exportar
 function chargeCat() {
+	let id="null";
+	let grupo="null";
+
+	//vemos si al editar cargamos las categorias anteriores
+	if($("#idgr2").val()!=undefined) {
+		id=$("#idgr2").val();
+	}
+
+	//vemos si hay grupo
+	if($("#idgr").val()!=undefined) {
+		grupo=$("#idgr").val();
+	}
+
 	var datos = {
-    "variable1" : "hola", // Dato #1 a enviar
-    //"variable2" : variable2 // Dato #2 a enviar
+    "variable1" : id, // Dato #1 a enviar
+    "variable2" : grupo, // Dato #2 a enviar
     // etc...
 };
 
 var url2 = "./cargarCat"; // URL a la cual enviar los datos
 
-enviarDatos2(url2); // Ejecutar cuando se quiera enviar los datos
+console.log("datos charge");
+console.log(datos);
+enviarDatos2(datos,url2); // Ejecutar cuando se quiera enviar los datos
 }
 
-function enviarDatos2(url){
+function enviarDatos2(datos,url){
     $.ajax({
             data: {
             	 "_token": $("meta[name='csrf-token']").attr("content"),
+            	 datos,
             }, 
             url: url,
             type: 'post',
@@ -1061,9 +1088,13 @@ function enviarDatos2(url){
 
 function asignarSelect(param) {
 	//console.log("despierta");
-	for(let i=0;i<param.length;i++) {
+	//let local=param[0].split(",");
+	//console.log(local);
+	let keys=Object.keys(param);
+	let values=Object.values(param);
+	for(let i=0;i<keys.length;i++) {
 		  var newDiv = document.createElement("option");
-		  let local=param[i].split(",");
+		  let local=values[i].split(",");
 		  var newContent = document.createTextNode(local[1]);
 		  newDiv.setAttribute("value",local[0]);
 		  newDiv.appendChild(newContent);
@@ -1113,7 +1144,7 @@ function enviarDatos3(datos, url){
             success:  function (response) {
                console.log(response); // Imprimir respuesta del archivo
                vaciarSelect();
-               enviarDatos2("./cargarCat");
+               chargeCat();
             },
             error: function (error) {
                 console.log(error.responseText); // Imprimir respuesta de error

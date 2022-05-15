@@ -45,6 +45,8 @@ Route::get("/dashboard",[lienzoController::class,"dashboard"])->middleware(["aut
 
 Route::get("/crearLienzo/",[lienzoController::class,"crearLienzo"])->middleware(["auth"])->name("crearLienzo");
 
+Route::post("/crearLienzo/",[lienzoController::class,"crearLienzo"])->middleware(["auth"])->name("crearLienzo");
+
 Route::get("/borrarLienzo/{id}",[lienzoController::class,"borrarLienzo"])->middleware(["auth"])->name("borrarLienzo");
 
 Route::post("obtenerDatos",[lienzoController::class,"obtenerDatos"])->middleware(["auth"])->name("obtenerDatos");
@@ -94,6 +96,8 @@ Route::post("cargarCat",[categoriaController::class,"cargar"])->name("cargarCat"
 //add categorias
 Route::post("addCat",[categoriaController::class,"add"])->name("addCat");
 
+//cambiar nombre del grupo
+Route::post("cambiarNombreGrupo",[grupoController::class,"cambiarNombre"])->name("cambiarNombreGrupo");
 
 require __DIR__.'/auth.php';
 

@@ -8,6 +8,15 @@
 		display: flex;
 		justify-content: center;
 		align-items: flex-end;
+		i {
+			font-size: 20px;
+			display: none;
+		}
+		&:hover {
+			i {
+				display: flex;
+			}
+		}
 	}
 }
 
@@ -43,6 +52,84 @@
 	}
 }
 
+#modalCategoryContainer {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	position: fixed;
+	top: 0%;
+	z-index: 90;
+	display: none;
+
+	#modalCategoryMain {
+		width: 40%;
+		height: 60%;
+		background:white;
+		display: flex;
+
+		#contentModalCategory {
+			height: 100%;
+			width: 95%;
+		}
+		#closeModalCategory {
+			height: 10%;
+			width: 5%;
+			
+			display: flex;
+			align-items:center;
+		}
+	}
+}
+
+#modalNameContainer {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	position: fixed;
+	top: 0%;
+	z-index: 90;
+	
+
+	#modalNameMain {
+		width: 40%;
+		height: 60%;
+		background:var(--body);
+		display: flex;
+
+		#contentModalName {
+			height: 100%;
+			width: 95%;
+			display: flex;
+			flex-direction: column;
+			align-items:center;
+			gap:30%;
+
+			input {
+				border: none;
+				outline:none;
+				border-bottom: 3px solid;
+				background: var(--body);
+				color: var(--texto);
+			}
+			button {
+				@include pill;
+			}
+		}
+		#closeModalName {
+			height: 10%;
+			width: 5%;
+			
+			display: flex;
+			align-items:center;
+		}
+	}
+}
 
 //subtitle
 #subtitle_container {
@@ -80,10 +167,59 @@
 	}
 
 	#category_container {
-
+		display: flex;
+    	justify-content: center;
+    	align-items:center;
 	}
+
 }
 //fin subtitle
+//canvas_container
+#group_canvas_container {
+	height: 150vh;
+	width: 100%;
+	border:3px solid;
+	table {
+		height: 100%;
+		width: 100%;
+
+		tr {
+			display: flex;
+    		flex-direction: column;
+    		height: 10vh;
+    		justify-content: center;
+    		td {
+    			display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    width: 100%;
+    		}
+		}
+		#header {
+			height: 5vh;
+    		display: flex;
+    		display: none;
+    		flex-direction: row;
+    		justify-content: space-around;
+		}
+	}
+}
+
+//boton de crear lienzo
+#make_canvas_container {
+	height: 5vh;
+	width: 100%;
+	
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	a {
+		@include pill;
+		background:#702632;
+		color: white;
+	}
+}
+
 @media (min-width: 500px) { 
 	#subtitle_container {
 		height: 20vh;
@@ -98,12 +234,23 @@
 	}
 	#members_container {
 		
-		flex-direction: row;
+		flex-direction: row !important;
 		align-items:center;
-		justify-content: space-around;
+		justify-content: center !important;
 		.member_icon {
 			width: 6% !important; 
 			height: 70% !important;
+		}
+	}
+	#group_canvas_container {
+		height: 60%;
+	}
+	table {
+		tr {
+			flex-direction: row !important;
+		}
+		#header {
+			display: flex !important;
 		}
 	}
 }

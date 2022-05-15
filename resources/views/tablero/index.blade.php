@@ -15,6 +15,7 @@
 	<title>KUBIN</title>
 </head>
 <body>
+
 	<section id="boardContainer">
 		<!--atras-->
 		<div id="atrasTablero">
@@ -166,7 +167,16 @@
 		</div>
 	</div>
 
+
+	@isset($grupo)
+		<h1>Cuadro perteneciente a grupo {{$grupo}}</h1>
+		<input type="hidden" id="idgr" value="{{$grupo}}">
+	@endisset
+	@isset($id)
+		<input type="hidden" id="idgr2" value="{{$id}}">
+	@endisset
 	
+		
 </body>
 
 	<!--tablero.js-->

@@ -376,6 +376,11 @@ function enviar2(param) {
 
   };
   var url = "./obtenerDatos"; // URL a la cual enviar los datos
+  //descarga grupos
+
+  if ($("#grupoDownload").val() == "true") {
+    url = "../obtenerDatos";
+  }
 
   enviarDatos(datos, url); // Ejecutar cuando se quiera enviar los datos
 
@@ -406,8 +411,19 @@ $("#download").click(function () {
   if ($("#selectDown").val() == "svg") {
     saveSvg($("#textDown").val(), "kubin");
   } else {
+    var h = 0;
+    var w = 0;
+
+    if (screen.width > 900) {
+      h = VhToPx(60);
+      w = VwToPx(30);
+    } else {
+      h = VhToPx(55);
+      w = VwToPx(80);
+    }
+
     var svgData = "";
-    svgData = "<svg height=\"".concat(300, "\" version=\"1.1\" width=\"", 400, "\" xmlns=\"http://www.w3.org/2000/svg\">");
+    svgData = "<svg height=\"".concat(h, "\" version=\"1.1\" width=\"").concat(w, "\" xmlns=\"http://www.w3.org/2000/svg\">");
     svgData += $("#textDown").val();
     svgData += "</svg>";
     SVGToImage({
@@ -703,6 +719,52 @@ $("#member_open").click(function () {
 
 $("#closeGroup3").click(function () {
   $("#modalMembersContainer").css("display", "none");
+}); //mostrar lista de categorias en un grupo
+
+$("#category_open").click(function () {
+  console.log("ha2");
+  $("#modalCategoryContainer").css("display", "flex");
+}); //desaparecer lista de categorias en un grupo
+
+$("#closeGroup4").click(function () {
+  $("#modalCategoryContainer").css("display", "none");
+}); //cambiar de nombre el grupo
+
+$("#changeName").click(function () {
+  $("#modalNameContainer").css("display", "flex");
+}); //cerrar el modal de cambiar nombre
+
+$("#closeGroup5").click(function () {
+  $("#modalNameContainer").css("display", "none");
+}); //cambiar nombre
+
+$("#nameBtn").click(function () {
+  var datos = {
+    "variable1": $("#changeNameInput").val() // Dato #1 a enviar
+    //"variable2" : variable2 // Dato #2 a enviar
+    // etc...
+
+  };
+  var url = "../cambiarNombreGrupo"; // URL a la cual enviar los datos
+
+  enviarDatos2(datos, url); // Ejecutar cuando se quiera enviar los datos
+
+  function enviarDatos2(datos, url) {
+    $.ajax({
+      data: {
+        "_token": $("meta[name='csrf-token']").attr("content"),
+        datos: datos
+      },
+      url: url,
+      type: 'post',
+      success: function success(response) {
+        console.log(response); // Imprimir respuesta del archivo
+      },
+      error: function error(_error3) {
+        console.log(_error3.responseText); // Imprimir respuesta de error
+      }
+    });
+  }
 });
 /******/ })()
 ;

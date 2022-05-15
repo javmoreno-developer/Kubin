@@ -2654,6 +2654,13 @@ span {
   justify-content: center;
   align-items: flex-end;
 }
+#mainGroup #title_group i {
+  font-size: 20px;
+  display: none;
+}
+#mainGroup #title_group:hover i {
+  display: flex;
+}
 
 #modalMembersContainer {
   width: 100%;
@@ -2678,6 +2685,83 @@ span {
   width: 95%;
 }
 #modalMembersContainer #modalMembersMain #closeModalMembers {
+  height: 10%;
+  width: 5%;
+  display: flex;
+  align-items: center;
+}
+
+#modalCategoryContainer {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0%;
+  z-index: 90;
+  display: none;
+}
+#modalCategoryContainer #modalCategoryMain {
+  width: 40%;
+  height: 60%;
+  background: white;
+  display: flex;
+}
+#modalCategoryContainer #modalCategoryMain #contentModalCategory {
+  height: 100%;
+  width: 95%;
+}
+#modalCategoryContainer #modalCategoryMain #closeModalCategory {
+  height: 10%;
+  width: 5%;
+  display: flex;
+  align-items: center;
+}
+
+#modalNameContainer {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0%;
+  z-index: 90;
+}
+#modalNameContainer #modalNameMain {
+  width: 40%;
+  height: 60%;
+  background: var(--body);
+  display: flex;
+}
+#modalNameContainer #modalNameMain #contentModalName {
+  height: 100%;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30%;
+}
+#modalNameContainer #modalNameMain #contentModalName input {
+  border: none;
+  outline: none;
+  border-bottom: 3px solid;
+  background: var(--body);
+  color: var(--texto);
+}
+#modalNameContainer #modalNameMain #contentModalName button {
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+#modalNameContainer #modalNameMain #closeModalName {
   height: 10%;
   width: 5%;
   display: flex;
@@ -2713,6 +2797,60 @@ span {
   justify-content: center;
   align-items: flex-end;
 }
+#subtitle_container #category_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#group_canvas_container {
+  height: 150vh;
+  width: 100%;
+  border: 3px solid;
+}
+#group_canvas_container table {
+  height: 100%;
+  width: 100%;
+}
+#group_canvas_container table tr {
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+  justify-content: center;
+}
+#group_canvas_container table tr td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#group_canvas_container table #header {
+  height: 5vh;
+  display: flex;
+  display: none;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#make_canvas_container {
+  height: 5vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#make_canvas_container a {
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  background: #702632;
+  color: white;
+}
+
 @media (min-width: 500px) {
   #subtitle_container {
     height: 20vh;
@@ -2727,13 +2865,24 @@ span {
   }
 
   #members_container {
-    flex-direction: row;
+    flex-direction: row !important;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center !important;
   }
   #members_container .member_icon {
     width: 6% !important;
     height: 70% !important;
+  }
+
+  #group_canvas_container {
+    height: 60%;
+  }
+
+  table tr {
+    flex-direction: row !important;
+  }
+  table #header {
+    display: flex !important;
   }
 }
 

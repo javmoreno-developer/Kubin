@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\lienzos;
 use App\Models\usuarios;
 use App\Models\categorias;
+use App\Models\grupos;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -16,8 +17,8 @@ class lienzoController extends Controller
          $dateTime = date('Y-m-d H:i:s');
         $updatedDateFormat =  Carbon::createFromFormat('Y-m-d H:i:s', $dateTime)->format('m-d-Y H:i:s');
 
-           if(Auth::user()!=null) {
-            if($_POST["id"]==0) {
+        
+            if($_POST["id"]=="null") {
                 $name=implode($_POST["datos"]['variable1']);
                 $name=htmlentities($name);
                 $nombre=$_POST["nombre"];
@@ -34,14 +35,27 @@ class lienzoController extends Controller
                 $modelo->nomLie=$nombre;
                 $modelo->created_at=$hoy;
                 $modelo->updated_at=$hoy;
+                if($_POST["gr"]!="null") {
+                    $modelo->grupLie=$_POST['gr'];
+                }
                 $modelo->save();
                 $modelo->touch();
                 
                 echo "fechita:".now()->toDateTimeString();
-                //apunto en la tabla lienzo-usuario
-                $me=usuarios::find(Auth::user()->idUsu);
-                //$me->lienzos()->attach($modelo->idLie,["created_at"=>"$hoy","updated_at"=>"$hoy"]);
-                $me->lienzos()->attach($modelo->idLie);
+                if($_POST["gr"]=="null") {
+                    //apunto en la tabla lienzo-usuario
+                    $me=usuarios::find(Auth::user()->idUsu);
+                    //$me->lienzos()->attach($modelo->idLie,["created_at"=>"$hoy","updated_at"=>"$hoy"]);
+                    $me->lienzos()->attach($modelo->idLie);
+                } else {
+                    $grupo=grupos::find(intval($_POST['gr']));
+                    $users=$grupo->usuarios()->get();
+
+                    foreach($users as $user) {
+                        $me=usuarios::find($user->idUsu);
+                        $me->lienzos()->attach($modelo->idLie);
+                    }
+                }
                
                //apunto en la tabla lienzos_categorias
                 $lienzo=lienzos::find($modelo->idLie);
@@ -58,6 +72,7 @@ class lienzoController extends Controller
                     $modelo=lienzos::find($_POST['id']);
                     $modelo->pathLie="$name";
                     $modelo->nomLie=$nombre;
+                    
                     $modelo->save();
                     $modelo->touch();
 
@@ -71,10 +86,8 @@ class lienzoController extends Controller
                     
                     
                 }
-            } else {
-                echo "no logueado";
-                var_dump($_GET);
-            }
+        
+          
         
         
         //var_dump($_POST["datos"]["variable2"]);
@@ -91,8 +104,8 @@ class lienzoController extends Controller
         //cuadros usuario
         $cuadros=[];
         $me=usuarios::find(Auth::user()->idUsu);
-        $me->lienzos()->get();
-        $cuadros=$me->lienzos()->paginate(4);
+        //$me->lienzos()->get();
+        $cuadros=$me->lienzosD()->paginate(4);
         
         //fecha
         $me->updated_at=Carbon::now();
@@ -116,14 +129,47 @@ class lienzoController extends Controller
         $lienzo=$lienzo["pathLie"];
         //echo $lienzo;
         //echo $req->input("id");
-        
+        if(isset($_GET['grupo'])) {
+            return view("tablero/index",["id"=>$req->input("id"),"path"=>$lienzo,"nombre"=>$nombre,"grupo"=>$_GET['grupo']]);
+        }
         return view("tablero/index",["id"=>$req->input("id"),"path"=>$lienzo,"nombre"=>$nombre]);
     }
 
     public function crearLienzo() {
+        if(isset($_POST["grupo"])) {
+            //echo $_POST["grupo"];
+            $categoria=$this->obtenerCategoriaGrupo($_POST['grupo']);
+            //var_dump($categoria);
+            return view("tablero/index",["grupo"=>$_POST['grupo'],"categoriasGr"=>$categoria]);
+        }
         return view("tablero/index");
     }
 
+    public function obtenerCategoriaGrupo($param) {
+         $categorias=[];
+        //obtengo lienzos del grupo
+        $localLienzos=lienzos::where("grupLie","=",$param)->get();
+        //var_dump($localLienzos);
+        //obtengo los id de las cat
+        $localId=[];
+        foreach($localLienzos as $item) {
+            $num=$item->categorias()->get();
+            foreach($num as $n) {
+                array_push($localId,$n->idCat);
+               
+            }
+        }
+       
+       
+       $localId=array_unique($localId);
+        //obtengo los nombres de las categorias asociadas a esos id
+        foreach($localId as $item) {
+            $w=categorias::find($item)->nomCat;
+            array_push($categorias,$w);
+        }
+        return $categorias;
+    }
+    
     public function borrarLienzo($id) {
         $l=lienzos::find($id)->delete();
         return redirect()->route("dashboard");

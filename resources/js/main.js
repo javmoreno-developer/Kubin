@@ -298,7 +298,8 @@ $(".download").each(function(index) {
           console.log("id:"+id);
           enviar2(id);
           $("#textDown").css("display","flex");
-        })
+        });
+        
     });
 });
 
@@ -312,7 +313,12 @@ function enviar2(param) {
     //"variable2" : variable2 // Dato #2 a enviar
     // etc...
   };
+
   var url = "./obtenerDatos"; // URL a la cual enviar los datos
+  //descarga grupos
+  if($("#grupoDownload").val()=="true") {
+    url = "../obtenerDatos";
+  }
 
 enviarDatos(datos, url); // Ejecutar cuando se quiera enviar los datos
 
@@ -341,8 +347,20 @@ $("#download").click(()=> {
   if($("#selectDown").val()=="svg") {
     saveSvg($("#textDown").val(),"kubin");
   } else {
+     let h=0;
+    let w=0;
+
+
+    if(screen.width>900) {
+     h=VhToPx(60);
+     w=VwToPx(30);
+    } else {
+      h=VhToPx(55);
+      w=VwToPx(80);
+    }
+
     let svgData = "";
-    svgData=`<svg height="${300}" version="1.1" width="${400}" xmlns="http://www.w3.org/2000/svg">`;
+    svgData=`<svg height="${h}" version="1.1" width="${w}" xmlns="http://www.w3.org/2000/svg">`;
     svgData += $("#textDown").val();
     svgData +="</svg>";
 
@@ -363,6 +381,7 @@ $("#download").click(()=> {
       });
   }
 });
+
 
 //svg
 function saveSvg(svgEl, name) {
@@ -648,4 +667,53 @@ $("#member_open").click(()=> {
 //desaparecer lista de miembros en un grupo
 $("#closeGroup3").click(()=> {
     $("#modalMembersContainer").css("display","none");
+});
+
+//mostrar lista de categorias en un grupo
+$("#category_open").click(()=> {
+    console.log("ha2");
+    $("#modalCategoryContainer").css("display","flex");
+});
+//desaparecer lista de categorias en un grupo
+$("#closeGroup4").click(()=> {
+    $("#modalCategoryContainer").css("display","none");
+});
+
+//cambiar de nombre el grupo
+$("#changeName").click(()=> {
+    $("#modalNameContainer").css("display","flex");
+});
+
+//cerrar el modal de cambiar nombre
+$("#closeGroup5").click(()=> {
+    $("#modalNameContainer").css("display","none");
+});
+
+//cambiar nombre
+$("#nameBtn").click(()=> {
+    var datos = {
+        "variable1" : $("#changeNameInput").val(), // Dato #1 a enviar
+        //"variable2" : variable2 // Dato #2 a enviar
+        // etc...
+      };
+      var url = "../cambiarNombreGrupo"; // URL a la cual enviar los datos
+
+    enviarDatos2(datos, url); // Ejecutar cuando se quiera enviar los datos
+
+    function enviarDatos2(datos, url){
+        $.ajax({
+                data: {
+                   "_token": $("meta[name='csrf-token']").attr("content"),
+                   datos,
+                }, 
+                url: url,
+                type: 'post',
+                success:  function (response) {
+                    console.log(response); // Imprimir respuesta del archivo
+                },
+                error: function (error) {
+                    console.log(error.responseText); // Imprimir respuesta de error
+                }
+        });
+    } 
 });
