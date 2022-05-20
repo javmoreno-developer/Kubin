@@ -51,7 +51,7 @@ class lienzoController extends Controller
                 } else {
                     $grupo=grupos::find(intval($_POST['gr']));
                     $users=$grupo->usuarios()->get();
-
+                    echo "entro en gr";
                     foreach($users as $user) {
                         $me=usuarios::find($user->idUsu);
                         $me->lienzos()->attach($modelo->idLie);
@@ -83,7 +83,7 @@ class lienzoController extends Controller
                     foreach($_POST['datos']["variable2"] as $item) {
                         $lienzo->categorias()->attach(intval($item));
                     }
-                    return redirect()->route("dashboard");
+                    //return redirect()->route("dashboard");
                     
                     
                 }

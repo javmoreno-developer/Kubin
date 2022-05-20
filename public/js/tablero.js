@@ -745,7 +745,7 @@ function enviarDatos(datos, url){
             success:  function (response) {
                console.log(response); // Imprimir respuesta del archivo
               //window.location.replace(response);
-              window.location.href="./dashboard";
+              //window.location.href="./dashboard";
             },
             error: function (error) {
                 console.log(error.responseText); // Imprimir respuesta de error

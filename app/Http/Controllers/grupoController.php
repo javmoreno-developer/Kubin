@@ -95,6 +95,7 @@ class grupoController extends Controller
         
              $item = array_slice ($cuadros, ($current_page-1) * $perPage, $perPage); // $ data es la matriz a paginar
         $totals = count($cuadros);
+        echo "total cuadros:".$totals;
         $paginator =new LengthAwarePaginator($item, $totals, $perPage, $current_page, [
             'path' => Paginator::resolveCurrentPath(),
             'pageName' => 'page',
@@ -129,7 +130,23 @@ class grupoController extends Controller
 
         $me=usuarios::find(Auth::user()->idUsu);
         $me->grupos()->attach($grupo,["created_at"=>$hoy]);
-        
+        //insertar los cuadros del grupo en el user
+        $grupo=grupos::find(intval($id));
+        $users=$grupo->usuarios()->get();
+        $lienzosGr=[];
+                    
+        foreach($users as $user) {
+            $localL=[];
+            $me=usuarios::find($user->idUsu);
+            $localL=$me->lienzos()->where("grupLie",$id)->get();
+            foreach($localL as $r) {
+                array_push($lienzosGr,$r->idLie);
+            }
+        }
+        foreach($lienzosGr as $item) {
+            $me=usuarios::find(Auth::user()->idUsu);
+            $me->lienzos()->attach($item);
+        }
     }
 
     public function eliminarCatGrupo() {
