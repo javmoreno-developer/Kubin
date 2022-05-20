@@ -740,8 +740,9 @@ $("#closeGroup5").click(function () {
 
 $("#nameBtn").click(function () {
   var datos = {
-    "variable1": $("#changeNameInput").val() // Dato #1 a enviar
-    //"variable2" : variable2 // Dato #2 a enviar
+    "variable1": $("#changeNameInput").val(),
+    // Dato #1 a enviar
+    "variable2": $("#hiddenIdGroup").val() // Dato #2 a enviar
     // etc...
 
   };
@@ -765,6 +766,113 @@ $("#nameBtn").click(function () {
       }
     });
   }
+}); //borrar usuarios de un grupo
+
+$("#member_open").click(function () {
+  $(".bi-person-dash").each(function () {
+    var _this = this;
+
+    $(this).click(function () {
+      id = $(_this).attr("id").split("_")[1];
+      eliminaUsu(id);
+    });
+  });
 });
+
+function eliminaUsu(param) {
+  var datos = {
+    "variable1": param,
+    "variable2": $("#hiddenIdGroup").val()
+  };
+  var url = "../eliminarUsuarioGrupo"; // URL a la cual enviar los datos
+
+  enviarDatos2(datos, url); // Ejecutar cuando se quiera enviar los datos
+
+  function enviarDatos2(datos, url) {
+    $.ajax({
+      data: {
+        "_token": $("meta[name='csrf-token']").attr("content"),
+        datos: datos
+      },
+      url: url,
+      type: 'post',
+      success: function success(response) {
+        console.log(response); // Imprimir respuesta del archivo
+      },
+      error: function error(_error4) {
+        console.log(_error4.responseText); // Imprimir respuesta de error
+      }
+    });
+  }
+} //add personas al grupo
+
+
+$("#addMemberBtn").click(function () {
+  var datos = {
+    "variable1": $("#addMemberInput").val(),
+    // Dato #1 a enviar
+    "variable2": $("#hiddenIdGroup").val() // Dato #2 a enviar
+    // etc...
+
+  };
+  var url = "../addToGroup"; // URL a la cual enviar los datos
+
+  enviarDatos2(datos, url); // Ejecutar cuando se quiera enviar los datos
+
+  function enviarDatos2(datos, url) {
+    $.ajax({
+      data: {
+        "_token": $("meta[name='csrf-token']").attr("content"),
+        datos: datos
+      },
+      url: url,
+      type: 'post',
+      success: function success(response) {
+        console.log(response); // Imprimir respuesta del archivo
+      },
+      error: function error(_error5) {
+        console.log(_error5.responseText); // Imprimir respuesta de error
+      }
+    });
+  }
+}); //borrar categorias de un grupo
+
+$("#category_open").click(function () {
+  $(".bi-trash").each(function () {
+    var _this2 = this;
+
+    $(this).click(function () {
+      id = $(_this2).attr("id").split("_")[1];
+      console.log("asdasasd");
+      eliminaCat(id);
+    });
+  });
+});
+
+function eliminaCat(param) {
+  var datos = {
+    "variable1": param
+  };
+  var url = "../eliminarCatGrupo"; // URL a la cual enviar los datos
+
+  enviarDatos2(datos, url); // Ejecutar cuando se quiera enviar los datos
+
+  function enviarDatos2(datos, url) {
+    $.ajax({
+      data: {
+        "_token": $("meta[name='csrf-token']").attr("content"),
+        datos: datos
+      },
+      url: url,
+      type: 'post',
+      success: function success(response) {
+        console.log(response); // Imprimir respuesta del archivo
+      },
+      error: function error(_error6) {
+        console.log(_error6.responseText); // Imprimir respuesta de error
+      }
+    });
+  }
+}
 /******/ })()
 ;

@@ -99,6 +99,18 @@ Route::post("addCat",[categoriaController::class,"add"])->name("addCat");
 //cambiar nombre del grupo
 Route::post("cambiarNombreGrupo",[grupoController::class,"cambiarNombre"])->name("cambiarNombreGrupo");
 
+//add personas al grupo
+//correo confirmacion
+Route::post("addToGroup",[MailController::class,"addToGroup"])->name("addToGroup");
+
+//enlace confirmacion
+Route::get("addMember/{id}",[grupoController::class,"addMember"])->middleware(["auth"])->name("addMember");
+
+//eliminar usu de grupo
+Route::post("eliminarUsuarioGrupo",[grupoController::class,"eliminarUsu"])->name("eliminarUsuarioGrupo");
+
+//eliminar cat de grupo
+Route::post("eliminarCatGrupo",[grupoController::class,"eliminarCatGrupo"])->name("eliminarCatGrupo");
 require __DIR__.'/auth.php';
 
 Route::fallback(function() {

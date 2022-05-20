@@ -43,6 +43,7 @@
 
 			<div id="use" class="tool" title="{{__('messages.m8_tab')}}"><i class="bi bi-cursor-fill"></i></div>
 		@endif
+		<div class="tool" id="loupe"><i class="bi bi-search"></i></div>
 	</div>
 
 		<div id="board">
@@ -110,7 +111,16 @@
 		<h1>Asigna un nombre</h1>
 		<div id="namingLoader">
 			<p>Subiendo lienzo:</p>
-			<div id="loader"></div>
+
+			<!--loader-->
+			<div class="loader_container">
+			  <div class="span-container">
+			    <span class="one"></span>
+			    <span class="two"></span>
+			    <span class="three"></span>
+			    <span class="four"></span>
+			  </div>
+			</div>
 		</div>
 		<input type="text" id="nameLienzo" value="@isset($nombre){{$nombre}}@endisset">
 		<div id="catExport">
@@ -145,6 +155,11 @@
 		<input type="range" min="1" max="10" id="grosorPicker">
 	</div>
 
+	<!-- lupa -->
+	<div id="loupeContainer">
+		<p>Varia el zoom: &nbsp;</p>
+		<input type="range" min="1" max="20" id="loupeRange">
+	</div>
 	<!--Gradient-->
 	<div id="gradientContainer">
 		<div id="contentGradient">

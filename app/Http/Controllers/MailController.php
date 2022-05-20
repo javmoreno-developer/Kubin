@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
+use App\Mail\AddMail;
 use App\Models\grupos;
 use App\Models\usuarios;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,7 @@ class MailController extends Controller
         //usuarios_has_grupos
         $me=usuarios::find(Auth::user()->idUsu);
         //$me->lienzos()->attach($modelo->idLie,["created_at"=>"$hoy","updated_at"=>"$hoy"]);
-        $me->grupos()->attach($t->idGrup,["created_at"=>"$hoy"]);
+        $me->grupos()->attach($t->idGrup,["created_at"=>$hoy]);
 
         //emails
        /* $emails=explode(",",$req->email_group);
@@ -40,5 +41,18 @@ class MailController extends Controller
         }*/
 
        return redirect()->route("dashboard");
+    }
+
+    public function addToGroup() {
+        $emails=explode(",",$_POST['datos']["variable1"]);
+
+        for($i=0;$i<sizeof($emails);$i++) {
+            $details=[
+                "title" => "Invitación a grupo",
+                "body" => "Hola!, $emails[$i] has sido invitado a un grupo por ".Auth::user()->nomUsu,
+                "id" => $_POST['datos']["variable2"],                
+            ];
+            Mail::to($emails[$i])->send(new AddMail($details));
+        }
     }
 }

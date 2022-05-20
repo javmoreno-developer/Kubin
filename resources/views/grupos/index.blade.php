@@ -97,24 +97,36 @@
 	@endif
 
 
-	<!--Crear lienzo-->
-	<div id="make_canvas_container">
-		<form action="{{route("crearLienzo")}}" method="post">
-			@csrf
-			<input type="hidden" name="grupo" value="{{$id}}">
-			<button>Crear lienzo</button>
-		</form>
-
-
-	</div>
+	
 	<!--ver lista de miembros-->
 	<div id="modalMembersContainer">
 		<div id="modalMembersMain">
 			<div id="contentModalMembers">
 				<h1>Lista de miembros</h1>
-				@foreach($miembros as $miembro)
-					<p>{{$miembro}}</p>
-				@endforeach
+				<div id="contentMembers">
+					
+					@for($i=0;$i<sizeof($miembros);$i++)
+						<div class="fila_miembro">
+							<div class="name">
+								<p>{{$miembros[$i]}}</p>
+							</div>
+							<div class="space"></div>
+							<div class="icon">
+								<i class="bi bi-person-dash" id="deletePerson_{{$idMiembros[$i]}}"></i>
+							</div>
+						</div>
+					@endfor
+					
+				
+				</div>
+				<div id="addMembersContainer">
+					<div id="nomPerCtr">
+						<input type="text" name="nomPer" id="addMemberInput">
+					</div>
+					<div id="btnCtr">
+						<button id="addMemberBtn">Añadir</button>
+					</div>
+				</div>
 			</div>
 			<div id="closeModalMembers">
 				<i class="bi bi-x-lg" id="closeGroup3"></i>
@@ -127,9 +139,18 @@
 		<div id="modalCategoryMain">
 			<div id="contentModalCategory">
 				<h1>Lista de categorias</h1>
-				@foreach($categorias as $categoria)
-					<p>{{$categoria}}</p>
-				@endforeach
+				@for($i=0;$i<sizeof($categorias);$i++)
+					<div class="fila_miembro">
+						<div class="name">
+							<p>{{$categorias[$i]}}</p>
+						</div>
+						<div class="space"></div>
+						<div class="icon">
+							<i class="bi bi-trash" id="deleteCat_{{$idCat[$i]}}"></i>
+						</div>
+					</div>
+
+				@endfor
 			</div>
 			<div id="closeModalCategory">
 				<i class="bi bi-x-lg" id="closeGroup4"></i>
@@ -143,6 +164,7 @@
 			<div id="contentModalName">
 				<h1>Cambiar nombre</h1>
 				<input type="text" id="changeNameInput">
+				<input type="hidden" id="hiddenIdGroup" value="{{$id}}">
 				<button id="nameBtn">Cambiar</button>
 			</div>
 			<div id="closeModalName">
@@ -151,10 +173,24 @@
 		</div>
 	</div>
 
+	
+
+
 	<div id="paginacion">
 		<div id="container">
 			{!! $cuadros->links() !!}
 		</div>
+	</div>
+
+	<!--Crear lienzo-->
+	<div id="make_canvas_container">
+		<form action="{{route("crearLienzo")}}" method="post">
+			@csrf
+			<input type="hidden" name="grupo" value="{{$id}}">
+			<button>Crear lienzo</button>
+		</form>
+		
+
 	</div>
 
 </body>

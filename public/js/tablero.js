@@ -8,6 +8,9 @@ var mouseupEvent="";
 var coordenaX="";
 var coordenaY="";
 
+//zoom
+var factorEscalado=1;
+
 window.onload=()=> {
 	if(screen.width<900) {
 		//init();
@@ -258,7 +261,17 @@ function traducirRecta(param1,param2) {
 			array[index]=e-VwToPx(anchoSvg);
 		} else {
 			array[index]=e-VhToPx(altoSvg);
+			/*if(factorEscalado==1) {
+				array[index]=array[index];
+			} else if(1-factorEscalado>0) {
+				array[index]=array[index]*(1-factorEscalado);
+			} else {
+				array[index]=array[index]*(-1*(1-factorEscalado));
+			}*/
 		}
+		console.log("index: "+array[index]);
+		
+		console.log("escalado recta");
 	});
 	//console.log(array);
 	return array;
@@ -288,8 +301,8 @@ $("#recta").click(()=> {
 				contadorLineas++;
 				if(contadorLineas==2) {
 					if(pulsacion[1]==true) {
-						console.log(rectaX);
-						console.log(rectaY);
+						//console.log(rectaX);
+						//console.log(rectaY);
 						dibujaLinea();
 					}
 					rectaY=[];
@@ -311,6 +324,7 @@ $("#recta").click(()=> {
 function dibujaLinea() {
 	//console.log("h");
 	let res=traducirRecta(rectaX,rectaY);
+	console.log(res);
 	var t1 = s.line(res[0], res[2], res[1], res[3]).attr({
 		fill: fill,
         stroke: colorTrazo,
@@ -1151,3 +1165,25 @@ function enviarDatos3(datos, url){
             }
     });
 }
+
+//lupa
+let contadorLoupe=0;
+$("#loupe").click(()=> {
+	if(contadorLoupe%2==0) {
+		$("#loupeContainer").css("display","flex");
+	} else {
+		$("#loupeContainer").css("display","none");
+	}
+	contadorLoupe++;
+});
+
+$("#loupeRange").change(()=> {
+    console.log($("#lienzo"));
+    //$("#lienzo")[0].style.transform = `scale(90 / 100)`;
+    let val=$("#loupeRange").val()*10;
+    factorEscalado=$("#loupeRange").val()/10;
+    console.log("escalado: "+factorEscalado);
+    $("#lienzo").css("transform",`scale(${val/100})`);
+    $("#lienzo").css("background","cornflowerblue");
+});
+       

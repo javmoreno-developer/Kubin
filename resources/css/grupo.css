@@ -1,9 +1,9 @@
-/* Error: Undefined mixin.
- *     ,
- * 121 |                 @include pill;
- *     |                 ^^^^^^^^^^^^^
- *     '
- *   resources\sass\grupo.scss 121:5  root stylesheet */
+/* Error: Undefined variable.
+ *    ,
+ * 73 |                         background:$azul;
+ *    |                                    ^^^^^
+ *    '
+ *   resources\sass\grupo.scss 73:18  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Undefined mixin.\a     \2577 \a 121 \2502                  @include pill;\d\a     \2502                  ^^^^^^^^^^^^^\a     \2575 \a   resources\\sass\\grupo.scss 121:5  root stylesheet";
+  content: "Error: Undefined variable.\a    \2577 \a 73 \2502                          background:$azul;\d\a    \2502                                     ^^^^^\a    \2575 \a   resources\\sass\\grupo.scss 73:18  root stylesheet";
 }

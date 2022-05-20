@@ -15,6 +15,7 @@ class lienzoController extends Controller
 {
     public function subida(Request $req) {
          $dateTime = date('Y-m-d H:i:s');
+         echo "subida";
         $updatedDateFormat =  Carbon::createFromFormat('Y-m-d H:i:s', $dateTime)->format('m-d-Y H:i:s');
 
         

@@ -23,10 +23,14 @@ class grupoController extends Controller
         $usuarios=$r->usuarios()->get();
 
         $nombres=[];
+        $idMiembros=[];
+
         //obtengo nombres
         for($i=0;$i<sizeof($usuarios);$i++) {
             $local=usuarios::find($usuarios[$i]["pivot"]["idUsu"])->nomUsu;
+            $local2=usuarios::find($usuarios[$i]["pivot"]["idUsu"])->idUsu;
             array_push($nombres,$local);
+            array_push($idMiembros,$local2);
         }
 
         //obtengo imagenes
@@ -46,6 +50,7 @@ class grupoController extends Controller
         //var_dump($localLienzos);
         //obtengo los id de las cat
         $localId=[];
+        $ids=[];
         foreach($localLienzos as $item) {
             $num=$item->categorias()->get();
             foreach($num as $n) {
@@ -58,6 +63,7 @@ class grupoController extends Controller
        $localId=array_unique($localId);
         //obtengo los nombres de las categorias asociadas a esos id
         foreach($localId as $item) {
+             array_push($ids,$item);
             $w=categorias::find($item)->nomCat;
             array_push($categorias,$w);
         }
@@ -95,11 +101,38 @@ class grupoController extends Controller
         ]);
 
         //fin de usuarios de un grupo
-        return view("grupos/index",["nombreGrupo"=>$r->nomGrup,"miembros"=>$nombres,"imagenes"=>$imagenes,"cuadros"=>$paginator,"id"=>$param,"categorias"=>$categorias]);
+        return view("grupos/index",["nombreGrupo"=>$r->nomGrup,"miembros"=>$nombres,"imagenes"=>$imagenes,"cuadros"=>$paginator,"id"=>$param,"categorias"=>$categorias,"idMiembros"=>$idMiembros,"idCat"=>$ids]);
     }
 
 
     public function cambiarNombre() {
-        echo "cambiando nombre a ".$_POST['datos']["variable1"];
+        echo "cambiando nombre a: ".$_POST['datos']["variable1"];
+        echo "id de grupo: ".$_POST["datos"]["variable2"];
+        $grupo=grupos::find(intval($_POST["datos"]["variable2"]));
+        $grupo->nomGrup=$_POST['datos']["variable1"];
+        $grupo->save();
+    }
+
+    public function eliminarUsu() {
+        $t=usuarios::find($_POST['datos']["variable1"]);
+        $t->grupos()->detach($_POST["datos"]["variable2"]);
+    }
+
+    public function addMember($id) {
+        echo "añadiendo user al grupo";
+        echo "grupo: ".$id;
+        /*$names=explode(",",$_POST['datos']["variable1"]);
+        var_dump($names);*/
+        $grupo=grupos::find($id);
+        $hoy = getdate();
+        $hoy=$hoy["year"]."-".$hoy["mon"]."-".$hoy["mday"]." ".($hoy["hours"]+2).":".$hoy["minutes"].":".$hoy["seconds"];
+
+        $me=usuarios::find(Auth::user()->idUsu);
+        $me->grupos()->attach($grupo,["created_at"=>$hoy]);
+        
+    }
+
+    public function eliminarCatGrupo() {
+        $c=categorias::find($_POST["datos"]["variable1"])->delete();
     }
 }
