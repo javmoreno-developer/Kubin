@@ -156,6 +156,12 @@ $(".circle").click(function(e) {
 	$(".advice").each((index,a)=> {
        $(a).css("display","none");
     });
+
+    $(".circle").each((index,a)=> {
+       $(a).children().css("stroke","black");
+    });
+    
+    $("#"+this.id).children().css("stroke","#1fc0cf");
 	$("#"+this.id+"Advice").css("display","flex");
 });
 
@@ -271,12 +277,12 @@ function changeLetter() {
   //console.log("cambiando");
   $("#changeWord").css("opacity",0);
   setTimeout(()=> {
-    if(sessionStorage.getItem('idiomaCh')=="en") {  
-  	   $("#changeWord").text(arrayChEn[contadorCh]);
-     } else if(sessionStorage.getItem('idiomaCh')=="fr") {
+    if(localStorage.getItem('idiomaCh')=="es") {  
+        $("#changeWord").text(arrayCh[contadorCh]);
+     } else if(localStorage.getItem('idiomaCh')=="fr") {
         $("#changeWord").text(arrayChFr[contadorCh]);
      } else {
-        $("#changeWord").text(arrayCh[contadorCh]);
+  	   $("#changeWord").text(arrayChEn[contadorCh]);
      }
   	$("#changeWord").css("opacity",1);
   },1000)
@@ -505,10 +511,12 @@ function SVGToImage(settings){
 
 //aparicion formulario cambiar foto
 $("#cambiarFoto").click(()=> {
+    $("#cabecera").css("z-index",1);
     $("#changeFotoModal").css("display","flex");
 });
 //cerrar formulario cambiar foto
 $("#closeFoto").click(()=> {
+    $("#cabecera").css("z-index",99);
     $("#changeFotoModal").css("display","none");
 });
 
@@ -549,7 +557,7 @@ function enviar3(param) {
 }
 
 function cambioArrayCh(param) {
-    sessionStorage.setItem('idiomaCh', param);
+    localStorage.setItem('idiomaCh', param);
 }
 
 
@@ -747,6 +755,7 @@ function eliminaUsu(param) {
                     type: 'post',
                     success:  function (response) {
                         console.log(response); // Imprimir respuesta del archivo
+                         location.reload();
                     },
                     error: function (error) {
                         console.log(error.responseText); // Imprimir respuesta de error
@@ -777,6 +786,7 @@ $("#addMemberBtn").click(()=> {
                 type: 'post',
                 success:  function (response) {
                     console.log(response); // Imprimir respuesta del archivo
+
                 },
                 error: function (error) {
                     console.log(error.responseText); // Imprimir respuesta de error
@@ -815,6 +825,7 @@ function eliminaCat(param) {
                     type: 'post',
                     success:  function (response) {
                         console.log(response); // Imprimir respuesta del archivo
+                        location.reload();
                     },
                     error: function (error) {
                         console.log(error.responseText); // Imprimir respuesta de error
@@ -822,3 +833,202 @@ function eliminaCat(param) {
             });
         } 
 }
+
+//canvas login
+
+//dibujo libre
+function libre() {
+var mousedownEvent="";
+var mousemoveEvent="";
+var mouseupEvent="";
+var coordenaX="";
+var coordenaY="";
+
+var arrayFree=[];
+var inicio=false;
+var altoSvg=20;
+var anchoSvg=35;
+
+var grosor=parseInt(Math.random()*9);
+var color=ColorCode();
+console.log(color);
+
+if(screen.width<900) {
+        //init();
+        mousedownEvent="touchstart";
+        mouseupEvent="touchend";
+        mousemoveEvent="touchmove";
+        coordenaX="clientX";
+        coordenaY="clientY";
+    } else {
+        mousedownEvent="mousedown";
+        mouseupEvent="mouseup";
+        mousemoveEvent="mousemove";
+        coordenaX="originalEvent.targetTouches[0].clientX";
+        coordenaY="originalEvent.targetTouches[0].clientY";
+            
+    }
+
+function traducirFree2(param1) {
+
+    
+
+    param1.forEach((e,index)=> {
+        let aux=[e[0],e[1]];
+        param1[index]=aux;
+    });
+    //console.log(param1);
+    return param1;
+}
+if(screen.width>900) {
+     h=VhToPx(100);
+     w=VwToPx(100);
+} else {
+     h=VhToPx(55);
+     w=VwToPx(80);
+     altoSvg=25;
+     anchoSvg=10;
+}
+var s="";
+if($("#lienzoTop").length==0) {
+    s=Snap(w,h);
+    s.attr({ id: 'lienzoTop' });
+    
+} else {
+    
+    s=Snap("#lienzoTop");
+    
+}
+
+
+
+        $("#lienzoTop").on(`${mousedownEvent}`,function(e) {
+            if(screen.width<900)  {
+                let aux=[parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)),parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1))];
+                arrayFree.push(aux);
+                inicio=true;
+                
+            } else {
+                let aux=[e.clientX,e.clientY];
+                arrayFree.push(aux);
+                inicio=true;
+            }
+        });
+
+        $("#lienzoTop").on(`${mousemoveEvent}`,function(e) {
+            if(inicio==true) {
+                if(screen.width<900)  {
+                    let aux=[parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)),parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1))];
+                    arrayFree.push(aux);
+                } else {
+                    let aux=[e.clientX,e.clientY];
+                    arrayFree.push(aux);
+                }
+            }
+        });
+
+        $("#lienzoTop").on(`${mouseupEvent}`,function(e) {
+            //console.log("inicio: "+inicio);
+            if(screen.width<900)  {
+                let aux=[parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)),parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1))];
+                arrayFree.push(aux);
+            } else {
+                let aux=[e.clientX,e.clientY];
+                arrayFree.push(aux);
+            }
+            
+            pintarFreet2();
+            
+            arrayFree=[];
+            inicio=false;
+        });
+    
+
+function pintarFreet2() {
+   
+    let res=traducirFree2(arrayFree);
+
+    arrayFree=res;
+    //let a="M "+curveArray[0][0]+" 90 C 200  90 0 0 90  300";
+    let a=`M ${arrayFree[0][0]} ${arrayFree[0][1]}`;
+    //console.log(a);
+    for(let i=0;i<arrayFree.length;i++) {
+        a+=` L ${arrayFree[i][0]} ${arrayFree[i][1]}`;
+    }
+    //console.log(a);
+    var myPath = s.path(a).attr({
+        fill: "none",
+        stroke: color,
+        strokeWidth: grosor,
+    })
+}
+
+//fin dibujo libre
+}
+
+//llamar a dibujo libre
+if($("#call_free").length!=0) {
+    libre();
+}
+
+ function ColorCode() {
+      var makingColorCode = '0123456789ABCDEF';
+      var finalCode = '#';
+      for (var counter = 0; counter < 6; counter++) {
+         finalCode =finalCode+ makingColorCode[Math.floor(Math.random() * 16)];
+      }
+      return finalCode;
+   }
+
+
+//click input checkbox login
+let contadorCheck=0;
+
+$("#prem").click(()=> {
+    if(contadorCheck%2==0) {
+        $("#crown_path").css("fill","#E9D985");
+    } else {
+        $("#crown_path").css("fill","black");
+    }
+    contadorCheck++;
+});
+
+//file input dahsboard (image)
+$("#fileModal").click(()=> {
+        $("#url").css("display","none");
+        $("#file").css("display","flex");
+        $("#fileModal").css("border-bottom","3px solid");     
+        $("#urlModal").css("border-bottom","unset");     
+});
+
+$("#urlModal").click(()=> {
+        $("#url").css("display","flex");
+        $("#file").css("display","none");
+        $("#urlModal").css("border-bottom","3px solid");     
+        $("#fileModal").css("border-bottom","unset");     
+});
+
+//show password login
+let cshowIn=0;
+$("#showIn").click(()=> {
+    if(cshowIn%2==0) {
+        $("#passIn").attr("type","text");
+        $("#showIn").attr("class","bi bi-eye-fill");
+    } else {
+        $("#passIn").attr("type","password");
+        $("#showIn").attr("class","bi bi-eye-slash-fill");
+    }
+    cshowIn++;
+});
+
+let cshowUp=0;
+$("#showUp").click(()=> {
+    if(cshowUp%2==0) {
+        $("#passUp").attr("type","text");
+        $("#showUp").attr("class","bi bi-eye-fill");
+    } else {
+        $("#passUp").attr("type","password");
+        $("#showUp").attr("class","bi bi-eye-slash-fill");
+    }
+    cshowUp++;
+});

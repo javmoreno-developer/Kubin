@@ -87,6 +87,8 @@ return [
 
     'tit1_5_tut' => 'changer le rembourrage',
 
+    "m1_tut" => "Atteint",
+    
     //cabecera
 
     'cab_1' => 'Tutoriels',
@@ -117,6 +119,13 @@ return [
 
     'placeholder' => 'Ecris ici',
 
+     "m4_lo" => "Vous n'avez pas de compte ?",
+
+     "m5_lo" => "Prime",
+
+     "m6_lo" => "Avez-vous un compte?",
+
+    "m7_lo" => "S'identifier",
     //dashboard
 
     'men1_das' => "changer l'image",
@@ -174,7 +183,7 @@ return [
 
     'm11_tab' => 'dessiner un cercle',
 
-    'm12_tab' => 'tracer une courbe',
+    'm12_tab' => 'tracer une Bézier courbe',
 
     'm13_tab' => 'Dessin gratuit',
 
@@ -188,9 +197,60 @@ return [
 
     'm18_tab' => 'Changement de fond',
 
+    "m19_tab" => 'Ajouter',
+
+    "m20_tab" => 'Assigner',
+
+    "m21_tab" => 'Anuller',
+
+    "m22_tab" => 'peinture appartenant à ',
+
+    "m23_tab" => 'attribuer un nom',
+
+     "m24_tab" => 'toile vers le haut',
+    
+      "m25_tab" => 'Choisir une catégorie',
+
+      "m26_tab" => "Nom de la toile",
+
+      "m27_tab" => "la description",
+
+      "m28_tab" => "Fait",
+
+      "m29_tab" => "Variez l'épaisseur du trait :",
+
+      "m30_tab" => "Variez le zoom:",
+
+      "m31_tab" => "Création de dégradés",
+        "m32_tab" => "Types de dégradés",
+        "m33_tab" => "du haut jusqu'en bas",
+        "m34_tab" => "de gauche à droite",
+        "m35_tab" => "Première couleur",
+        "m36_tab" => "Deuxième couleur",
+        "m37_tab" => "Créer",
+         "m38_tab" => "télécharger une image",
+
     //404
     'main_404' => 'Page non trouvée',
 
     //formulario crear grupo
     'title_group' => 'créer un groupe',
+     "m1_gr" => "Membres",
+     "m2_gr" => "Catégorie",
+     "m3_gr" => "Liste des membres",
+     "m4_gr" => "Catégories des membres",
+     "m5_gr" => "Changer nom",
+     "m6_gr" => "Changer",
+     "m7_gr" => "Derrière",
+     "m8_gr" => "créer un groupe",
+     "m9_gr" => "Voir les groupes associés",
+     "m10_gr" => "nom de groupe",
+     "m11_gr" => "Membres",
+     "m12_gr" => "Envoyer",
+     "m13_gr" => "Voir groupes",
+     "m14_gr" => "Voir",
+
+     //correo
+     "m1_co" =>"Accéder",
+     "m2_co" =>"Au revoir",
 ];

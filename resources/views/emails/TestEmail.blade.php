@@ -12,6 +12,6 @@
 	
 	<br>
 
-	<p>Adios.</p>
+	<p>{{__("messages.m2_co")}}.</p>
 </body>
 </html>

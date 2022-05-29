@@ -30,15 +30,6 @@
   height: 100%;
   width: 100%;
 }
-#footer #logoSection #icons {
-  width: 80%;
-  height: 5vh;
-  display: flex;
-  justify-content: space-around;
-}
-#footer #logoSection #icons i {
-  font-size: 20px;
-}
 #footer #textSection {
   height: 30vh;
   width: 100%;
@@ -60,10 +51,6 @@
     width: 50%;
   }
   #footer #logoSection #logoImage {
-    width: 70%;
-  }
-  #footer #logoSection #icons {
-    margin-top: 2vh;
     width: 70%;
   }
   #footer #textSection {

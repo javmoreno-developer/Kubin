@@ -26,19 +26,21 @@ class MailController extends Controller
 
         //usuarios_has_grupos
         $me=usuarios::find(Auth::user()->idUsu);
-        //$me->lienzos()->attach($modelo->idLie,["created_at"=>"$hoy","updated_at"=>"$hoy"]);
+            //$me->lienzos()->attach($modelo->idLie,["created_at"=>"$hoy","updated_at"=>"$hoy"]);
         $me->grupos()->attach($t->idGrup,["created_at"=>$hoy]);
 
         //emails
-       /* $emails=explode(",",$req->email_group);
+       $emails=explode(",",$req->email_group);
+       
 
         for($i=0;$i<sizeof($emails);$i++) {
             $details=[
                 "title" => "Invitación a grupo",
                 "body" => "Hola!, $emails[$i] has sido invitado a un grupo por ".Auth::user()->nomUsu,
+                "id" => $t->idGrup,
             ];
-            Mail::to($emails[$i])->send(new TestMail($details));
-        }*/
+            Mail::to($emails[$i])->send(new AddMail($details));
+        }
 
        return redirect()->route("dashboard");
     }

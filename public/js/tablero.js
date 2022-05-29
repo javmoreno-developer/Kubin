@@ -647,7 +647,8 @@ $("#texto").click((e)=> {
 $("#exportar").click((e)=> {
 	chargeCat();
 	$("#namingContainer").css("display","flex");
-	$("body").css("background","black");
+	$("#export_ctr").css("display","flex");
+	//$("body").css("background","rgba(0,0,0,0.7)");
 
 });
 
@@ -655,6 +656,7 @@ $("#exportar").click((e)=> {
 $("#cancellNaming").click((e)=> {
 	vaciarSelect();
 	$("#namingContainer").css("display","none");
+	$("#export_ctr").css("display","none");
 	if(localStorage.getItem("scheme")=="light") {
 		$("body").css("background","white");
 	} else {
@@ -745,7 +747,11 @@ function enviarDatos(datos, url){
             success:  function (response) {
                console.log(response); // Imprimir respuesta del archivo
               //window.location.replace(response);
-              //window.location.href="./dashboard";
+              if(gr=="null") {
+              	window.location.href="./dashboard";
+              } else {
+				window.location.href=`./grupo/${gr}`;
+              }
             },
             error: function (error) {
                 console.log(error.responseText); // Imprimir respuesta de error
@@ -1024,15 +1030,16 @@ $("#doneFill").click(()=> {
 
 function scan() {
 	contadorGradient=0;
-	for(let i=2;i<$("svg")[0].childNodes.length;i++) {
-		console.log($("svg")[0].childNodes[i]);
-		console.log($("svg")[0].childNodes[i].id);
-		if($("svg")[0].childNodes[i].id.includes("MyGradient")) {
+	for(let i=2;i<$("svg")[5].childNodes.length;i++) {
+		console.log($("svg")[5].childNodes[i]);
+		console.log($("svg")[5].childNodes[i].id);
+		if($("svg")[5].childNodes[i].id.includes("MyGradient")) {
 			contadorGradient++;
 		}
 		
 		
 	}
+	console.log("contadorGradient/scan: "+contadorGradient);
 }
 
 }

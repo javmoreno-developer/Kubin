@@ -37,10 +37,17 @@ class grupoController extends Controller
         $imagenes=[];
 
         for($i=0;$i<sizeof($usuarios);$i++) {
-            $local=usuarios::find($usuarios[$i]["pivot"]["idUsu"])->imagenUsu;
-            array_push($imagenes,$local);
+            if(sizeof($usuarios[$i]->getMedia("avatars"))>0) {
+                // $local=Auth::user()->getMedia("avatars")->first()->getUrl("thumb");
+                 $local=$usuarios[$i]->getMedia("avatars")->first()->getUrl("thumb");
+                 array_push($imagenes,$local);
+            } else {
+                $local=usuarios::find($usuarios[$i]["pivot"]["idUsu"])->imagenUsu;
+                array_push($imagenes,$local);
+            }
         }
 
+        //var_dump($imagenes);
 
 
         //obtengo categorias asociadas al grupo
@@ -95,7 +102,7 @@ class grupoController extends Controller
         
              $item = array_slice ($cuadros, ($current_page-1) * $perPage, $perPage); // $ data es la matriz a paginar
         $totals = count($cuadros);
-        echo "total cuadros:".$totals;
+       // echo "total cuadros:".$totals;
         $paginator =new LengthAwarePaginator($item, $totals, $perPage, $current_page, [
             'path' => Paginator::resolveCurrentPath(),
             'pageName' => 'page',
@@ -124,29 +131,46 @@ class grupoController extends Controller
         echo "grupo: ".$id;
         /*$names=explode(",",$_POST['datos']["variable1"]);
         var_dump($names);*/
+        $rep=false;
+        //ver si ese usu ya esta en el grupo
         $grupo=grupos::find($id);
-        $hoy = getdate();
-        $hoy=$hoy["year"]."-".$hoy["mon"]."-".$hoy["mday"]." ".($hoy["hours"]+2).":".$hoy["minutes"].":".$hoy["seconds"];
-
-        $me=usuarios::find(Auth::user()->idUsu);
-        $me->grupos()->attach($grupo,["created_at"=>$hoy]);
-        //insertar los cuadros del grupo en el user
-        $grupo=grupos::find(intval($id));
         $users=$grupo->usuarios()->get();
-        $lienzosGr=[];
-                    
-        foreach($users as $user) {
-            $localL=[];
-            $me=usuarios::find($user->idUsu);
-            $localL=$me->lienzos()->where("grupLie",$id)->get();
-            foreach($localL as $r) {
-                array_push($lienzosGr,$r->idLie);
+
+        foreach($users as $item) {
+            if($item->idUsu==Auth::user()->idUsu) {
+                $rep=true;
             }
         }
-        foreach($lienzosGr as $item) {
+
+        if($rep==false) {
+            $hoy = getdate();
+            $hoy=$hoy["year"]."-".$hoy["mon"]."-".$hoy["mday"]." ".($hoy["hours"]+2).":".$hoy["minutes"].":".$hoy["seconds"];
+
             $me=usuarios::find(Auth::user()->idUsu);
-            $me->lienzos()->attach($item);
+            $me->grupos()->attach($grupo,["created_at"=>$hoy]);
+            //insertar los cuadros del grupo en el user
+            $grupo=grupos::find(intval($id));
+            $users=$grupo->usuarios()->get();
+            $lienzosGr=[];
+                        
+            foreach($users as $user) {
+                $localL=[];
+                $me=usuarios::find($user->idUsu);
+                $localL=$me->lienzos()->where("grupLie",$id)->get();
+                foreach($localL as $r) {
+                    array_push($lienzosGr,$r->idLie);
+                }
+            }
+            $lienzosGr=array_unique($lienzosGr);
+            
+            foreach($lienzosGr as $item) {
+                $me=usuarios::find(Auth::user()->idUsu);
+                $me->lienzos()->attach($item);
+            }
+        } else {
+            echo "usted ya se encuentra en el grupo";
         }
+        return redirect("dashboard");
     }
 
     public function eliminarCatGrupo() {

@@ -20,10 +20,14 @@ body {
 	svg {
 		height: 5vh;
 		width: 20vw;
-		
+		cursor: pointer;
 		position: absolute;
 		left: 37%;
 		top:22%;
+		circle {
+			stroke-width:30 !important;
+			stroke:var(--texto);
+		}
 	}
 	#second-timeline {
 		height: 11vh;
@@ -112,8 +116,8 @@ body {
 	}
 	a {
 		position: absolute;
-		width: 7vw;
-		left: 46%;
+		width: 50%;
+		left: 25%;
 		top: 93%;
 		height: 4vh;
 		@include pill;
@@ -162,8 +166,7 @@ body {
 }
 
 .animaboost {
-	 stroke-dashoffset: 100%;
-  stroke-dasharray: 100%;
+	 
   -moz-animation: drawboost 3s forwards  ease-in;
   -webkit-animation: drawboost 3s forwards  ease-in;
   animation: drawboost 3s forwards  ease-in;
@@ -175,8 +178,7 @@ body {
 
 @keyframes drawboost {
   100% {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 0;
+
     fill: var(--texto);
     opacity: 1;
   }
@@ -186,7 +188,23 @@ body {
 //media query
 
 @media (min-width: 490px) {
-	
+	#tutorial {
+			a {
+			position: absolute;
+			width: 20%;
+			left: 40%;
+			top: 93%;
+			height: 4vh;
+			@include pill;
+			background: $azul;
+			color: white;
+			font-weight: bold;
+			border:none;
+			display: flex;
+			align-items:center;
+			justify-content: center;
+		}
+	}
 	#tutorial svg {
 		left: 38.5%;
 	}
@@ -219,6 +237,22 @@ body {
 			left: 46.7%;
 			width: 5vw;
 		}
+		a {
+		position: absolute;
+		width: 9vw;
+		left: 45%;
+		top: 93%;
+		height: 4vh;
+		@include pill;
+		background: $azul;
+		color: white;
+		font-weight: bold;
+		border:none;
+		display: flex;
+		align-items:center;
+		justify-content: center;
+	}
+
 		#second-timeline {
 			.timeline {
 				width: 10%;

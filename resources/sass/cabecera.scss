@@ -10,7 +10,7 @@
 }
 #log_out {
 	@include pill;
-	background:#B4654A;
+	background:var(--rojo);
 	color: white !important	;
 }
 #color_scheme {
@@ -133,6 +133,7 @@
 		justify-content: space-around;
 		position:fixed;
 		top: 0%;
+		z-index: 90;
 		#menu {
 			
 			display: flex;

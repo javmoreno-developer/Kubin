@@ -1,6 +1,8 @@
 //landing page
 p {
 	color: var(--texto);
+	font-weight: 200;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 h1 {
 	color: var(--texto);
@@ -10,6 +12,12 @@ h2 {
 }
 i {
 	color: var(--texto);
+}
+#group_message {
+    top: 2%;
+    position: absolute;
+    z-index: -90;
+    left: 35%;
 }
 #firstSection {
 	margin-top: 12vh;
@@ -155,6 +163,9 @@ i {
 			font-size: 20px;
 			padding: 15px;
 			text-decoration: none;
+			i {
+				color: white;
+			}
 		}
 	}
 }
@@ -175,7 +186,7 @@ i {
 			text-align: center;
 		}
 		#pretext2 {
-			width: 80%;
+			width: 60%;
 		}
 	}
 	#toolsLanding {
@@ -218,6 +229,9 @@ i {
 			color: white;
 			padding: 20px;
 			text-decoration: none;
+			i {
+				color: white;
+			}
 		}
 	}
 }

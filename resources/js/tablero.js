@@ -632,7 +632,7 @@ $("#texto").click((e)=> {
 //asignar nombre
 $("#exportar").click((e)=> {
 	$("#namingContainer").css("display","flex");
-	$("body").css("background","black");
+	$("body").css("background","rgba(0,0,0,0.5)");
 
 });
 

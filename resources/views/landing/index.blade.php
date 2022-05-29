@@ -153,7 +153,7 @@
 		<div id="imageFifthContainer">
 			<div id="imageFifth">
 				<svg viewBox="0 0 327.15614 520.57559" id="arrow">
-					<line  x1="130.39999999999998" x2="200.39999999999998" y1="368.2" y2="368.2" fill="#000000" stroke="var(--texto)" style="stroke-width: 7;"></line><line x1="130.39999999999998" x2="130.39999999999998" y1="368.2" y2="250.2" fill="#000000" stroke="var(--texto)" style="stroke-width: 7;"></line><line x1="200.39999999999998" x2="200.39999999999998" y1="368.2" y2="250.2" fill="#000000" stroke="var(--texto)" style="stroke-width: 7;"></line><line x1="198.39999999999998" x2="249.39999999999998" y1="250.2" y2="250.2" fill="#000000" stroke="var(--texto)" style="stroke-width: 7;"></line><line x1="130.39999999999998" x2="79.39999999999998" y1="249.2" y2="249.2" fill="#000000" stroke="var(--texto)" style="stroke-width: 7;"></line><line x1="249.39999999999998" x2="166.39999999999998" y1="250.2" y2="163.2" fill="#000000" stroke="var(--texto)" style="stroke-width: 7;"></line><line x1="80.39999999999998" x2="166.39999999999998" y1="249" y2="162.2" fill="#000000" stroke="var(--texto)" style="stroke-width: 7;"></line>
+					<line  x1="130.39999999999998" x2="200.39999999999998" y1="368.2" y2="368.2" fill="#000000" stroke="var(--texto)" stroke-linecap="round" style="stroke-width: 7;"></line><line x1="130.39999999999998" x2="130.39999999999998" y1="368.2" y2="250.2" fill="#000000" stroke="var(--texto)" stroke-linecap="round" style="stroke-width: 7;"></line><line x1="200.39999999999998" x2="200.39999999999998" y1="368.2" y2="250.2" fill="#000000" stroke="var(--texto)" stroke-linecap="round"style="stroke-width: 7;"></line><line x1="198.39999999999998" x2="249.39999999999998" y1="250.2" y2="250.2" fill="#000000" stroke="var(--texto)" stroke-linecap="round" style="stroke-width: 7;"></line><line x1="130.39999999999998" x2="79.39999999999998" y1="249.2" y2="249.2" fill="#000000" stroke="var(--texto)" stroke-linecap="round" style="stroke-width: 7;"></line><line x1="249.39999999999998" x2="166.39999999999998" y1="250.2" y2="163.2" fill="#000000" stroke="var(--texto)" stroke-linecap="round" style="stroke-width: 7;"></line><line x1="80.39999999999998" x2="166.39999999999998" y1="249" y2="162.2" fill="#000000" stroke="var(--texto)" stroke-linecap="round" style="stroke-width: 7;"></line>
 				</svg>
 			</div>	
 		</div>
@@ -176,26 +176,24 @@
 		  </svg>
 
 			</div>
-			<div id="icons">
-				<i class="bi bi-discord"></i>
-				<i class="bi bi-github"></i>
-				<i class="bi bi-twitter"></i>
-			</div>
+			
 		</div>
 		<div id="textSection">
 			<div class="textPr">
 				<h1>{{__("messages.men_1_footer_landing")}}</h1>
 				<select id="idiomaSelect">
-					@if (session('idioma_session')=="en") 
-						<option value="en" selected>{{__("messages.id_en")}}</option>
-					@else
-						<option value="en">{{__("messages.id_en")}}</option>
-					@endif
 					@if (session('idioma_session')=="es") 
 						<option value="es" selected>{{__("messages.id_es")}}</option>
 					@else
 						<option value="es">{{__("messages.id_es")}}</option>
 					@endif
+
+					@if (session('idioma_session')=="en") 
+						<option value="en" selected>{{__("messages.id_en")}}</option>
+					@else
+						<option value="en">{{__("messages.id_en")}}</option>
+					@endif
+					
 					@if (session('idioma_session')=="fr") 
 						<option value="fr" selected>{{__("messages.id_fr")}}</option>
 					@else

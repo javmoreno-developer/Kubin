@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Auth\Authenticatable;
 
-class usuarios extends Model implements AuthenticatableContract
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
+class usuarios extends Model implements AuthenticatableContract,HasMedia
 {
-    use HasFactory,Authenticatable;
+    use HasFactory,Authenticatable,InteractsWithMedia;
     protected $table="usuarios";
     protected $primaryKey="idUsu";
     //public $timestamps=false;
@@ -27,5 +31,14 @@ class usuarios extends Model implements AuthenticatableContract
 
     public function categorias() {
       return $this->belongsToMany('App\Models\categorias',"usuarios_has_categorias","idUsu","idCat");
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+               ->width(468)
+               ->height(432)
+               ->sharpen(10)
+               ->nonOptimized();
     }
 }

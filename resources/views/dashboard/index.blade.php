@@ -6,7 +6,12 @@
 <body>
 
 	<section id="userModal">
-		<div id="userImage" style="background:url({{$imagen}});background-size: cover;">
+		@if(sizeof(Auth::user()->getMedia("avatars"))>0)
+			<div id="userImage" style="background:url('{{Auth::user()->getMedia("avatars")->first()->getUrl("thumb")}}');background-size: cover;">
+		@else 
+			<div id="userImage" style="background:url({{$imagen}});background-size: cover;">
+		@endif
+		
 			<div id="cambiarModal">
 				<button id="cambiarFoto">{{__("messages.men1_das")}}</button>
 			</div>
@@ -53,9 +58,9 @@
 
 	<div id="btnCrearLie">
 		<a href="{{route("crearLienzo")}}">{{__("messages.men11_das")}}</a>
-		<button id="create_group">Crear grupo</button>
+		<button id="create_group">{{__("messages.m8_gr")}}</button>
 		@if(sizeof($grupo)!=0)
-			<button id="see_group">Grupos asociados</button>
+			<button id="see_group">{{__("messages.m9_gr")}}</button>
 		@endif
 	</div>
 
@@ -85,14 +90,32 @@
 		<div id="fotoMain">
 			<div id="main">
 				<h1>{{__("messages.men14_das")}}</h1>
-				<form action="{{route("cambiarFoto")}}" method="post">
-					@csrf
-					<div>
-						<label for="textChange">{{__("messages.men15_das")}}</label>
-						<input type="text" name="url" id="textChange">
-					</div>
-					<button>{{__("messages.men16_das")}}</button>
-				</form>
+				<div id="options">
+					<div id="urlModal">url</div>
+					<div id="fileModal">file</div>
+				</div>
+				<div id="url">	
+						<form action="{{route("cambiarFoto")}}" method="post">
+							@csrf
+							<div>
+								<label for="textChange">{{__("messages.men15_das")}}</label>
+								<input type="text" name="url" id="textChange">
+							</div>
+							<button>{{__("messages.men16_das")}}</button>
+						</form>
+				</div>
+				<div id="file">	
+						<form action="{{route("cambiarFotoFile")}}" method="post" enctype="multipart/form-data">
+							@csrf
+							<div>
+								<label for="textChange">{{__("messages.m38_tab")}}</label>
+								<input type="file" name="avatar" id="textChange">
+							</div>
+							<button>{{__("messages.men16_das")}}</button>
+							
+							
+						</form>
+				</div>	
 			</div>
 			<div id="closeMain">
 				<i class="bi bi-x-lg" id="closeFoto"></i>
@@ -108,14 +131,14 @@
 				<form action="{{route("send-email")}}" method="post">
 					@csrf
 					<div>	
-						<label for="group_name">Nombre del grupo</label> <br>
+						<label for="group_name">{{__("messages.m10_gr")}}</label> <br>
 						<input type="text" id="group_name" name="name">
 					</div>	
 					<div>	
-						<label for="email_create">Miembros</label> <br>
+						<label for="email_create">{{__("messages.m11_gr")}}</label> <br>
 						<textarea name="email_group" id="email_create" cols="30" rows="10"></textarea>
 					</div>	
-					<button>Enviar</button>
+					<button>{{__("messages.m12_gr")}}</button>
 				</form>
 			</div>
 			<div id="closeCreateGroup">
@@ -128,12 +151,16 @@
 	<div id="seeGroupModal">
 		<div id="see_group_main">
 			<div id="contentSeeGroup">
-				<h1>Ver grupos</h1>
+				<h1>{{__("messages.m13_gr")}}</h1>
 				<div id="container">
 					@foreach($grupo as $item)
 						<div class="filaGroup">
-							<p>{{$item->nomGrup}}</p>
-							<a href="{{route("grupo",$item->idGrup)}}">Ver</a>
+							<div class="frS">
+								<p>{{$item->nomGrup}}</p>
+							</div>
+							<div class="seS">
+								<a href="{{route("grupo",$item->idGrup)}}">{{__("messages.m14_gr")}}</a>
+							</div>
 						</div>
 					@endforeach
 				</div>

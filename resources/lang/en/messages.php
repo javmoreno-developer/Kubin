@@ -87,6 +87,8 @@ return [
 
     'tit1_5_tut' => 'Change fill',
 
+     "m1_tut" => "Achieved",
+
     //header
 
     'cab_1' => 'Tutorials',
@@ -117,6 +119,13 @@ return [
 
     'placeholder' => 'Write here',
 
+    "m4_lo" => "You do not have an account?",
+
+    "m5_lo" => "Premium",
+
+    "m6_lo" => "Do you have an account?",
+
+    "m7_lo" => "Sign in",
     //dashboard
 
     'men1_das' => 'Change image',
@@ -174,7 +183,7 @@ return [
 
     'm11_tab' => 'Draw circle',
 
-    'm12_tab' => 'Draw curve',
+    'm12_tab' => 'Draw Bézier curve',
 
     'm13_tab' => 'Free draw',
 
@@ -188,9 +197,60 @@ return [
 
     'm18_tab' => 'Change background',
 
+    "m19_tab" => 'Add',
+
+    "m20_tab" => 'Assign',
+
+    "m21_tab" => 'Cancell',
+
+     "m22_tab" => 'This picture belongs to ',
+
+     "m23_tab" => 'assign a name',
+
+      "m24_tab" => 'Uploading picture:',
+    
+      "m25_tab" => 'Select category:',
+
+      "m26_tab" => "Picture name",
+
+      "m27_tab" => "description",
+
+      "m28_tab" => "Done fill",
+
+      "m29_tab" => "Change the thickness of the stroke:",
+
+      "m30_tab" => "Change the zoom:",
+
+       "m31_tab" => "Creation of gradients",
+        "m32_tab" => "Gradients types",
+        "m33_tab" => "from top to bottom",
+        "m34_tab" => "from left to right",
+        "m35_tab" => "First color",
+        "m36_tab" => "Second Color",
+        "m37_tab" => "Create",
+        "m38_tab" => "Upload image",
+
     //404
     'main_404' => 'page not found',
 
     //formulario crear grupo
     'title_group' => 'Create a group',
+    "m1_gr" => "Members",
+    "m2_gr" => "Categories",
+    "m3_gr" => "Members list",
+    "m4_gr" => "Categories list",
+    "m5_gr" => "Change name",
+    "m6_gr" => "Change",
+    "m7_gr" => "Back",
+    "m8_gr" => "Create group",
+    "m9_gr" => "See your groups",
+    "m10_gr" => "Group name",
+     "m11_gr" => "Members",
+     "m12_gr" => "Send",
+     "m13_gr" => "See groups",
+     "m14_gr" => "See",
+
+      //correo
+     "m1_co" =>"Acess",
+     "m2_co" =>"Goodbye",
 ];

@@ -107,75 +107,78 @@
 	</section>
 
 	<!--Nombre lienzo-->
-	<div id="namingContainer">
-		<h1>Asigna un nombre</h1>
-		<div id="namingLoader">
-			<p>Subiendo lienzo:</p>
+	<div id="export_ctr">
+		<div id="namingContainer">
+			<h1>{{__("messages.m23_tab")}}</h1>
+			<div id="namingLoader">
+				<p>{{__("messages.m24_tab")}}</p>
 
-			<!--loader-->
-			<div class="loader_container">
-			  <div class="span-container">
-			    <span class="one"></span>
-			    <span class="two"></span>
-			    <span class="three"></span>
-			    <span class="four"></span>
-			  </div>
+				<!--loader-->
+				<div class="loader_container">
+				  <div class="span-container">
+				    <span class="one"></span>
+				    <span class="two"></span>
+				    <span class="three"></span>
+				    <span class="four"></span>
+				  </div>
+				</div>
 			</div>
+			<input type="text" id="nameLienzo" placeholder="{{__("messages.m26_tab")}}" value="@isset($nombre){{$nombre}}@endisset">
+			<div id="catExport">
+				<select name="categorias" id="catExportSelect">
+					<option selected disabled>{{__("messages.m25_tab")}}</option>
+				</select>
+				<i class="bi bi-plus" id="addCat" title="añadir categoria"></i>
+			</div>
+			
+			<div id="addCatContainer">
+				<label for="#nameCategory">{{__("messages.men4_das")}}</label>
+				<input type="text" id="nameCategory" name="nameCategory">
+				<label for="#descCategory">{{__("messages.m27_tab")}}</label>
+				<input type="text" id="descCategory" name="descCategory">
+				<button id="addCatBtn">{{__("messages.m19_tab")}}</button>
+			</div>
+			<div>
+				<button id="naming">{{__("messages.m20_tab")}}</button>
+				<button id="cancellNaming">{{__("messages.m21_tab")}}</button>
+			</div>
+			
 		</div>
-		<input type="text" id="nameLienzo" value="@isset($nombre){{$nombre}}@endisset">
-		<div id="catExport">
-			<select name="categorias" id="catExportSelect" multiple>
-				<option selected disabled>Elije categoria</option>
-			</select>
-			<i class="bi bi-plus" id="addCat" title="añadir categoria"></i>
-		</div>
-		
-		<div id="addCatContainer">
-			<label for="#nameCategory">nombre</label>
-			<input type="text" id="nameCategory" name="nameCategory">
-			<label for="#descCategory">descripcion</label>
-			<input type="text" id="descCategory" name="descCategory">
-			<button id="addCatBtn">add</button>
-		</div>
-		<div>
-			<button id="naming">Asignar</button>
-			<button id="cancellNaming">Cancelar</button>
-		</div>
-		
 	</div>
+	
 
 	<!---done fill-->
 	<div id="doneFill">
-		<div id="cancelFill" class="tool"><button>Done fill</button></div>
+		<div id="cancelFill" class="tool"><button>{{__("messages.m28_tab")}}</button></div>
 	</div>
 
 	<!--grosor-->
 	<div id="grosorContainer">
-		<p>Varia el grosor del trazo: &nbsp;</p>
+		<p>{{__("messages.m29_tab")}} &nbsp;</p>
 		<input type="range" min="1" max="10" id="grosorPicker">
 	</div>
 
 	<!-- lupa -->
 	<div id="loupeContainer">
-		<p>Varia el zoom: &nbsp;</p>
+		<p>{{__("messages.m30_tab")}} &nbsp;</p>
 		<input type="range" min="1" max="20" id="loupeRange">
 	</div>
 	<!--Gradient-->
 	<div id="gradientContainer">
 		<div id="contentGradient">
-			<h3>creacion de gradientes</h3>
-			<h4>Tipo de gradiente</h4>
+			<h3>{{__("messages.m31_tab")}}</h3>
+			<h4>{{__("messages.m32_tab")}}</h4>
 			<select id="gradientType">
 				<option value="linear">Linear</option>
 			</select>
 			<select id="verticalidad">
-				<option value="AB">arriba a abajo</option>
-				<option value="ID">izquierda a derecha</option>
+				<option value="AB">{{__("messages.m33_tab")}}</option>
+				<option value="ID">{{__("messages.m34_tab")}}</option>
 			</select>
 
-			<div>Color1:<input type="color" id="c1"></div>
-			<div>Color2:<input type="color" id="c2"></div>
-			<button id="crearGradient">Crear</button>
+			<div>{{__("messages.m35_tab")}}<input type="color" id="c1"></div>
+			<div>{{__("messages.m36_tab")}}<input type="color" id="c2"></div>
+			<button id="crearGradient">{{__("messages.m37_tab")}}</button>
 		</div>
 		<div id="cancellGradient">
 			<i class="bi bi-x-lg"></i>
@@ -184,7 +187,7 @@
 
 
 	@isset($grupo)
-		<h1>Cuadro perteneciente a grupo {{$grupo}}</h1>
+		<h1 id="group_message">{{__("messages.m22_tab")}} {{$nombreGr}}</h1>
 		<input type="hidden" id="idgr" value="{{$grupo}}">
 	@endisset
 	@isset($id)

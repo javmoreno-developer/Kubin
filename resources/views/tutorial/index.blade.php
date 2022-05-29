@@ -37,7 +37,7 @@
 			<div class="timeline"></div>
 			
 		</section>
-		<a href="/showcase">Conseguido</a>
+		<a href="/showcase">{{__("messages.m1_tut")}}</a>
 	</section>
 
 <div id="advices">

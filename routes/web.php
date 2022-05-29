@@ -35,7 +35,7 @@ Route::get("/login",function() {
     return view("login/index");
 })->name("login");
 
-Route::post("registrar",[usuarioController::class,"registrar"])->name("registrar");
+//Route::post("registrar",[usuarioController::class,"registrar"])->name("registrar");
 
 Route::get("/tablero/",[lienzoController::class,"editar"])->middleware(["auth"])->name("tablero");
 
@@ -67,6 +67,7 @@ Route::get("out",function() {
 
 Route::post("cambiarFoto",[usuarioController::class,"cambiarFoto"])->middleware(["auth"])->name("cambiarFoto");
 
+Route::post("cambiarFotoFile",[usuarioController::class,"cambiarFotoFile"])->middleware(["auth"])->name("cambiarFotoFile");
 
 Route::post("idioma/",function () {
     $e=$_POST["datos"]["variable1"];
@@ -89,6 +90,10 @@ Route::post("/send-email",[MailController::class,"sendEmail"])->middleware("auth
 
 //ver grupos
 Route::get("/grupo/{id}",[grupoController::class,"ver"])->middleware("auth")->name("grupo");
+
+Route::get("/grupo2/{id}",function($id) {
+    echo $id;
+})->middleware("auth")->name("grupo2");
 
 //cargar categorias en el selector
 Route::post("cargarCat",[categoriaController::class,"cargar"])->name("cargarCat");

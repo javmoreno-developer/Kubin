@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Square+Peg&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap);
 :root {
   --body: #FAFAFA;
   --texto: black;
@@ -7,6 +9,10 @@
   --login-gradient:linear-gradient(to right top, #ff9a8b, #ff9288, #ff8987, #ff8086, #ff7786, #ff778a, #ff778d, #ff7791, #ff8098, #ff889f, #ff91a5, #ff99ac);
   --icon-gradient: -webkit-linear-gradient(#9c47fc, #356ad2);
   --azul:#1FC0CF;
+  --rojo:#E84855;
+  --liberty:#485696;
+  --mulberry:#B95F89;
+  --mulberry2:#216869;
 }
 html[data-theme=dark] {
   --body:#000;
@@ -35,6 +41,9 @@ body {
       -ms-user-select: none;
           user-select: none;
 }
+i {
+  cursor: pointer;
+}
 html.transition,
 html.transition *,
 html.transition *:before,
@@ -60,7 +69,7 @@ html.transition *:after {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
-  background: #B4654A;
+  background: var(--rojo);
   color: white !important;
 }
 #color_scheme {
@@ -176,6 +185,7 @@ html.transition *:after {
     justify-content: space-around;
     position: fixed;
     top: 0%;
+    z-index: 90;
   }
   #cabecera #menu {
     display: flex;
@@ -251,6 +261,8 @@ html.transition *:after {
 }
 p {
   color: var(--texto);
+  font-weight: 200;
+  font-family: "Source Sans Pro", sans-serif;
 }
 h1 {
   color: var(--texto);
@@ -260,6 +272,12 @@ h2 {
 }
 i {
   color: var(--texto);
+}
+#group_message {
+  top: 2%;
+  position: absolute;
+  z-index: -90;
+  left: 35%;
 }
 #firstSection {
   margin-top: 12vh;
@@ -390,6 +408,9 @@ i {
   padding: 15px;
   text-decoration: none;
 }
+#thirdSection #thirdBtn a i {
+  color: white;
+}
 #fourthSection {
   height: 150vh;
   width: 100%;
@@ -406,7 +427,7 @@ i {
   text-align: center;
 }
 #fourthSection #text #pretext2 {
-  width: 80%;
+  width: 60%;
 }
 #fourthSection #toolsLanding {
   height: 93vh;
@@ -447,6 +468,9 @@ i {
   color: white;
   padding: 20px;
   text-decoration: none;
+}
+#fourthSection #btnContainer a i {
+  color: white;
 }
 #fifthSection {
   height: 90vh;
@@ -954,15 +978,6 @@ i {
   height: 100%;
   width: 100%;
 }
-#footer #logoSection #icons {
-  width: 80%;
-  height: 5vh;
-  display: flex;
-  justify-content: space-around;
-}
-#footer #logoSection #icons i {
-  font-size: 20px;
-}
 #footer #textSection {
   height: 30vh;
   width: 100%;
@@ -983,10 +998,6 @@ i {
     width: 50%;
   }
   #footer #logoSection #logoImage {
-    width: 70%;
-  }
-  #footer #logoSection #icons {
-    margin-top: 2vh;
     width: 70%;
   }
   #footer #textSection {
@@ -1022,9 +1033,14 @@ body {
 #tutorial svg {
   height: 5vh;
   width: 20vw;
+  cursor: pointer;
   position: absolute;
   left: 37%;
   top: 22%;
+}
+#tutorial svg circle {
+  stroke-width: 30 !important;
+  stroke: var(--texto);
 }
 #tutorial #second-timeline {
   height: 11vh;
@@ -1105,8 +1121,8 @@ body {
 }
 #tutorial a {
   position: absolute;
-  width: 7vw;
-  left: 46%;
+  width: 50%;
+  left: 25%;
   top: 93%;
   height: 4vh;
   padding: 10px 20px;
@@ -1157,8 +1173,6 @@ body {
   opacity: 0;
 }
 .animaboost {
-  stroke-dashoffset: 100%;
-  stroke-dasharray: 100%;
   -webkit-animation: drawboost 3s forwards ease-in;
   animation: drawboost 3s forwards ease-in;
   -webkit-background-clip: text;
@@ -1168,13 +1182,33 @@ body {
 }
 @keyframes drawboost {
   100% {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 0;
     fill: var(--texto);
     opacity: 1;
   }
 }
 @media (min-width: 490px) {
+  #tutorial a {
+    position: absolute;
+    width: 20%;
+    left: 40%;
+    top: 93%;
+    height: 4vh;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    background: #1FC0CF;
+    color: white;
+    font-weight: bold;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   #tutorial svg {
     left: 38.5%;
   }
@@ -1211,6 +1245,27 @@ body {
   #tutorial svg {
     left: 46.7%;
     width: 5vw;
+  }
+  #tutorial a {
+    position: absolute;
+    width: 9vw;
+    left: 45%;
+    top: 93%;
+    height: 4vh;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    background: #1FC0CF;
+    color: white;
+    font-weight: bold;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   #tutorial #second-timeline .timeline {
     width: 10%;
@@ -1343,146 +1398,130 @@ body {
     width: 22% !important;
   }
 }
-#containerLogin {
-  height: 120vh;
-  width: 100%;
+#passIn {
+  font-size: 20px;
+}
+#passIn::-moz-placeholder {
+  font-size: 14px;
+}
+#passIn:-ms-input-placeholder {
+  font-size: 14px;
+}
+#passIn::placeholder {
+  font-size: 14px;
+}
+#passUp::-moz-placeholder {
+  font-size: 14px;
+}
+#passUp:-ms-input-placeholder {
+  font-size: 14px;
+}
+#passUp::placeholder {
+  font-size: 14px;
+}
+#passUp {
+  font-size: 20px;
+}
+.login_container {
   margin-top: 10vh;
+  height: 80vh;
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
-#containerLogin #login {
-  height: 100%;
-  width: 90%;
+.login_container p {
+  font-weight: bold;
+}
+.login_container .oculto {
+  height: 70%;
+  width: 100%;
+  position: absolute;
+  top: 15%;
+  left: 0%;
+  border: 10px solid transparent;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
+  border-radius: 20px;
+}
+.login_container .login_main {
+  height: 85%;
+  border-radius: 20px;
+  width: 98%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background: var(--body);
+  justify-content: space-around;
+  position: relative;
+  z-index: 90;
 }
-#containerLogin #login #signIn {
-  height: 40%;
+.login_container .login_main form {
+  height: 80%;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
-#containerLogin #login #signIn p {
-  font-weight: bold;
-  font-size: 20px;
-}
-#containerLogin #login #signIn #formIn {
-  height: 70%;
-  width: 80%;
-}
-#containerLogin #login #signIn #formIn form {
-  height: 100%;
-  width: 100%;
+.login_container .login_main form div {
   display: flex;
   flex-direction: column;
+  height: 10vh;
+  width: 50%;
   justify-content: space-around;
 }
-#containerLogin #login #signIn #formIn form div:not(#btnIn) {
-  height: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-#containerLogin #login #signIn #formIn form label {
-  color: var(--texto);
-}
-#containerLogin #login #signIn #formIn form input {
+.login_container .login_main form input {
   border: none;
   outline: none;
   border-bottom: 3px solid;
   background: var(--body);
   color: var(--texto);
 }
-#containerLogin #login #signIn #formIn form input::-moz-placeholder {
+.login_container .login_main form input::-moz-placeholder {
   color: var(--texto);
 }
-#containerLogin #login #signIn #formIn form input:-ms-input-placeholder {
+.login_container .login_main form input:-ms-input-placeholder {
   color: var(--texto);
 }
-#containerLogin #login #signIn #formIn form input::placeholder {
+.login_container .login_main form input::placeholder {
   color: var(--texto);
 }
-#containerLogin #login #signIn #formIn form #btnIn {
-  display: flex;
-  height: 17%;
-  justify-content: center;
-}
-#containerLogin #login #signIn #formIn form #btnIn button {
-  width: 40%;
-  border: none;
-  background: #1FC0CF;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 16px;
-}
-#containerLogin #login #signUp {
-  height: 60%;
+.login_container .login_main form .passLog {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-#containerLogin #login #signUp p {
-  font-weight: bold;
-  font-size: 20px;
-}
-#containerLogin #login #signUp #formUp {
-  height: 70%;
-  width: 100%;
+  height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-#containerLogin #login #signUp #formUp form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-  width: 80%;
-}
-#containerLogin #login #signUp #formUp form div {
-  height: 20%;
-  display: flex;
-  flex-direction: column;
   justify-content: space-around;
 }
-#containerLogin #login #signUp #formUp form div label {
-  color: var(--texto);
-}
-#containerLogin #login #signUp #formUp form div input {
+.login_container .login_main form .passLog input {
   border: none;
   outline: none;
+  width: 100%;
   border-bottom: 3px solid;
   background: var(--body);
   color: var(--texto);
 }
-#containerLogin #login #signUp #formUp form div input::-moz-placeholder {
+.login_container .login_main form .passLog input::-moz-placeholder {
   color: var(--texto);
 }
-#containerLogin #login #signUp #formUp form div input:-ms-input-placeholder {
+.login_container .login_main form .passLog input:-ms-input-placeholder {
   color: var(--texto);
 }
-#containerLogin #login #signUp #formUp form div input::placeholder {
+.login_container .login_main form .passLog input::placeholder {
   color: var(--texto);
 }
-#containerLogin #login #signUp #formUp form #btnUp {
+.login_container .login_main form #btnIn {
   display: flex;
   height: 10%;
+  width: 50%;
   justify-content: center;
-  align-items: center;
 }
-#containerLogin #login #signUp #formUp form #btnUp button {
-  width: 40%;
-  height: 100%;
+.login_container .login_main form #btnIn button {
+  width: 100%;
   border: none;
   background: #1FC0CF;
   color: white;
@@ -1494,24 +1533,17 @@ body {
   cursor: pointer;
   border-radius: 16px;
 }
-#containerLogin #login #overlay {
-  height: 70%;
-  width: 90%;
-  background-image: var(--login-gradient);
-  position: absolute;
-  top: 60%;
-  z-index: 2;
+#aw {
+  width: 100%;
+  height: 7%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  transition-property: top, height;
-  transition-duration: 2s, 2s;
+  justify-content: center;
+  z-index: 99;
+  position: relative;
 }
-#containerLogin #login #overlay button {
-  padding: 10px;
-  background: transparent;
-  border: 3px solid var(--body);
-  color: var(--body);
+#aw a {
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -1520,57 +1552,191 @@ body {
   cursor: pointer;
   border-radius: 16px;
 }
+#aq {
+  width: 100%;
+  height: 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  position: relative;
+}
+#aq a {
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+#form_register {
+  height: 90%;
+}
+#btnUp {
+  height: 5vh;
+}
+#btnUp button {
+  width: 100%;
+  border: none;
+  background: #1FC0CF;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+/* Fade in */
+.loginEnlace {
+  display: block;
+  position: relative;
+  padding: 0.02em 0;
+}
+.loginEnlace::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.02em;
+  background-color: hotpink;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+.loginEnlace:hover::after,
+.loginEnlace:focus::after {
+  opacity: 1;
+  transform: translate3d(0, 0.02em, 0);
+}
+#lienzoTop {
+  position: absolute;
+  z-index: 9;
+  height: 100vh;
+  top: 0%;
+  width: 100%;
+}
+#call_free {
+  display: none;
+}
+#premium_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 30% !important;
+  height: 5vh;
+}
+#crown {
+  width: 30%;
+  height: 100%;
+}
+#crown_path {
+  transition: all 1s;
+}
+input[type=checkbox] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  -moz-appearance: none;
+       appearance: none;
+  /* For iOS < 15 */
+  background-color: none;
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid black !important;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+input[type=checkbox]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  -webkit-clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+          clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+input[type=checkbox]:checked::before {
+  transform: scale(1);
+}
+input[type=checkbox]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+input[type=checkbox]:disabled {
+  color: black !important;
+  cursor: not-allowed;
+}
 @media (min-width: 992px) {
-  #containerLogin {
-    height: 80vh;
-  }
-
-  label {
-    font-weight: bold;
-    font-size: 18px;
-  }
-
-  input {
-    font-size: 17px;
-  }
-
-  #login {
-    height: 80vh !important;
-    width: 90%;
-    display: flex;
+  .passLog {
     flex-direction: row !important;
-    align-items: center;
   }
-  #login #signIn {
-    height: 100% !important;
-    width: 50% !important;
-  }
-  #login #signIn #formIn form div:not(#btnIn) {
-    height: 20% !important;
-  }
-  #login #signIn #formIn form #btnIn {
-    height: 10% !important;
-  }
-  #login #signIn #formIn form #btnIn button {
+
+  #btnIn {
     width: 20% !important;
   }
-  #login #signUp {
-    height: 100% !important;
-    width: 50% !important;
-  }
-  #login #signUp #formUp form #btnUp {
-    height: 10% !important;
-  }
-  #login #signUp #formUp form #btnUp button {
+
+  #btnUp {
     width: 20% !important;
   }
-  #login #overlay {
-    height: 100% !important;
-    width: 50% !important;
-    left: 50%;
-    top: 0% !important;
-    transition-property: left !important;
-    transition-duration: 2s !important;
+
+  .login_main {
+    width: 40% !important;
+  }
+
+  #aw {
+    flex-direction: row;
+  }
+
+  #aq {
+    flex-direction: row;
+  }
+
+  form div {
+    width: 70% !important;
+  }
+
+  .oculto {
+    height: 66%;
+    width: 41% !important;
+    position: absolute;
+    top: 17%;
+    left: 29.5% !important;
+    background: black;
+  }
+}
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 #boardContainer {
@@ -1663,6 +1829,15 @@ body {
   background: transparent;
   color: var(--texto);
 }
+#export_ctr {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0%;
+  z-index: 90;
+  display: none;
+}
 #namingContainer {
   height: 80vh;
   position: fixed;
@@ -1676,10 +1851,13 @@ body {
   z-index: 90;
   align-items: center;
   justify-content: space-evenly;
+  background: var(--body);
+  color: var(--texto);
 }
 #namingContainer h1 {
   font-size: 20px;
   color: black;
+  color: var(--texto);
 }
 #namingContainer div button {
   padding: 10px 20px;
@@ -1699,13 +1877,26 @@ body {
 #namingContainer #catExport {
   display: flex;
   flex-direction: column;
-  border: 3px solid red;
   width: 50%;
   height: 15%;
   align-items: center;
 }
 #namingContainer #catExport select {
-  height: 100%;
+  margin-bottom: 1em;
+  overflow: visible !important;
+  padding: 0.25em;
+  height: 50%;
+  border: 0;
+  border-bottom: 2px solid currentcolor;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  border-radius: 0;
+  background: var(--body);
+  color: var(--texto);
+}
+#namingContainer #catExport select:focus, #namingContainer #catExport select:active {
+  outline: 0;
+  border-bottom-color: red;
 }
 #namingContainer #catExport i {
   font-size: 30px;
@@ -1713,11 +1904,19 @@ body {
 #namingContainer #addCatContainer {
   height: 40%;
   width: 80%;
-  border: 3px solid;
   display: none;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background: var(--body);
+  color: var(--texto);
+}
+#namingContainer #addCatContainer input {
+  background: var(--body);
+  color: var(--texto);
+  border: none;
+  outline: none;
+  border-bottom: 3px solid;
 }
 #doneFill {
   height: 5vh;
@@ -1971,6 +2170,15 @@ div[data-name=mojs-shape] {
   height: 100%;
   width: 30%;
 }
+#atrasTablero svg line {
+  stroke: var(--texto);
+}
+#atrasTablero svg circle {
+  stroke: var(--texto);
+}
+#nameLienzo {
+  text-align: center;
+}
 @media (min-width: 900px) {
   #boardContainer {
     height: 100vh !important;
@@ -2006,16 +2214,27 @@ div[data-name=mojs-shape] {
     left: 20%;
     width: 60%;
   }
-  #namingContainer textarea {
-    width: 30%;
-    height: 50%;
+  #namingContainer #nameLienzo {
+    border: none;
+    outline: none;
+    border-bottom: 3px solid;
+    background: var(--body);
+    width: 22%;
+    color: var(--texto);
+  }
+  #namingContainer #nameLienzo::-moz-placeholder {
+    color: var(--texto);
+  }
+  #namingContainer #nameLienzo:-ms-input-placeholder {
+    color: var(--texto);
+  }
+  #namingContainer #nameLienzo::placeholder {
+    color: var(--texto);
   }
   #namingContainer #catExport {
     flex-direction: row;
     justify-content: center;
-  }
-  #namingContainer #catExport select {
-    height: 100%;
+    gap: 3%;
   }
 
   .toolSelected {
@@ -2199,7 +2418,10 @@ th {
   height: 50%;
   width: 80%;
   background: #C4C4C4;
-  background-size: cover;
+  background-size: contain !important;
+  /* <------ */
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
 }
 #userModal #userImage #cambiarModal {
   height: 100%;
@@ -2255,7 +2477,7 @@ th {
   width: 100%;
 }
 #exhibition table tr td p {
-  font-weight: 800;
+  font-weight: 400;
 }
 #exhibition table tr td a {
   height: 5vh;
@@ -2274,7 +2496,7 @@ th {
   background: #14213D;
 }
 #exhibition table tr td #delBtn {
-  background: #DA4167;
+  background: var(--rojo);
 }
 #exhibition table tr td button {
   height: 5vh;
@@ -2298,8 +2520,8 @@ th {
   align-items: center;
 }
 #btnCrearLie a {
-  background: var(--texto);
-  color: var(--body);
+  background: #14213D;
+  color: white;
   padding: 10px;
   padding: 10px 20px;
   text-align: center;
@@ -2321,7 +2543,7 @@ th {
   border: none;
   padding-top: 12px;
   padding-bottom: 12px;
-  background: #2B3A67;
+  background: var(--liberty);
 }
 #btnCrearLie #see_group {
   padding: 10px 20px;
@@ -2335,14 +2557,14 @@ th {
   border: none;
   padding-top: 12px;
   padding-bottom: 12px;
-  background: #702632;
+  background: var(--mulberry);
 }
 #downloadContainer {
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
-  z-index: 9;
+  z-index: 99;
   top: 0%;
   display: none;
 }
@@ -2355,6 +2577,7 @@ th {
   left: 10%;
   display: flex;
   justify-content: center;
+  background: var(--body);
 }
 #downloadContainer #downloadModal #closeDownload {
   width: 80%;
@@ -2367,6 +2590,7 @@ th {
 }
 #downloadContainer #downloadModal #closeDownload i {
   font-size: 20px;
+  cursor: pointer;
 }
 #downloadContainer #downloadModal #contentDown {
   display: flex;
@@ -2375,6 +2599,22 @@ th {
   justify-content: space-around;
   height: 100%;
   width: 30%;
+}
+#downloadContainer #downloadModal #contentDown select {
+  margin-bottom: 1em;
+  overflow: visible !important;
+  padding: 0.25em;
+  border: 0;
+  border-bottom: 2px solid currentcolor;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  border-radius: 0;
+  background: var(--body);
+  color: var(--texto);
+}
+#downloadContainer #downloadModal #contentDown select:focus, #downloadContainer #downloadModal #contentDown select:active {
+  outline: 0;
+  border-bottom-color: red;
 }
 #downloadContainer #downloadModal #contentDown textarea {
   display: none;
@@ -2452,6 +2692,22 @@ th {
   align-items: center;
   display: none;
 }
+#changeFotoModal #options {
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#changeFotoModal #options #urlModal {
+  border-bottom: 3px solid;
+  width: 10%;
+  text-align: center;
+}
+#changeFotoModal #options #fileModal {
+  width: 10%;
+  text-align: center;
+}
 #changeFotoModal #fotoMain {
   height: 60%;
   width: 80%;
@@ -2466,18 +2722,51 @@ th {
   justify-content: space-around;
   align-items: center;
 }
-#changeFotoModal #fotoMain #main form {
+#changeFotoModal #fotoMain #main #file {
+  display: none;
+  height: 70%;
+}
+#changeFotoModal #fotoMain #main #file form {
   display: flex;
   flex-direction: column;
-  height: 70%;
+  height: 100%;
   justify-content: space-evenly;
   align-items: center;
 }
-#changeFotoModal #fotoMain #main form div {
+#changeFotoModal #fotoMain #main #file form div {
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  justify-content: space-around;
+  align-items: center;
+}
+#changeFotoModal #fotoMain #main #file form button {
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  background: #13C4A3;
+  color: white;
+  font-weight: bold;
+}
+#changeFotoModal #fotoMain #main #url {
+  height: 70%;
+}
+#changeFotoModal #fotoMain #main #url form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#changeFotoModal #fotoMain #main #url form div {
   display: flex;
   flex-direction: column;
 }
-#changeFotoModal #fotoMain #main form button {
+#changeFotoModal #fotoMain #main #url form button {
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -2570,7 +2859,7 @@ th {
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 90;
+  z-index: 190;
   top: 0%;
   display: none;
 }
@@ -2604,10 +2893,14 @@ th {
   border-bottom: 3px solid;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 75%;
 }
-#seeGroupModal #see_group_main #contentSeeGroup #container .filaGroup a {
+#seeGroupModal #see_group_main #contentSeeGroup #container .filaGroup .frS {
+  width: 90%;
+}
+#seeGroupModal #see_group_main #contentSeeGroup #container .filaGroup .seS {
+  width: 10%;
+}
+#seeGroupModal #see_group_main #contentSeeGroup #container .filaGroup .seS a {
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -2618,6 +2911,7 @@ th {
   padding: 5px 10px;
   background: var(--azul);
   border: none;
+  color: var(--texto);
 }
 #seeGroupModal #see_group_main #closeSeeGroup {
   height: 10%;
@@ -2781,7 +3075,8 @@ span {
 #modalMembersContainer #modalMembersMain {
   width: 100%;
   height: 70%;
-  background: white;
+  background: var(--body);
+  color: var(--texto);
   display: flex;
 }
 #modalMembersContainer #modalMembersMain #contentModalMembers {
@@ -2796,6 +3091,9 @@ span {
   height: 85%;
   display: flex;
   flex-direction: column;
+}
+#modalMembersContainer #modalMembersMain #contentModalMembers #contentMembers i {
+  cursor: pointer;
 }
 #modalMembersContainer #modalMembersMain #contentModalMembers #addMembersContainer {
   height: 10%;
@@ -2819,12 +3117,16 @@ span {
   height: 80%;
   border: none;
   background: #1FC0CF;
+  cursor: pointer;
 }
 #modalMembersContainer #modalMembersMain #closeModalMembers {
   height: 10%;
   width: 5%;
   display: flex;
   align-items: center;
+}
+#modalMembersContainer #modalMembersMain #closeModalMembers i {
+  cursor: pointer;
 }
 .fila_miembro {
   width: 100%;
@@ -2869,11 +3171,17 @@ span {
 #modalCategoryContainer #modalCategoryMain #contentModalCategory h1 {
   text-align: center;
 }
+#modalCategoryContainer #modalCategoryMain #contentModalCategory i {
+  cursor: pointer;
+}
 #modalCategoryContainer #modalCategoryMain #closeModalCategory {
   height: 10%;
   width: 5%;
   display: flex;
   align-items: center;
+}
+#modalCategoryContainer #modalCategoryMain #closeModalCategory i {
+  cursor: pointer;
 }
 #modalNameContainer {
   width: 100%;
@@ -2935,6 +3243,9 @@ span {
   justify-content: center;
   align-items: flex-end;
 }
+#subtitle_container #title_members h3 {
+  cursor: pointer;
+}
 #subtitle_container #members_container {
   display: flex;
   flex-direction: column;
@@ -2951,6 +3262,9 @@ span {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+}
+#subtitle_container #title_category h3 {
+  cursor: pointer;
 }
 #subtitle_container #category_container {
   display: flex;
@@ -2978,6 +3292,9 @@ span {
   align-items: center;
   width: 100%;
 }
+#group_canvas_container table tr td p {
+  font-weight: 400;
+}
 #group_canvas_container table tr td a {
   height: 5vh;
   padding: 10px 20px;
@@ -2995,7 +3312,7 @@ span {
   background: #14213D;
 }
 #group_canvas_container table tr td #delBtn {
-  background: #DA4167;
+  background: var(--rojo);
 }
 #group_canvas_container table tr td button {
   height: 5vh;
@@ -3018,6 +3335,11 @@ span {
   flex-direction: row;
   justify-content: space-around;
 }
+#group_canvas_container table #header th {
+  width: 20%;
+  justify-content: center;
+  display: flex;
+}
 #make_canvas_container {
   height: 5vh;
   width: 100%;
@@ -3034,7 +3356,20 @@ span {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
-  background: #702632;
+  background: #14213D;
+  color: white;
+  border: none;
+  font-size: 14px;
+}
+#make_canvas_container a {
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  background: var(--liberty);
   color: white;
   border: none;
 }

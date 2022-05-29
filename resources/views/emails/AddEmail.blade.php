@@ -12,7 +12,7 @@
 	
 	<br>
 
-	<a href="{{route("addMember",$details['id'])}}">Acceder</a>
-	<p>Adios.</p>
+	<a href="{{route("addMember",$details['id'])}}">{{__("messages.m1_co")}}</a>
+	<p>{{__("messages.m2_co")}}.</p>
 </body>
 </html>

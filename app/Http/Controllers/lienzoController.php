@@ -60,9 +60,11 @@ class lienzoController extends Controller
                
                //apunto en la tabla lienzos_categorias
                 $lienzo=lienzos::find($modelo->idLie);
-                 foreach($_POST['datos']["variable2"] as $item) {
+                 /*foreach($_POST['datos']["variable2"] as $item) {
                     $lienzo->categorias()->attach(intval($item));
-                }
+                }*/
+                    $lienzo->categorias()->attach(intval($_POST['datos']["variable2"]));
+
                 return redirect()->route("dashboard");
                 } else {
                     echo "actualizando";
@@ -80,9 +82,10 @@ class lienzoController extends Controller
                     //actualizando categoria
                     $lienzo=lienzos::find($modelo->idLie);
                     $lienzo->categorias()->detach();
-                    foreach($_POST['datos']["variable2"] as $item) {
+                    /*foreach($_POST['datos']["variable2"] as $item) {
                         $lienzo->categorias()->attach(intval($item));
-                    }
+                    }*/
+                     $lienzo->categorias()->attach(intval($_POST['datos']["variable2"]));
                     //return redirect()->route("dashboard");
                     
                     
@@ -131,7 +134,10 @@ class lienzoController extends Controller
         //echo $lienzo;
         //echo $req->input("id");
         if(isset($_GET['grupo'])) {
-            return view("tablero/index",["id"=>$req->input("id"),"path"=>$lienzo,"nombre"=>$nombre,"grupo"=>$_GET['grupo']]);
+             $grupo=$_GET['grupo'];
+             $nomGru=grupos::find($grupo)->nomGrup;
+             
+            return view("tablero/index",["id"=>$req->input("id"),"path"=>$lienzo,"nombre"=>$nombre,"grupo"=>$_GET['grupo'],"nombreGr"=>$nomGru]);
         }
         return view("tablero/index",["id"=>$req->input("id"),"path"=>$lienzo,"nombre"=>$nombre]);
     }
@@ -141,7 +147,8 @@ class lienzoController extends Controller
             //echo $_POST["grupo"];
             $categoria=$this->obtenerCategoriaGrupo($_POST['grupo']);
             //var_dump($categoria);
-            return view("tablero/index",["grupo"=>$_POST['grupo'],"categoriasGr"=>$categoria]);
+            $gr=grupos::find($_POST['grupo'])->nomGrup;
+            return view("tablero/index",["grupo"=>$_POST['grupo'],"categoriasGr"=>$categoria,"nombreGr"=>$gr]);
         }
         return view("tablero/index");
     }
@@ -172,8 +179,18 @@ class lienzoController extends Controller
     }
     
     public function borrarLienzo($id) {
-        $l=lienzos::find($id)->delete();
-        return redirect()->route("dashboard");
+        $l=lienzos::find($id);
+
+        $gr=$l->grupLie;
+        echo $gr;
+        if($gr!=null) {
+            $id=$gr;
+            $l->delete();
+            return redirect()->route("grupo",["id"=>$id]);
+        } else {
+            $l->delete();
+            return redirect()->route("dashboard");
+        }
     }
 
     public function obtenerDatos() {

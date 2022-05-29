@@ -12,7 +12,7 @@
 		<!--Subtitulo-->
 		<div id="subtitle_container">
 			<div id="title_members">
-				<h3 id="member_open">Miembros</h3>
+				<h3 id="member_open">{{__("messages.m1_gr")}}</h3>
 			</div>
 			<div id="members_container">
 				@if(sizeof($imagenes)>=4)
@@ -26,7 +26,7 @@
 				@endif
 			</div>
 			<div id="title_category">
-				<h3 id="category_open">Categorias</h3>
+				<h3 id="category_open">{{__("messages.m2_gr")}}</h3>
 			</div>
 
 			<div id="category_container">
@@ -102,7 +102,7 @@
 	<div id="modalMembersContainer">
 		<div id="modalMembersMain">
 			<div id="contentModalMembers">
-				<h1>Lista de miembros</h1>
+				<h1>{{__("messages.m3_gr")}}</h1>
 				<div id="contentMembers">
 					
 					@for($i=0;$i<sizeof($miembros);$i++)
@@ -124,7 +124,7 @@
 						<input type="text" name="nomPer" id="addMemberInput">
 					</div>
 					<div id="btnCtr">
-						<button id="addMemberBtn">Añadir</button>
+						<button id="addMemberBtn">{{__("messages.m19_tab")}}</button>
 					</div>
 				</div>
 			</div>
@@ -138,7 +138,7 @@
 	<div id="modalCategoryContainer">
 		<div id="modalCategoryMain">
 			<div id="contentModalCategory">
-				<h1>Lista de categorias</h1>
+				<h1>{{__("messages.m4_gr")}}</h1>
 				@for($i=0;$i<sizeof($categorias);$i++)
 					<div class="fila_miembro">
 						<div class="name">
@@ -162,10 +162,10 @@
 	<div id="modalNameContainer">
 		<div id="modalNameMain">
 			<div id="contentModalName">
-				<h1>Cambiar nombre</h1>
+				<h1>{{__("messages.m5_gr")}}</h1>
 				<input type="text" id="changeNameInput">
 				<input type="hidden" id="hiddenIdGroup" value="{{$id}}">
-				<button id="nameBtn">Cambiar</button>
+				<button id="nameBtn">{{__("messages.m6_gr")}}</button>
 			</div>
 			<div id="closeModalName">
 				<i class="bi bi-x-lg" id="closeGroup5"></i>
@@ -187,9 +187,9 @@
 		<form action="{{route("crearLienzo")}}" method="post">
 			@csrf
 			<input type="hidden" name="grupo" value="{{$id}}">
-			<button>Crear lienzo</button>
+			<button>{{__("messages.men11_das")}}</button>
 		</form>
-		
+		<a href="{{route("dashboard")}}">{{__("messages.m7_gr")}}</a>
 
 	</div>
 

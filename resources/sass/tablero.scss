@@ -103,6 +103,15 @@ $azul:#1FC0CF;
   color: var(--texto);
 }
 
+#export_ctr {
+	height: 100%;
+	width: 100%;
+	background-color:rgba(0,0,0,0.7);
+	position:fixed;
+	top: 0%;
+	z-index: 90;
+	display: none;
+}
 #namingContainer {
 	height: 80vh;
 	position:fixed;
@@ -117,9 +126,12 @@ $azul:#1FC0CF;
 	z-index: 90;
 	align-items:center;
 	justify-content: space-evenly;	
+	background: var(--body);
+	color: var(--texto);
 	h1 {
 		font-size: 20px;
 		color: black;
+		 color: var(--texto);
 	}
 	div {
 		button {
@@ -136,13 +148,29 @@ $azul:#1FC0CF;
 	#catExport {
 		display: flex;
 		flex-direction: column;
-		border:3px solid red;
 		width: 50%;
 		height: 15%;
 		align-items: center;
 		select {
-			height: 100%;
+			
+
+			 margin-bottom: 1em;
+			     overflow: visible !important;
+			  padding: .25em;
+			  height: 50%;
+			  border: 0;
+			  border-bottom: 2px solid currentcolor; 
+			  font-weight: bold;
+			  letter-spacing: .15em;
+			  border-radius: 0;
+			  background: var(--body);
+	    		 color: var(--texto);
+			  &:focus, &:active {
+			    outline: 0;
+			    border-bottom-color: red;
+			  }
 		}
+
 		i {
 			font-size: 30px;
 		}
@@ -150,11 +178,19 @@ $azul:#1FC0CF;
 	#addCatContainer {
 		height: 40%;
 		width: 80%;
-		border:3px solid;
 		display: none;
 		flex-direction: column;
 		justify-content: space-around;
 		align-items:center;
+		background: var(--body);
+	  color: var(--texto);
+	  	 input {
+		   		background: var(--body);
+		   		color: var(--texto);
+		   		border: none;
+		 			outline: none;
+		 			border-bottom: 3px solid;
+		   }
 	}
 }
 
@@ -433,8 +469,19 @@ div[data-name="mojs-shape"] {
 	svg {
 			height: 100%;
 			width: 30%;
+
+			line {
+				stroke:var(--texto);
+			}
+			circle {
+				stroke:var(--texto);
+			}
 		}
 	
+}
+
+#nameLienzo {
+	text-align: center;
 }
 @media(min-width: 900px) {
 	#boardContainer {
@@ -473,17 +520,22 @@ div[data-name="mojs-shape"] {
 		top: 15%;
 		left: 20%;
 		width: 60%;
-		textarea {
-			width: 30%;
-			height: 50%;
-			
+		
+		#nameLienzo {
+			border: none;
+			outline:none;
+			border-bottom: 3px solid;	
+			background: var(--body);
+			width: 22%;
+			color: var(--texto);
+			&::placeholder {
+				color: var(--texto);
+			}
 		}
 		#catExport {
 			flex-direction: row;
 			justify-content: center;
-			select {
-				height: 100%;
-			}
+			gap:3%;
 		}
 	}
 

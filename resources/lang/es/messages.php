@@ -53,7 +53,7 @@ return [
 
     'men1_5_landing' => 'Lleva tu juego de imagenes al siguiente nivel.',
 
-    'men2_5_landing' => 'Empice ahora',
+    'men2_5_landing' => 'Empiece ahora',
 
     'men_1_footer_landing' => 'Idioma',
 
@@ -87,6 +87,8 @@ return [
 
     'tit1_5_tut' => 'Cambiar relleno',
 
+    "m1_tut" => "Conseguido",
+
     //cabecera
 
     'cab_1' => 'Tutoriales',
@@ -117,6 +119,13 @@ return [
 
     'placeholder' => 'Escribe aqui',
 
+    "m4_lo" => "¿No tienes una cuenta?",
+
+    "m5_lo" => "Premium",
+
+    "m6_lo" => "¿Tienes una cuenta?",
+
+    "m7_lo" => "Inciar sesion",
     //dashboard
 
     'men1_das' => 'Cambiar imagen',
@@ -174,7 +183,7 @@ return [
 
     'm11_tab' => 'Dibujar circulo',
 
-    'm12_tab' => 'Dibujar curva',
+    'm12_tab' => 'Dibujar curva de Bézier',
 
     'm13_tab' => 'Dibujo libre',
 
@@ -188,9 +197,62 @@ return [
 
     'm18_tab' => 'Cambiar fondo',
 
+    "m19_tab" => 'Añadir',
+
+    "m20_tab" => 'Asignar',
+
+    "m21_tab" => 'Cancelar',
+
+    "m22_tab" => 'Cuadro perteneciente a', 
+
+    "m23_tab" => 'Asigna un nombre',
+
+    "m24_tab" => 'Subiendo lienzo:',
+
+    "m25_tab" => 'Elije categoria:',
+
+    "m26_tab" => "Nombre del lienzo",
+
+    "m27_tab" => "descripcion",
+
+    "m28_tab" => "Hecho",
+
+    "m29_tab" => "Varia el grosor del trazo:",
+
+    "m30_tab" => "Varia el zoom:",
+
+    "m31_tab" => "Creacion de gradientes",
+    "m32_tab" => "Tipo de gradientes",
+    "m33_tab" => "de arriba a abajo",
+    "m34_tab" => "de izquierda a derecha",
+    "m35_tab" => "Color 1",
+    "m36_tab" => "Color 2",
+    "m37_tab" => "Crear",
+
+    "m38_tab" => "Subir fichero",
+
     //404
     'main_404' => 'pagina no encontrada',
 
     //formulario crear grupo
     'title_group' => 'Crear grupo',
+     "m1_gr" => "Miembros",
+     "m2_gr" => "Categorias",
+     "m3_gr" => "Lista de miembros",
+     "m4_gr" => "Lista de categorias",
+     "m5_gr" => "Cambiar nombre",
+     "m6_gr" => "Cambiar",
+     "m7_gr" => "Volver",
+     "m8_gr" => "Crear grupo",
+     "m9_gr" => "Ver grupos asociados",
+     "m10_gr" => "Nombre del grupo",
+     "m11_gr" => "Miembros",
+     "m12_gr" => "Enviar",
+     "m13_gr" => "Ver grupos",
+     "m14_gr" => "Ver",
+
+     //correo
+     "m1_co" =>"Acceder",
+     "m2_co" =>"Adios",
+
 ];
