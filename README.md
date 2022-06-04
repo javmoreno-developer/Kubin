@@ -29,10 +29,10 @@ _Para instalar kubin antes deberás tener instalado composer,php y node (npm)_
 [Node](https://nodejs.org/es/download/) 
 
 ## Opciones para el usuario
-_Se distinguirán tres perfiles:
-1.Usuario no premium y no logueado:podrá ver la landing page de la aplicación asi como el showcase y los tutoriales.
-2.Usuario no premium y logueado:este usuario podrá crear lienzos con la mayoria de herramientas disponibles en la app,también podrá crear categorías para estos lienzos,sin embargo no podrá crear grupos ni tampoco descargar los cuadros
-3.Usuario premium y logueado:este usuario podrá crear lienzos con todas la herramientas disponibles en la app para posteriormente descargarlos en diferentes formatos,este usuario podrá además crear grupos y gestionar los miembros de estos._
+Se distinguirán tres perfiles: \
+**1.Usuario no premium y no logueado**:podrá ver la landing page de la aplicación asi como el showcase y los tutoriales. \
+**2.Usuario no premium y logueado**:este usuario podrá crear lienzos con la mayoria de herramientas disponibles en la app,también podrá crear categorías para estos lienzos,sin embargo no podrá crear grupos ni tampoco descargar los cuadros \
+**3.Usuario premium y logueado**:este usuario podrá crear lienzos con todas la herramientas disponibles en la app para posteriormente descargarlos en diferentes formatos,este usuario podrá además crear grupos y gestionar los miembros de estos. \
 
 ## Modelado 📄
 ![image](https://user-images.githubusercontent.com/55782974/168302667-9d6e1686-bca0-4cb1-8eb8-a59c1af20436.png)
