@@ -36,7 +36,7 @@
 				</tr>
 			</thead>
 			@foreach($cuadros as $cuadro)
-				<tr>
+				<tr draggable="true" id="drag_{{$cuadro["idLie"]}}">
 					<td><strong><h4>{{$cuadro["nomLie"]}}</h4></strong></td>
 					<td><p> {{$cuadro["created_at"]}}</p></td>
 				    <td><p> {{$cuadro["updated_at"]}}</p></td>
@@ -50,6 +50,10 @@
 		</table>
 	</section>
 	
+	<div class="drag_destiny">
+		<i class="bi bi-trash" id="drag_icon"></i>
+	</div>
+
 	<div id="paginacion">
 		<div id="container">
 			{!! $cuadros->links() !!}
@@ -57,8 +61,10 @@
 	</div>
 
 	<div id="btnCrearLie">
-		<a href="{{route("crearLienzo")}}">{{__("messages.men11_das")}}</a>
-		<button id="create_group">{{__("messages.m8_gr")}}</button>
+		<a draggable="false" href="{{route("crearLienzo")}}">{{__("messages.men11_das")}}</a>
+		@if(Auth::user()->perfUsu==2)
+			<button id="create_group">{{__("messages.m8_gr")}}</button>
+		@endif
 		@if(sizeof($grupo)!=0)
 			<button id="see_group">{{__("messages.m9_gr")}}</button>
 		@endif
@@ -92,7 +98,9 @@
 				<h1>{{__("messages.men14_das")}}</h1>
 				<div id="options">
 					<div id="urlModal">url</div>
-					<div id="fileModal">file</div>
+					@if(Auth::user()->perfUsu==2)
+						<div id="fileModal">file</div>
+					@endif
 				</div>
 				<div id="url">	
 						<form action="{{route("cambiarFoto")}}" method="post">
@@ -104,18 +112,20 @@
 							<button>{{__("messages.men16_das")}}</button>
 						</form>
 				</div>
-				<div id="file">	
-						<form action="{{route("cambiarFotoFile")}}" method="post" enctype="multipart/form-data">
-							@csrf
-							<div>
-								<label for="textChange">{{__("messages.m38_tab")}}</label>
-								<input type="file" name="avatar" id="textChange">
-							</div>
-							<button>{{__("messages.men16_das")}}</button>
-							
-							
-						</form>
-				</div>	
+				@if(Auth::user()->perfUsu==2)
+					<div id="file">	
+							<form action="{{route("cambiarFotoFile")}}" method="post" enctype="multipart/form-data">
+								@csrf
+								<div>
+									<label for="textChange">{{__("messages.m38_tab")}}</label>
+									<input type="file" name="avatar" id="textChange">
+								</div>
+								<button>{{__("messages.men16_das")}}</button>
+								
+								
+							</form>
+					</div>
+				@endif	
 			</div>
 			<div id="closeMain">
 				<i class="bi bi-x-lg" id="closeFoto"></i>
@@ -124,28 +134,30 @@
 	</div>
 
 	<!--Formulario crear grupo-->
-	<div id="createGroupModal">
-		<div id="create_group_main">
-			<div id="contentCreateGroup">
-				<h1>{{__("messages.title_group")}}</h1>
-				<form action="{{route("send-email")}}" method="post">
-					@csrf
-					<div>	
-						<label for="group_name">{{__("messages.m10_gr")}}</label> <br>
-						<input type="text" id="group_name" name="name">
-					</div>	
-					<div>	
-						<label for="email_create">{{__("messages.m11_gr")}}</label> <br>
-						<textarea name="email_group" id="email_create" cols="30" rows="10"></textarea>
-					</div>	
-					<button>{{__("messages.m12_gr")}}</button>
-				</form>
-			</div>
-			<div id="closeCreateGroup">
-				<i class="bi bi-x-lg" id="closeGroup"></i>
+	@if(Auth::user()->perfUsu==2)
+		<div id="createGroupModal">
+			<div id="create_group_main">
+				<div id="contentCreateGroup">
+					<h1>{{__("messages.title_group")}}</h1>
+					<form action="{{route("send-email")}}" method="post">
+						@csrf
+						<div>	
+							<label for="group_name">{{__("messages.m10_gr")}}</label> <br>
+							<input type="text" id="group_name" name="name">
+						</div>	
+						<div>	
+							<label for="email_create">{{__("messages.m11_gr")}}</label> <br>
+							<textarea name="email_group" id="email_create" cols="30" rows="10"></textarea>
+						</div>	
+						<button>{{__("messages.m12_gr")}}</button>
+					</form>
+				</div>
+				<div id="closeCreateGroup">
+					<i class="bi bi-x-lg" id="closeGroup"></i>
+				</div>
 			</div>
 		</div>
-	</div>
+	@endif
 
 	<!--Ver grupos-->
 	<div id="seeGroupModal">
@@ -170,6 +182,29 @@
 			</div>
 		</div>
 	</div>
+
+	
+
+	<div class="notis">
+
+		@if($not==="mayor")
+			<x-notificacion tipo="success" texto="Lienzo añadido" identificador="2"/>
+		@elseif($not=="menor")
+			<x-notificacion tipo="danger" texto="Lienzo borrado" identificador="1"/>
+		@endif
+
+			<x-notificacion tipo="success" texto="Lienzo descargado" identificador="0"/>
+
+		@if($not=="edit")
+			<x-notificacion tipo="success" texto="Lienzo editado" identificador="5"/>
+		@endif
+
+		@if($not=="grupoCreado")
+			<x-notificacion tipo="success" texto="Grupo creado" identificador="4"/>
+		@endif
+
+	</div>
+
 
 </body>
 <!--Jquery-->

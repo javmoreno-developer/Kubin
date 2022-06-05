@@ -63,12 +63,18 @@ if(screen.width>900) {
 	 h=VhToPx(60);
 	 w=VwToPx(30);
 } else {
-	 h=VhToPx(55);
+	 h=VhToPx(48);
 	 w=VwToPx(80);
-	 altoSvg=25;
+	 altoSvg=38;
 	 anchoSvg=10;
 }
 
+/*
+ h=VhToPx(48);
+	 w=VwToPx(80);
+	 altoSvg=38;
+	 anchoSvg=10;
+*/
 var s="";
 if($("#lienzo").length==0) {
 	s=Snap(w,h);
@@ -761,8 +767,6 @@ function enviarDatos(datos, url){
 }
 //fin subir
 
-
-
 //seleccion de alguna herramienta(cambio de clase)
 $( ".tool" ).each(function(index) {
     $(this).on("click", function(){
@@ -937,16 +941,18 @@ function dibujarEllipse(param) {
 var contadorGradient=0;
 
 $("#gradient").click(()=> {
-	$("#gradientContainer").css("display","flex");
-	$("body").css("background","black");
+	$("#black_out2").css("display","flex");
+	$("#doneFill").css("z-index","900");
+	//$("body").css("background","black");
 	$("#cancellGradient").click(()=> {
-		$("#gradientContainer").css("display","none");
+		$("#black_out2").css("display","none");
 		if(localStorage.getItem("scheme")=="light") {
 			$("body").css("background","white");
 		} else {
 			$("body").css("background","black");
 		}
 	});
+});
 	$("#crearGradient").click(()=> {
 		let c1=$("#c1").val();
 		let c2=$("#c2").val();
@@ -956,9 +962,9 @@ $("#gradient").click(()=> {
 		crearGradiente(c1,c2,type,verti);
 		contadorGradient++;
 	});
-});
 
 function crearGradiente(c1,c2,type,verti) {
+	console.log("Hola creando gradiente");
 	let result="";
 	if(verti=="AB") {
 		var myLinearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
@@ -1002,19 +1008,125 @@ function crearGradiente(c1,c2,type,verti) {
         $(`#MyGradient${contadorGradient}`).append(stop2);
 	}
 	
-	gradientColor=`url(#MyGradient${contadorGradient})`;
+	//gradientColor=`url(#MyGradient${contadorGradient})`;
 }
 
 //use
+var arrayGradientColor=[];
+var arrayGradientDirection=[];
+
+function scanTotal() {
+	//hacemos distincion entre crear y editar
+	let t=window.location.href.split("?")[1];
+	if(t!=undefined) {
+		indiceGr=1;
+	}
+	for(let i=2;i<$("svg")[indiceGr].childNodes.length;i++) {
+		//console.log($("svg")[5].childNodes[i]);
+		//console.log($("svg")[5].childNodes[i].id);
+		if($("svg")[indiceGr].childNodes[i].id.includes("MyGradient")) {
+			//extraemos la direccion
+			//if($("svg")[5].childNodes[i].attr("x2")=="0%")
+			if($("svg")[indiceGr].childNodes[i].x2.animVal.valueAsString=="0%") {
+				//degradado de arriba a abajo
+				arrayGradientDirection.push("arriba");
+			} else {
+				arrayGradientDirection.push("izquierda");
+			}
+			//extraemos los colores (en pares)
+			//console.log($("svg")[5].childNodes[i].children);
+			for(let z=0;z<2;z++) {
+				console.log($("svg")[indiceGr].childNodes[i].children[z].getAttribute("stop-color"));
+				arrayGradientColor.push($("svg")[indiceGr].childNodes[i].children[z].getAttribute("stop-color"));
+			}
+		}
+		
+		
+	}
+	console.log(arrayGradientDirection);
+	console.log(arrayGradientColor);
+
+}
+
+function vaciarIntroduce() {
+	/*$("#introduce").remove(".gradientExp");
+	$("#introduce").empty();*/
+	$("#introduce").children().remove();
+	arrayGradientDirection=[];
+	arrayGradientColor=[];
+	contadorGradient=0;
+	console.log("vaciando: "+$("#introduce"));
+}
+
+$("#cancellChoose").click(()=> {
+	$("#black_out").css("display","none");
+	vaciarIntroduce();
+});
+var idGr=0;
+
+function buscarIdGr() {
+	let conjunto=document.getElementsByClassName("gradientExp");
+	console.log(conjunto);
+	for(let i=0;i<conjunto.length;i++) {
+		conjunto[i].addEventListener("click",()=> {
+			idGr=conjunto[i].id.split("_")[1];
+
+			//gradientColor=`url(#${idGr})`;
+			gradientColor=`url(#MyGradient${idGr})`;
+		});
+	}
+}
+
+function buscarGradiente() {
+	
+	console.log("buscando");
+}
+function asignarIntroduce() {
+	for(let z=0;z<arrayGradientDirection.length;z++) {
+		var newDiv = document.createElement("div");
+		newDiv.className ="gradientExp";
+		let color1=arrayGradientColor[z*2];
+		let color2=arrayGradientColor[z*2+1];
+
+		//asignamos los colores
+		if(arrayGradientDirection[z]=="izquierda") {
+		newDiv.style.background=
+		"linear-gradient(to right, " 
+			 + color1
+			 + ", " 
+			 + color2 
+			 + ")";
+		} else {
+			newDiv.style.background=
+			"linear-gradient(to bottom, " 
+				 + color1
+				 + ", " 
+				 + color2 
+				 + ")";
+		}
+		newDiv.id="MyGradient_"+z;
+		//introducimos en el elemento
+		$("#introduce").append(newDiv);
+	}
+	buscarIdGr();
+}
 $("#use").click(()=> {
 	$("#lienzo").css("z-index","99");
-	$("#doneFill").css("z-index","100");
+	$("#doneFill").css("z-index","90");
 	$("#doneFill").css("display","flex");
+	$("#black_out").css("display","flex");
 
+	//introducimos los gradientes en el modal para que los vea el usuario
+	scanTotal();
+	asignarIntroduce();
+
+
+	//gradientColor=`url(#MyGradient${contadorGradient})`;
 
 	$("#lienzo").click((e)=> {
 		let figuraSel=Snap.getElementByPoint(e.clientX,e.clientY);
 		console.log(figuraSel);
+		buscarGradiente();
 		figuraSel.attr({
 			fill: gradientColor,
 		    strokeWidth: 5
@@ -1027,13 +1139,22 @@ $("#doneFill").click(()=> {
 	$("#doneFill").css("display","none");
 });
 
+var indiceGr=5;
 
 function scan() {
+	//hacemos distincion entre crear y editar
+	let t=window.location.href.split("?")[1];
+	if(t!=undefined) {
+		indiceGr=1;
+	}
+	console.log("editantdo: "+t);
+	console.log("trabajamos con indice: "+indiceGr);
+	//fin distincion
 	contadorGradient=0;
-	for(let i=2;i<$("svg")[5].childNodes.length;i++) {
-		console.log($("svg")[5].childNodes[i]);
-		console.log($("svg")[5].childNodes[i].id);
-		if($("svg")[5].childNodes[i].id.includes("MyGradient")) {
+	for(let i=2;i<$("svg")[indiceGr].childNodes.length;i++) {
+		console.log($("svg")[indiceGr].childNodes[i]);
+		console.log($("svg")[indiceGr].childNodes[i].id);
+		if($("svg")[indiceGr].childNodes[i].id.includes("MyGradient")) {
 			contadorGradient++;
 		}
 		

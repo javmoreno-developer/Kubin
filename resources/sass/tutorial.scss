@@ -12,6 +12,7 @@ body {
 	}
 	
 	.timeline {
+		border:none;
 		height: 15vh;
 		width: 50%;
 		border-right: 3px solid var(--texto);
@@ -26,7 +27,7 @@ body {
 		top:22%;
 		circle {
 			stroke-width:30 !important;
-			stroke:var(--texto);
+		
 		}
 	}
 	#second-timeline {

@@ -18,7 +18,7 @@ function pintar(arg) {
 	 h=VhToPx(60);
 	 w=VwToPx(30);
 	} else {
-	  h=VhToPx(55);
+	  h=VhToPx(48);
 	  w=VwToPx(80);
 	}
 

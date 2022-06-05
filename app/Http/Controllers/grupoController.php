@@ -108,10 +108,38 @@ class grupoController extends Controller
             'pageName' => 'page',
         ]);
 
+        //notificaciones
+        $not=$this->variacionCuadros();
+
         //fin de usuarios de un grupo
-        return view("grupos/index",["nombreGrupo"=>$r->nomGrup,"miembros"=>$nombres,"imagenes"=>$imagenes,"cuadros"=>$paginator,"id"=>$param,"categorias"=>$categorias,"idMiembros"=>$idMiembros,"idCat"=>$ids]);
+        return view("grupos/index",["nombreGrupo"=>$r->nomGrup,"miembros"=>$nombres,"imagenes"=>$imagenes,"cuadros"=>$paginator,"id"=>$param,"categorias"=>$categorias,"idMiembros"=>$idMiembros,"idCat"=>$ids,"not"=>$not]);
     }
 
+
+      public function variacionCuadros() {
+        //return session()->has('incremento');
+        if(session()->has('incremento')) {
+            session()->forget('incremento');
+            return "mayor";
+
+        }
+
+        if(session()->has("grupoCreado")) {
+            session()->forget('grupoCreado');
+            return "grupoCreado";
+        }
+        
+        if(session()->has("edit")) {
+            session()->forget('edit');
+            return "edit";
+        }
+        if(session()->has('decremento')) {
+            session()->forget('decremento');
+            return "menor";
+        } else {
+            return "igual";
+        }
+    }
 
     public function cambiarNombre() {
         echo "cambiando nombre a: ".$_POST['datos']["variable1"];

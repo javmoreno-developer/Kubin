@@ -63,15 +63,22 @@ $gris:#696969;
 				width: 50%;
 				justify-content: space-around;
 			}
+			label {
+				color: var(--texto);
+			}
 			input {
 					border: none;
 					outline:none;
 					border-bottom: 3px solid;	
 					background: var(--body);
 					color: var(--texto);
+					padding-left: 0px !important;
+					margin-left: 0px !important;
 				}
 				input::placeholder {
 					color: var(--texto);
+					padding-left: 0px !important;
+					margin-left: 0px !important;
 				}
 			.passLog {
 				width: 100%;
@@ -121,6 +128,7 @@ $gris:#696969;
 	position: relative;
 	a {
 		@include pill;
+		color: var(--texto);
 	}
 }
 
@@ -213,7 +221,7 @@ input[type="checkbox"] {
   /* Remove most all native input styles */
   appearance: none;
   /* For iOS < 15 */
-  background-color: none;
+  background-color: none !important;
   /* Not removed via appearance */
   margin: 0;
 
@@ -221,7 +229,7 @@ input[type="checkbox"] {
 
   width: 1.15em;
   height: 1.15em;
-  border: 0.15em solid black !important;
+  border: 0.15em solid var(--texto) !important;
   border-radius: 0.15em;
   transform: translateY(-0.075em);
 
@@ -231,6 +239,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]::before {
+	background-color: none !important;
   content: "";
   width: 0.65em;
   height: 0.65em;
@@ -244,16 +253,27 @@ input[type="checkbox"]::before {
 }
 
 input[type="checkbox"]:checked::before {
+	background-color: none !important;
   transform: scale(1);
 }
 
 input[type="checkbox"]:focus {
+	background-color: none !important;
   outline: max(2px, 0.15em) solid currentColor;
   outline-offset: max(2px, 0.15em);
 }
 
-input[type="checkbox"]:disabled {
+input[type="checkbox"]:checked:hover {
+	background-color: transparent !important;
+}
 
+input[type="checkbox"]:checked:focus {
+	background-color: transparent !important;
+}
+
+
+input[type="checkbox"]:disabled {
+	background-color: none !important;
   color: black !important;
   cursor: not-allowed;
 }

@@ -164,28 +164,44 @@
 		<input type="range" min="1" max="20" id="loupeRange">
 	</div>
 	<!--Gradient-->
-	<div id="gradientContainer">
-		<div id="contentGradient">
-			<h3>{{__("messages.m31_tab")}}</h3>
-			<h4>{{__("messages.m32_tab")}}</h4>
-			<select id="gradientType">
-				<option value="linear">Linear</option>
-			</select>
-			<select id="verticalidad">
-				<option value="AB">{{__("messages.m33_tab")}}</option>
-				<option value="ID">{{__("messages.m34_tab")}}</option>
-			</select>
+	<div id="black_out2">
+		<div id="gradientContainer">
+			<div id="contentGradient">
+				<h3>{{__("messages.m31_tab")}}</h3>
+				<select id="gradientType">
+					<option value="linear">Linear</option>
+				</select>
+				<select id="verticalidad">
+					<option value="AB">{{__("messages.m33_tab")}}</option>
+					<option value="ID">{{__("messages.m34_tab")}}</option>
+				</select>
 
-			<div>{{__("messages.m35_tab")}}<input type="color" id="c1"></div>
-			<div>{{__("messages.m36_tab")}}<input type="color" id="c2"></div>
-			<button id="crearGradient">{{__("messages.m37_tab")}}</button>
-		</div>
-		<div id="cancellGradient">
-			<i class="bi bi-x-lg"></i>
+				<div id="c1_container">{{__("messages.m35_tab")}}<input type="color" id="c1"></div>
+				<div id="c2_container">{{__("messages.m36_tab")}}<input type="color" id="c2"></div>
+				<button id="crearGradient">{{__("messages.m37_tab")}}</button>
+			</div>
+			<div id="cancellGradient">
+				<i class="bi bi-x-lg"></i>
+			</div>
 		</div>
 	</div>
+	
 
-
+	<!-- Elegir gradient -->
+	<section id="black_out">
+		<div id="chooseGradient">
+			<div id="contentChoose">
+				<h1>Elige gradient</h1>
+				<div id="introduce">
+				</div>
+			</div>
+			<div id="cancellChoose">
+				<i class="bi bi-x-lg"></i>
+			</div>
+		</div>
+	</section>
+		
+	<!-- Fin gradient -->
 	@isset($grupo)
 		<h1 id="group_message">{{__("messages.m22_tab")}} {{$nombreGr}}</h1>
 		<input type="hidden" id="idgr" value="{{$grupo}}">
@@ -194,7 +210,7 @@
 		<input type="hidden" id="idgr2" value="{{$id}}">
 	@endisset
 	
-		
+	
 </body>
 
 	<!--tablero.js-->

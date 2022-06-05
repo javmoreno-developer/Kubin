@@ -111,22 +111,26 @@
 								<p>{{$miembros[$i]}}</p>
 							</div>
 							<div class="space"></div>
-							<div class="icon">
-								<i class="bi bi-person-dash" id="deletePerson_{{$idMiembros[$i]}}"></i>
-							</div>
+							@if(Auth::user()->perfUsu==2)
+								<div class="icon">
+									<i class="bi bi-person-dash" id="deletePerson_{{$idMiembros[$i]}}"></i>
+								</div>
+							@endif
 						</div>
 					@endfor
 					
 				
 				</div>
-				<div id="addMembersContainer">
-					<div id="nomPerCtr">
-						<input type="text" name="nomPer" id="addMemberInput">
+				@if(Auth::user()->perfUsu==2)
+					<div id="addMembersContainer">
+						<div id="nomPerCtr">
+							<input type="text" name="nomPer" id="addMemberInput">
+						</div>
+						<div id="btnCtr">
+							<button id="addMemberBtn">{{__("messages.m19_tab")}}</button>
+						</div>
 					</div>
-					<div id="btnCtr">
-						<button id="addMemberBtn">{{__("messages.m19_tab")}}</button>
-					</div>
-				</div>
+				@endif
 			</div>
 			<div id="closeModalMembers">
 				<i class="bi bi-x-lg" id="closeGroup3"></i>
@@ -145,9 +149,11 @@
 							<p>{{$categorias[$i]}}</p>
 						</div>
 						<div class="space"></div>
-						<div class="icon">
-							<i class="bi bi-trash" id="deleteCat_{{$idCat[$i]}}"></i>
-						</div>
+						@if(Auth::user()->perfUsu==2)
+							<div class="icon">
+								<i class="bi bi-trash" id="deleteCat_{{$idCat[$i]}}"></i>
+							</div>
+						@endif
 					</div>
 
 				@endfor
@@ -191,6 +197,26 @@
 		</form>
 		<a href="{{route("dashboard")}}">{{__("messages.m7_gr")}}</a>
 
+	</div>
+
+	<div class="notis" id="noti_grup_ocul">
+		<x-notificacion tipo="success" texto="Usuario añadido" identificador="6"/>
+
+		@if($not==="mayor")
+			<x-notificacion tipo="success" texto="Lienzo añadido" identificador="2"/>
+		@elseif($not=="menor")
+			<x-notificacion tipo="danger" texto="Lienzo borrado" identificador="1"/>
+		@endif
+
+			<x-notificacion tipo="success" texto="Lienzo descargado" identificador="0"/>
+
+		@if($not=="edit")
+			<x-notificacion tipo="success" texto="Lienzo editado" identificador="5"/>
+		@endif
+
+		@if($not=="grupoCreado")
+			<x-notificacion tipo="success" texto="Grupo creado" identificador="4"/>
+		@endif
 	</div>
 
 </body>

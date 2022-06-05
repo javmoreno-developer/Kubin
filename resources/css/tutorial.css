@@ -1,9 +1,9 @@
 /* Error: Undefined mixin.
  *     ,
- * 123 |         @include pill;
+ * 124 |         @include pill;
  *     |         ^^^^^^^^^^^^^
  *     '
- *   resources\sass\tutorial.scss 123:3  root stylesheet */
+ *   resources\sass\tutorial.scss 124:3  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Undefined mixin.\a     \2577 \a 123 \2502          @include pill;\d\a     \2502          ^^^^^^^^^^^^^\a     \2575 \a   resources\\sass\\tutorial.scss 123:3  root stylesheet";
+  content: "Error: Undefined mixin.\a     \2577 \a 124 \2502          @include pill;\d\a     \2502          ^^^^^^^^^^^^^\a     \2575 \a   resources\\sass\\tutorial.scss 124:3  root stylesheet";
 }

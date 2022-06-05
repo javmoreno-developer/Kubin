@@ -42,10 +42,17 @@ class MailController extends Controller
             Mail::to($emails[$i])->send(new AddMail($details));
         }
 
+        //notificacion de grupo creado
+        session(['grupoCreado' => "true"]);
+        
+
        return redirect()->route("dashboard");
     }
 
     public function addToGroup() {
+         //notificacion de añadir a grupo
+        session(['grupoAdd' => "true"]);
+
         $emails=explode(",",$_POST['datos']["variable1"]);
 
         for($i=0;$i<sizeof($emails);$i++) {

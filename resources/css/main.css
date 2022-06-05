@@ -16,15 +16,17 @@
 }
 
 html[data-theme=dark] {
-  --body:#000;
+  --body:#373747;
+  --anti-body:white;
   --texto: white;
-  --landingGrey:#6D6875;
+  --landingGrey:white;
   --login-gradient:linear-gradient(0deg, rgba(135,255,239,1) 0%, rgba(153,213,255,1) 100%);
   --icon-gradient: linear-gradient(0deg, rgba(252,71,184,1) 0%, rgba(30,233,224,1) 100%);
 }
 
 html[data-theme=light] {
   --body: #FAFAFA;
+  --anti-body:#373747;
   --texto: black;
   --landingGrey:white;
   --login-gradient:linear-gradient(to right top, #ff9a8b, #ff9288, #ff8987, #ff8086, #ff7786, #ff778a, #ff778d, #ff7791, #ff8098, #ff889f, #ff91a5, #ff99ac);
@@ -47,6 +49,56 @@ i {
   cursor: pointer;
 }
 
+h1 {
+  font-weight: bold !important;
+}
+
+.notis {
+  width: 10%;
+  height: 10%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 80%;
+  z-index: 1;
+}
+
+#container_notification_3 {
+  display: none;
+  opacity: 0;
+}
+
+#notificacion {
+  width: 100%;
+}
+
+#not_main {
+  width: 100%;
+  position: fixed;
+  left: -60vh;
+  animation: noti 2s ease forwards;
+  width: 100%;
+}
+
+@media (min-width: 490px) {
+  #notificacion {
+    width: 25%;
+  }
+
+  #not_main {
+    width: 30%;
+  }
+}
+@keyframes noti {
+  from {
+    opacity: 0;
+    left: -60vh;
+  }
+  to {
+    opacity: 1;
+    left: 0vh;
+  }
+}
 html.transition,
 html.transition *,
 html.transition *:before,
@@ -140,7 +192,7 @@ html.transition *:after {
   width: 100%;
   flex-direction: column;
   display: none;
-  z-index: 4;
+  z-index: 400;
 }
 #menuMobile p {
   font-size: 25px;
@@ -284,10 +336,11 @@ i {
 }
 
 #group_message {
-  top: 2%;
+  top: 5%;
   position: absolute;
   z-index: -90;
-  left: 35%;
+  left: 10%;
+  font-size: 18px;
 }
 
 #firstSection {
@@ -426,12 +479,12 @@ i {
 }
 
 #fourthSection {
-  height: 150vh;
+  height: 160vh;
   width: 100%;
   margin-top: 5%;
 }
 #fourthSection #text {
-  height: 40vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -439,6 +492,7 @@ i {
 }
 #fourthSection #text h1 {
   text-align: center;
+  font-size: 25px;
 }
 #fourthSection #text #pretext2 {
   width: 60%;
@@ -631,6 +685,7 @@ i {
   }
 }
 #idiomaSelect {
+  appearance: auto;
   background: none;
   border: none;
   color: var(--texto);
@@ -648,7 +703,7 @@ i {
   }
   #fourthSection #text #pretext2 p {
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
   }
   #fourthSection #toolsLanding {
     height: 50vh;
@@ -691,6 +746,14 @@ i {
   }
   #fifthSection #imageFifthContainer #imageFifth {
     width: 90%;
+  }
+
+  #group_message {
+    top: 2%;
+    position: absolute;
+    z-index: -90;
+    left: 37%;
+    font-size: 26px;
   }
 }
 .text-logo {
@@ -998,6 +1061,7 @@ body {
   text-align: center;
 }
 #tutorial .timeline {
+  border: none;
   height: 15vh;
   width: 50%;
   border-right: 3px solid var(--texto);
@@ -1013,7 +1077,6 @@ body {
 }
 #tutorial svg circle {
   stroke-width: 30 !important;
-  stroke: var(--texto);
 }
 #tutorial #second-timeline {
   height: 11vh;
@@ -1440,15 +1503,22 @@ body {
   width: 50%;
   justify-content: space-around;
 }
+.login_container .login_main form label {
+  color: var(--texto);
+}
 .login_container .login_main form input {
   border: none;
   outline: none;
   border-bottom: 3px solid;
   background: var(--body);
   color: var(--texto);
+  padding-left: 0px !important;
+  margin-left: 0px !important;
 }
 .login_container .login_main form input::placeholder {
   color: var(--texto);
+  padding-left: 0px !important;
+  margin-left: 0px !important;
 }
 .login_container .login_main form .passLog {
   width: 100%;
@@ -1507,6 +1577,7 @@ body {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
+  color: var(--texto);
 }
 
 #aq {
@@ -1610,13 +1681,13 @@ input[type=checkbox] {
   /* Remove most all native input styles */
   appearance: none;
   /* For iOS < 15 */
-  background-color: none;
+  background-color: none !important;
   /* Not removed via appearance */
   margin: 0;
   font: inherit;
   width: 1.15em;
   height: 1.15em;
-  border: 0.15em solid black !important;
+  border: 0.15em solid var(--texto) !important;
   border-radius: 0.15em;
   transform: translateY(-0.075em);
   display: grid;
@@ -1624,6 +1695,7 @@ input[type=checkbox] {
 }
 
 input[type=checkbox]::before {
+  background-color: none !important;
   content: "";
   width: 0.65em;
   height: 0.65em;
@@ -1637,15 +1709,26 @@ input[type=checkbox]::before {
 }
 
 input[type=checkbox]:checked::before {
+  background-color: none !important;
   transform: scale(1);
 }
 
 input[type=checkbox]:focus {
+  background-color: none !important;
   outline: max(2px, 0.15em) solid currentColor;
   outline-offset: max(2px, 0.15em);
 }
 
+input[type=checkbox]:checked:hover {
+  background-color: transparent !important;
+}
+
+input[type=checkbox]:checked:focus {
+  background-color: transparent !important;
+}
+
 input[type=checkbox]:disabled {
+  background-color: none !important;
   color: black !important;
   cursor: not-allowed;
 }
@@ -1819,6 +1902,17 @@ input[type=checkbox]:disabled {
   background: var(--body);
   color: var(--texto);
 }
+#namingContainer #nameLienzo {
+  border: none;
+  outline: none;
+  border-bottom: 3px solid;
+  background: var(--body);
+  width: 50%;
+  color: var(--texto);
+}
+#namingContainer #nameLienzo::placeholder {
+  color: var(--texto);
+}
 #namingContainer h1 {
   font-size: 20px;
   color: black;
@@ -1847,6 +1941,7 @@ input[type=checkbox]:disabled {
   align-items: center;
 }
 #namingContainer #catExport select {
+  appearance: auto;
   margin-bottom: 1em;
   overflow: visible !important;
   padding: 0.25em;
@@ -1896,6 +1991,15 @@ input[type=checkbox]:disabled {
 #doneFill button {
   height: 100%;
   width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  background: var(--azul);
+  font-weight: bold;
 }
 
 #exportar i {
@@ -2057,18 +2161,27 @@ div[data-name=mojs-shape] {
   -webkit-text-fill-color: transparent;
 }
 
+#black_out2 {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 0%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 #gradientContainer {
   position: fixed;
   top: 10%;
-  z-index: 90;
+  z-index: 900;
   left: 10%;
   height: 80%;
-  background-color: white;
+  background: var(--body);
+  color: var(--texto);
   border: 3px solid;
   width: 80%;
   display: flex;
   justify-content: center;
-  display: none;
 }
 #gradientContainer #cancellGradient {
   height: 10vh;
@@ -2094,9 +2207,18 @@ div[data-name=mojs-shape] {
   color: black;
 }
 #gradientContainer #contentGradient select {
-  height: 5vh;
-  width: 10vw;
-  background: white;
+  appearance: auto;
+  margin-bottom: 1em;
+  overflow: visible !important;
+  padding: 0.25em;
+  width: 35%;
+  border: 0;
+  border-bottom: 2px solid currentcolor;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  border-radius: 0;
+  background: var(--body);
+  color: var(--texto);
 }
 #gradientContainer #contentGradient div img {
   display: none;
@@ -2113,36 +2235,103 @@ div[data-name=mojs-shape] {
   border: none;
   color: white;
 }
+#gradientContainer #contentGradient #c1_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10%;
+  width: 30%;
+}
+#gradientContainer #contentGradient #c2_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10%;
+  width: 30%;
+}
+#gradientContainer #contentGradient #c1 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+#gradientContainer #contentGradient #c1::-webkit-color-swatch {
+  border-radius: 15px;
+  border: none;
+}
+#gradientContainer #contentGradient #c1::-moz-color-swatch {
+  border-radius: 15px;
+  border: none;
+}
+#gradientContainer #contentGradient #c2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+#gradientContainer #contentGradient #c2::-webkit-color-swatch {
+  border-radius: 15px;
+  border: none;
+}
+#gradientContainer #contentGradient #c2::-moz-color-swatch {
+  border-radius: 15px;
+  border: none;
+}
+
+#black_out {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0%;
+  display: none;
+  z-index: 190;
+  background: rgba(0, 0, 0, 0.5);
+}
 
 #chooseGradient {
   position: fixed;
   top: 10%;
   z-index: 190;
-  left: 10%;
+  left: 20%;
   height: 80%;
-  background-color: white;
-  border: 3px solid;
-  width: 80%;
+  width: 60%;
   display: flex;
   justify-content: center;
-  display: none;
+  background-color: white;
+  border: 3px solid;
 }
 #chooseGradient #cancellChoose {
   height: 10vh;
-  width: 80%;
+  width: 5%;
   display: flex;
   z-index: 92;
-  justify-content: end;
-  position: absolute;
+  justify-content: center;
   align-items: center;
 }
 #chooseGradient #contentChoose {
   height: 100%;
-  width: 80%;
+  width: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+#chooseGradient #contentChoose #introduce {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1%;
+}
+#chooseGradient #contentChoose #introduce .gradientExp {
+  height: 5vh;
+  width: 20%;
+  background: red;
 }
 
 #atrasTablero {
@@ -2150,6 +2339,7 @@ div[data-name=mojs-shape] {
   width: 80%;
   position: absolute;
   top: 0%;
+  left: 0%;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -2164,10 +2354,6 @@ div[data-name=mojs-shape] {
 }
 #atrasTablero svg circle {
   stroke: var(--texto);
-}
-
-#nameLienzo {
-  text-align: center;
 }
 
 @media (min-width: 900px) {
@@ -2362,6 +2548,24 @@ th {
   color: var(--texto);
 }
 
+#container_notification_0 {
+  display: none;
+  opacity: 0;
+}
+
+.drag_destiny {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 3vh;
+  opacity: 0;
+}
+.drag_destiny i {
+  font-size: 20px;
+  color: var(--texto);
+  transition: 1s all;
+}
+
 #userModal {
   height: 50vh;
   width: 100%;
@@ -2531,12 +2735,12 @@ th {
   display: none;
 }
 #downloadContainer #downloadModal {
-  height: 60%;
-  width: 80%;
+  height: 70%;
+  width: 90%;
   position: fixed;
   background: white;
-  top: 30%;
-  left: 10%;
+  top: 20%;
+  left: 5%;
   display: flex;
   justify-content: center;
   background: var(--body);
@@ -2563,6 +2767,7 @@ th {
   width: 30%;
 }
 #downloadContainer #downloadModal #contentDown select {
+  appearance: auto;
   margin-bottom: 1em;
   overflow: visible !important;
   padding: 0.25em;
@@ -2581,7 +2786,7 @@ th {
 #downloadContainer #downloadModal #contentDown textarea {
   display: none;
   max-height: 200px;
-  max-width: 300px;
+  max-width: 200px;
 }
 #downloadContainer #downloadModal #contentDown a {
   height: 5vh;
@@ -2674,13 +2879,13 @@ th {
 }
 #changeFotoModal #fotoMain {
   height: 60%;
-  width: 80%;
+  width: 90%;
   background: var(--body);
   display: flex;
 }
 #changeFotoModal #fotoMain #main {
   height: 100%;
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -2703,6 +2908,9 @@ th {
   height: 30%;
   justify-content: space-around;
   align-items: center;
+}
+#changeFotoModal #fotoMain #main #file form div input[type=file] {
+  width: 100%;
 }
 #changeFotoModal #fotoMain #main #file form button {
   padding: 10px 20px;
@@ -2744,7 +2952,7 @@ th {
 }
 #changeFotoModal #fotoMain #closeMain {
   height: 10%;
-  width: 20%;
+  width: 10%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -2767,7 +2975,7 @@ th {
 }
 #createGroupModal #create_group_main {
   height: 80%;
-  width: 100%;
+  width: 90%;
   z-index: 90;
   background: var(--body);
   color: var(--texto);
@@ -2795,6 +3003,10 @@ th {
   align-items: center;
   text-align: center;
 }
+#createGroupModal #create_group_main #contentCreateGroup form div textarea {
+  max-height: 200px;
+  max-width: 200px;
+}
 #createGroupModal #create_group_main #contentCreateGroup form button {
   padding: 10px 20px;
   text-align: center;
@@ -2809,7 +3021,7 @@ th {
 }
 #createGroupModal #create_group_main #closeCreateGroup {
   height: 10%;
-  width: 5%;
+  width: 10%;
   display: flex;
   align-items: center;
 }
@@ -2831,7 +3043,7 @@ th {
 }
 #seeGroupModal #see_group_main {
   height: 80%;
-  width: 100%;
+  width: 90%;
   z-index: 90;
   background: var(--body);
   color: var(--texto);
@@ -2840,7 +3052,7 @@ th {
 }
 #seeGroupModal #see_group_main #contentSeeGroup {
   height: 100%;
-  width: 95%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2855,7 +3067,7 @@ th {
 }
 #seeGroupModal #see_group_main #contentSeeGroup #container .filaGroup {
   height: 7%;
-  width: 80%;
+  width: 90%;
   border-bottom: 3px solid;
   display: flex;
   align-items: center;
@@ -2864,7 +3076,7 @@ th {
   width: 90%;
 }
 #seeGroupModal #see_group_main #contentSeeGroup #container .filaGroup .seS {
-  width: 10%;
+  width: 20%;
 }
 #seeGroupModal #see_group_main #contentSeeGroup #container .filaGroup .seS a {
   padding: 10px 20px;
@@ -2874,14 +3086,14 @@ th {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
-  padding: 5px 10px;
+  padding: 1px 10px;
   background: var(--azul);
   border: none;
   color: var(--texto);
 }
 #seeGroupModal #see_group_main #closeSeeGroup {
-  height: 10%;
-  width: 5%;
+  height: 5%;
+  width: 10%;
   display: flex;
   align-items: center;
 }
@@ -2930,7 +3142,7 @@ th {
 
   #downloadContainer #downloadModal {
     width: 40%;
-    top: 30%;
+    top: 20%;
     left: 30%;
   }
 
@@ -2958,6 +3170,22 @@ th {
 
   #seeGroupModal #see_group_main {
     width: 50%;
+  }
+  #seeGroupModal #see_group_main #contentSeeGroup {
+    width: 95%;
+  }
+  #seeGroupModal #see_group_main #contentSeeGroup #container .filaGroup {
+    width: 90%;
+  }
+  #seeGroupModal #see_group_main #contentSeeGroup #container .filaGroup .frS {
+    width: 100%;
+  }
+  #seeGroupModal #see_group_main #contentSeeGroup #container .filaGroup .seS {
+    display: flex;
+    justify-content: center;
+  }
+  #seeGroupModal #see_group_main #closeSeeGroup {
+    width: 5%;
   }
 }
 span {
@@ -3024,6 +3252,10 @@ span {
 }
 #mainGroup #title_group:hover i {
   display: flex;
+}
+
+#container_notification_6 {
+  display: none;
 }
 
 #modalMembersContainer {
@@ -3165,14 +3397,14 @@ span {
   display: none;
 }
 #modalNameContainer #modalNameMain {
-  width: 40%;
+  width: 90%;
   height: 60%;
   background: var(--body);
   display: flex;
 }
 #modalNameContainer #modalNameMain #contentModalName {
   height: 100%;
-  width: 95%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3195,7 +3427,7 @@ span {
   border-radius: 16px;
 }
 #modalNameContainer #modalNameMain #closeModalName {
-  height: 10%;
+  height: 7%;
   width: 5%;
   display: flex;
   align-items: center;
@@ -3224,7 +3456,7 @@ span {
 }
 #subtitle_container #members_container .member_icon {
   height: 20%;
-  width: 17%;
+  width: 10%;
   border: 3px solid;
   border-radius: 50%;
 }
@@ -3240,6 +3472,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 #group_canvas_container {
@@ -3440,6 +3673,21 @@ span {
 
   table #header {
     height: 5vh !important;
+  }
+
+  #category_container {
+    flex-direction: row !important;
+  }
+
+  #modalNameMain {
+    width: 40% !important;
+  }
+  #modalNameMain #contentModalName {
+    width: 95% !important;
+  }
+
+  #closeModalName {
+    width: 3%;
   }
 }
 

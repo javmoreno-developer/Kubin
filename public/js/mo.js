@@ -1,3 +1,5 @@
+
+
 var burst = new mojs.Shape({
   left: 0, top: 0,
   radius:   { 4: 4 },

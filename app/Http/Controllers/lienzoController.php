@@ -11,15 +11,18 @@ use App\Models\grupos;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
+
 class lienzoController extends Controller
 {
+
     public function subida(Request $req) {
          $dateTime = date('Y-m-d H:i:s');
          echo "subida";
         $updatedDateFormat =  Carbon::createFromFormat('Y-m-d H:i:s', $dateTime)->format('m-d-Y H:i:s');
-
         
             if($_POST["id"]=="null") {
+                //notificacion
+                session(['incremento' => "true"]);
                 $name=implode($_POST["datos"]['variable1']);
                 $name=htmlentities($name);
                 $nombre=$_POST["nombre"];
@@ -65,8 +68,10 @@ class lienzoController extends Controller
                 }*/
                     $lienzo->categorias()->attach(intval($_POST['datos']["variable2"]));
 
-                return redirect()->route("dashboard");
+               // return redirect()->route("dashboard");
                 } else {
+                     //notificacion
+                    session(['edit' => "true"]);
                     echo "actualizando";
                     echo $_POST['id'];
                     $nombre=$_POST["nombre"];
@@ -98,7 +103,7 @@ class lienzoController extends Controller
 
     }
 
-    public function dashboard($skip=0) {
+    public function dashboard($skip=0,Request $req) {
         $dateTime = date('Y-m-d H:i:s');
         $updatedDateFormat =  Carbon::createFromFormat('Y-m-d H:i:s', $dateTime)->format('m-d-Y H:i:s');
 
@@ -124,7 +129,36 @@ class lienzoController extends Controller
         $me=usuarios::find(Auth::user()->idUsu);
         $grupo=$me->grupos()->get();
 
-        return view("dashboard/index",["nomUsu"=>$nombre,"cuadros"=>$cuadros,"imagen"=>$imagen,"fecha"=>$fecha,"grupo"=>$grupo]);
+        //notificaciones
+        $not=$this->variacionCuadros();
+
+      
+       return view("dashboard/index",["nomUsu"=>$nombre,"cuadros"=>$cuadros,"imagen"=>$imagen,"fecha"=>$fecha,"grupo"=>$grupo,"not"=>$not]);
+    }
+
+    public function variacionCuadros() {
+        //return session()->has('incremento');
+        if(session()->has('incremento')) {
+            session()->forget('incremento');
+            return "mayor";
+
+        }
+
+        if(session()->has("grupoCreado")) {
+            session()->forget('grupoCreado');
+            return "grupoCreado";
+        }
+        
+        if(session()->has("edit")) {
+            session()->forget('edit');
+            return "edit";
+        }
+        if(session()->has('decremento')) {
+            session()->forget('decremento');
+            return "menor";
+        } else {
+            return "igual";
+        }
     }
 
     public function editar(Request $req) {
@@ -179,6 +213,9 @@ class lienzoController extends Controller
     }
     
     public function borrarLienzo($id) {
+        //notificacion
+         session(['decremento' => "true"]);
+         //fin notificacion
         $l=lienzos::find($id);
 
         $gr=$l->grupLie;
@@ -191,6 +228,15 @@ class lienzoController extends Controller
             $l->delete();
             return redirect()->route("dashboard");
         }
+    }
+
+    public function borrarLienzoDrag($id) {
+        echo $id;
+          $l=lienzos::find(intval($id));
+          //notificacion
+         session(['decremento' => "true"]);
+          echo $l;
+          $l->delete();
     }
 
     public function obtenerDatos() {

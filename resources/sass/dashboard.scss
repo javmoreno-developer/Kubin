@@ -8,6 +8,25 @@ th {
 	color: var(--texto);
 }
 
+#container_notification_0 {
+	display: none;
+	opacity: 0;
+}
+
+.drag_destiny {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	height: 3vh;
+	opacity: 0;
+
+	i {
+		font-size: 20px;
+		color: var(--texto);
+		transition: 1s all;
+	}
+}
+
 #userModal {
 	height: 50vh;
 	width: 100%;
@@ -146,12 +165,12 @@ th {
 	top: 0%;
 	display: none;
 	#downloadModal {
-		height: 60%;
-		width: 80%;
+		height: 70%;
+		width: 90%;
 		position: fixed;
 		background:white;
-		top: 30%;
-		left: 10%;
+		top: 20%;
+		left: 5%;
 		display: flex;
 		justify-content: center;
 		background: var(--body);
@@ -176,6 +195,7 @@ th {
 			height: 100%;
 			width: 30%;
 			select {
+				appearance: auto;
 				 margin-bottom: 1em;
 			     overflow: visible !important;
 				  padding: .25em;
@@ -194,7 +214,7 @@ th {
 			textarea {
 				display: none;
 				max-height: 200px;
-				max-width: 300px;
+				max-width: 200px;
 			}
 			a {
 				height: 5vh;
@@ -290,12 +310,12 @@ th {
 	}
 	#fotoMain {
 		height: 60%;
-		width: 80%;
+		width: 90%;
 		background:var(--body);
 		display: flex;
 		#main {
 			height: 100%;
-			width: 80%;
+			width: 90%;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-around;
@@ -315,6 +335,9 @@ th {
 	    				height: 30%;
 	    				justify-content: space-around;
 	    				align-items: center;
+	    				input[type="file"] {
+							width: 100%;
+						}
 	    			}
 	    			button {
 	    				@include pill;
@@ -348,7 +371,7 @@ th {
 		}
 		#closeMain {
 			height: 10%;
-			width: 20%;
+			width: 10%;
 			display: flex;
 			
 			justify-content: flex-start;
@@ -374,7 +397,7 @@ th {
 
 	#create_group_main {
 		height: 80%;
-		width: 100%;
+		width: 90%;
 		z-index: 90;
 		background:var(--body);
 		color: var(--texto);
@@ -398,6 +421,10 @@ th {
 					flex-direction: column;
 					align-items: center;
 					text-align: center;
+					textarea {
+						max-height: 200px;
+    					max-width: 200px;
+					}
 				}
 				button {
 					@include pill;
@@ -409,7 +436,7 @@ th {
 		}
 		#closeCreateGroup {
 			height: 10%;
-			width: 5%;
+			width: 10%;
 			display: flex;
 			
 			align-items: center;
@@ -434,7 +461,7 @@ th {
 
 	#see_group_main {
 		height: 80%;
-		width: 100%;
+		width: 90%;
 		z-index: 90;
 		background:var(--body);
 		color: var(--texto);
@@ -442,7 +469,7 @@ th {
 		justify-content: space-around;
 		#contentSeeGroup {
 			height: 100%;
-			width: 95%;
+			width: 90%;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -456,7 +483,7 @@ th {
 				
 				.filaGroup {
 					height: 7%;
-					width: 80%;
+					width: 90%;
 					border-bottom:3px solid;
 					display: flex;
 					align-items: center;
@@ -464,10 +491,10 @@ th {
 						width: 90%;
 					}
 					.seS {
-						width: 10%;
+						width: 20%;
 						a {
 							@include pill;
-							padding: 5px 10px;
+							padding: 1px 10px;
 							background: var(--azul);
 							border:none;
 							color: var(--texto);
@@ -478,8 +505,8 @@ th {
 			
 		}
 		#closeSeeGroup {
-			height: 10%;
-			width: 5%;
+			height: 5%;
+			width: 10%;
 			display: flex;
 			
 			align-items: center;
@@ -534,7 +561,7 @@ th {
 	#downloadContainer {
 		#downloadModal {
 			width: 40%;
-			top: 30%;
+			top: 20%;
 			left: 30%;
 		}
 	}
@@ -566,6 +593,24 @@ th {
 	#seeGroupModal {
 		#see_group_main {
 			width: 50%;
+			#contentSeeGroup {
+				width: 95%;
+				#container {
+					.filaGroup {
+						width: 90%;
+						.frS {
+							width: 100%;
+						}
+						.seS {
+							display: flex;
+							justify-content: center;
+						}
+					}
+				}
+			}
+			#closeSeeGroup {
+				width: 5%;
+			}
 		}
 	}
 }

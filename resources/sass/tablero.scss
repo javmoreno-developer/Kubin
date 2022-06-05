@@ -128,6 +128,17 @@ $azul:#1FC0CF;
 	justify-content: space-evenly;	
 	background: var(--body);
 	color: var(--texto);
+	#nameLienzo {
+			border: none;
+			outline:none;
+			border-bottom: 3px solid;	
+			background: var(--body);
+			width: 50%;
+			color: var(--texto);
+			&::placeholder {
+				color: var(--texto);
+			}
+		}
 	h1 {
 		font-size: 20px;
 		color: black;
@@ -153,7 +164,7 @@ $azul:#1FC0CF;
 		align-items: center;
 		select {
 			
-
+			appearance:auto;
 			 margin-bottom: 1em;
 			     overflow: visible !important;
 			  padding: .25em;
@@ -206,6 +217,9 @@ $azul:#1FC0CF;
 	button {
 		height: 100%;
 		width: 100%;
+		@include pill;
+		background: var(--azul);
+		font-weight: bold;
 	}
 }
 
@@ -369,18 +383,27 @@ div[data-name="mojs-shape"] {
 		}
 	}
 
+#black_out2 {
+	height: 100%;
+	width: 100%;
+	display: none;
+	position:absolute;
+	top: 0%;
+	background: rgba(0, 0, 0, 0.5);
+}
 #gradientContainer {
 	position:fixed;
 	top: 10%;
-	z-index: 90;
+	z-index: 900;
 	left: 10%;
 	height: 80%;
-	background-color: white;
+	background: var(--body);
+    color: var(--texto);
 	border:3px solid;
 	width: 80%;
 	display: flex;
 	justify-content: center;
-	display: none;
+	
 	#cancellGradient {
 		//border:3px solid red;
 		height: 10vh;
@@ -406,9 +429,18 @@ div[data-name="mojs-shape"] {
 			color: black;
 		}
 		select {
-			height: 5vh;
-	    width: 10vw;
-	    background: white;
+			appearance:auto;
+			    margin-bottom: 1em;
+    overflow: visible !important;
+    padding: 0.25em;
+		width: 35%;
+    border: 0;
+    border-bottom: 2px solid currentcolor;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    border-radius: 0;
+    background: var(--body);
+    color: var(--texto);
 		}
 		div img {
 			display: none;
@@ -419,39 +451,115 @@ div[data-name="mojs-shape"] {
 			border:none;
 			color: white;
 		}
+
+		#c1_container {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			height: 10%;
+			width: 30%;
+			
+		}
+		#c2_container {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			height: 10%;
+			width: 30%;
+			
+		}
+		#c1 {
+		  -webkit-appearance: none;
+		  -moz-appearance: none;
+		  appearance: none;
+
+		  background-color: transparent;
+		  border: none;
+		  cursor: pointer;
+		}
+		#c1::-webkit-color-swatch {
+		  border-radius: 15px;
+		  border: none;
+		}
+		#c1::-moz-color-swatch {
+		  border-radius: 15px;
+		  border: none;
+		}
+		#c2 {
+		  -webkit-appearance: none;
+		  -moz-appearance: none;
+		  appearance: none;
+
+		  background-color: transparent;
+		  border: none;
+		  cursor: pointer;
+		}
+		#c2::-webkit-color-swatch {
+		  border-radius: 15px;
+		  border: none;
+		}
+		#c2::-moz-color-swatch {
+		  border-radius: 15px;
+		  border: none;
+		}
 	}
 }
 
+#black_out {
+	height: 100vh;
+	width: 100%;
+	position:fixed;
+	top: 0%;
+	display: none;
+	z-index: 190;
+	background: rgba(0, 0, 0, 0.5);
+}
 #chooseGradient {
 	position:fixed;
 	top: 10%;
 	z-index: 190;
-	left: 10%;
+	left: 20%;
 	height: 80%;
-	background-color: white;
-	border:3px solid;
-	width: 80%;
+	
+	width: 60%;
 	display: flex;
 	justify-content: center;
-	display: none;
+	
+	background-color: white;
+	border:3px solid;
+
 	#cancellChoose {
-		//border:3px solid red;
+		
 		height: 10vh;
-		width: 80%;
+		width: 5%;
 		display: flex;
 		z-index: 92;
-		justify-content: end;
-		position:absolute;
+		justify-content: center;
 		align-items: center;
 	}
 	#contentChoose {
 		height: 100%;
-		width: 80%;
+		width: 95%;
 		
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-around;
+
+		#introduce {
+			height: 80%;
+			width: 100%;
+			
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap:1%;
+			.gradientExp {
+				height: 5vh;
+				width: 20%;
+				background: red;
+			}
+		}
 		
 	}
 }
@@ -461,6 +569,7 @@ div[data-name="mojs-shape"] {
 	width: 80%;
 	position:absolute;
 	top: 0%;
+	left: 0%;
 	z-index: 1;
 	display: flex;
 	align-items:center;
@@ -480,9 +589,7 @@ div[data-name="mojs-shape"] {
 	
 }
 
-#nameLienzo {
-	text-align: center;
-}
+
 @media(min-width: 900px) {
 	#boardContainer {
 		height: 100vh !important;

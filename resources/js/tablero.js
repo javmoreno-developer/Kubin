@@ -8,6 +8,9 @@ var mouseupEvent="";
 var coordenaX="";
 var coordenaY="";
 
+//zoom
+var factorEscalado=1;
+
 window.onload=()=> {
 	if(screen.width<900) {
 		//init();
@@ -258,7 +261,17 @@ function traducirRecta(param1,param2) {
 			array[index]=e-VwToPx(anchoSvg);
 		} else {
 			array[index]=e-VhToPx(altoSvg);
+			/*if(factorEscalado==1) {
+				array[index]=array[index];
+			} else if(1-factorEscalado>0) {
+				array[index]=array[index]*(1-factorEscalado);
+			} else {
+				array[index]=array[index]*(-1*(1-factorEscalado));
+			}*/
 		}
+		console.log("index: "+array[index]);
+		
+		console.log("escalado recta");
 	});
 	//console.log(array);
 	return array;
@@ -288,8 +301,8 @@ $("#recta").click(()=> {
 				contadorLineas++;
 				if(contadorLineas==2) {
 					if(pulsacion[1]==true) {
-						console.log(rectaX);
-						console.log(rectaY);
+						//console.log(rectaX);
+						//console.log(rectaY);
 						dibujaLinea();
 					}
 					rectaY=[];
@@ -311,6 +324,7 @@ $("#recta").click(()=> {
 function dibujaLinea() {
 	//console.log("h");
 	let res=traducirRecta(rectaX,rectaY);
+	console.log(res);
 	var t1 = s.line(res[0], res[2], res[1], res[3]).attr({
 		fill: fill,
         stroke: colorTrazo,
@@ -631,14 +645,18 @@ $("#texto").click((e)=> {
 
 //asignar nombre
 $("#exportar").click((e)=> {
+	chargeCat();
 	$("#namingContainer").css("display","flex");
-	$("body").css("background","rgba(0,0,0,0.5)");
+	$("#export_ctr").css("display","flex");
+	//$("body").css("background","rgba(0,0,0,0.7)");
 
 });
 
 //cancelar asignar nombre
 $("#cancellNaming").click((e)=> {
+	vaciarSelect();
 	$("#namingContainer").css("display","none");
+	$("#export_ctr").css("display","none");
 	if(localStorage.getItem("scheme")=="light") {
 		$("body").css("background","white");
 	} else {
@@ -652,31 +670,37 @@ var nombre="";
 var subirMagico=2;
 
 $("#naming").click((e)=> {
-	$("#namingLoader").css("display","flex");
-	console.log("recopilando: ");
-	//nombre del lienzo
-	nombre=$("#nameLienzo").val();
+	if(($("#nameLienzo").val()!="") && ($("#catExportSelect").val().length!=0)) {
+		$("#namingLoader").css("display","flex");
+		console.log("recopilando: ");
+		//nombre del lienzo
+		nombre=$("#nameLienzo").val();
 
-	
-	console.log("subir magico"+subirMagico);
+		
+		console.log("subir magico"+subirMagico);
 
-	if($("#idAct").length==0) {
-		for(let i=subirMagico;i<$("svg")[5].childNodes.length;i++) {
-			console.log($("svg")[5].childNodes[i]);
-			console.log(typeof($("svg")[5].childNodes[i]));
-			contenido.push($("svg")[5].childNodes[i].outerHTML);
+		if($("#idAct").length==0) {
+			for(let i=subirMagico;i<$("svg")[5].childNodes.length;i++) {
+				console.log($("svg")[5].childNodes[i]);
+				console.log(typeof($("svg")[5].childNodes[i]));
+				contenido.push($("svg")[5].childNodes[i].outerHTML);
+			}
+		} else {
+			for(let i=subirMagico;i<$("svg")[1].childNodes.length;i++) {
+				console.log($("svg")[1].childNodes[i]);
+				console.log(typeof($("svg")[1].childNodes[i]));
+				contenido.push($("svg")[1].childNodes[i].outerHTML);
+			}
 		}
+		
+		
+		//window.location.href=window.location.href + "?contenido=" + contenido;
+		
+			enviar();
+			console.log("enviando");
 	} else {
-		for(let i=subirMagico;i<$("svg")[1].childNodes.length;i++) {
-			console.log($("svg")[1].childNodes[i]);
-			console.log(typeof($("svg")[1].childNodes[i]));
-			contenido.push($("svg")[1].childNodes[i].outerHTML);
-		}
+		alert("no");
 	}
-	
-	
-	//window.location.href=window.location.href + "?contenido=" + contenido;
-	enviar();
 	//console.log($("svg")[4]);
 	console.log(contenido);
 });
@@ -685,12 +709,14 @@ $("#naming").click((e)=> {
 function enviar() {
 	var datos = {
     "variable1" : contenido, // Dato #1 a enviar
+    "variable2" : $("#catExportSelect").val(),
     //"variable2" : variable2 // Dato #2 a enviar
     // etc...
 };
 
 var url = "./tablero"; // URL a la cual enviar los datos
-var id=0;
+var id="null";
+var gr="null";
 
 enviarDatos(datos, url); // Ejecutar cuando se quiera enviar los datos
 
@@ -699,30 +725,41 @@ function enviarDatos(datos, url){
 		id=$("#idAct").val();
 		console.log("hey you");
 	}
-	console.log($("#idgr").val());
-    /*$.ajax({
+
+	if($("#idgr").val()!=undefined) {
+		console.log($("#idgr").val());
+		gr=$("#idgr").val()
+	} else {
+		console.log("es ind");
+	}
+
+	console.log(gr);
+    $.ajax({
             data: {
             	 "_token": $("meta[name='csrf-token']").attr("content"),
             	 datos,
             	 id,
             	 nombre,
+            	 gr,
             }, 
             url: url,
             type: 'post',
             success:  function (response) {
-               //console.log(response); // Imprimir respuesta del archivo
-              // window.location.replace(response);
-              window.location.href="./dashboard";
+               console.log(response); // Imprimir respuesta del archivo
+              //window.location.replace(response);
+              if(gr=="null") {
+              	window.location.href="./dashboard";
+              } else {
+				window.location.href=`./grupo/${gr}`;
+              }
             },
             error: function (error) {
                 console.log(error.responseText); // Imprimir respuesta de error
             }
-    });*/
+    });
 }
 }
 //fin subir
-
-
 
 //seleccion de alguna herramienta(cambio de clase)
 $( ".tool" ).each(function(index) {
@@ -898,16 +935,18 @@ function dibujarEllipse(param) {
 var contadorGradient=0;
 
 $("#gradient").click(()=> {
-	$("#gradientContainer").css("display","flex");
-	$("body").css("background","black");
+	$("#black_out2").css("display","flex");
+	$("#doneFill").css("z-index","900");
+	//$("body").css("background","black");
 	$("#cancellGradient").click(()=> {
-		$("#gradientContainer").css("display","none");
+		$("#black_out2").css("display","none");
 		if(localStorage.getItem("scheme")=="light") {
 			$("body").css("background","white");
 		} else {
 			$("body").css("background","black");
 		}
 	});
+});
 	$("#crearGradient").click(()=> {
 		let c1=$("#c1").val();
 		let c2=$("#c2").val();
@@ -917,9 +956,9 @@ $("#gradient").click(()=> {
 		crearGradiente(c1,c2,type,verti);
 		contadorGradient++;
 	});
-});
 
 function crearGradiente(c1,c2,type,verti) {
+	console.log("Hola creando gradiente");
 	let result="";
 	if(verti=="AB") {
 		var myLinearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
@@ -963,19 +1002,125 @@ function crearGradiente(c1,c2,type,verti) {
         $(`#MyGradient${contadorGradient}`).append(stop2);
 	}
 	
-	gradientColor=`url(#MyGradient${contadorGradient})`;
+	//gradientColor=`url(#MyGradient${contadorGradient})`;
 }
 
 //use
+var arrayGradientColor=[];
+var arrayGradientDirection=[];
+
+function scanTotal() {
+	//hacemos distincion entre crear y editar
+	let t=window.location.href.split("?")[1];
+	if(t!=undefined) {
+		indiceGr=1;
+	}
+	for(let i=2;i<$("svg")[indiceGr].childNodes.length;i++) {
+		//console.log($("svg")[5].childNodes[i]);
+		//console.log($("svg")[5].childNodes[i].id);
+		if($("svg")[indiceGr].childNodes[i].id.includes("MyGradient")) {
+			//extraemos la direccion
+			//if($("svg")[5].childNodes[i].attr("x2")=="0%")
+			if($("svg")[indiceGr].childNodes[i].x2.animVal.valueAsString=="0%") {
+				//degradado de arriba a abajo
+				arrayGradientDirection.push("arriba");
+			} else {
+				arrayGradientDirection.push("izquierda");
+			}
+			//extraemos los colores (en pares)
+			//console.log($("svg")[5].childNodes[i].children);
+			for(let z=0;z<2;z++) {
+				console.log($("svg")[indiceGr].childNodes[i].children[z].getAttribute("stop-color"));
+				arrayGradientColor.push($("svg")[indiceGr].childNodes[i].children[z].getAttribute("stop-color"));
+			}
+		}
+		
+		
+	}
+	console.log(arrayGradientDirection);
+	console.log(arrayGradientColor);
+
+}
+
+function vaciarIntroduce() {
+	/*$("#introduce").remove(".gradientExp");
+	$("#introduce").empty();*/
+	$("#introduce").children().remove();
+	arrayGradientDirection=[];
+	arrayGradientColor=[];
+	contadorGradient=0;
+	console.log("vaciando: "+$("#introduce"));
+}
+
+$("#cancellChoose").click(()=> {
+	$("#black_out").css("display","none");
+	vaciarIntroduce();
+});
+var idGr=0;
+
+function buscarIdGr() {
+	let conjunto=document.getElementsByClassName("gradientExp");
+	console.log(conjunto);
+	for(let i=0;i<conjunto.length;i++) {
+		conjunto[i].addEventListener("click",()=> {
+			idGr=conjunto[i].id.split("_")[1];
+
+			//gradientColor=`url(#${idGr})`;
+			gradientColor=`url(#MyGradient${idGr})`;
+		});
+	}
+}
+
+function buscarGradiente() {
+	
+	console.log("buscando");
+}
+function asignarIntroduce() {
+	for(let z=0;z<arrayGradientDirection.length;z++) {
+		var newDiv = document.createElement("div");
+		newDiv.className ="gradientExp";
+		let color1=arrayGradientColor[z*2];
+		let color2=arrayGradientColor[z*2+1];
+
+		//asignamos los colores
+		if(arrayGradientDirection[z]=="izquierda") {
+		newDiv.style.background=
+		"linear-gradient(to right, " 
+			 + color1
+			 + ", " 
+			 + color2 
+			 + ")";
+		} else {
+			newDiv.style.background=
+			"linear-gradient(to bottom, " 
+				 + color1
+				 + ", " 
+				 + color2 
+				 + ")";
+		}
+		newDiv.id="MyGradient_"+z;
+		//introducimos en el elemento
+		$("#introduce").append(newDiv);
+	}
+	buscarIdGr();
+}
 $("#use").click(()=> {
 	$("#lienzo").css("z-index","99");
-	$("#doneFill").css("z-index","100");
+	$("#doneFill").css("z-index","90");
 	$("#doneFill").css("display","flex");
+	$("#black_out").css("display","flex");
 
+	//introducimos los gradientes en el modal para que los vea el usuario
+	scanTotal();
+	asignarIntroduce();
+
+
+	//gradientColor=`url(#MyGradient${contadorGradient})`;
 
 	$("#lienzo").click((e)=> {
 		let figuraSel=Snap.getElementByPoint(e.clientX,e.clientY);
 		console.log(figuraSel);
+		buscarGradiente();
 		figuraSel.attr({
 			fill: gradientColor,
 		    strokeWidth: 5
@@ -988,18 +1133,28 @@ $("#doneFill").click(()=> {
 	$("#doneFill").css("display","none");
 });
 
+var indiceGr=5;
 
 function scan() {
+	//hacemos distincion entre crear y editar
+	let t=window.location.href.split("?")[1];
+	if(t!=undefined) {
+		indiceGr=1;
+	}
+	console.log("editantdo: "+t);
+	console.log("trabajamos con indice: "+indiceGr);
+	//fin distincion
 	contadorGradient=0;
-	for(let i=2;i<$("svg")[0].childNodes.length;i++) {
-		console.log($("svg")[0].childNodes[i]);
-		console.log($("svg")[0].childNodes[i].id);
-		if($("svg")[0].childNodes[i].id.includes("MyGradient")) {
+	for(let i=2;i<$("svg")[indiceGr].childNodes.length;i++) {
+		console.log($("svg")[indiceGr].childNodes[i]);
+		console.log($("svg")[indiceGr].childNodes[i].id);
+		if($("svg")[indiceGr].childNodes[i].id.includes("MyGradient")) {
 			contadorGradient++;
 		}
 		
 		
 	}
+	console.log("contadorGradient/scan: "+contadorGradient);
 }
 
 }
@@ -1018,3 +1173,139 @@ function scan() {
 $("#atrasTablero").click(()=> {
 	history.back();
 });
+
+//cargar las categorias al exportar
+function chargeCat() {
+	let id="null";
+	let grupo="null";
+
+	//vemos si al editar cargamos las categorias anteriores
+	if($("#idgr2").val()!=undefined) {
+		id=$("#idgr2").val();
+	}
+
+	//vemos si hay grupo
+	if($("#idgr").val()!=undefined) {
+		grupo=$("#idgr").val();
+	}
+
+	var datos = {
+    "variable1" : id, // Dato #1 a enviar
+    "variable2" : grupo, // Dato #2 a enviar
+    // etc...
+};
+
+var url2 = "./cargarCat"; // URL a la cual enviar los datos
+
+console.log("datos charge");
+console.log(datos);
+enviarDatos2(datos,url2); // Ejecutar cuando se quiera enviar los datos
+}
+
+function enviarDatos2(datos,url){
+    $.ajax({
+            data: {
+            	 "_token": $("meta[name='csrf-token']").attr("content"),
+            	 datos,
+            }, 
+            url: url,
+            type: 'post',
+            success:  function (response) {
+               console.log(response); // Imprimir respuesta del archivo
+               asignarSelect(response);
+            },
+            error: function (error) {
+                console.log(error.responseText); // Imprimir respuesta de error
+                console.log(error);
+                asignarSelect(error.responseText);
+            }
+    });
+}
+
+function asignarSelect(param) {
+	//console.log("despierta");
+	//let local=param[0].split(",");
+	//console.log(local);
+	let keys=Object.keys(param);
+	let values=Object.values(param);
+	for(let i=0;i<keys.length;i++) {
+		  var newDiv = document.createElement("option");
+		  let local=values[i].split(",");
+		  var newContent = document.createTextNode(local[1]);
+		  newDiv.setAttribute("value",local[0]);
+		  newDiv.appendChild(newContent);
+		  $("#catExportSelect").append(newDiv);
+	}
+}
+
+function vaciarSelect() {
+	$("#catExportSelect").empty();
+	var newDiv = document.createElement("option");
+	var newContent = document.createTextNode("Elije categoria");
+	newDiv.appendChild(newContent);
+	newDiv.setAttribute("disabled","");
+	newDiv.setAttribute("selected","");
+	$("#catExportSelect").append(newDiv);
+}
+
+//formulario add categoria
+$("#addCat").click(()=> {
+	$("#addCatContainer").css("display","flex");
+});
+
+//add Cat
+$("#addCatBtn").click(()=> {
+	var datos = {
+    	"name" : $("#nameCategory").val(), // Dato #1 a enviar
+  		"desc" : $("#descCategory").val(),
+	};
+
+	var url3 = "./addCat"; // URL a la cual enviar los datos
+
+	enviarDatos3(datos, url3); // Ejecutar cuando se quiera enviar los datos
+});
+
+
+	
+
+
+function enviarDatos3(datos, url){
+    $.ajax({
+            data: {
+            	 "_token": $("meta[name='csrf-token']").attr("content"),
+            	 datos,
+            }, 
+            url: url,
+            type: 'post',
+            success:  function (response) {
+               console.log(response); // Imprimir respuesta del archivo
+               vaciarSelect();
+               chargeCat();
+            },
+            error: function (error) {
+                console.log(error.responseText); // Imprimir respuesta de error
+            }
+    });
+}
+
+//lupa
+let contadorLoupe=0;
+$("#loupe").click(()=> {
+	if(contadorLoupe%2==0) {
+		$("#loupeContainer").css("display","flex");
+	} else {
+		$("#loupeContainer").css("display","none");
+	}
+	contadorLoupe++;
+});
+
+$("#loupeRange").change(()=> {
+    console.log($("#lienzo"));
+    //$("#lienzo")[0].style.transform = `scale(90 / 100)`;
+    let val=$("#loupeRange").val()*10;
+    factorEscalado=$("#loupeRange").val()/10;
+    console.log("escalado: "+factorEscalado);
+    $("#lienzo").css("transform",`scale(${val/100})`);
+    $("#lienzo").css("background","cornflowerblue");
+});
+       

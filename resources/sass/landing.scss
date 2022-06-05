@@ -14,10 +14,12 @@ i {
 	color: var(--texto);
 }
 #group_message {
-    top: 2%;
+    top: 5%;
     position: absolute;
     z-index: -90;
-    left: 35%;
+    left: 10%;
+    font-size: 18px;
+
 }
 #firstSection {
 	margin-top: 12vh;
@@ -172,18 +174,19 @@ i {
 
 //cuarta seccion
 #fourthSection {
-	height: 150vh;
+	height: 160vh;
 	width: 100%;
 	margin-top: 5%;
 	#text {
 		
-		height: 40vh;
+		height: 50vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
 		align-items: center;
 		h1 {
 			text-align: center;
+			font-size: 25px;
 		}
 		#pretext2 {
 			width: 60%;
@@ -406,6 +409,7 @@ i {
 }
 
 #idiomaSelect {
+	appearance: auto;
 	background: none;
 	border:none;
 	color:var(--texto);
@@ -422,7 +426,7 @@ i {
 			#pretext2 {
 				p {
 					text-align: center;
-					font-size: 20px;
+					font-size: 18px;
 				}
 			}
 		}
@@ -471,6 +475,13 @@ i {
 			}
 		}
 	}
+	#group_message {
+    top: 2%;
+    position: absolute;
+    z-index: -90;
+    left: 37%;
+    font-size: 26px;
+}	
 }
 
 //animaciones

@@ -337,12 +337,12 @@ function changeLetter() {
   //console.log("cambiando");
   $("#changeWord").css("opacity", 0);
   setTimeout(function () {
-    if (localStorage.getItem('idiomaCh') == "es") {
-      $("#changeWord").text(arrayCh[contadorCh]);
+    if (localStorage.getItem('idiomaCh') == "en") {
+      $("#changeWord").text(arrayChEn[contadorCh]);
     } else if (localStorage.getItem('idiomaCh') == "fr") {
       $("#changeWord").text(arrayChFr[contadorCh]);
     } else {
-      $("#changeWord").text(arrayChEn[contadorCh]);
+      $("#changeWord").text(arrayCh[contadorCh]);
     }
 
     $("#changeWord").css("opacity", 1);
@@ -446,7 +446,18 @@ $("#download").click(function () {
       console.log(err);
     });
   }
-}); //svg
+
+  setTimeout(apareceNoti0, 2000);
+});
+
+function apareceNoti0() {
+  $("#container_notification_0").css("opacity", 1);
+  $("#container_notification_0").css("display", "flex");
+  $("#container_notification_0").removeClass("p-1 space-y-4");
+  $("#container_notification_0").addClass("noti_ani");
+  cerrarN();
+} //svg
+
 
 function saveSvg(svgEl, name) {
   //svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -837,13 +848,20 @@ $("#addMemberBtn").click(function () {
       type: 'post',
       success: function success(response) {
         console.log(response); // Imprimir respuesta del archivo
+
+        apareceNotiGrupo();
       },
       error: function error(_error5) {
         console.log(_error5.responseText); // Imprimir respuesta de error
       }
     });
   }
-}); //borrar categorias de un grupo
+});
+
+function apareceNotiGrupo() {
+  $("#container_notification_6").css("display", "flex");
+} //borrar categorias de un grupo
+
 
 $("#category_open").click(function () {
   $(".bi-trash").each(function () {
@@ -1067,6 +1085,131 @@ $("#showUp").click(function () {
   }
 
   cshowUp++;
+}); //cerrar notificaciones
+
+/*$(".closeNotification").each((index, value)=> {
+    console.log(value["id"]);
+    let id=value["id"].split("_")[1];
+    $(`${value["id"]}`).click(()=> {
+        console.log("w");
+    })
+});*/
+
+function cerrarN() {
+  var cjn = document.getElementsByClassName("closeNotification");
+
+  var _loop = function _loop(z) {
+    $(cjn[z]).click(function () {
+      var id = $(cjn[z]).attr("id").split("_")[1];
+      $("#container_notification_".concat(id)).css("display", "none");
+    });
+  };
+
+  for (var z = 0; z < cjn.length; z++) {
+    _loop(z);
+  }
+}
+
+cerrarN(); //drag and drop
+
+var tr = document.getElementsByTagName("tr");
+var idElementDrag = false;
+var countDrag = 0;
+
+for (var i = 0; i < tr.length; i++) {
+  document.addEventListener("dragstart", function () {
+    // console.log("drag start");
+    countDrag = 0;
+    $(".drag_destiny").css("opacity", "1");
+  });
+  document.addEventListener("dragover", function (evento) {
+    evento.preventDefault();
+  });
+  document.addEventListener("drop", function (event) {
+    event.preventDefault();
+    var clase = event.target.className;
+
+    if (clase != "drag_destiny" && clase != "bi bi-trash-fill") {
+      idElementDrag = true;
+    } else {
+      idElementDrag = false;
+    }
+  });
+  document.addEventListener("dragenter", function (evento) {
+    var clase = event.target.className;
+
+    if (clase == "bi bi-trash") {
+      $("#drag_icon").css("opacity", "0");
+      $("#drag_icon").removeClass("bi bi-trash");
+      $("#drag_icon").addClass("bi bi-trash-fill");
+      $("#drag_icon").css("opacity", "1");
+    }
+  });
+  document.addEventListener("dragleave", function (evento) {
+    var clase = event.target.className;
+
+    if (clase == "bi bi-trash-fill") {
+      $("#drag_icon").css("opacity", "0");
+      $("#drag_icon").removeClass("bi bi-trash-fill");
+      $("#drag_icon").addClass("bi bi-trash");
+      $("#drag_icon").css("opacity", "1");
+    }
+  });
+  document.addEventListener("dragend", function (evento) {
+    if (idElementDrag == false && countDrag == 0) {
+      var _id = event.target.id.split("_")[1];
+      dragBorrar(_id);
+      countDrag++;
+    } else {
+      $(".drag_destiny").css("opacity", "0");
+    }
+  });
+}
+
+function dragBorrar(param) {
+  var datos = {
+    "variable1": param // Dato #1 a enviar
+    //"variable2" : variable2 // Dato #2 a enviar
+    // etc...
+
+  };
+  var url = "./borrarLienzoDrag/".concat(param); // URL a la cual enviar los datos;
+
+  enviarDatos(datos, url); // Ejecutar cuando se quiera enviar los datos
+
+  function enviarDatos(datos, url) {
+    $.ajax({
+      data: {
+        //"_token": $("meta[name='csrf-token']").attr("content"),
+        datos: datos
+      },
+      url: url,
+      type: 'get',
+      success: function success(response) {
+        console.log(response); // Imprimir respuesta del archivo
+
+        window.location.href = "./dashboard";
+      },
+      error: function error(_error7) {
+        console.log(_error7.responseText); // Imprimir respuesta de error
+      }
+    });
+  }
+}
+/*
+document.addEventListener("drop", function (evento) {
+    evento.preventDefault();
+    let data = evento.dataTransfer.getData("Text");
+    //evento.target.appendChild(document.getElementById(data));
+    evento.target.style.backgroundImage="url('img/papeleraLlena.jpg')";
+    
+    console.log("terminado");
 });
+
+document.addEventListener("dragend", function (evento) {
+evento.target.style.opacity = "0";
+});
+
+*/
 /******/ })()
 ;

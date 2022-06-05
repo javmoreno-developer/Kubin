@@ -49,12 +49,16 @@ Route::post("/crearLienzo/",[lienzoController::class,"crearLienzo"])->middleware
 
 Route::get("/borrarLienzo/{id}",[lienzoController::class,"borrarLienzo"])->middleware(["auth"])->name("borrarLienzo");
 
+Route::get("/borrarLienzoDrag/{id}",[lienzoController::class,"borrarLienzoDrag"])->middleware(["auth"])->name("borrarLienzoDrag");
+
 Route::post("obtenerDatos",[lienzoController::class,"obtenerDatos"])->middleware(["auth"])->name("obtenerDatos");
 
 Route::get("pagina/{numero}",[lienzoController::class,"dashboard"])->middleware(["auth"])->name("pagina");
 
-Route::get("borrar",function() {
+Route::get("borrar",function() { 
+
     return view("borrar/index");
+
 })->name("borrar");
 /*Route::get('/dashboard', function () {
     return view('dashboard');
@@ -62,6 +66,7 @@ Route::get("borrar",function() {
 
 Route::get("out",function() {
      Auth::logout();
+     session()->flush();
      return redirect()->route("login");
 })->middleware(["auth"])->name("out");
 
