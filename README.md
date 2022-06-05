@@ -66,8 +66,8 @@ Usaré el servicio de heroku utilizando clearDB para tener la bd en otro servici
 ## Enlaces de interés📖
 
 [Diseño de Kubin](https://www.figma.com/file/POVXEtSiLjYTva3qFoZzq1/KUBIN?node-id=0%3A1) ✒️ \
-[Checkpoint](https://youtu.be/L8coQg8mF40) 🏁
-[Diario de trabajo y objetivos](https://base.zenkit.com/c/5rg6yZ9yd/to-do-kubin?v=pJLer6qnL9)
+[Checkpoint](https://youtu.be/L8coQg8mF40) 🏁 \
+[Diario de trabajo y objetivos](https://base.zenkit.com/c/5rg6yZ9yd/to-do-kubin?v=pJLer6qnL9) 👷
 
 ## Autores 📌
 
