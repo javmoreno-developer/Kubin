@@ -71,7 +71,7 @@ Usaré el servicio de heroku utilizando clearDB para tener la bd en otro servici
 
 ## Autores 📌
 
-* **Javier Moreno Aguilera** - *Codificación,testeo,documentación...* - [villanuevand](https://github.com/villanuevand)
+* **Javier Moreno Aguilera** - *Codificación,testeo,documentación...* 
 
 
 
