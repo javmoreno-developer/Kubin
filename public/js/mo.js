@@ -1,4 +1,48 @@
 
+var dragging = 0;
+var handleGroup;
+var s="";
+let h=0;
+let w=0;
+var altoSvg=20;
+var anchoSvg=35;
+var contadorEdi=0;
+var drag=true;
+var click=false;
+
+//funciones de conversion
+function VwToPx(param) {
+  return (param*window.innerWidth)/100;
+}
+
+function VhToPx(param) {
+  return (param*window.innerHeight)/100;
+}
+
+
+//identificamos si se trata de touchmove o de drag
+
+
+if(screen.width>900) {
+   h=VhToPx(60);
+   w=VwToPx(30);
+
+} else {
+   h=VhToPx(48);
+   w=VwToPx(80);
+   altoSvg=38;
+   anchoSvg=10;
+}
+
+if($("#lienzo").length==0) {
+  s=Snap(w,h);
+  s.attr({ id: 'lienzo' });
+  
+} else {
+  
+  s=Snap("#lienzo");
+  
+}
 
 var burst = new mojs.Shape({
   left: 0, top: 0,
@@ -85,30 +129,67 @@ var burst4 = new mojs.Shape({
 $("#seleccionar").click((e)=> {
   console.log($("#lienzo"));
   $("#lienzo").css("z-index",99);
+  $("#doneFill").css("z-index",90);
+  $("#doneFill").css("display","flex");
 
   $("#lienzo").click((e)=> {
-    console.log(e.clientX);
-    console.log(e.clientY);
+    //console.log(e.clientX);
+    //console.log(e.clientY);
     figuraSel=Snap.getElementByPoint(e.clientX,e.clientY);
-    console.log(figuraSel);
+    console.log(figuraSel.type);
+    if(figuraSel.type!="svg") {
     var posicion = figuraSel.node.getBoundingClientRect();
- 
-    console.log(posicion.top, posicion.right, posicion.bottom, posicion.left);
- 
 
-    $(figuraSel).click(()=> {
-      alert("a");
-    })
-     //llamada a figuras de seleccion
-    //top
-    burst3
+    //mover figuras
+
+    var move = function(dx,dy) {
+      this.attr({
+        transform: this.data('origTransform') + (this.data('origTransform') ? "T" : "t") + [dx, dy]
+      });
+    }
+
+    var start = function() {
+      this.data('origTransform', this.transform().local );
+    }
+
+    var stop = function() {
+      console.log('finished dragging');
+      click=true;
+    }
+
+
+   
+
+
+
+    //move
+  
+      figuraSel.drag(move, start, stop);
+    
+
+    
+
+       burst3
           .tune({ x: (posicion.left), y: posicion.top,opacity: 1 })
           .play();
 
     burst4
           .tune({ x: (posicion.right), y: posicion.bottom,opacity: 1 })
           .play();
-  });
+        
 
+    } else {
+      contadorEdi=0;
+    }
+    
+   
+
+
+
+    
+    //ultimas figuras de seleccion
+   
+  });
+  posicion=0;
 });
 

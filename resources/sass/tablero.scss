@@ -128,6 +128,8 @@ $azul:#1FC0CF;
 	justify-content: space-evenly;	
 	background: var(--body);
 	color: var(--texto);
+	border-radius:20px;
+
 	#nameLienzo {
 			border: none;
 			outline:none;
@@ -403,7 +405,8 @@ div[data-name="mojs-shape"] {
 	width: 80%;
 	display: flex;
 	justify-content: center;
-	
+	border-radius:20px;
+
 	#cancellGradient {
 		//border:3px solid red;
 		height: 10vh;
@@ -589,8 +592,13 @@ div[data-name="mojs-shape"] {
 	
 }
 
-
+#seleccionar {
+	display: none !important;
+}
 @media(min-width: 900px) {
+	#seleccionar {
+		display: flex !important;
+	}
 	#boardContainer {
 		height: 100vh !important;
 		flex-direction: row-reverse !important;

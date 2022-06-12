@@ -123,6 +123,9 @@ Route::post("eliminarUsuarioGrupo",[grupoController::class,"eliminarUsu"])->name
 Route::post("eliminarCatGrupo",[grupoController::class,"eliminarCatGrupo"])->name("eliminarCatGrupo");
 require __DIR__.'/auth.php';
 
+//hacer premium a un user
+Route::get("premium",[usuarioController::class,"premium"])->name("premium");
+
 Route::fallback(function() {
     return view("404/index");
 });

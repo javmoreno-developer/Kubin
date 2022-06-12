@@ -3,6 +3,7 @@
 	<div id="showcaseContainer">
 		<h1>Showcase</h1>
 		<div id="imagesShow">
+			<!-- These are the showcase components -->
 			<x-showcase descripcion="categoria" number="showfirst" svg=1/>
 			<x-showcase descripcion="categoria" number="showsecond" svg=2/>
 			<x-showcase descripcion="categoria" number="showthird" svg=3/>

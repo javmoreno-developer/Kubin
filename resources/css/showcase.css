@@ -22,6 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
 #showcaseContainer .showcaseSection {
   height: 30vh;
@@ -58,6 +59,15 @@ body {
   color: white;
 }
 
+@media (min-width: 400px) {
+  .showcaseSection {
+    width: 40% !important;
+  }
+
+  .showcaseOverlay {
+    width: 40% !important;
+  }
+}
 @media (min-width: 992px) {
   #showcaseContainer {
     height: 116.6666666667vh !important;

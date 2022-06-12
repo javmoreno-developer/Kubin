@@ -73,7 +73,7 @@ return [
 
     'tit1_2_tut' => 'Descargar dibujos',
 
-    'men1_2_tut' => 'Una vez creado tu dibujo,te dirigiras a tu dashboard,en esta podras ver un boton de descarga al pulsarlo te abrira un modal con el que podras elegir el formato de la imagen',
+    'men1_2_tut' => 'Una vez creado tu dibujo,te dirigiras a tu dashboard,en esta podras ver un botón de descarga al pulsarlo te abrira un modal con el que podrás elegir el formato de la imagen',
 
     'tit1_3_tut' => 'Crear circulos',
 
@@ -81,9 +81,9 @@ return [
 
     'tit1_4_tut' => 'Crear cuadrados',
 
-    'men1_4_tut' => 'Una vez estes en el tablero deberas pulsar el boton de crear cuadrado (el 1 de la parte izquierda),tras esto para crear el cuadrado deberas pulsar (y mantener pulsado) el lienzo,cuando veas que tienes la dimension suelta el raton',
+    'men1_4_tut' => 'Una vez estes en el tablero deberas pulsar el botón de crear cuadrado (el 1 de la parte izquierda),tras esto para crear el cuadrado deberas pulsar (y mantener pulsado) el lienzo,cuando veas que tienes la dimensión suelta el raton',
 
-    'men1_5_tut' => 'Una vez estes en el tablero deberas pulsar el boton de cambiar relleno (el 8 de la parte izquierda),tras esto se abrira un color picker,tras elegir color podras dibujar con el color seleccionado',
+    'men1_5_tut' => 'Una vez estes en el tablero deberas pulsar el botón de cambiar relleno (el 8 de la parte izquierda),tras esto se abrira un color picker,tras elegir color podrás dibujar con el color seleccionado',
 
     'tit1_5_tut' => 'Cambiar relleno',
 
@@ -125,7 +125,7 @@ return [
 
     "m6_lo" => "¿Tienes una cuenta?",
 
-    "m7_lo" => "Inciar sesion",
+    "m7_lo" => "Inciar sesión",
     //dashboard
 
     'men1_das' => 'Cambiar imagen',
@@ -136,7 +136,7 @@ return [
 
     'men4_das' => 'Nombre',
 
-    'men5_das' => 'Creacion',
+    'men5_das' => 'Creación',
 
     'men6_das' => 'Ultima act',
 
@@ -221,7 +221,7 @@ return [
 
     "m30_tab" => "Varia el zoom:",
 
-    "m31_tab" => "Creacion de gradientes",
+    "m31_tab" => "Creación de gradientes",
     "m32_tab" => "Tipo de gradientes",
     "m33_tab" => "de arriba a abajo",
     "m34_tab" => "de izquierda a derecha",
@@ -232,7 +232,7 @@ return [
     "m38_tab" => "Subir fichero",
 
     //404
-    'main_404' => 'pagina no encontrada',
+    'main_404' => 'página no encontrada',
 
     //formulario crear grupo
     'title_group' => 'Crear grupo',
@@ -253,6 +253,13 @@ return [
 
      //correo
      "m1_co" =>"Acceder",
-     "m2_co" =>"Adios",
+     "m2_co" =>"Adiós",
 
+     //mensajes de las notificaciones
+     "add_not" => "Lienzo añadido",
+     "del_not" => "Lienzo borrado",
+     "dow_not" => "Lienzo descargado",
+     "edi_not" => "Lienzo editado",
+     "gru_not" => "Grupo creado",
+     "usu_not" => "Usuario añadido",
 ];

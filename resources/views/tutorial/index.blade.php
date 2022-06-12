@@ -1,6 +1,7 @@
 @extends("plantillas/final")
 
 <x-cabecera title="true" tutorial="true" showcase="true" github="true" log="false"/>
+	<!-- Tutorial structure -->
 	<section id="tutorial">
 		<h1>Tutorial</h1>
 		<section id="first-timeline">
@@ -40,6 +41,7 @@
 		<a href="/showcase">{{__("messages.m1_tut")}}</a>
 	</section>
 
+<!-- Tutotial advices -->
 <div id="advices">
 	<x-advice titulo="{{__('messages.tit1_1_tut')}}" mensaje="{{__('messages.men1_1_tut')}}" number="first"/>
 	<x-advice titulo="{{__('messages.tit1_2_tut')}}" mensaje="{{__('messages.men1_2_tut')}}" number="second"/>

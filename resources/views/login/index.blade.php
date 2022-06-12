@@ -3,6 +3,7 @@
 	<x-cabecera title="true" tutorial="true" showcase="true" github="true" log="false"/>
 
 	<div id="call_free"></div>
+	<!-- register variable is used to make the difference between sign up and sign in-->
 	@if($register==false)
 		<section class="login_container">
 			<div class="oculto"></div>
@@ -35,6 +36,7 @@
 		</div>
 
 	@else 
+	<!-- Sign up form -->
 		<section class="login_container">
 			<div class="oculto"></div>
 			<div class="login_main">

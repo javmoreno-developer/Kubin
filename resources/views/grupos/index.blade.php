@@ -5,11 +5,12 @@
 <body>
 
 	<section id="mainGroup">
+		<!-- Nombre del grupo -->
 		<div id="title_group">
 			<h1>{{$nombreGrupo}}</h1>
 			<i class="bi bi-pencil-fill" id="changeName"></i>
 		</div>
-		<!--Subtitulo-->
+		<!-- Subtitle -->
 		<div id="subtitle_container">
 			<div id="title_members">
 				<h3 id="member_open">{{__("messages.m1_gr")}}</h3>
@@ -29,6 +30,7 @@
 				<h3 id="category_open">{{__("messages.m2_gr")}}</h3>
 			</div>
 
+			<!-- Categories -->
 			<div id="category_container">
 				@if(sizeof($categorias)>=4)
 					@for($i=0;$i<4;$i++) 
@@ -42,7 +44,7 @@
 			</div>
 		</div>
 
-		<!--Tabla-->
+		<!-- Main table -->
 		<div id="group_canvas_container">
 			<table>
 				<thead>
@@ -72,7 +74,7 @@
 	</section>
 
 	
-	<!--Descargar-->
+	<!-- Download -->
 
 	@if(Auth::user()->perfUsu==2)
 		<div id="downloadContainer">
@@ -98,7 +100,7 @@
 
 
 	
-	<!--ver lista de miembros-->
+	<!-- See members list -->
 	<div id="modalMembersContainer">
 		<div id="modalMembersMain">
 			<div id="contentModalMembers">
@@ -138,7 +140,7 @@
 		</div>
 	</div>
 
-	<!--ver lista de categorias-->
+	<!-- See categories list -->
 	<div id="modalCategoryContainer">
 		<div id="modalCategoryMain">
 			<div id="contentModalCategory">
@@ -164,7 +166,7 @@
 		</div>
 	</div>
 
-	<!--cambiar nombre grupo-->
+	<!-- Change group name -->
 	<div id="modalNameContainer">
 		<div id="modalNameMain">
 			<div id="contentModalName">
@@ -188,7 +190,7 @@
 		</div>
 	</div>
 
-	<!--Crear lienzo-->
+	<!-- Create canvas -->
 	<div id="make_canvas_container">
 		<form action="{{route("crearLienzo")}}" method="post">
 			@csrf
@@ -199,23 +201,24 @@
 
 	</div>
 
+	<!-- Notifications -->
 	<div class="notis" id="noti_grup_ocul">
-		<x-notificacion tipo="success" texto="Usuario añadido" identificador="6"/>
+		<x-notificacion tipo="success" texto="User added" identificador="6"/>
 
 		@if($not==="mayor")
-			<x-notificacion tipo="success" texto="Lienzo añadido" identificador="2"/>
+			<x-notificacion tipo="success" texto="Picture added" identificador="2"/>
 		@elseif($not=="menor")
-			<x-notificacion tipo="danger" texto="Lienzo borrado" identificador="1"/>
+			<x-notificacion tipo="danger" texto="Picture deleted" identificador="1"/>
 		@endif
 
-			<x-notificacion tipo="success" texto="Lienzo descargado" identificador="0"/>
+			<x-notificacion tipo="success" texto="Picture downloaded" identificador="0"/>
 
 		@if($not=="edit")
-			<x-notificacion tipo="success" texto="Lienzo editado" identificador="5"/>
+			<x-notificacion tipo="success" texto="Picture edited" identificador="5"/>
 		@endif
 
 		@if($not=="grupoCreado")
-			<x-notificacion tipo="success" texto="Grupo creado" identificador="4"/>
+			<x-notificacion tipo="success" texto="Group created" identificador="4"/>
 		@endif
 	</div>
 

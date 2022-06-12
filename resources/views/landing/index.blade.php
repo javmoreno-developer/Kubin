@@ -1,7 +1,7 @@
 @extends("plantillas/final")
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 	<x-cabecera title="true" tutorial="true" showcase="true" github="true" log="true"/>
-	<!--1 seccion (header)-->
+	<!--1 section (header)-->
 	<section id="firstSection">
 		<div id="containerFirst">
 
@@ -30,7 +30,7 @@
 			</div>
 	</section>
 
-	<!--2 seccion ¿Que es kubin?-->
+	<!--2 section ¿What is kubin?-->
 	<section id="secondSection">
 		<div id="text">
 			<h1 class="title">{{__("messages.title1_2_landing")}}</h1>
@@ -45,7 +45,7 @@
 		</div>
 	</section>
 
-	<!--3 seccion Creadores-->
+	<!--3 section Creators-->
 	<section id="thirdSection">
 		<div id="text">
 			<h1 class="title">{{__("messages.title1_3_landing")}}</h1>
@@ -99,7 +99,7 @@
 		
 	</section>
 
-	<!--4 seccion cree y edite-->
+	<!--4 section make and edit-->
 	<section id="fourthSection">
 		<div id="text">
 			<div id="titleFourth">
@@ -141,7 +141,7 @@
 		</div>
 	</section>
 
-	<!--5 seccion lleva tu juego-->
+	<!--5 section push your image game-->
 	<section id="fifthSection">
 		<div id="fifthText">
 			<p class="title">{{__("messages.title1_5_landing")}}</p>
@@ -160,7 +160,7 @@
 		
 	</section>
 
-	<!--6 seccion footer-->
+	<!--6 section footer-->
 	<div id="footerContainer">
 		<hr id="footerStart">
 	</div>
@@ -212,15 +212,5 @@
 			</div>
 		</div>
 	</section>
-
-	<!--loader
-	<div class="loader_container">
-	  <div class="span-container">
-	    <span class="one"></span>
-	    <span class="two"></span>
-	    <span class="three"></span>
-	    <span class="four"></span>
-	  </div>
-	</div>-->
 
 @extends("plantillas/cabecera")

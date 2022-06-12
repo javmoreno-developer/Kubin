@@ -17,7 +17,7 @@
 <body>
 
 	<section id="boardContainer">
-		<!--atras-->
+		<!-- Get back -->
 		<div id="atrasTablero">
 				<svg viewBox="0 0 200 200">
 					<line x1="82.39999999999998" x2="133.39999999999998" y1="106.2" y2="66.19999999999999" fill="#000000" stroke="#00000f" style="stroke-width: 7;" stroke-linecap="round"></line>
@@ -29,7 +29,8 @@
 				<p>{{__("messages.m1_tab")}}</p>
 			</a>
 		</div>
-		<!--tools2-->
+
+	<!-- More tools-->
 	<div id="tools2">
 		
 		<div class="tool" id="seleccionar" title="{{__('messages.m2_tab')}}"><i class="bi bi-cursor"></i></div>
@@ -49,6 +50,7 @@
 		<div id="board">
 			<div id="punteros"></div>
 		</div>
+		<!-- Tools -->
 		<div id="tools">
 			<div id="sqr" class="tool" title="{{__('messages.m9_tab')}}"><i class="bi bi-square"></i></div>
 			<div id="recta" class="tool" title="{{__('messages.m10_tab')}}"><i class="bi bi-slash-lg"></i></div>
@@ -85,7 +87,7 @@
 
 
 
-		<!--Componentes-->	
+		<!-- Components -->	
 		<div id="textoInput">
 			<textarea name="" id="area" cols="30" rows="10"></textarea>
 		</div>
@@ -106,7 +108,7 @@
 
 	</section>
 
-	<!--Nombre lienzo-->
+	<!-- Export -->
 	<div id="export_ctr">
 		<div id="namingContainer">
 			<h1>{{__("messages.m23_tab")}}</h1>
@@ -158,7 +160,7 @@
 		<input type="range" min="1" max="10" id="grosorPicker">
 	</div>
 
-	<!-- lupa -->
+	<!-- loupe -->
 	<div id="loupeContainer">
 		<p>{{__("messages.m30_tab")}} &nbsp;</p>
 		<input type="range" min="1" max="20" id="loupeRange">
@@ -187,7 +189,7 @@
 	</div>
 	
 
-	<!-- Elegir gradient -->
+	<!-- Choose gradient -->
 	<section id="black_out">
 		<div id="chooseGradient">
 			<div id="contentChoose">
@@ -201,7 +203,7 @@
 		</div>
 	</section>
 		
-	<!-- Fin gradient -->
+	<!-- End gradient -->
 	@isset($grupo)
 		<h1 id="group_message">{{__("messages.m22_tab")}} {{$nombreGr}}</h1>
 		<input type="hidden" id="idgr" value="{{$grupo}}">

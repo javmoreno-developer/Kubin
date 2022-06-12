@@ -1168,3 +1168,75 @@ evento.target.style.opacity = "0";
 });
 
 */
+
+//modal hacer premium
+$("#closePremium").click(()=> {
+    $("#turn_premium_modal").css("display","none");
+});
+
+$("#turn_premium_btn").click(()=> {
+  $("#turn_premium_modal").css("display","flex");
+});
+
+let arrows=document.getElementsByClassName("arrow");
+let arrowResponse=[];
+let konami_code=["up","up","down","down","left","right","left","right","b","a"];
+let a2=["down"];
+for(let i=0;i<arrows.length;i++) {
+    if(arrowResponse.length<=9) {
+        $(`#${arrows[i].id}`).click(()=> {
+            arrowResponse.push(arrows[i].id);
+            if(arrowResponse.length==9) {
+                console.log("aaaw");
+                $("#tryPremium").addClass("accept");
+            }
+        });
+
+    }
+}
+
+$("#tryPremium").click(()=> {
+    console.log(arrowResponse);
+    console.log("Comparing a1 and a2", JSON.stringify(arrowResponse) === JSON.stringify(konami_code));
+    if(JSON.stringify(arrowResponse) === JSON.stringify(konami_code)) {
+        apareceNoti8();
+        makePremium();
+    } else {
+        apareceNoti7();
+    }
+    arrowResponse=[];
+    $("#tryPremium").removeClass("accept");
+});
+
+function makePremium() {
+     $.ajax({
+            data: {
+            }, 
+            url: "./premium",
+            type: 'get',
+            success:  function (response) {
+               console.log(response); // Imprimir respuesta del archivo
+               window.location.href="dashboard";
+            },
+            error: function (error) {
+                console.log(error.responseText); // Imprimir respuesta de error
+            }
+    });
+}
+
+function apareceNoti7() {
+    $("#container_notification_7").css("opacity",1);
+    $("#container_notification_7").css("display","flex");
+    $("#container_notification_7").removeClass("p-1 space-y-4");
+    $("#container_notification_7").addClass("noti_ani");
+    cerrarN();
+}
+
+
+function apareceNoti8() {
+    $("#container_notification_8").css("opacity",1);
+    $("#container_notification_8").css("display","flex");
+    $("#container_notification_8").removeClass("p-1 space-y-4");
+    $("#container_notification_8").addClass("noti_ani");
+    cerrarN();
+}

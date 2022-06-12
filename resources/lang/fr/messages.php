@@ -253,4 +253,12 @@ return [
      //correo
      "m1_co" =>"Accéder",
      "m2_co" =>"Au revoir",
+
+     //mensajes de las notificaciones
+     "add_not" => "Toile ajoutée",
+     "del_not" => "Toile effacée",
+     "dow_not" => "Toile téléchargée",
+     "edi_not" => "Toile éditée",
+     "gru_not" => "Groupe créé",
+     "usu_not" => "Utilisateur ajouté",
 ];

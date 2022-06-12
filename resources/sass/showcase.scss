@@ -33,6 +33,7 @@ body {
     	display: flex;
     	flex-direction: column;
     	justify-content: space-around;
+    	align-items: center;
 	}
 	.showcaseSection {
 		height: 30vh;
@@ -71,6 +72,15 @@ body {
 }
 
 //media query
+@media (min-width: 400px) { 
+	.showcaseSection {
+		width: 40% !important;
+	}
+	.showcaseOverlay {
+		width: 40% !important;
+	}
+}
+
 @media (min-width: 992px) { 
 	#showcaseContainer {
 		height: altura(7) !important;

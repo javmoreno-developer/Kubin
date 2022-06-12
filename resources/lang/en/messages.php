@@ -23,9 +23,9 @@ return [
 
     'title1_2_landing' => 'WHAT IS KUBIN?',
 
-    'men1_2_landing' => 'Kubin is a extremely scalable picture maker tool,with kubin you would make picutre more or less complex,using for that a group of tools tipicaly used for vectorial painting',
+    'men1_2_landing' => 'Kubin is a extremely scalable picture maker tool,with kubin you would make somewhat complex pictues,using for that a group of tools tipically used for vectorial painting',
 
-    'men2_2_landing' => 'In addition of create images,you would download or share it,even you would create groups',
+    'men2_2_landing' => 'In addition to create images,you would download or share it,even you would create groups',
 
     'title1_3_landing' => 'CREATORS AND THEIR CREATIONS',
 
@@ -69,7 +69,7 @@ return [
 
     'tit1_1_tut' => 'Create straight line',
 
-    'men1_1_tut' => 'If you are on the board you should press the button of create a line (its the second on the left part),after this click twice the board,first click will be the beggining of the straight line and the second click will be the end',
+    'men1_1_tut' => 'If you are on the board you should press the button of create a line (its the second on the left part),after this click twice on the board,first click will be the beggining of the straight line and the second click will be the end',
 
     'tit1_2_tut' => 'Download pictures',
 
@@ -77,7 +77,7 @@ return [
 
     'tit1_3_tut' => 'Create circles',
 
-    'men1_3_tut' => 'In your board you have to press the button to create circle (third of the left part),after this to create the circle you have to press (and continue pressing) the board,after this leave the click',
+    'men1_3_tut' => 'In your board you have to press the button to create circle (third of the left part),after this to create the circle you have to press (and continue pressing) on the board,after this leave the click',
 
     'tit1_4_tut' => 'Create square',
 
@@ -148,9 +148,9 @@ return [
 
     'men10_das' => 'Download',
 
-    'men11_das' => 'Create canvas',
+    'men11_das' => 'Create a canvas',
 
-    'men12_das' => 'Download canvas',
+    'men12_das' => 'Download',
 
     'men13_das' => 'Choose format',
 
@@ -169,7 +169,7 @@ return [
 
     'm4_tab' => 'Export',
 
-    'm5_tab' => 'Delete canvas',
+    'm5_tab' => 'Delete all the canvas',
 
     'm6_tab' => 'Delete last shape',
 
@@ -253,4 +253,13 @@ return [
       //correo
      "m1_co" =>"Acess",
      "m2_co" =>"Goodbye",
+
+     //mensajes de las notificaciones
+     "add_not" => "Picture added",
+     "del_not" => "Picture deleted",
+     "dow_not" => "Picture downloaded",
+     "edi_not" => "Picture edited",
+     "gru_not" => "Group created",
+     "usu_not" => "User added",
+
 ];

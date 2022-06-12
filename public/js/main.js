@@ -1211,5 +1211,82 @@ evento.target.style.opacity = "0";
 });
 
 */
+//modal hacer premium
+
+
+$("#closePremium").click(function () {
+  $("#turn_premium_modal").css("display", "none");
+});
+$("#turn_premium_btn").click(function () {
+  $("#turn_premium_modal").css("display", "flex");
+});
+var arrows = document.getElementsByClassName("arrow");
+var arrowResponse = [];
+var konami_code = ["up", "up", "down", "down", "left", "right", "left", "right", "b", "a"];
+var a2 = ["down"];
+
+var _loop2 = function _loop2(_i) {
+  if (arrowResponse.length <= 9) {
+    $("#".concat(arrows[_i].id)).click(function () {
+      arrowResponse.push(arrows[_i].id);
+
+      if (arrowResponse.length == 9) {
+        console.log("aaaw");
+        $("#tryPremium").addClass("accept");
+      }
+    });
+  }
+};
+
+for (var _i = 0; _i < arrows.length; _i++) {
+  _loop2(_i);
+}
+
+$("#tryPremium").click(function () {
+  console.log(arrowResponse);
+  console.log("Comparing a1 and a2", JSON.stringify(arrowResponse) === JSON.stringify(konami_code));
+
+  if (JSON.stringify(arrowResponse) === JSON.stringify(konami_code)) {
+    apareceNoti8();
+    makePremium();
+  } else {
+    apareceNoti7();
+  }
+
+  arrowResponse = [];
+  $("#tryPremium").removeClass("accept");
+});
+
+function makePremium() {
+  $.ajax({
+    data: {},
+    url: "./premium",
+    type: 'get',
+    success: function success(response) {
+      console.log(response); // Imprimir respuesta del archivo
+
+      window.location.href = "dashboard";
+    },
+    error: function error(_error8) {
+      console.log(_error8.responseText); // Imprimir respuesta de error
+    }
+  });
+}
+
+function apareceNoti7() {
+  $("#container_notification_7").css("opacity", 1);
+  $("#container_notification_7").css("display", "flex");
+  $("#container_notification_7").removeClass("p-1 space-y-4");
+  $("#container_notification_7").addClass("noti_ani");
+  cerrarN();
+}
+
+function apareceNoti8() {
+  $("#container_notification_8").css("opacity", 1);
+  $("#container_notification_8").css("display", "flex");
+  $("#container_notification_8").removeClass("p-1 space-y-4");
+  $("#container_notification_8").addClass("noti_ani");
+  cerrarN();
+}
 /******/ })()
 ;

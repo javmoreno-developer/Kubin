@@ -49,4 +49,10 @@ class usuarioController extends Controller
         }
         return redirect()->route("dashboard");   
     }
+
+    public function premium() {
+        $r=usuarios::find(Auth::user()->idUsu);
+        $r->perfUsu=2;
+        $r->save();
+    }
 }

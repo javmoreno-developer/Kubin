@@ -41,6 +41,7 @@
 		background:var(--body);
 		color: var(--texto);
 		display: flex;
+		border-radius:20px;
 
 		#contentModalMembers {
 			height: 100%;
@@ -132,7 +133,8 @@
 		height: 70%;
 		background:white;
 		display: flex;
-
+		border-radius:20px;
+		
 		#contentModalCategory {
 			height: 100%;
 			width: 90%;

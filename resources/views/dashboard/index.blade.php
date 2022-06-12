@@ -5,6 +5,7 @@
 </head>
 <body>
 
+	<!-- Profile user image -->
 	<section id="userModal">
 		@if(sizeof(Auth::user()->getMedia("avatars"))>0)
 			<div id="userImage" style="background:url('{{Auth::user()->getMedia("avatars")->first()->getUrl("thumb")}}');background-size: cover;">
@@ -21,7 +22,9 @@
 		
 	</section>
 
-	
+	<!-- Enf of user image -->
+
+	<!-- Main table -->
 	<section id="exhibition">
 		
 		<table>
@@ -50,16 +53,21 @@
 		</table>
 	</section>
 	
+	<!-- End of main table -->
+
+	<!-- Drag container -->
 	<div class="drag_destiny">
 		<i class="bi bi-trash" id="drag_icon"></i>
 	</div>
 
+	<!-- Pagination -->
 	<div id="paginacion">
 		<div id="container">
 			{!! $cuadros->links() !!}
 		</div>
 	</div>
 
+	<!-- Create canvas and group buttons -->
 	<div id="btnCrearLie">
 		<a draggable="false" href="{{route("crearLienzo")}}">{{__("messages.men11_das")}}</a>
 		@if(Auth::user()->perfUsu==2)
@@ -68,8 +76,12 @@
 		@if(sizeof($grupo)!=0)
 			<button id="see_group">{{__("messages.m9_gr")}}</button>
 		@endif
+		@if(Auth::user()->perfUsu!=2)
+			<button id="turn_premium_btn">Cambiar a premium</button>
+		@endif
 	</div>
 
+	<!-- Download modal -->
 	@if(Auth::user()->perfUsu==2)
 		<div id="downloadContainer">
 			<div id="downloadModal">
@@ -92,6 +104,7 @@
 		</div>
 	@endif
 
+	<!-- Change profile modal -->
 	<div id="changeFotoModal">
 		<div id="fotoMain">
 			<div id="main">
@@ -133,7 +146,7 @@
 		</div>
 	</div>
 
-	<!--Formulario crear grupo-->
+	<!--Create group form-->
 	@if(Auth::user()->perfUsu==2)
 		<div id="createGroupModal">
 			<div id="create_group_main">
@@ -159,7 +172,7 @@
 		</div>
 	@endif
 
-	<!--Ver grupos-->
+	<!-- See group -->
 	<div id="seeGroupModal">
 		<div id="see_group_main">
 			<div id="contentSeeGroup">
@@ -183,24 +196,60 @@
 		</div>
 	</div>
 
-	
-
+	<!-- Turn into premium modal -->
+	<div id="turn_premium_modal">
+		<div id="turn_premium_main">
+			<div id="turn_premium_content">
+				<h1>Introduce el codigo</h1>
+				<div id="arrow_container">
+					<div id="arrows">
+						<div id="arrow_first">
+							<i class="bi bi-arrow-up arrow" id="up"></i>
+						</div>
+						<div id="arrow_second">
+							<div id="pt1">
+								<i class="bi bi-arrow-left arrow" id="left"></i>
+							</div>
+							<div id="pt2">
+								<i class="bi bi-arrow-right arrow" id="right"></i>
+							</div>
+						</div>
+						<div id="arrow_three">
+							<i class="bi bi-arrow-down arrow" id="down"></i>
+						</div>
+						<div id="arrow_four">
+							<p class="arrow" id="a">A</p>
+							<p class="arrow" id="b">B</p>
+						</div>
+					</div>
+				</div>
+				<div id="conf_prem">
+					<button id="closePremium">Cancelar</button>
+					<button id="tryPremium">Comprobar</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<!-- Notifications -->
 	<div class="notis">
 
 		@if($not==="mayor")
-			<x-notificacion tipo="success" texto="Lienzo añadido" identificador="2"/>
+			<x-notificacion tipo="success" texto="Picture added" identificador="2"/>
 		@elseif($not=="menor")
-			<x-notificacion tipo="danger" texto="Lienzo borrado" identificador="1"/>
+			<x-notificacion tipo="danger" texto="Picture deleted" identificador="1"/>
 		@endif
 
-			<x-notificacion tipo="success" texto="Lienzo descargado" identificador="0"/>
+			<x-notificacion tipo="success" texto="Picture downloaded" identificador="0"/>
+			<x-notificacion tipo="danger" texto="Codigo incorrecto" identificador="7"/>
+			<x-notificacion tipo="success" texto="Codigo correcto" identificador="8"/>
 
 		@if($not=="edit")
-			<x-notificacion tipo="success" texto="Lienzo editado" identificador="5"/>
+			<x-notificacion tipo="success" texto="Picture edited" identificador="5"/>
 		@endif
 
 		@if($not=="grupoCreado")
-			<x-notificacion tipo="success" texto="Grupo creado" identificador="4"/>
+			<x-notificacion tipo="success" texto="Group created" identificador="4"/>
 		@endif
 
 	</div>
