@@ -220,6 +220,7 @@ i {
 			}
 			p {
 				text-align: center;
+				color: black !important;
 			}
 		}
 	}
@@ -285,6 +286,17 @@ i {
 
 
 //media
+//aux
+@media (max-width: 300px) { 
+	#fourthSection {
+		margin-top: 45%;
+	}
+	#secondSection {
+		#image {
+			margin-top: 30%;
+		}
+	}
+}
 //first
 @media (min-width: 992px) { 
 	#firstSection {
@@ -408,14 +420,26 @@ i {
 	}
 }
 
+#container_idioma_select {
+	display: flex;
+	align-items: center;
+}
 #idiomaSelect {
 	appearance: auto;
 	background: none;
 	border:none;
+	padding-right: 0px !important;
 	color:var(--texto);
 	option {
 		color: black;
 	}
+}
+#idiomaSelect:focus {
+	background: transparent !important;
+	border:none !important;
+	outline: none !important;
+	color: #7d2ae8;
+	font-weight: bold;
 }
 //media fourth
 @media (min-width: 992px) { 

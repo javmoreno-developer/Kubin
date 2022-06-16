@@ -8,6 +8,17 @@ th {
 	color: var(--texto);
 }
 
+input[type="file"] {
+	 display: none;
+}
+#file_container {
+	background:transparent;
+	font-weight: bold;
+	border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
 #container_notification_0 {
 	display: none;
 	opacity: 0;
@@ -310,10 +321,11 @@ th {
 		#urlModal {
 			border-bottom:3px solid;
 			width: 10%;
+			color: var(--texto);
 			text-align: center;
 		}
 		#fileModal {
-			
+			color: var(--texto);
 			width: 	10%;
 			text-align: center;
 		}
@@ -347,6 +359,7 @@ th {
 	    				height: 30%;
 	    				justify-content: space-around;
 	    				align-items: center;
+	    				color: var(--texto);
 	    				input[type="file"] {
 							width: 100%;
 						}
@@ -370,6 +383,11 @@ th {
 	    			div {
 	    				display: flex;
 	    				flex-direction: column;
+	    				color: var(--texto);
+	    				input {
+	    					color: black;
+	    					width: 100%;
+	    				}
 	    			}
 	    			button {
 	    				@include pill;
@@ -621,7 +639,8 @@ th {
 				height: 15%;
 				width: 100%;
 				display: flex;
-				justify-content: space-around;
+				flex-direction: column;
+				align-items: center;
 				button {
 					@include pill;
 					padding: unset;
@@ -646,6 +665,10 @@ th {
 }
 
 @media(min-width: 900px) {
+	#conf_prem {
+		flex-direction: row !important;
+		justify-content: space-around;
+	}
 	#userModal {
 		height: 30vh;
 		#userImage {
@@ -745,4 +768,7 @@ th {
 		width: 40% !important;
 	}
 
+	#url form div {
+		width: 90% !important;
+	}
 }

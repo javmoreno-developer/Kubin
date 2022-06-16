@@ -1116,7 +1116,9 @@ for(let i=0;i<tr.length;i++) {
     document.addEventListener("dragend", function (evento) {
          if(idElementDrag==false && countDrag==0) {  
             let id=event.target.id.split("_")[1];
-            dragBorrar(id);
+            let ancla=event.target.id.split("_")[0];
+            console.log(ancla);
+            dragBorrar(id,ancla);
             countDrag++;
          } else {
             $(".drag_destiny").css("opacity","0");
@@ -1124,18 +1126,21 @@ for(let i=0;i<tr.length;i++) {
     });
 }
 
-function dragBorrar(param) {
+function dragBorrar(param,ancla) {
     var datos = {
     "variable1" : param, // Dato #1 a enviar
     //"variable2" : variable2 // Dato #2 a enviar
     // etc...
 };
+ if(ancla=="dragGrupo") {
+    var url = `../borrarLienzoDrag/${param}`; // URL a la cual enviar los datos;
+   } else {
+    var url = `./borrarLienzoDrag/${param}`; // URL a la cual enviar los datos;
+}
 
-var url = `./borrarLienzoDrag/${param}`; // URL a la cual enviar los datos;
+enviarDatos(datos, url,ancla); // Ejecutar cuando se quiera enviar los datos
 
-enviarDatos(datos, url); // Ejecutar cuando se quiera enviar los datos
-
-function enviarDatos(datos, url){
+function enviarDatos(datos, url,ancla){
     $.ajax({
             data: {
                  //"_token": $("meta[name='csrf-token']").attr("content"),
@@ -1145,7 +1150,11 @@ function enviarDatos(datos, url){
             type: 'get',
             success:  function (response) {
                console.log(response); // Imprimir respuesta del archivo
-               window.location.href="./dashboard";
+               if(ancla=="dragGrupo") {
+                    window.location.href="../dashboard";
+               } else {
+                    window.location.href="./dashboard";
+                }
             },
             error: function (error) {
                 console.log(error.responseText); // Imprimir respuesta de error
@@ -1240,3 +1249,12 @@ function apareceNoti8() {
     $("#container_notification_8").addClass("noti_ani");
     cerrarN();
 }
+
+//selector landing
+$("#idiomaSelect").focus(()=> {
+    $("#global_svg").css("color","#7d2ae8");
+});
+
+$("#idiomaSelect").focusout(()=> {
+    $("#global_svg").css("color","black");
+});

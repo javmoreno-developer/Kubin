@@ -181,7 +181,13 @@
 		<div id="textSection">
 			<div class="textPr">
 				<h1>{{__("messages.men_1_footer_landing")}}</h1>
+
+				<div id="container_idioma_select">
+					
+				
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="global_svg"><path fill="currentColor" d="M3.8 14.25h3.81a21.9 21.9 0 010-4.5h-3.8a8.5 8.5 0 000 4.5zm.57 1.5c1 2.04 2.8 3.61 4.98 4.33-.68-1.1-1.2-2.6-1.52-4.33H4.37zm15.83-1.5a8.5 8.5 0 000-4.5h-3.81a21.9 21.9 0 010 4.5h3.8zm-.57 1.5h-3.46a12.78 12.78 0 01-1.52 4.33 8.53 8.53 0 004.98-4.33zm-10.5-1.5h5.74a20.12 20.12 0 000-4.5H9.13a20.12 20.12 0 000 4.5zm.23 1.5c.56 2.84 1.69 4.75 2.64 4.75.95 0 2.08-1.9 2.64-4.75H9.36zm-4.99-7.5h3.46c.31-1.74.84-3.24 1.52-4.33a8.53 8.53 0 00-4.98 4.33zm15.26 0a8.53 8.53 0 00-4.98-4.33c.68 1.1 1.2 2.6 1.52 4.33h3.46zm1.64 0h.04v.1a10 10 0 11-.04-.1zm-11.91 0h5.28C14.08 5.41 12.95 3.5 12 3.5c-.95 0-2.08 1.9-2.64 4.75z"></path></svg>
 				<select id="idiomaSelect">
+
 					@if (session('idioma_session')=="es") 
 						<option value="es" selected>{{__("messages.id_es")}}</option>
 					@else
@@ -203,7 +209,7 @@
 				</select>
 				
 				
-
+				</div>
 			</div>
 			<div class="textPr">
 				<h1>{{__("messages.men2_footer_landing")}}</h1>

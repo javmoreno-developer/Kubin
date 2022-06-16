@@ -180,7 +180,10 @@
 
 				<div id="c1_container">{{__("messages.m35_tab")}}<input type="color" id="c1"></div>
 				<div id="c2_container">{{__("messages.m36_tab")}}<input type="color" id="c2"></div>
-				<button id="crearGradient">{{__("messages.m37_tab")}}</button>
+				<div>
+					<button id="crearGradient">{{__("messages.m37_tab")}}</button>
+				    <i id="mark_create_gradient" class="bi bi-check-lg"></i>
+				</div>
 			</div>
 			<div id="cancellGradient">
 				<i class="bi bi-x-lg"></i>

@@ -186,6 +186,8 @@ $azul:#1FC0CF;
 
 		i {
 			font-size: 30px;
+			transition: all 1s;
+			opacity: 1;
 		}
 	}
 	#addCatContainer {
@@ -389,8 +391,9 @@ div[data-name="mojs-shape"] {
 	height: 100%;
 	width: 100%;
 	display: none;
-	position:absolute;
+	position:fixed;
 	top: 0%;
+	z-index: 90;
 	background: rgba(0, 0, 0, 0.5);
 }
 #gradientContainer {
@@ -417,7 +420,7 @@ div[data-name="mojs-shape"] {
 		position:absolute;
 		align-items: center;
 		i {
-			color: black;
+			color: var(--texto);
 		}
 	}
 	#contentGradient {
@@ -429,14 +432,14 @@ div[data-name="mojs-shape"] {
 		align-items: center;
 		justify-content: space-around;
 		h3 {
-			color: black;
+			color: var(--texto);
 		}
 		select {
 			appearance:auto;
 			    margin-bottom: 1em;
     overflow: visible !important;
     padding: 0.25em;
-		width: 35%;
+		width: 100%;
     border: 0;
     border-bottom: 2px solid currentcolor;
     font-weight: bold;
@@ -455,12 +458,17 @@ div[data-name="mojs-shape"] {
 			color: white;
 		}
 
+		i {
+			transition: all 1s;
+			opacity: 0;
+		}
+
 		#c1_container {
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
 			height: 10%;
-			width: 30%;
+			width: 100%;
 			
 		}
 		#c2_container {
@@ -468,7 +476,7 @@ div[data-name="mojs-shape"] {
 			justify-content: space-around;
 			align-items: center;
 			height: 10%;
-			width: 30%;
+			width: 100%;
 			
 		}
 		#c1 {
@@ -521,14 +529,13 @@ div[data-name="mojs-shape"] {
 	position:fixed;
 	top: 10%;
 	z-index: 190;
-	left: 20%;
 	height: 80%;
-	
-	width: 60%;
+	left: 5%;
+	width: 90%;
 	display: flex;
 	justify-content: center;
 	
-	background-color: white;
+	background-color: var(--body);
 	border:3px solid;
 
 	#cancellChoose {
@@ -557,10 +564,19 @@ div[data-name="mojs-shape"] {
 			flex-direction: column;
 			align-items: center;
 			gap:1%;
+			#container_Exp {
+				width: 20%;
+				height: 5vh;
+				display: flex;
+				align-items: center;
+				i {
+					opacity: 0;
+					transition: all 1s;
+				}
+			}
 			.gradientExp {
 				height: 5vh;
-				width: 20%;
-				background: red;
+				width: 100%;
 			}
 		}
 		
@@ -596,6 +612,21 @@ div[data-name="mojs-shape"] {
 	display: none !important;
 }
 @media(min-width: 900px) {
+	#chooseGradient {
+		left: 20%;
+		width: 60%;
+	}
+	#contentGradient select {
+		width: 35% !important;
+	}
+	#contentGradient #c1_container {
+		width: 30% !important;
+	}
+
+	#contentGradient #c2_container {
+		width: 30% !important;
+	}
+
 	#seleccionar {
 		display: flex !important;
 	}

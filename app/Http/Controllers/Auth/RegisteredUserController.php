@@ -20,7 +20,14 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('login.index',["register"=>true]);
+        if(session()->has('repe')) {
+            session()->forget('repe');
+            $not=false;
+            echo "hay sesion bro2";
+            return view("login.index",["register"=>true,"notificacion"=>$not]);
+        } else {
+            return view('login.index',["register"=>true]);
+        }
     }
 
     /**

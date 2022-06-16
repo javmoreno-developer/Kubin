@@ -58,7 +58,7 @@
 				</tr>
 			</thead>
 			@foreach($cuadros as $cuadro)
-				<tr>
+				<tr draggable="true" id="dragGrupo_{{$cuadro["idLie"]}}">
 				  <td><strong><h4>{{$cuadro["nomLie"]}}</h4></strong></td>
 				  <td><p> {{$cuadro["created_at"]}}</p></td>
 				  <td><p> {{$cuadro["updated_at"]}}</p></td>
@@ -73,6 +73,11 @@
 		</div>
 	</section>
 
+
+	<!-- Drag container -->
+	<div class="drag_destiny">
+		<i class="bi bi-trash" id="drag_icon"></i>
+	</div>
 	
 	<!-- Download -->
 

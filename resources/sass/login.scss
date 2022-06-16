@@ -4,6 +4,12 @@ $gris:#696969;
 	font-size: 20px;
 }
 
+#container_notification_15 {
+	position:fixed;
+	top: 90%;
+	z-index: 100;
+}
+
 #passIn::placeholder {
 	font-size: 14px;
 }
@@ -74,6 +80,9 @@ $gris:#696969;
 					color: var(--texto);
 					padding-left: 0px !important;
 					margin-left: 0px !important;
+				}
+				input:focus {
+					background: var(--body);
 				}
 				input::placeholder {
 					color: var(--texto);
@@ -204,11 +213,11 @@ $gris:#696969;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	width: 30% !important;
+	width: 50% !important;
 	height: 5vh;
 }
 #crown {
-	width: 30%;
+	width: 60%;
 	height: 100%;
 }
 
@@ -280,6 +289,12 @@ input[type="checkbox"]:disabled {
 
 //media query
 @media (min-width: 992px) { 
+	#premium_container {
+		width: 30% !important;
+	}
+	#crown {
+		width: 30%;
+	}
 	.passLog {
 		flex-direction: row !important;
 		

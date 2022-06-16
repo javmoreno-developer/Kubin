@@ -49,6 +49,7 @@ var burst = new mojs.Shape({
   radius:   { 4: 4 },
   angle:    45,
   shape:        'circle',
+  id:           "seleccion1",
   radius:       7,
   radiusX:      7, // explicit radiusX
   fill:         'black',
@@ -56,6 +57,7 @@ var burst = new mojs.Shape({
   strokeWidth:     3,
   opacity:          0,
   isShowStart:  true,
+  className:      "seleccion_creacion",
 });
 
 
@@ -65,6 +67,7 @@ var burst2 = new mojs.Shape({
   radius:   { 4: 4 },
   angle:    45,
   shape:        'circle',
+  id:           "seleccion2",
   radius:       7,
   radiusX:      7, // explicit radiusX
   fill:         'black',
@@ -72,11 +75,19 @@ var burst2 = new mojs.Shape({
   strokeWidth:     3,
   opacity:          0,
   isShowStart:  true,
+  className:      "seleccion_creacion",
 });
 
 $( ".tool" ).each(function(index) {
+
+    //escondemos los punteros
+
     $(this).on("click", function(){
-      console.log($("#punteros"));
+
+      if($(this).attr("id")=="cancelFill") {
+        elimina_punteros_sel();
+        elimina_punteros_cre();
+      }
     	//$("#board").on("click",(e)=> {
       $("#punteros").click((e)=> {
       
@@ -103,10 +114,12 @@ var burst3 = new mojs.Shape({
   radius:       7,
   radiusX:      7, // explicit radiusX
   fill:         'blue',
+  id:           "seleccion3",
   stroke:        "red",
   strokeWidth:     3,
   opacity:          0,
   isShowStart:  true,
+  className:      "seleccion_apunte",
 });
 
 var burst4 = new mojs.Shape({
@@ -114,6 +127,7 @@ var burst4 = new mojs.Shape({
   radius:   { 4: 4 },
   angle:    45,
   shape:        'circle',
+  id:           "seleccion4",
   radius:       7,
   radiusX:      7, // explicit radiusX
   fill:         'blue',
@@ -121,6 +135,7 @@ var burst4 = new mojs.Shape({
   strokeWidth:     3,
   opacity:          0,
   isShowStart:  true,
+  className:      "seleccion_apunte",
 });
 
 
@@ -163,7 +178,7 @@ $("#seleccionar").click((e)=> {
 
 
     //move
-  
+    elimina_punteros_cre();
       figuraSel.drag(move, start, stop);
     
 
@@ -193,3 +208,18 @@ $("#seleccionar").click((e)=> {
   posicion=0;
 });
 
+function elimina_punteros_sel() {
+  let conjunto=document.getElementsByClassName("seleccion_apunte");
+ 
+  for(let i=0;i<conjunto.length;i++) {
+    conjunto[i].style.opacity=0;
+  }
+  
+}
+
+function elimina_punteros_cre() {
+   let conjunto2=document.getElementsByClassName("seleccion_creacion");
+   for(let i=0;i<conjunto2.length;i++) {
+     conjunto2[i].style.opacity=0;
+   }
+}

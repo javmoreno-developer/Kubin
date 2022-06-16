@@ -4,13 +4,112 @@
 		<h1>Showcase</h1>
 		<div id="imagesShow">
 			<!-- These are the showcase components -->
-			<x-showcase descripcion="categoria" number="showfirst" svg=1/>
-			<x-showcase descripcion="categoria" number="showsecond" svg=2/>
-			<x-showcase descripcion="categoria" number="showthird" svg=3/>
-			<x-showcase descripcion="categoria" number="showfourth" svg=4/>
-			<x-showcase descripcion="categoria" number="showfifth" svg=5/>
-			<x-showcase descripcion="categoria" number="showsix" svg=6/>
-			<x-showcase descripcion="categoria" number="showseven" svg=7/>
+			<!-- 1 -->
+
+		    <div class="showcaseSection">
+		        <div class="showcaseChest" id="showfirst">
+		            <svg viewBox="0 0 300 400">
+		               <circle cx="209.39999999999998" cy="194.7" r="85.5" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></circle><line x1="205.39999999999998" x2="205.39999999999998" y1="191.2" y2="191.2" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></line><line x1="205.39999999999998" x2="205.39999999999998" y1="144.2" y2="144.2" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></line><line x1="205.39999999999998" x2="205.39999999999998" y1="144.2" y2="144.2" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></line><line x1="208.39999999999998" x2="208.39999999999998" y1="192.2" y2="192.2" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></line><line x1="207.39999999999998" x2="207.39999999999998" y1="189.2" y2="134.2" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></line><line x1="207.39999999999998" x2="182.39999999999998" y1="186.2" y2="218.2" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></line><line x1="155.39999999999998" x2="133.39999999999998" y1="262.2" y2="286.2" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></line><line x1="258.4" x2="278.4" y1="265.2" y2="287.2" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></line><rect x="195.39999999999998" y="92.19999999999999" width="22" height="10" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></rect><line x1="175.39999999999998" x2="234.39999999999998" y1="88.19999999999999" y2="88.19999999999999" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></line>
+		            </svg>
+		        </div>
+		        <div class="showcaseOverlay" id="showfirstOverlay">
+		            <h1>SS</h1>
+		            <p>SS</p>
+		            <h2>AA</h2>
+		        </div>
+		    </div>
+
+			<!-- FIN 1 -->
+
+			<!-- 2 --->
+			<div class="showcaseSection">
+		        <div class="showcaseChest" id="showsecond">
+		            <svg viewBox="0 0 300 400">
+		               <circle cx="202.39999999999998" cy="203.7" r="79.5" style="stroke-width: 1;" fill="#000000" stroke="#00000f" id="alert"></circle><line x1="197.39999999999998" x2="197.39999999999998" y1="161.2" y2="245.2" fill="#000000" stroke="#ffffff" style="stroke-width: 10;" stroke-linecap="round"></line><line x1="195.39999999999998" x2="195.39999999999998" y1="235.2" y2="235.2" fill="#000000" stroke="#ffffff" style="stroke-width: 10;" stroke-linecap="round"></line><line x1="195.39999999999998" x2="160.39999999999998" y1="245.2" y2="198.2" fill="#000000" stroke="#ffffff" style="stroke-width: 10;" stroke-linecap="round"></line><line x1="200.39999999999998" x2="228.39999999999998" y1="245.2" y2="198.2" fill="#000000" stroke="#ffffff" style="stroke-width: 10" stroke-linecap="round"></line>
+		            </svg>
+		        </div>
+		        <div class="showcaseOverlay" id="showsecondOverlay">
+		            <h1>s</h1>
+		            <p>s</p>
+		            <h2>s</h2>
+		        </div>
+		    </div>
+
+			<!-- fin2 --->
+			<!-- 3 -->
+			<div class="showcaseSection">
+		        <div class="showcaseChest" id="showthird">
+		            <svg viewBox="0 0 300 400">
+		              <rect x="100.39999999999998" y="153.2" width="200" height="129" fill="#ffffff" stroke="#00000f" style="stroke-width: 8;" rx="6" ry="6"></rect><path d="M 175.39999999999998 154.2 L 175.39999999999998 154.2 L 175.39999999999998 153.2 L 175.39999999999998 152.2 L 175.39999999999998 150.2 L 175.39999999999998 149.2 L 175.39999999999998 148.2 L 175.39999999999998 146.2 L 176.39999999999998 144.2 L 176.39999999999998 143.2 L 177.39999999999998 142.2 L 177.39999999999998 142.2 L 178.39999999999998 142.2 L 178.39999999999998 141.2 L 179.39999999999998 139.2 L 179.39999999999998 138.2 L 179.39999999999998 138.2 L 180.39999999999998 138.2 L 181.39999999999998 137.2 L 181.39999999999998 136.2 L 181.39999999999998 135.2 L 182.39999999999998 134.2 L 182.39999999999998 134.2 L 183.39999999999998 134.2 L 183.39999999999998 132.2 L 183.39999999999998 131.2 L 184.39999999999998 130.2 L 185.39999999999998 130.2 L 186.39999999999998 129.2 L 186.39999999999998 128.2 L 187.39999999999998 127.19999999999999 L 188.39999999999998 126.19999999999999 L 190.39999999999998 126.19999999999999 L 190.39999999999998 126.19999999999999 L 191.39999999999998 126.19999999999999 L 192.39999999999998 126.19999999999999 L 193.39999999999998 125.19999999999999 L 194.39999999999998 124.19999999999999 L 195.39999999999998 124.19999999999999 L 197.39999999999998 123.19999999999999 L 198.39999999999998 123.19999999999999 L 198.39999999999998 123.19999999999999 L 200.39999999999998 123.19999999999999 L 201.39999999999998 123.19999999999999 L 202.39999999999998 122.19999999999999 L 203.39999999999998 122.19999999999999 L 204.39999999999998 122.19999999999999 L 205.39999999999998 122.19999999999999 L 206.39999999999998 122.19999999999999 L 206.39999999999998 122.19999999999999 L 207.39999999999998 122.19999999999999 L 208.39999999999998 122.19999999999999 L 209.39999999999998 122.19999999999999 L 210.39999999999998 122.19999999999999 L 210.39999999999998 122.19999999999999 L 211.39999999999998 122.19999999999999 L 212.39999999999998 122.19999999999999 L 213.39999999999998 122.19999999999999 L 214.39999999999998 122.19999999999999 L 214.39999999999998 122.19999999999999 L 215.39999999999998 123.19999999999999 L 216.39999999999998 124.19999999999999 L 217.39999999999998 125.19999999999999 L 218.39999999999998 126.19999999999999 L 219.39999999999998 126.19999999999999 L 221.39999999999998 127.19999999999999 L 222.39999999999998 129.2 L 222.39999999999998 130.2 L 222.39999999999998 130.2 L 223.39999999999998 130.2 L 223.39999999999998 131.2 L 224.39999999999998 132.2 L 224.39999999999998 133.2 L 225.39999999999998 133.2 L 226.39999999999998 134.2 L 226.39999999999998 134.2 L 226.39999999999998 134.2 L 226.39999999999998 135.2 L 227.39999999999998 136.2 L 227.39999999999998 137.2 L 228.39999999999998 138.2 L 228.39999999999998 139.2 L 228.39999999999998 140.2 L 229.39999999999998 140.2 L 229.39999999999998 141.2 L 230.39999999999998 142.2 L 230.39999999999998 142.2 L 230.39999999999998 143.2 L 230.39999999999998 144.2 L 230.39999999999998 144.2 L 230.39999999999998 145.2 L 230.39999999999998 146.2 L 230.39999999999998 146.2 L 230.39999999999998 147.2 L 231.39999999999998 148.2 L 231.39999999999998 149.2 L 231.39999999999998 150.2 L 231.39999999999998 150.2 L 232.39999999999998 150.2 L 232.39999999999998 151.2 L 232.39999999999998 151.2" fill="none" stroke="#00000f" style="stroke-width: 8;"></path><line x1="168.39999999999998" x2="192.39999999999998" y1="205.2" y2="230.2" fill="#ffffff" stroke="#00000f" style="stroke-width: 8;"></line><line x1="192.39999999999998" x2="231.39999999999998" y1="235.2" y2="194.2" fill="#ffffff" stroke="#00000f" style="stroke-width: 8;"></line>
+		            </svg>
+		        </div>
+		        <div class="showcaseOverlay" id="showthirdOverlay">
+		            <h1>s</h1>
+		            <p>s</p>
+		            <h2>s</h2>
+		        </div>
+		    </div>
+
+			<!-- fin3 -->
+			<!-- 4 -->
+			<div class="showcaseSection">
+	       		 <div class="showcaseChest" id="showfourth">
+		            <svg viewBox="0 0 300 400">
+		               <rect x="116.39999999999998" y="135.2" width="131" height="196" fill="#fcfcfc" stroke="#00000f" style="stroke-width: 10;" rx="6"></rect><rect x="136.39999999999998" y="153.2" width="86" height="22" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></rect><rect x="133.39999999999998" y="206.2" width="18" height="14" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></rect><rect x="173.39999999999998" y="206.2" width="18" height="14" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></rect><rect x="213.39999999999998" y="206.2" width="18" height="14" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></rect><rect x="133.39999999999998" y="246.2" width="18" height="14" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></rect><rect x="173.39999999999998" y="246.2" width="18" height="14" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></rect><rect x="213.39999999999998" y="246.2" width="18" height="54" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></rect><rect x="133.39999999999998" y="286.2" width="18" height="14" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></rect><rect x="173.39999999999998" y="286.2" width="18" height="14" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></rect><rect x="214.39999999999998" y="299.2" width="0" height="0" fill="#0d0d0d" stroke="#00000f" style="stroke-width: 10;"></rect>
+		            </svg>
+		        </div>
+		        <div class="showcaseOverlay" id="showfourthOverlay">
+		            <h1>s</h1>
+		            <p>d</p>
+		            <h2>s</h2>
+		        </div>
+	   		 </div>
+
+			<!-- fin4 -->
+			<!-- 5 -->
+			<div class="showcaseSection">
+		        <div class="showcaseChest" id="showfifth">
+		            <svg viewBox="0 0 300 400">
+		              <line x1="106.39999999999998" x2="106.39999999999998" y1="190.7" y2="317.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;" stroke-linecap="round"></line><line x1="110.39999999999998" x2="184.39999999999998" y1="194.2" y2="226.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><line x1="107.39999999999998" x2="180.39999999999998" y1="314.2" y2="346.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;" stroke-linecap="round"></line><line x1="180.39999999999998" x2="180.39999999999998" y1="342.2" y2="223.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><line x1="182.39999999999998" x2="245.39999999999998" y1="342.2" y2="314.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><line x1="182.39999999999998" x2="245.39999999999998" y1="222.2" y2="194.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><line x1="244.39999999999998" x2="244.39999999999998" y1="189.7" y2="318.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;" stroke-linecap="round"></line><line x1="245.39999999999998" x2="179.39999999999998" y1="190.2" y2="155.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line><line x1="107.39999999999998" x2="182.39999999999998" y1="190.2" y2="156.2" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></line>
+		            </svg>
+		        </div>
+		        <div class="showcaseOverlay" id="showfifthOverlay">
+		            <h1>s</h1>
+		            <p>s</p>
+		            <h2>s</h2>
+		        </div>
+		    </div>
+
+			<!-- fin5 -->
+			<!-- 6 -->
+			<div class="showcaseSection">
+		        <div class="showcaseChest" id="showsix">
+		            <svg viewBox="0 0 300 400">
+		               <circle cx="196.89999999999998" cy="230.2" r="95" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></circle><circle cx="193.89999999999998" cy="227.7" r="59.5" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></circle><circle cx="192.39999999999998" cy="226.2" r="32" fill="#ffffff" stroke="#00000f" style="stroke-width: 10;"></circle><circle cx="190.39999999999998" cy="225.2" r="14" fill="#000000" stroke="#00000f" style="stroke-width: 10;"></circle></svg>
+		        </div>
+		        <div class="showcaseOverlay" id="showsixOverlay">
+		            <h1>s</h1>
+		            <p>s</p>
+		            <h2>s</h2>
+		        </div>
+		    </div>
+
+			<!-- fin6 -->
+			<!-- 7 -->
+			<div class="showcaseSection">
+		        <div class="showcaseChest" id="showseven">
+		            <svg viewBox="0 0 300 400">
+		             <ellipse cx="129.39999999999998" cy="153.2" rx="55" ry="67"></ellipse><ellipse cx="121.39999999999998" cy="173.2" rx="0" ry="0"></ellipse><path d="M  93.39999999999998 142.2 Q 99.39999999999998 113.19999999999999 120.39999999999998 107.19999999999999" fill="none" stroke="#ffffff" style="stroke-width: 10;"></path><line x1="124.39999999999998" x2="112.39999999999998" y1="200.2" y2="236.2" fill="#1c0d0d" stroke="#0a0a0a" style="stroke-width: 10;"></line><line x1="134.39999999999998" x2="142.39999999999998" y1="200.2" y2="236.2" fill="#1c0d0d" stroke="#0a0a0a" style="stroke-width: 10;"></line><line x1="108" x2="147.39999999999998" y1="236.2" y2="235.2" fill="#1c0d0d" stroke="#0a0a0a" style="stroke-width: 10;"></line><path d="M 119.39999999999998 224.2 L 119.39999999999998 224.2 L 120.39999999999998 224.2 L 121.39999999999998 224.2 L 122.39999999999998 224.2 L 124.39999999999998 224.2 L 125.39999999999998 224.2 L 126.39999999999998 224.2 L 126.39999999999998 224.2 L 127.39999999999998 224.2 L 128.39999999999998 224.2 L 129.39999999999998 224.2 L 130.39999999999998 224.2 L 130.39999999999998 224.2 L 130.39999999999998 224.2" fill="none" stroke="#0a0a0a" style="stroke-width: 10;"></path><path d="M 118.39999999999998 228.2 L 118.39999999999998 228.2 L 119.39999999999998 228.2 L 120.39999999999998 228.2 L 121.39999999999998 228.2 L 122.39999999999998 228.2 L 122.39999999999998 228.2 L 123.39999999999998 228.2 L 124.39999999999998 228.2 L 125.39999999999998 228.2 L 126.39999999999998 228.2 L 126.39999999999998 228.2 L 127.39999999999998 228.2 L 128.39999999999998 228.2 L 129.39999999999998 228.2 L 130.39999999999998 228.2 L 130.39999999999998 228.2 L 131.39999999999998 228.2 L 132.39999999999998 228.2 L 133.39999999999998 228.2 L 134.39999999999998 228.2 L 134.39999999999998 228.2 L 134.39999999999998 228.2" fill="none" stroke="#0a0a0a" style="stroke-width: 10;"></path><path d="M 129.39999999999998 218.2 L 129.39999999999998 218.2 L 130.39999999999998 218.2 L 130.39999999999998 218.2 L 132.39999999999998 219.2 L 133.39999999999998 219.2 L 134.39999999999998 220.2 L 134.39999999999998 220.2 L 135.39999999999998 221.2 L 136.39999999999998 221.2 L 137.39999999999998 221.2 L 138.39999999999998 221.2 L 138.39999999999998 221.2" fill="none" stroke="#0a0a0a" style="stroke-width: 10;"></path><path d="M 131.39999999999998 222.2 L 131.39999999999998 222.2 L 131.39999999999998 223.2 L 132.39999999999998 224.2 L 133.39999999999998 224.2 L 133.39999999999998 225.2 L 133.39999999999998 226.2 L 134.39999999999998 226.2 L 134.39999999999998 226.2 L 135.39999999999998 226.2 L 135.39999999999998 227.2 L 135.39999999999998 228.2 L 136.39999999999998 228.2 L 137.39999999999998 228.2 L 136.39999999999998 228.2 L 135.39999999999998 228.2 L 134.39999999999998 228.2 L 134.39999999999998 228.2 L 134.39999999999998 227.2 L 134.39999999999998 226.2 L 134.39999999999998 226.2" fill="none" stroke="#0a0a0a" style="stroke-width: 10;"></path><path d="M  126.39999999999998 234.2 Q 142.39999999999998 290.2 127.39999999999998 314.2" fill="none" stroke="#0a0a0a" style="stroke-width: 10;"></path>
+		            </svg>
+		        </div>
+		        <div class="showcaseOverlay" id="showsevenOverlay">
+		            <h1>s</h1>
+		            <p>s</p>
+		            <h2>s</h2>
+		        </div>
+		    </div>
+
+			<!-- fin7 -->
 		</div>
 		
 	</div>

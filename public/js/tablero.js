@@ -124,14 +124,22 @@ function changeTool(param) {
 }
 
 
+function stop_mobile() {
+	$("body").css("overflow-y","hidden");
+}
+
+function revert_stop_mobile() {	
+	$("body").css("overflow-y","auto");
+}
+
 //sqr
 
 
 function traducirSqr(param1,param2) {
 	let array=param1.concat(param2);
-	console.log("total:"+array);
-	console.log("uno:"+param1);
-	console.log("dos:"+param2);
+	//console.log("total:"+array);
+	//console.log("uno:"+param1);
+	//console.log("dos:"+param2);
 	array.forEach((e,index)=> {
 		if(index==0 || index==3) {
 			array[index]=e-VwToPx(anchoSvg);
@@ -139,7 +147,7 @@ function traducirSqr(param1,param2) {
 			array[index]=e-VhToPx(altoSvg);
 		}
 	});
-	console.log("total final:"+array);
+	//console.log("total final:"+array);
 	
 	arrayX=[];
 	arrayY=[];
@@ -156,6 +164,7 @@ $("#sqr").click(()=> {
 	if(pulsacion[0]==true) {
 		$("#board").on(`${mousedownEvent}`,function(e) {
 			if(screen.width<900)  {
+				stop_mobile();
 				if(arrayX.length<2) {
 					arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)));
 					arrayX.push(parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1)));
@@ -165,7 +174,7 @@ $("#sqr").click(()=> {
 				if(arrayX.length<2) {
 					arrayX.push(e.clientX);
 					arrayX.push(e.clientY);
-					console.log("x en local:"+arrayX);
+					//console.log("x en local:"+arrayX);
 				}
 				
 			}
@@ -173,6 +182,7 @@ $("#sqr").click(()=> {
 
 		$("#board").on(`${mouseupEvent}`,function(e) {
 			if(screen.width<900)  {
+				revert_stop_mobile();
 				arrayY.push(parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1)));
 				arrayY.push(parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)));
 				//console.log(e.originalEvent.changedTouches[0].clientX.toFixed(1));
@@ -190,7 +200,7 @@ $("#sqr").click(()=> {
 			arrayX=[];
 		});
 	} else {
-		console.log("sqr no");
+		//console.log("sqr no");
 	}
 	
 });
@@ -207,6 +217,8 @@ function pintarSqr() {
 			
 			if(gradientColor!="empty") {
 				this.attr('fill', gradientColor);
+			} else {
+				this.attr('fill', fill);
 			}
 
 		});
@@ -220,6 +232,8 @@ function pintarSqr() {
 				
 				if(gradientColor!="empty") {
 					this.attr('fill', gradientColor);
+				} else {
+					this.attr('fill', fill);
 				}
 
 			});
@@ -232,12 +246,14 @@ function pintarSqr() {
 				
 				if(gradientColor!="empty") {
 					this.attr('fill', gradientColor);
+				} else {
+					this.attr('fill', fill);
 				}
 
 			});
 		}
 	} else {
-		console.log(res);
+		//console.log(res);
 		var rect=s.rect((res[0]-(res[0]-res[3])),res[1],(res[0]-res[3]),(res[2]-res[1])).attr({
 			fill: fill,
 	        stroke: colorTrazo,
@@ -247,6 +263,8 @@ function pintarSqr() {
 			if(gradientColor!="empty") {
 				this.attr('fill', gradientColor);
 				//console.log(gradientColor);
+			} else {
+				this.attr('fill', fill);
 			}
 
 		});
@@ -275,9 +293,9 @@ function traducirRecta(param1,param2) {
 				array[index]=array[index]*(-1*(1-factorEscalado));
 			}*/
 		}
-		console.log("index: "+array[index]);
+		//console.log("index: "+array[index]);
 		
-		console.log("escalado recta");
+		//console.log("escalado recta");
 	});
 	//console.log(array);
 	return array;
@@ -295,7 +313,7 @@ $("#recta").click(()=> {
 			if(contadorLineas<2) {
 
 				if(screen.width<900) {
-					
+					stop_mobile();
 					rectaX.push(e.pageX);
 					rectaY.push(e.pageY);
 
@@ -307,6 +325,7 @@ $("#recta").click(()=> {
 				contadorLineas++;
 				if(contadorLineas==2) {
 					if(pulsacion[1]==true) {
+						revert_stop_mobile();
 						//console.log(rectaX);
 						//console.log(rectaY);
 						dibujaLinea();
@@ -317,6 +336,7 @@ $("#recta").click(()=> {
 				}
 			} else {
 				if(pulsacion[1]==true) {
+					revert_stop_mobile();
 					dibujaLinea();
 				}
 			}
@@ -330,7 +350,7 @@ $("#recta").click(()=> {
 function dibujaLinea() {
 	//console.log("h");
 	let res=traducirRecta(rectaX,rectaY);
-	console.log(res);
+	//console.log(res);
 	var t1 = s.line(res[0], res[2], res[1], res[3]).attr({
 		fill: fill,
         stroke: colorTrazo,
@@ -363,6 +383,7 @@ $("#circle").click(()=> {
 	if(pulsacion[2]==true) {
 		$("#board").on(`${mousedownEvent}`,function(e) {
 			if(screen.width<900)  {
+				stop_mobile();
 				circleArray.push(parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1)));
 				circleArray.push(parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)));
 				//console.log(arrayX);
@@ -375,6 +396,7 @@ $("#circle").click(()=> {
 
 		$("#board").on(`${mouseupEvent}`,function(e) {
 			if(screen.width<900)  {
+				revert_stop_mobile();
 				circleArray.push(parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1)));
 				circleArray.push(parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)));
 				//console.log(e.originalEvent.changedTouches[0].clientX.toFixed(1));
@@ -395,7 +417,7 @@ $("#circle").click(()=> {
 function pintarCircle() {
 	//console.log("creando");
 	let res=traducirCirculo(circleArray);
-	console.log(res);
+	//console.log(res);
 	if(((res[2]-res[0])/2)>0) {
 		var c = s.circle(((res[1]+res[3])/2), ((res[0]+res[2])/2), ((res[2]-res[0])/2)).attr({
 			fill: fill,
@@ -445,6 +467,7 @@ $("#curve").click(()=> {
 		$("#board").click((e)=> {
 			if(contadorCurve<3) {
 				if(screen.width<900) {
+					stop_mobile();
 					let aux=[e.pageX,e.pageY];
 					//console.log(aux);
 					curveArray.push(aux);
@@ -458,6 +481,7 @@ $("#curve").click(()=> {
 			} else {
 				//console.log(curveArray);
 				if(pulsacion[3]==true) {
+					revert_stop_mobile();
 					pintarCurva();
 				}
 				contadorCurve=0;
@@ -498,6 +522,7 @@ $("#freet").click(()=> {
 	if(pulsacion[4]==true) {
 		$("#board").on(`${mousedownEvent}`,function(e) {
 			if(screen.width<900)  {
+				stop_mobile();
 				let aux=[parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)),parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1))];
 				arrayFree.push(aux);
 				inicio=true;
@@ -524,6 +549,7 @@ $("#freet").click(()=> {
 		$("#board").on(`${mouseupEvent}`,function(e) {
 			//console.log("inicio: "+inicio);
 			if(screen.width<900)  {
+				revert_stop_mobile();
 				let aux=[parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)),parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1))];
 				arrayFree.push(aux);
 			} else {
@@ -540,9 +566,9 @@ $("#freet").click(()=> {
 });
 
 function pintarFreet() {
-	console.log(arrayFree);
+	//console.log(arrayFree);
 	let res=traducirFree(arrayFree);
-	console.log(arrayFree);
+	//console.log(arrayFree);
 	arrayFree=res;
 	//let a="M "+curveArray[0][0]+" 90 C 200  90 0 0 90  300";
 	let a=`M ${arrayFree[0][0]} ${arrayFree[0][1]}`;
@@ -589,7 +615,7 @@ $("#openGrosor").click(()=> {
 
 $("#grosorPicker").change(()=> {
 	grosorTrazo=$("#grosorPicker").val();
-	console.log(grosorTrazo);
+	//console.log(grosorTrazo);
 });
 //fin grosor
 
@@ -602,6 +628,7 @@ $("#fillEmu").click(()=>{
 
 $("#fill").change(()=> {
 	fill=$("#fill").val();
+	//console.log("fill es: "+fill);
 });
 
 
@@ -666,7 +693,7 @@ $("#cancellNaming").click((e)=> {
 	if(localStorage.getItem("scheme")=="light") {
 		$("body").css("background","white");
 	} else {
-		$("body").css("background","black");
+		$("body").css("background","#373747");
 	}
 });
 
@@ -678,23 +705,23 @@ var subirMagico=2;
 $("#naming").click((e)=> {
 	if(($("#nameLienzo").val()!="") && ($("#catExportSelect").val().length!=0)) {
 		$("#namingLoader").css("display","flex");
-		console.log("recopilando: ");
+		//console.log("recopilando: ");
 		//nombre del lienzo
 		nombre=$("#nameLienzo").val();
 
 		
-		console.log("subir magico"+subirMagico);
+		//console.log("subir magico"+subirMagico);
 
 		if($("#idAct").length==0) {
-			for(let i=subirMagico;i<$("svg")[5].childNodes.length;i++) {
-				console.log($("svg")[5].childNodes[i]);
-				console.log(typeof($("svg")[5].childNodes[i]));
-				contenido.push($("svg")[5].childNodes[i].outerHTML);
+			for(let i=subirMagico;i<$("svg")[1].childNodes.length;i++) {
+				//console.log($("svg")[1].childNodes[i]);
+				//console.log(typeof($("svg")[1].childNodes[i]));
+				contenido.push($("svg")[1].childNodes[i].outerHTML);
 			}
 		} else {
 			for(let i=subirMagico;i<$("svg")[1].childNodes.length;i++) {
-				console.log($("svg")[1].childNodes[i]);
-				console.log(typeof($("svg")[1].childNodes[i]));
+				//console.log($("svg")[1].childNodes[i]);
+				//console.log(typeof($("svg")[1].childNodes[i]));
 				contenido.push($("svg")[1].childNodes[i].outerHTML);
 			}
 		}
@@ -703,12 +730,12 @@ $("#naming").click((e)=> {
 		//window.location.href=window.location.href + "?contenido=" + contenido;
 		
 			enviar();
-			console.log("enviando");
+			//console.log("enviando");
 	} else {
 		alert("no");
 	}
 	//console.log($("svg")[4]);
-	console.log(contenido);
+	//console.log(contenido);
 });
 	
 
@@ -729,17 +756,17 @@ enviarDatos(datos, url); // Ejecutar cuando se quiera enviar los datos
 function enviarDatos(datos, url){
 	if($("#idAct").length>0) {
 		id=$("#idAct").val();
-		console.log("hey you");
+		//console.log("hey you");
 	}
 
 	if($("#idgr").val()!=undefined) {
-		console.log($("#idgr").val());
+		//console.log($("#idgr").val());
 		gr=$("#idgr").val()
 	} else {
-		console.log("es ind");
+		//console.log("es ind");
 	}
 
-	console.log(gr);
+	//console.log(gr);
     $.ajax({
             data: {
             	 "_token": $("meta[name='csrf-token']").attr("content"),
@@ -751,7 +778,7 @@ function enviarDatos(datos, url){
             url: url,
             type: 'post',
             success:  function (response) {
-               console.log(response); // Imprimir respuesta del archivo
+               //console.log(response); // Imprimir respuesta del archivo
               //window.location.replace(response);
               if(gr=="null") {
               	window.location.href="./dashboard";
@@ -760,7 +787,7 @@ function enviarDatos(datos, url){
               }
             },
             error: function (error) {
-                console.log(error.responseText); // Imprimir respuesta de error
+                //console.log(error.responseText); // Imprimir respuesta de error
             }
     });
 }
@@ -866,6 +893,7 @@ $("#ellipse").click(()=> {
 	if(pulsacion[6]==true) {
 		$("#board").on(`${mousedownEvent}`,function(e) {
 			if(screen.width<900) {
+				stop_mobile();
 				ellipseX.push(parseInt(e.originalEvent.targetTouches[0].pageX.toFixed(1)));
 				ellipseX.push(parseInt(e.originalEvent.targetTouches[0].pageY.toFixed(1)));
 			} else {
@@ -877,14 +905,15 @@ $("#ellipse").click(()=> {
 
 		$("#board").on(`${mouseupEvent}`,function(e) {
 			if(screen.width<900) {
+				revert_stop_mobile();
 				ellipseY.push(parseInt(e.originalEvent.changedTouches[0].pageY.toFixed(1)));
 				ellipseY.push(parseInt(e.originalEvent.changedTouches[0].pageX.toFixed(1)));
 			} else {
 				ellipseY.push(e.clientY);
 				ellipseY.push(e.clientX);
 			}
-			console.log(ellipseY);
-			console.log(ellipseX);
+			//console.log(ellipseY);
+			//console.log(ellipseX);
 			if(pulsacion[6]==true) {
 				dibujarEllipse();
 			}
@@ -892,13 +921,13 @@ $("#ellipse").click(()=> {
 			ellipseY=[];
 		});
 	} else {
-		console.log("sqr no");
+		//console.log("sqr no");
 	}
 });
 
 function dibujarEllipse(param) {
 	let res=traducirEllipse(ellipseX,ellipseY);
-	console.log(res);
+	//console.log(res);
 	let x,y,rX,rY=0;
 
 	if(((res[3]-res[0])>0) && ((res[2]-res[1])>0)) {
@@ -949,7 +978,7 @@ $("#gradient").click(()=> {
 		if(localStorage.getItem("scheme")=="light") {
 			$("body").css("background","white");
 		} else {
-			$("body").css("background","black");
+			$("body").css("background","#373747");
 		}
 	});
 });
@@ -961,10 +990,11 @@ $("#gradient").click(()=> {
 		let verti=$("#verticalidad").val();
 		crearGradiente(c1,c2,type,verti);
 		contadorGradient++;
+		$("#mark_create_gradient").css("opacity",1);
 	});
 
 function crearGradiente(c1,c2,type,verti) {
-	console.log("Hola creando gradiente");
+	//console.log("Hola creando gradiente");
 	let result="";
 	if(verti=="AB") {
 		var myLinearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
@@ -1017,10 +1047,18 @@ var arrayGradientDirection=[];
 
 function scanTotal() {
 	//hacemos distincion entre crear y editar
-	let t=window.location.href.split("?")[1];
-	if(t!=undefined) {
+	var valores = window.location.search;
+	var urlParams = new URLSearchParams(valores);
+	var producto = urlParams.get('id');
+
+	//let t=window.location.href.split("?")[1];
+	//console.log("producto:"+producto);
+	if(producto==null) {
+		indiceGr=1;
+	} else {
 		indiceGr=1;
 	}
+	//console.log("indice GR:"+indiceGr);
 	for(let i=2;i<$("svg")[indiceGr].childNodes.length;i++) {
 		//console.log($("svg")[5].childNodes[i]);
 		//console.log($("svg")[5].childNodes[i].id);
@@ -1036,15 +1074,15 @@ function scanTotal() {
 			//extraemos los colores (en pares)
 			//console.log($("svg")[5].childNodes[i].children);
 			for(let z=0;z<2;z++) {
-				console.log($("svg")[indiceGr].childNodes[i].children[z].getAttribute("stop-color"));
+				//console.log($("svg")[indiceGr].childNodes[i].children[z].getAttribute("stop-color"));
 				arrayGradientColor.push($("svg")[indiceGr].childNodes[i].children[z].getAttribute("stop-color"));
 			}
 		}
 		
 		
 	}
-	console.log(arrayGradientDirection);
-	console.log(arrayGradientColor);
+	//console.log(arrayGradientDirection);
+	//console.log(arrayGradientColor);
 
 }
 
@@ -1055,7 +1093,7 @@ function vaciarIntroduce() {
 	arrayGradientDirection=[];
 	arrayGradientColor=[];
 	contadorGradient=0;
-	console.log("vaciando: "+$("#introduce"));
+	//console.log("vaciando: "+$("#introduce"));
 }
 
 $("#cancellChoose").click(()=> {
@@ -1066,22 +1104,20 @@ var idGr=0;
 
 function buscarIdGr() {
 	let conjunto=document.getElementsByClassName("gradientExp");
-	console.log(conjunto);
+	//console.log(conjunto);
 	for(let i=0;i<conjunto.length;i++) {
 		conjunto[i].addEventListener("click",()=> {
 			idGr=conjunto[i].id.split("_")[1];
 
 			//gradientColor=`url(#${idGr})`;
 			gradientColor=`url(#MyGradient${idGr})`;
+			$("#icon_gradient_"+idGr).css("opacity",1);
 		});
 	}
 }
 
-function buscarGradiente() {
-	
-	console.log("buscando");
-}
 function asignarIntroduce() {
+	//console.log("valor de arrayGradientDirection: "+arrayGradientDirection);
 	for(let z=0;z<arrayGradientDirection.length;z++) {
 		var newDiv = document.createElement("div");
 		newDiv.className ="gradientExp";
@@ -1105,12 +1141,21 @@ function asignarIntroduce() {
 				 + ")";
 		}
 		newDiv.id="MyGradient_"+z;
+		//creamos el icono 
+		var newI = document.createElement("i");
+		newI.className ="bi bi-check-lg";
+		newI.id ="icon_gradient_"+z;
+		var newDivT = document.createElement("div");
+		newDivT.id="container_Exp";
+		newDivT.append(newDiv);
+		newDivT.append(newI);
 		//introducimos en el elemento
-		$("#introduce").append(newDiv);
+		$("#introduce").append(newDivT);
 	}
 	buscarIdGr();
 }
 $("#use").click(()=> {
+	revert_stop_mobile();
 	$("#lienzo").css("z-index","99");
 	$("#doneFill").css("z-index","90");
 	$("#doneFill").css("display","flex");
@@ -1125,8 +1170,7 @@ $("#use").click(()=> {
 
 	$("#lienzo").click((e)=> {
 		let figuraSel=Snap.getElementByPoint(e.clientX,e.clientY);
-		console.log(figuraSel);
-		buscarGradiente();
+		//console.log(figuraSel);
 		figuraSel.attr({
 			fill: gradientColor,
 		    strokeWidth: 5
@@ -1143,24 +1187,31 @@ var indiceGr=5;
 
 function scan() {
 	//hacemos distincion entre crear y editar
-	let t=window.location.href.split("?")[1];
-	if(t!=undefined) {
+	var valores = window.location.search;
+	var urlParams = new URLSearchParams(valores);
+	var producto = urlParams.get('id');
+
+	//let t=window.location.href.split("?")[1];
+	//console.log("producto:"+producto);
+	if(producto==null) {
+		indiceGr=1;
+	} else {
 		indiceGr=1;
 	}
-	console.log("editantdo: "+t);
-	console.log("trabajamos con indice: "+indiceGr);
+	//console.log("editantdo: "+t);
+	//console.log("trabajamos con indice: "+indiceGr);
 	//fin distincion
 	contadorGradient=0;
 	for(let i=2;i<$("svg")[indiceGr].childNodes.length;i++) {
-		console.log($("svg")[indiceGr].childNodes[i]);
-		console.log($("svg")[indiceGr].childNodes[i].id);
+		//console.log($("svg")[indiceGr].childNodes[i]);
+		//console.log($("svg")[indiceGr].childNodes[i].id);
 		if($("svg")[indiceGr].childNodes[i].id.includes("MyGradient")) {
 			contadorGradient++;
 		}
 		
 		
 	}
-	console.log("contadorGradient/scan: "+contadorGradient);
+	//console.log("contadorGradient/scan: "+contadorGradient);
 }
 
 }
@@ -1203,8 +1254,8 @@ function chargeCat() {
 
 var url2 = "./cargarCat"; // URL a la cual enviar los datos
 
-console.log("datos charge");
-console.log(datos);
+//console.log("datos charge");
+//console.log(datos);
 enviarDatos2(datos,url2); // Ejecutar cuando se quiera enviar los datos
 }
 
@@ -1217,12 +1268,12 @@ function enviarDatos2(datos,url){
             url: url,
             type: 'post',
             success:  function (response) {
-               console.log(response); // Imprimir respuesta del archivo
+               //console.log(response); // Imprimir respuesta del archivo
                asignarSelect(response);
             },
             error: function (error) {
-                console.log(error.responseText); // Imprimir respuesta de error
-                console.log(error);
+                //console.log(error.responseText); // Imprimir respuesta de error
+                //console.log(error);
                 asignarSelect(error.responseText);
             }
     });
@@ -1269,6 +1320,13 @@ $("#addCatBtn").click(()=> {
 	var url3 = "./addCat"; // URL a la cual enviar los datos
 
 	enviarDatos3(datos, url3); // Ejecutar cuando se quiera enviar los datos
+	//cambiamos el icono
+	$("#addCat").css("opacity",0);
+	setTimeout(()=> {
+	$("#addCat").removeClass("bi bi-plus");
+	$("#addCat").addClass("bi bi-check-lg");
+		$("#addCat").css("opacity",1);
+	},1000);
 });
 
 
@@ -1284,12 +1342,12 @@ function enviarDatos3(datos, url){
             url: url,
             type: 'post',
             success:  function (response) {
-               console.log(response); // Imprimir respuesta del archivo
+               //console.log(response); // Imprimir respuesta del archivo
                vaciarSelect();
                chargeCat();
             },
             error: function (error) {
-                console.log(error.responseText); // Imprimir respuesta de error
+                //console.log(error.responseText); // Imprimir respuesta de error
             }
     });
 }
@@ -1306,11 +1364,11 @@ $("#loupe").click(()=> {
 });
 
 $("#loupeRange").change(()=> {
-    console.log($("#lienzo"));
+    //console.log($("#lienzo"));
     //$("#lienzo")[0].style.transform = `scale(90 / 100)`;
     let val=$("#loupeRange").val()*10;
     factorEscalado=$("#loupeRange").val()/10;
-    console.log("escalado: "+factorEscalado);
+    //console.log("escalado: "+factorEscalado);
     $("#lienzo").css("transform",`scale(${val/100})`);
     $("#lienzo").css("background","cornflowerblue");
 });

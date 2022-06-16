@@ -1158,7 +1158,9 @@ for (var i = 0; i < tr.length; i++) {
   document.addEventListener("dragend", function (evento) {
     if (idElementDrag == false && countDrag == 0) {
       var _id = event.target.id.split("_")[1];
-      dragBorrar(_id);
+      var ancla = event.target.id.split("_")[0];
+      console.log(ancla);
+      dragBorrar(_id, ancla);
       countDrag++;
     } else {
       $(".drag_destiny").css("opacity", "0");
@@ -1166,18 +1168,23 @@ for (var i = 0; i < tr.length; i++) {
   });
 }
 
-function dragBorrar(param) {
+function dragBorrar(param, ancla) {
   var datos = {
     "variable1": param // Dato #1 a enviar
     //"variable2" : variable2 // Dato #2 a enviar
     // etc...
 
   };
-  var url = "./borrarLienzoDrag/".concat(param); // URL a la cual enviar los datos;
 
-  enviarDatos(datos, url); // Ejecutar cuando se quiera enviar los datos
+  if (ancla == "dragGrupo") {
+    var url = "../borrarLienzoDrag/".concat(param); // URL a la cual enviar los datos;
+  } else {
+    var url = "./borrarLienzoDrag/".concat(param); // URL a la cual enviar los datos;
+  }
 
-  function enviarDatos(datos, url) {
+  enviarDatos(datos, url, ancla); // Ejecutar cuando se quiera enviar los datos
+
+  function enviarDatos(datos, url, ancla) {
     $.ajax({
       data: {
         //"_token": $("meta[name='csrf-token']").attr("content"),
@@ -1188,7 +1195,11 @@ function dragBorrar(param) {
       success: function success(response) {
         console.log(response); // Imprimir respuesta del archivo
 
-        window.location.href = "./dashboard";
+        if (ancla == "dragGrupo") {
+          window.location.href = "../dashboard";
+        } else {
+          window.location.href = "./dashboard";
+        }
       },
       error: function error(_error7) {
         console.log(_error7.responseText); // Imprimir respuesta de error
@@ -1287,6 +1298,14 @@ function apareceNoti8() {
   $("#container_notification_8").removeClass("p-1 space-y-4");
   $("#container_notification_8").addClass("noti_ani");
   cerrarN();
-}
+} //selector landing
+
+
+$("#idiomaSelect").focus(function () {
+  $("#global_svg").css("color", "#7d2ae8");
+});
+$("#idiomaSelect").focusout(function () {
+  $("#global_svg").css("color", "black");
+});
 /******/ })()
 ;

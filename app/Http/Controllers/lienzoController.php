@@ -235,7 +235,7 @@ class lienzoController extends Controller
           $l=lienzos::find(intval($id));
           //notificacion
          session(['decremento' => "true"]);
-          echo $l;
+        //  echo $l;
           $l->delete();
     }
 

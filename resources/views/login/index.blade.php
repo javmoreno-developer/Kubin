@@ -92,6 +92,8 @@
 			<p>{{__('messages.m6_lo')}}</p>
 			<a class="loginEnlace" href="{{route("login")}}">{{__('messages.m7_lo')}}</a>
 		</div>
+
+		
 	@endif
 
 @extends("plantillas/cabeceraSin")

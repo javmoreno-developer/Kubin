@@ -130,8 +130,10 @@
 							<form action="{{route("cambiarFotoFile")}}" method="post" enctype="multipart/form-data">
 								@csrf
 								<div>
-									<label for="textChange">{{__("messages.m38_tab")}}</label>
-									<input type="file" name="avatar" id="textChange">
+									<label id="file_container">
+										<input type="file" name="avatar" id="textChange"  accept="image/png, image/jpg, image/gif, image/jpeg">
+										<p>{{__("messages.m38_tab")}}</p>
+									</label>
 								</div>
 								<button>{{__("messages.men16_das")}}</button>
 								
