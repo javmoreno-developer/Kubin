@@ -73,7 +73,13 @@ Usaré el servicio de heroku utilizando clearDB para tener la bd en otro servici
 
 * **Javier Moreno Aguilera** - *Codificación,testeo,documentación...* 
 
+## Bibliografía
 
+* [Sistema de archivos](https://www.youtube.com/watch?v=2JteMJzNI44)
+* [Sistema de archivos](https://laravel.com/docs/8.x/filesystem)
+* [Despliegue](https://laravel.com/docs/8.x/filesystem)
+* [Traducciones](https://visioncodigo.com/blog/como-crear-una-web-en-diferentes-idiomas-multi-idioma-con-php-laravel)
+* [Evento touch](https://programmerclick.com/article/27351521277/)
 
 ## Expresiones de Gratitud 🎁
 
