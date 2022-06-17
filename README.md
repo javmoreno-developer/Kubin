@@ -1,12 +1,12 @@
 # KUBIN
 
-_**Kubin** es una aplicación con la que podrás crear,compartir y descargar lienzos hechos por el usuario._
+**Kubin** es una aplicación con la que podrás crear,compartir y descargar lienzos hechos por el usuario.
 
 ![image](https://user-images.githubusercontent.com/55782974/172015118-ff5a824f-86c7-4dbe-bf60-53de15d7de68.png)
 
 ## Comenzando 🚀
 
-_Para empezar con kubin deberás realizar los siguientes comandos tras descargar el proyecto._
+Para empezar con kubin deberás realizar los siguientes comandos tras descargar el proyecto.
 
 
 ```
@@ -22,7 +22,7 @@ composer install
 ```
 ### Pre-requisitos 📋
 
-_Para instalar kubin antes deberás tener instalado composer,php y node (npm)_
+Para instalar kubin antes deberás tener instalado composer,php y node (npm).
 
 [Composer](https://getcomposer.org/download/) \
 [PHP](https://www.php.net/manual/es/install.php) \
@@ -42,7 +42,7 @@ Se distinguirán tres perfiles:
 
 ## Despliegue 📦
 
-_A la hora de desplegar la app,usaré el servicio de heroku utilizando clearDB para tener la bd en otro servicio (ademas de usarlo para hacer copias de seguridad de la bd),el dominio para la app sera un .com/.io_
+A la hora de desplegar la app,usaré el servicio de heroku utilizando clearDB para tener la bd en otro servicio (ademas de usarlo para hacer copias de seguridad de la bd),el dominio para la app sera **.design** .
 
 ## Construido con 🛠️
 
