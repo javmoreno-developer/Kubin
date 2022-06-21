@@ -69,7 +69,8 @@ Usaré el servicio de heroku utilizando clearDB para tener la bd en otro servici
 [Checkpoint](https://youtu.be/L8coQg8mF40) 🏁 \
 [Diario de trabajo y objetivos](https://base.zenkit.com/c/5rg6yZ9yd/to-do-kubin?v=pJLer6qnL9) 👷 \
 [Tutorial](https://snowy-magpie-6c4.notion.site/C-mo-usar-kubin-9e6e2365bdc84c6e963850bad012c49d) 🗺 \
-[Presentación del proyecto](https://view.genial.ly/62aed116a80a1c0011178103/presentation-kubin?from=editor) 💯 
+[Presentación del proyecto](https://view.genial.ly/62aed116a80a1c0011178103/presentation-kubin?from=editor) 💯 \
+[Funcionamiento del proyecto](https://youtu.be/-Z_BUy1Q3tY) 📹 
 
 ## Autores 📌
 
